@@ -1,13 +1,13 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic;
 
 use FOS\ElasticaBundle\Manager\RepositoryManagerInterface;
 use FOS\ElasticaBundle\Repository;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Search\SearchFactoryInterface;
-use Lakion\SyliusElasticSearchBundle\Search\SearchEngineInterface;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Search\SearchFactoryInterface;
+use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

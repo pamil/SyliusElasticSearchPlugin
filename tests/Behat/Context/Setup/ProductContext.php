@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\Lakion\SyliusElasticSearchBundle\Behat\Context\Setup;
+namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use Tests\Lakion\SyliusElasticSearchBundle\Behat\Services\SuspenderInterface;
+use Tests\Sylius\ElasticSearchPlugin\Behat\Services\SuspenderInterface;
 use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 
 /**

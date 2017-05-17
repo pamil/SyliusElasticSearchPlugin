@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Search;
+namespace Sylius\ElasticSearchPlugin\Search;
 
 use FOS\ElasticaBundle\Paginator\PaginatorAdapterInterface;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

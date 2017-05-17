@@ -7,7 +7,7 @@ imports:
     - { resource: "@SyliusAdminBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusShopBundle/Resources/config/app/config.yml" }
     - { resource: "@SyliusAdminApiBundle/Resources/config/app/config.yml" }
-    - { resource: "@LakionSyliusElasticSearchBundle/Resources/config/app/config.yml" }
+    - { resource: "@SyliusElasticSearchPlugin/Resources/config/app/config.yml" }
 
     - { resource: "security.yml" }
 
@@ -53,7 +53,7 @@ sylius_grid:
     drivers:
         - doctrine/orm
 
-lakion_sylius_elastic_search:
+sylius_elastic_search:
     filter_sets:
         mug_type_and_stickers_set:
             filters:

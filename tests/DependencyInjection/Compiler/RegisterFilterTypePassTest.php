@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\Lakion\SyliusElasticSearchBundle\DependencyInjection\Compiler;
+namespace Tests\Sylius\ElasticSearchPlugin\DependencyInjection\Compiler;
 
-use Lakion\SyliusElasticSearchBundle\DependencyInjection\Compiler\RegisterFilterTypePass;
+use Sylius\ElasticSearchPlugin\DependencyInjection\Compiler\RegisterFilterTypePass;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractCompilerPassTestCase;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\DefinitionHasMethodCallConstraint;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

@@ -9,9 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
 use ONGR\ElasticsearchDSL\Search;
 
 /**

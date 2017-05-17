@@ -11,7 +11,7 @@ final class AppKernel extends Kernel
     public function registerBundles()
     {
         return array_merge([
-            new \Lakion\SyliusElasticSearchBundle\LakionSyliusElasticSearchBundle(),
+            new \Sylius\ElasticSearchPlugin\SyliusElasticSearchPlugin(),
         ], parent::registerBundles(), [
             new \Sylius\Bundle\AdminBundle\SyliusAdminBundle(),
             new \Sylius\Bundle\ShopBundle\SyliusShopBundle(),

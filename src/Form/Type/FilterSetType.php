@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Form\Type;
+namespace Sylius\ElasticSearchPlugin\Form\Type;
 
-use Lakion\SyliusElasticSearchBundle\Exception\FilterSetConfigurationNotFoundException;
-use Lakion\SyliusElasticSearchBundle\Form\Configuration\Provider\FilterSetProviderInterface;
-use Lakion\SyliusElasticSearchBundle\Form\DataMapper\CriteriaDataMapper;
+use Sylius\ElasticSearchPlugin\Exception\FilterSetConfigurationNotFoundException;
+use Sylius\ElasticSearchPlugin\Form\Configuration\Provider\FilterSetProviderInterface;
+use Sylius\ElasticSearchPlugin\Form\DataMapper\CriteriaDataMapper;
 use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\Lakion\SyliusElasticSearchBundle\Behat\Services;
+namespace Tests\Sylius\ElasticSearchPlugin\Behat\Services;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

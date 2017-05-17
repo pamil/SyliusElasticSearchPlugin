@@ -1,11 +1,11 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\Filter;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductHasOptionCodesFilter;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicator;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\BoolQuery;
+use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductHasOptionCodesFilter;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicator;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use ONGR\ElasticsearchDSL\Search;
 
 /**
@@ -33,7 +33,7 @@ final class ProductHasMultipleOptionCodesApplicator extends SearchCriteriaApplic
     public function applyProductHasOptionCodesFilter(ProductHasOptionCodesFilter $codesFilter, Search $search)
     {
         foreach ($codesFilter->getCodes() as $code) {
-            $search->addFilter(
+            $search->addPostFilter(
                 $this->productHasOptionCodeQueryFactory->create(['option_value_code' => $code]),
                 BoolQuery::SHOULD
             );

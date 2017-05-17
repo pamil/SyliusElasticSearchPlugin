@@ -5,7 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="lakion_sylius_elastic_search.controller.search" class="Lakion\SyliusElasticSearchBundle\Controller\SearchController">
+        <service id="lakion_sylius_elastic_search.controller.search" class="Sylius\ElasticSearchPlugin\Controller\SearchController">
             <argument type="service" id="fos_rest.view_handler" />
             <argument type="service" id="lakion_sylius_elastic_search.search.elastic_engine" />
             <argument type="service" id="form.factory" />

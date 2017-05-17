@@ -1,6 +1,6 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering;
+namespace Sylius\ElasticSearchPlugin\Search\Criteria\Filtering;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

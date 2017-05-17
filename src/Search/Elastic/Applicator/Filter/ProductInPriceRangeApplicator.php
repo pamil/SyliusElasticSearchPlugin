@@ -1,11 +1,11 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\Filter;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductInPriceRangeFilter;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicator;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\BoolQuery;
+use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInPriceRangeFilter;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicator;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use ONGR\ElasticsearchDSL\Search;
 
 /**
@@ -31,7 +31,7 @@ final class ProductInPriceRangeApplicator extends SearchCriteriaApplicator
      */
     public function applyProductInPriceRangeFilter(ProductInPriceRangeFilter $inPriceRangeFilter, Search $search)
     {
-        $search->addFilter(
+        $search->addPostFilter(
             $this->productInPriceRangeQueryFactory->create([
                 'product_price_range' => [
                     'grater_than' => $inPriceRangeFilter->getGraterThan(),

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Form\Type;
+namespace Sylius\ElasticSearchPlugin\Form\Type;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\SearchPhrase;
+use Sylius\ElasticSearchPlugin\Search\Criteria\SearchPhrase;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

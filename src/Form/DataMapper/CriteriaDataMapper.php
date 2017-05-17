@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Form\DataMapper;
+namespace Sylius\ElasticSearchPlugin\Form\DataMapper;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Symfony\Component\Form\DataMapperInterface;
 
 /**

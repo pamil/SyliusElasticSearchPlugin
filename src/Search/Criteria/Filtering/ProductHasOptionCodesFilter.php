@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering;
+namespace Sylius\ElasticSearchPlugin\Search\Criteria\Filtering;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

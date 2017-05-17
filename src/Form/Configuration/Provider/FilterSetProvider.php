@@ -1,8 +1,8 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Form\Configuration\Provider;
+namespace Sylius\ElasticSearchPlugin\Form\Configuration\Provider;
 
-use Lakion\SyliusElasticSearchBundle\Exception\FilterSetConfigurationNotFoundException;
+use Sylius\ElasticSearchPlugin\Exception\FilterSetConfigurationNotFoundException;
 use Zend\Stdlib\PriorityQueue;
 
 /**

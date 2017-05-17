@@ -1,6 +1,6 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Exception;
+namespace Sylius\ElasticSearchPlugin\Exception;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

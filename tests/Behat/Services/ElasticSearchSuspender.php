@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\Lakion\SyliusElasticSearchBundle\Behat\Services;
+namespace Tests\Sylius\ElasticSearchPlugin\Behat\Services;
 
 use Elastica\Client;
 use Elastica\Response;

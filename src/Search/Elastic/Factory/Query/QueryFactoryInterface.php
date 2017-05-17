@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
-use Lakion\SyliusElasticSearchBundle\Exception\MissingQueryParameterException;
+use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 use ONGR\ElasticsearchDSL\BuilderInterface;
 
 /**

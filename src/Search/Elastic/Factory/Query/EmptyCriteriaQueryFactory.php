@@ -1,6 +1,6 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 

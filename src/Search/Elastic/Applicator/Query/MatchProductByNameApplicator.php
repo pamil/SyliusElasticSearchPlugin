@@ -1,12 +1,10 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\Query;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Query;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\SearchPhrase;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicator;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\QueryFactoryInterface;
+use Sylius\ElasticSearchPlugin\Search\Criteria\SearchPhrase;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicator;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use ONGR\ElasticsearchDSL\Search;
 
 /**
@@ -42,6 +40,7 @@ final class MatchProductByNameApplicator extends SearchCriteriaApplicator
     public function applySearchPhrase(SearchPhrase $searchPhrase, Search $search)
     {
         if (null != $searchPhrase->getPhrase()) {
+
             $search->addQuery($this->matchProductNameQueryFactory->create(['phrase' => $searchPhrase->getPhrase()]));
 
             return;

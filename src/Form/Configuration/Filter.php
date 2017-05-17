@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Form\Configuration;
+namespace Sylius\ElasticSearchPlugin\Form\Configuration;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

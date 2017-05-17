@@ -1,8 +1,8 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Sort;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Ordering;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Ordering;
 use ONGR\ElasticsearchDSL\Sort\FieldSort;
 
 /**

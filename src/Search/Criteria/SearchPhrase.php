@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Criteria;
+namespace Sylius\ElasticSearchPlugin\Search\Criteria;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

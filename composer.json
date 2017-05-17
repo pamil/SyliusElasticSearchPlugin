@@ -1,13 +1,13 @@
 {
-    "name": "lakion/sylius-elastic-search-bundle",
+    "name": "sylius/elastic-search-plugin",
     "type": "sylius-bundle",
     "description": "Elastic search integration for Sylius.",
     "license": "MIT",
     "authors": [
         {
             "name": "Arkadiusz Krakowiak",
-            "email": "arkadiusz.krakowiak@lakion.com",
-            "homepage": "http://lakion.com"
+            "email": "arkadiusz.k.e@gmail.com",
+            "homepage": "http://github.com/arminek"
         }
     ],
     "require": {
@@ -16,14 +16,13 @@
         "sylius/sylius": "dev-master",
 
         "friendsofsymfony/elastica-bundle": "^4.0",
-        "ongr/elasticsearch-dsl": "^2.0"
+        "ongr/elasticsearch-dsl": "^5.0"
     },
     "require-dev": {
         "behat/behat": "^3.2",
         "behat/mink": "^1.7",
         "behat/mink-browserkit-driver": "^1.3",
         "behat/mink-extension": "^2.2",
-        "behat/mink-selenium2-driver": "^1.3",
         "friends-of-behat/context-service-extension": "^0.3",
         "friends-of-behat/cross-container-extension": "^0.2",
         "friends-of-behat/performance-extension": "^1.0",
@@ -44,8 +43,8 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Lakion\\SyliusElasticSearchBundle\\": "src/",
-            "Tests\\Lakion\\SyliusElasticSearchBundle\\": "tests/"
+            "Sylius\\ElasticSearchPlugin\\": "src/",
+            "Tests\\Sylius\\ElasticSearchPlugin\\": "tests/"
         }
     }
 }

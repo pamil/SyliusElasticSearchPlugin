@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\Lakion\SyliusElasticSearchBundle\DependencyInjection;
+namespace Tests\Sylius\ElasticSearchPlugin\DependencyInjection;
 
-use Lakion\SyliusElasticSearchBundle\DependencyInjection\Configuration;
+use Sylius\ElasticSearchPlugin\DependencyInjection\Configuration;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 
 /**

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\Lakion\SyliusElasticSearchBundle\Behat\Context\Hook;
+namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Hook;
 
 use Behat\Behat\Context\Context;
 use FOS\ElasticaBundle\Index\Resetter;
