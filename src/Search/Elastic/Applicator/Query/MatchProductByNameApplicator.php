@@ -8,7 +8,7 @@ use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterfac
 use ONGR\ElasticsearchDSL\Search;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class MatchProductByNameApplicator extends SearchCriteriaApplicator
 {

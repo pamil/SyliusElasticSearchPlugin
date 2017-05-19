@@ -7,7 +7,7 @@ use ONGR\ElasticsearchDSL\Query\TermLevel\RangeQuery;
 use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class ProductInPriceRangeQueryFactory implements QueryFactoryInterface
 {

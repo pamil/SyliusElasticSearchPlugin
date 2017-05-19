@@ -12,7 +12,7 @@
 namespace Sylius\ElasticSearchPlugin\Search\Criteria;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class SearchPhrase
 {

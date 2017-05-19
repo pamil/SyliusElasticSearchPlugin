@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Sort;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Ordering;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Sort\SortByFieldQueryFactory;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Sort\SortFactoryInterface;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Ordering;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort\SortByFieldQueryFactory;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort\SortFactoryInterface;
 use ONGR\ElasticsearchDSL\Sort\FieldSort;
 use PhpSpec\ObjectBehavior;
 

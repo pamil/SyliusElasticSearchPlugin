@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class RegisterFilterTypePass implements CompilerPassInterface
 {
@@ -25,11 +25,11 @@ final class RegisterFilterTypePass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('lakion_sylius_elastic_search.form_registry.filters')) {
+        if (!$container->hasDefinition('sylius_elastic_search.form_registry.filters')) {
             return;
         }
 
-        $registry = $container->getDefinition('lakion_sylius_elastic_search.form_registry.filters');
+        $registry = $container->getDefinition('sylius_elastic_search.form_registry.filters');
 
         foreach ($container->findTaggedServiceIds('filter.type') as $filterTypeServiceId => $filterTypeTag)
         {

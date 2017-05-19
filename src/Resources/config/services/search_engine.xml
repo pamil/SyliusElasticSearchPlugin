@@ -5,9 +5,8 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="lakion_sylius_elastic_search.search.elastic_engine" class="Sylius\ElasticSearchPlugin\Search\Elastic\ElasticSearchEngine">
-            <argument type="service" id="fos_elastica.manager.orm" />
-            <argument type="service" id="lakion_sylius_elastic_search.factory.search" />
+        <service id="sylius_elastic_search.search.elastic_engine" class="Sylius\ElasticSearchPlugin\Search\Elastic\ElasticSearchEngine">
+            <argument type="service" id="es.manager.default" />
         </service>
     </services>
 </container>

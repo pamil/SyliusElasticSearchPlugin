@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Criteria\Filtering;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductInPriceRangeFilter;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInPriceRangeFilter;
 use PhpSpec\ObjectBehavior;
 
 /**

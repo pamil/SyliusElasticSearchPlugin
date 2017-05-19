@@ -12,7 +12,7 @@
 namespace Sylius\ElasticSearchPlugin\Exception;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class MissingQueryParameterException extends \RuntimeException
 {

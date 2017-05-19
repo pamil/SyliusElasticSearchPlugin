@@ -2,27 +2,20 @@
 
 namespace Sylius\ElasticSearchPlugin\Search\Elastic;
 
-use FOS\ElasticaBundle\Manager\RepositoryManagerInterface;
-use FOS\ElasticaBundle\Repository;
+use ONGR\ElasticsearchBundle\Service\Manager;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
-use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Search\SearchFactoryInterface;
 use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class ElasticSearchEngine implements SearchEngineInterface
 {
     /**
-     * @var RepositoryManagerInterface
+     * @var Manager
      */
-    private $repositoryManager;
-
-    /**
-     * @var SearchFactoryInterface
-     */
-    private $searchFactory;
+    private $manager;
 
     /**
      * @var SearchCriteriaApplicatorInterface[]
@@ -30,13 +23,11 @@ final class ElasticSearchEngine implements SearchEngineInterface
     private $searchCriteriaApplicators = [];
 
     /**
-     * @param RepositoryManagerInterface $repositoryManager
-     * @param SearchFactoryInterface $searchFactory
+     * @param Manager $manager
      */
-    public function __construct(RepositoryManagerInterface $repositoryManager, SearchFactoryInterface $searchFactory)
+    public function __construct(Manager $manager)
     {
-        $this->repositoryManager = $repositoryManager;
-        $this->searchFactory = $searchFactory;
+        $this->manager = $manager;
     }
 
     /**
@@ -55,22 +46,10 @@ final class ElasticSearchEngine implements SearchEngineInterface
      */
     public function match(Criteria $criteria)
     {
-        $search = $this->searchFactory->create();
-        $filters = array_merge($criteria->getFiltering()->getFields(), [$criteria->getOrdering()]);
+        $repository = $this->manager->getRepository($criteria->getResourceAlias());
 
-        foreach ($filters as $filter) {
-            if (!is_object($filter)) {
-                continue;
-            }
+        $search = $repository->createSearch();
 
-            if (isset($this->searchCriteriaApplicators[get_class($filter)])) {
-                $this->searchCriteriaApplicators[get_class($filter)]->apply($filter, $search);
-            }
-        }
-
-        /** @var Repository $repository */
-        $repository = $this->repositoryManager->getRepository($criteria->getResourceAlias());
-
-        return $repository->createPaginatorAdapter($search->toArray());
+        return $repository->findDocuments($search);
     }
 }

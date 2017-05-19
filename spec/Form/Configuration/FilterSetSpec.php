@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Form\Configuration;
+namespace spec\Sylius\ElasticSearchPlugin\Form\Configuration;
 
-use Lakion\SyliusElasticSearchBundle\Form\Configuration\Filter;
-use Lakion\SyliusElasticSearchBundle\Form\Configuration\FilterSet;
+use Sylius\ElasticSearchPlugin\Form\Configuration\Filter;
+use Sylius\ElasticSearchPlugin\Form\Configuration\FilterSet;
 use PhpSpec\ObjectBehavior;
 
 /**

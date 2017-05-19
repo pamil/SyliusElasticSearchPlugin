@@ -15,7 +15,7 @@ use Sylius\ElasticSearchPlugin\Exception\FilterSetConfigurationNotFoundException
 use Sylius\ElasticSearchPlugin\Form\Configuration\FilterSet;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class FromArrayFilterSetProvider implements FilterSetProviderInterface
 {

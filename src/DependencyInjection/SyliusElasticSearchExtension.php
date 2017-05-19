@@ -27,6 +27,6 @@ final class SyliusElasticSearchExtension extends Extension
      */
     private function createFilterSetsParameter(array $config, ContainerBuilder $container)
     {
-        $container->setParameter('lakion_sylius_elastic_search.filter_sets', $config);
+        $container->setParameter('sylius_elastic_search.filter_sets', $config);
     }
 }

@@ -16,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class RegisterSearchCriteriaApplicatorPass implements CompilerPassInterface
 {
@@ -25,7 +25,7 @@ final class RegisterSearchCriteriaApplicatorPass implements CompilerPassInterfac
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('lakion_sylius_elastic_search.search.elastic_engine')) {
+        if (!$container->hasDefinition('sylius_elastic_search.search.elastic_engine')) {
             return;
         }
 
@@ -34,7 +34,7 @@ final class RegisterSearchCriteriaApplicatorPass implements CompilerPassInterfac
                 throw new \InvalidArgumentException(sprintf('Applicator "%s" does not have applies attribute', $taggedServiceId));
             }
 
-            $engineDefinition = $container->getDefinition('lakion_sylius_elastic_search.search.elastic_engine');
+            $engineDefinition = $container->getDefinition('sylius_elastic_search.search.elastic_engine');
             $engineDefinition->addMethodCall('addSearchCriteriaApplicator', [new Reference($taggedServiceId), $taggedServiceConfig[0]['applies']]);
         }
     }

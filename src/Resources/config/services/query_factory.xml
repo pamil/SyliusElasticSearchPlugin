@@ -5,13 +5,13 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="lakion_sylius_elastic_search.query_factory.product_has_option_code" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductHasOptionCodeQueryFactory" />
-        <service id="lakion_sylius_elastic_search.query_factory.empty_criteria" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\EmptyCriteriaQueryFactory" />
-        <service id="lakion_sylius_elastic_search.query_factory.product_in_main_taxon" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInMainTaxonQueryFactory" />
-        <service id="lakion_sylius_elastic_search.query_factory.product_in_product_taxons" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInProductTaxonsQueryFactory" />
-        <service id="lakion_sylius_elastic_search.query_factory.product_in_price_range" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInPriceRangeQueryFactory" />
-        <service id="lakion_sylius_elastic_search.query_factory.product_in_channel" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInChannelQueryFactory" />
-        <service id="lakion_sylius_elastic_search.query_factory.sort_by_field" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort\SortByFieldQueryFactory" />
-        <service id="lakion_sylius_elastic_search.query_factory.match_product_name" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\MatchProductNameQueryFactory" />
+        <service id="sylius_elastic_search.query_factory.product_has_option_code" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductHasOptionCodeQueryFactory" />
+        <service id="sylius_elastic_search.query_factory.empty_criteria" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\EmptyCriteriaQueryFactory" />
+        <service id="sylius_elastic_search.query_factory.product_in_main_taxon" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInMainTaxonQueryFactory" />
+        <service id="sylius_elastic_search.query_factory.product_in_product_taxons" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInProductTaxonsQueryFactory" />
+        <service id="sylius_elastic_search.query_factory.product_in_price_range" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInPriceRangeQueryFactory" />
+        <service id="sylius_elastic_search.query_factory.product_in_channel" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInChannelQueryFactory" />
+        <service id="sylius_elastic_search.query_factory.sort_by_field" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort\SortByFieldQueryFactory" />
+        <service id="sylius_elastic_search.query_factory.match_product_name" class="Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\MatchProductNameQueryFactory" />
     </services>
 </container>

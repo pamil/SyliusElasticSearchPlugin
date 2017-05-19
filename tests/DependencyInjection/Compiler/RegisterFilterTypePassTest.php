@@ -28,16 +28,16 @@ final class RegisterFilterTypePassTest extends AbstractCompilerPassTestCase
      */
     public function it_collects_tagged_filter_types()
     {
-        $this->setDefinition('lakion_sylius_elastic_search.form_registry.filters', new Definition());
+        $this->setDefinition('sylius_elastic_search.form_registry.filters', new Definition());
         $this->setDefinition(
-            'lakion_sylius_elastic_search.form_type.filter',
+            'sylius_elastic_search.form_type.filter',
             (new Definition(\stdClass::class))->addTag('form.type')->addTag('filter.type', ['type' => 'option'])
         );
 
         $this->compile();
 
         $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
-            'lakion_sylius_elastic_search.form_registry.filters',
+            'sylius_elastic_search.form_registry.filters',
             'add',
             ['default', 'option', \stdClass::class]
         );
@@ -50,7 +50,7 @@ final class RegisterFilterTypePassTest extends AbstractCompilerPassTestCase
     {
         $this->compile();
 
-        $this->assertContainerBuilderNotHasService('lakion_sylius_elastic_search.form_registry.filters');
+        $this->assertContainerBuilderNotHasService('sylius_elastic_search.form_registry.filters');
     }
 
     /**
@@ -58,16 +58,16 @@ final class RegisterFilterTypePassTest extends AbstractCompilerPassTestCase
      */
     public function it_does_nothing_if_there_is_no_tagged_filters()
     {
-        $this->setDefinition('lakion_sylius_elastic_search.form_registry.filters', new Definition());
+        $this->setDefinition('sylius_elastic_search.form_registry.filters', new Definition());
         $this->setDefinition(
-            'lakion_sylius_elastic_search.form_type.filter',
+            'sylius_elastic_search.form_type.filter',
             (new Definition())->addTag('tag', ['type' => 'option'])
         );
 
         $this->compile();
 
         $this->assertContainerBuilderNotHasServiceDefinitionWithMethodCall(
-            'lakion_sylius_elastic_search.form_registry.filters',
+            'sylius_elastic_search.form_registry.filters',
             'add',
             ['default', 'option', 'class']
         );
@@ -78,9 +78,9 @@ final class RegisterFilterTypePassTest extends AbstractCompilerPassTestCase
      */
     public function tagged_filter_types_must_have_type_configured()
     {
-        $this->setDefinition('lakion_sylius_elastic_search.form_registry.filters', new Definition());
+        $this->setDefinition('sylius_elastic_search.form_registry.filters', new Definition());
         $this->setDefinition(
-            'lakion_sylius_elastic_search.form_type.filter',
+            'sylius_elastic_search.form_type.filter',
             (new Definition())->addTag('form.type')->addTag('filter.type')
         );
 

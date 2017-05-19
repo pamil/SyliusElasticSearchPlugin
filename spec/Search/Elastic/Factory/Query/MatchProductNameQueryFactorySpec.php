@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
-use Lakion\SyliusElasticSearchBundle\Exception\MissingQueryParameterException;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\MatchProductNameQueryFactory;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\QueryFactoryInterface;
+use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\MatchProductNameQueryFactory;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use ONGR\ElasticsearchDSL\Query\MatchQuery;
 use ONGR\ElasticsearchDSL\Query\NestedQuery;
 use PhpSpec\ObjectBehavior;

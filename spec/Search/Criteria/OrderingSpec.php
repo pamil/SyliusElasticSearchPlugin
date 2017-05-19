@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Criteria;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Criteria;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Ordering;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Ordering;
 use PhpSpec\ObjectBehavior;
 
 /**

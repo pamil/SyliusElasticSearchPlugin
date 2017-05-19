@@ -1,17 +1,17 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Elastic;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic;
 
 use FOS\ElasticaBundle\Manager\RepositoryManagerInterface;
 use FOS\ElasticaBundle\Paginator\PaginatorAdapterInterface;
 use FOS\ElasticaBundle\Repository;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductHasOptionCodesFilter;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Ordering;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\ElasticSearchEngine;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Search\SearchFactoryInterface;
-use Lakion\SyliusElasticSearchBundle\Search\SearchEngineInterface;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductHasOptionCodesFilter;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Ordering;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
+use Sylius\ElasticSearchPlugin\Search\Elastic\ElasticSearchEngine;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Search\SearchFactoryInterface;
+use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
 use ONGR\ElasticsearchDSL\Search;
 use PhpSpec\ObjectBehavior;
 

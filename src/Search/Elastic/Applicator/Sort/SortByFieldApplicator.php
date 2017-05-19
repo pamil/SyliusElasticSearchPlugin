@@ -8,7 +8,7 @@ use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort\SortFactoryInterface;
 use ONGR\ElasticsearchDSL\Search;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class SortByFieldApplicator extends SearchCriteriaApplicator
 {

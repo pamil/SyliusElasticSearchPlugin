@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Criteria\Filtering;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductInTaxonFilter;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInTaxonFilter;
 use PhpSpec\ObjectBehavior;
 
 /**

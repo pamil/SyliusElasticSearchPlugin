@@ -15,7 +15,7 @@ use FOS\ElasticaBundle\Paginator\PaginatorAdapterInterface;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 interface SearchEngineInterface
 {

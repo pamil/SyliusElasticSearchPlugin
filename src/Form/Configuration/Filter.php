@@ -12,7 +12,7 @@
 namespace Sylius\ElasticSearchPlugin\Form\Configuration;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class Filter
 {

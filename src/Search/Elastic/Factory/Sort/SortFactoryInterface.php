@@ -15,7 +15,7 @@ use Sylius\ElasticSearchPlugin\Search\Criteria\Ordering;
 use ONGR\ElasticsearchDSL\BuilderInterface;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 interface SortFactoryInterface
 {

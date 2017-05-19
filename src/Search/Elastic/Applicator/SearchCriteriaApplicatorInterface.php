@@ -14,7 +14,7 @@ namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator;
 use ONGR\ElasticsearchDSL\Search;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 interface SearchCriteriaApplicatorInterface
 {

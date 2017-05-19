@@ -60,7 +60,7 @@ Elastic search for Sylius.
 8. Configuration reference:
 
     ```yaml
-    lakion_sylius_elastic_search:
+    sylius_elastic_search:
         filter_sets:
             mugs:
                 filters:

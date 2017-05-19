@@ -18,7 +18,7 @@ final class AppKernel extends Kernel
 
             new \FOS\OAuthServerBundle\FOSOAuthServerBundle(), // Required by SyliusAdminApiBundle
             new \Sylius\Bundle\AdminApiBundle\SyliusAdminApiBundle(),
-            new \FOS\ElasticaBundle\FOSElasticaBundle(),
+            new \ONGR\ElasticsearchBundle\ONGRElasticsearchBundle(),
         ]);
     }
 

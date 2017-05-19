@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Exception;
+namespace spec\Sylius\ElasticSearchPlugin\Exception;
 
-use Lakion\SyliusElasticSearchBundle\Exception\FilterSetConfigurationNotFoundException;
 use PhpSpec\ObjectBehavior;
+use Sylius\ElasticSearchPlugin\Exception\FilterSetConfigurationNotFoundException;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>

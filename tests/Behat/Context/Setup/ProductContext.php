@@ -12,8 +12,6 @@
 namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use Tests\Sylius\ElasticSearchPlugin\Behat\Services\SuspenderInterface;
-use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
@@ -21,52 +19,10 @@ use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
 final class ProductContext implements Context
 {
     /**
-     * @var FixtureInterface
-     */
-    private $bookProductFixture;
-
-    /**
-     * @var FixtureInterface
-     */
-    private $mugProductFixture;
-
-    /**
-     * @var FixtureInterface
-     */
-    private $stickerProductFixture;
-
-    /**
-     * @var SuspenderInterface
-     */
-    private $elasticSearchSuspender;
-
-    /**
-     * @param FixtureInterface $bookProductFixture
-     * @param FixtureInterface $mugProductFixture
-     * @param FixtureInterface $stickerProductFixture
-     * @param SuspenderInterface $elasticSearchSuspender
-     */
-    public function __construct(
-        FixtureInterface $bookProductFixture,
-        FixtureInterface $mugProductFixture,
-        FixtureInterface $stickerProductFixture,
-        SuspenderInterface $elasticSearchSuspender
-    ) {
-        $this->bookProductFixture = $bookProductFixture;
-        $this->mugProductFixture = $mugProductFixture;
-        $this->stickerProductFixture = $stickerProductFixture;
-        $this->elasticSearchSuspender = $elasticSearchSuspender;
-    }
-
-    /**
      * @Given the store has :mugsNumber Mugs, :stickersNumber Stickers and :booksNumber Books
      */
     public function theStoreHasAboutMugsAndStickers($mugsNumber, $stickersNumber, $booksNumber)
     {
-        $this->mugProductFixture->load(['amount' => (int) $mugsNumber]);
-        $this->stickerProductFixture->load(['amount' => (int) $stickersNumber]);
-        $this->bookProductFixture->load(['amount' => (int) $booksNumber]);
 
-        $this->elasticSearchSuspender->waitForLoadingNumberOfData((int) $mugsNumber + (int) $stickersNumber + (int) $booksNumber, 5);
     }
 }
