@@ -2,7 +2,6 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Sort;
 
-use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Ordering;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Sort\SortByFieldApplicator;

@@ -20,6 +20,6 @@ final class MatchProductNameQueryFactory implements QueryFactoryInterface
             throw new MissingQueryParameterException('search', get_class($this));
         }
 
-        return new NestedQuery('translations', new MatchQuery('translations.name', $parameters['phrase']));
+        return new MatchQuery('name', $parameters['phrase']);
     }
 }

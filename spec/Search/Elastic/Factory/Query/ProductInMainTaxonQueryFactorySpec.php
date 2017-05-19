@@ -2,10 +2,10 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
+use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInMainTaxonQueryFactory;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\TermQuery;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -25,7 +25,7 @@ final class ProductInMainTaxonQueryFactorySpec extends ObjectBehavior
 
     function it_creates_query()
     {
-        $this->create(['taxon_code' => 'mugs'])->shouldBeLike(new TermQuery('mainTaxon.code', 'mugs'));
+        $this->create(['taxon_code' => 'mugs'])->shouldBeLike(new TermQuery('taxonCode', 'mugs'));
     }
 
     function it_cannot_create_query_if_there_is_no_required_parameters()

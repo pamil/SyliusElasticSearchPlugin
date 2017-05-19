@@ -19,20 +19,11 @@ final class ProductInTaxonApplicator extends SearchCriteriaApplicator
     private $productInMainTaxonQueryFactory;
 
     /**
-     * @var QueryFactoryInterface
-     */
-    private $productInProductTaxonsQueryFactory;
-
-    /**
      * @param QueryFactoryInterface $productInMainTaxonQueryFactory
-     * @param QueryFactoryInterface $productInProductTaxonsQueryFactory
      */
-    public function __construct(
-        QueryFactoryInterface $productInMainTaxonQueryFactory,
-        QueryFactoryInterface $productInProductTaxonsQueryFactory
-    ) {
+    public function __construct(QueryFactoryInterface $productInMainTaxonQueryFactory)
+    {
         $this->productInMainTaxonQueryFactory = $productInMainTaxonQueryFactory;
-        $this->productInProductTaxonsQueryFactory = $productInProductTaxonsQueryFactory;
     }
 
     /**
@@ -41,6 +32,5 @@ final class ProductInTaxonApplicator extends SearchCriteriaApplicator
     public function applyProductInTaxonFilter(ProductInTaxonFilter $inTaxonFilter, Search $search)
     {
         $search->addPostFilter($this->productInMainTaxonQueryFactory->create(['taxon_code' => $inTaxonFilter->getTaxonCode()]), BoolQuery::SHOULD);
-        $search->addPostFilter($this->productInProductTaxonsQueryFactory->create(['taxon_code' => $inTaxonFilter->getTaxonCode()]), BoolQuery::SHOULD);
     }
 }

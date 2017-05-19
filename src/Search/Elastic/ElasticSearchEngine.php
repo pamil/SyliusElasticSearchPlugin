@@ -50,6 +50,16 @@ final class ElasticSearchEngine implements SearchEngineInterface
 
         $search = $repository->createSearch();
 
+        foreach ($this->searchCriteriaApplicators as $filter => $searchCriteriaApplicator) {
+            if (!is_object($filter)) {
+                continue;
+            }
+
+            if (isset($this->searchCriteriaApplicators[get_class($filter)])) {
+                $this->searchCriteriaApplicators[get_class($filter)]->apply($filter, $search);
+            }
+        }
+
         return $repository->findDocuments($search);
     }
 }

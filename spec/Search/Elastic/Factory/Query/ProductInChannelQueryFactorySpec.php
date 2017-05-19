@@ -2,11 +2,10 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
+use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInChannelQueryFactory;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\NestedQuery;
-use ONGR\ElasticsearchDSL\Query\TermQuery;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -26,9 +25,7 @@ final class ProductInChannelQueryFactorySpec extends ObjectBehavior
 
     function it_creates_product_in_channel_query()
     {
-        $this->create(['channel_code' => 'web'])->shouldBeLike(
-            new NestedQuery('channels', new TermQuery('channels.code', 'web'))
-        );
+        $this->create(['channel_code' => 'web'])->shouldBeLike(new TermQuery('channelCode', 'web'));
     }
 
     function it_cannot_be_created_without_channel_code()

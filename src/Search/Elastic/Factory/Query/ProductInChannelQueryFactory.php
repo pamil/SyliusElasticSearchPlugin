@@ -20,6 +20,6 @@ final class ProductInChannelQueryFactory implements QueryFactoryInterface
             throw new MissingQueryParameterException('channel_code', get_class($this));
         }
 
-        return new NestedQuery('channels', new TermQuery('channels.code', strtolower($parameters['channel_code'])));
+        return new TermQuery('channelCode', strtolower($parameters['channel_code']));
     }
 }

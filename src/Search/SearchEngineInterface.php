@@ -11,7 +11,7 @@
 
 namespace Sylius\ElasticSearchPlugin\Search;
 
-use FOS\ElasticaBundle\Paginator\PaginatorAdapterInterface;
+use ONGR\ElasticsearchBundle\Result\DocumentIterator;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 
 /**
@@ -22,7 +22,7 @@ interface SearchEngineInterface
     /**
      * @param Criteria $criteria
      *
-     * @return PaginatorAdapterInterface
+     * @return DocumentIterator
      */
     public function match(Criteria $criteria);
 }

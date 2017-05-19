@@ -21,13 +21,7 @@ final class ProductInPriceRangeQueryFactory implements QueryFactoryInterface
         $graterThan = $parameters['product_price_range']['grater_than'];
         $lessThan = $parameters['product_price_range']['less_than'];
 
-        return new NestedQuery(
-            'variants',
-            new NestedQuery(
-                'variants.channelPricings',
-                new RangeQuery('variants.channelPricings.price', ['gte' => $graterThan, 'lte' => $lessThan])
-            )
-        );
+        return new RangeQuery('price.amount', ['gte' => $graterThan, 'lte' => $lessThan]);
     }
 
     /**

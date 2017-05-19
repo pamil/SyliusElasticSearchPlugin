@@ -2,6 +2,6 @@ ongr_elasticsearch:
     managers:
         default:
             index:
-                index_name: acme
+                index_name: sylius
             mappings:
                 - SyliusElasticSearchPlugin

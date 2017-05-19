@@ -2,11 +2,11 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
+use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
+use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\ProductInProductTaxonsQueryFactory;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\NestedQuery;
-use ONGR\ElasticsearchDSL\Query\TermQuery;
 use PhpSpec\ObjectBehavior;
 
 /**

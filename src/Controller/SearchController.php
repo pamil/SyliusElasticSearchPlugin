@@ -12,18 +12,8 @@
 namespace Sylius\ElasticSearchPlugin\Controller;
 
 use FOS\RestBundle\View\ConfigurableViewHandlerInterface;
-use FOS\RestBundle\View\View;
-use Sylius\ElasticSearchPlugin\Form\Type\FilterSetType;
-use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
-use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInChannelFilter;
-use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInTaxonFilter;
 use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
-use Sylius\Component\Core\Context\ShopperContextInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>

@@ -2,13 +2,12 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Query;
 
-use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
+use ONGR\ElasticsearchDSL\Query\FullText\MatchQuery;
 use Sylius\ElasticSearchPlugin\Search\Criteria\SearchPhrase;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Query\MatchProductByNameApplicator;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
-use ONGR\ElasticsearchDSL\Query\MatchQuery;
 use ONGR\ElasticsearchDSL\Search;
 use PhpSpec\ObjectBehavior;
 

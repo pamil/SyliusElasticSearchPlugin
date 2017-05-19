@@ -2,12 +2,12 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter;
 
+use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
+use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInChannelFilter;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter\ProductInChannelApplicator;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\BoolQuery;
-use ONGR\ElasticsearchDSL\Query\NestedQuery;
 use ONGR\ElasticsearchDSL\Search;
 use PhpSpec\ObjectBehavior;
 
@@ -38,7 +38,7 @@ final class ProductInChannelApplicatorSpec extends ObjectBehavior
     ) {
         $criteria = new ProductInChannelFilter('web');
         $productInChannelQueryFactory->create(['channel_code' => 'web'])->willReturn($nestedQuery);
-        $search->addFilter($nestedQuery, BoolQuery::MUST)->shouldBeCalled();
+        $search->addPostFilter($nestedQuery, BoolQuery::MUST)->shouldBeCalled();
 
         $this->apply($criteria, $search);
     }
