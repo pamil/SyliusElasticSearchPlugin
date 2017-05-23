@@ -28,7 +28,7 @@ final class PaginatingSpec extends ObjectBehavior
     {
         $this->beConstructedThrough('fromQueryParameters', [[
             'page' => -1,
-            'per_page' => -100,
+            'limit' => -100,
         ]]);
 
         $this->getCurrentPage()->shouldReturn(1);
@@ -40,7 +40,7 @@ final class PaginatingSpec extends ObjectBehavior
     {
         $this->beConstructedThrough('fromQueryParameters', [[
             'page' => 2,
-            'per_page' => 50,
+            'limit' => 50,
         ]]);
 
         $this->getCurrentPage()->shouldReturn(2);

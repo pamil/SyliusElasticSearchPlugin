@@ -6,12 +6,18 @@
 
     <services>
         <service id="sylius_elastic_search.behat.context.setup.product" class="Tests\Sylius\ElasticSearchPlugin\Behat\Context\Setup\ProductContext">
+            <argument type="service" id="__symfony__.es.manager.default" />
             <tag name="fob.context_service" />
         </service>
 
         <service id="sylius_elastic_search.behat.context.domain.shop.product" class="Tests\Sylius\ElasticSearchPlugin\Behat\Context\Domain\Shop\ProductContext">
             <argument type="service" id="__symfony__.sylius_elastic_search.search.elastic_engine" />
             <argument type="service" id="sylius.behat.shared_storage" />
+            <tag name="fob.context_service" />
+        </service>
+
+        <service id="sylius_elastic_search.behat.context.hook.elastic_search" class="Tests\Sylius\ElasticSearchPlugin\Behat\Context\Hook\ElasticSearchContext">
+            <argument type="service" id="__symfony__.es.manager.default" />
             <tag name="fob.context_service" />
         </service>
     </services>

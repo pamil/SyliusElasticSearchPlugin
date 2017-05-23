@@ -25,7 +25,7 @@ final class ProductInChannelQueryFactorySpec extends ObjectBehavior
 
     function it_creates_product_in_channel_query()
     {
-        $this->create(['channel_code' => 'web'])->shouldBeLike(new TermQuery('channelCode', 'web'));
+        $this->create(['channel_code' => 'web'])->shouldBeLike(new TermQuery('channel_code', 'web'));
     }
 
     function it_cannot_be_created_without_channel_code()

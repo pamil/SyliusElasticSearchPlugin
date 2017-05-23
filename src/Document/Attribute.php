@@ -19,14 +19,14 @@ final class Attribute
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="text", options={"analyzer":"incrementalAnalyzer"})
+     * @ElasticSearch\Property(type="text")
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="text", options={"analyzer":"incrementalAnalyzer"})
+     * @ElasticSearch\Property(type="text")
      */
     private $value;
 

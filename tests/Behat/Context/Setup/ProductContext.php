@@ -12,17 +12,84 @@
 namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
+use Doctrine\ORM\Id\UuidGenerator;
+use ONGR\ElasticsearchBundle\Service\Manager;
+use Sylius\ElasticSearchPlugin\Document\Price;
+use Sylius\ElasticSearchPlugin\Document\Product;
 
-/**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
- */
 final class ProductContext implements Context
 {
+    /**
+     * @var Manager
+     */
+    private $manager;
+
+    /**
+     * @param Manager $manager
+     */
+    public function __construct(Manager $manager)
+    {
+        $this->manager = $manager;
+    }
+
     /**
      * @Given the store has :mugsNumber Mugs, :stickersNumber Stickers and :booksNumber Books
      */
     public function theStoreHasAboutMugsAndStickers($mugsNumber, $stickersNumber, $booksNumber)
     {
+        $this->generateProductsInTaxon($mugsNumber, 'mugs');
+        $this->generateProductsInTaxon($stickersNumber, 'stickers');
+        $this->generateProductsInTaxon($booksNumber, 'books');
+    }
 
+    /**
+     * @Given the store has a product :productName
+     * @Given the store has a :productName product
+     * @Given I added a product :productName
+     * @Given /^the store(?:| also) has a product "([^"]+)" priced at ("[^"]+")$/
+     * @Given /^the store(?:| also) has a product "([^"]+)" priced at ("[^"]+") in "([^"]+)" channel$/
+     */
+    public function storeHasAProductPricedAt($productName, $price = 100, $channelCode = null)
+    {
+        $this->manager->persist($this->createProduct($productName, $price, $channelCode));
+        $this->manager->commit();
+    }
+
+    /**
+     * @param int $howMany
+     * @param string $taxonCode
+     */
+    private function generateProductsInTaxon($howMany, $taxonCode)
+    {
+        for ($i = 0; $i < $howMany; $i++) {
+            $product = new Product();
+            $product->setTaxonCode($taxonCode);
+            $product->setCode(uniqid());
+            $this->manager->persist($product);
+        }
+
+        $this->manager->commit();
+    }
+
+    /**
+     * @param string $productName
+     * @param int $priceAmount
+     * @param string $channelCode
+     *
+     * @return Product
+     */
+    private function createProduct($productName, $priceAmount, $channelCode)
+    {
+        $price = new Price();
+        $price->setCurrency('USD');
+        $price->setAmount($priceAmount);
+
+        $product = new Product();
+        $product->setCode(uniqid());
+        $product->setPrice($price);
+        $product->setChannelCode($channelCode);
+        $product->setName($productName);
+
+        return $product;
     }
 }

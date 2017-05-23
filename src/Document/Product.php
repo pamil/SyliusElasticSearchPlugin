@@ -2,8 +2,8 @@
 
 namespace Sylius\ElasticSearchPlugin\Document;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
+use ONGR\ElasticsearchBundle\Collection\Collection;
 
 /**
  * @ElasticSearch\Document(type="product")
@@ -20,7 +20,17 @@ final class Product
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="text", options={"analyzer":"incrementalAnalyzer"})
+     * @ElasticSearch\Property(
+     *    type="text",
+     *    name="name",
+     *    options={
+     *        "analyzer"="standard",
+     *        "fields"={
+     *            "raw"={"type"="keyword"},
+     *            "standard"={"type"="text", "analyzer"="standard"}
+     *        }
+     *    }
+     * )
      */
     private $name;
 
@@ -41,14 +51,14 @@ final class Product
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="text", options={"analyzer":"incrementalAnalyzer"})
+     * @ElasticSearch\Property(type="text")
      */
     private $description;
 
     /**
-     * @var int
+     * @var Price
      *
-     * @ElasticSearch\Embedded(class="ElasticSearchPlugin:Price")
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Price")
      */
     private $price;
 
@@ -60,9 +70,9 @@ final class Product
     private $taxonCode;
 
     /**
-     * @var ArrayCollection
+     * @var Collection
      *
-     * @ElasticSearch\Embedded(class="ElasticSearchPlugin:Attribute", multiple=true)
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Attribute", multiple=true)
      */
     private $attributes;
 
@@ -75,7 +85,7 @@ final class Product
 
     public function __construct()
     {
-        $this->attributes = new ArrayCollection();
+        $this->attributes = new Collection();
     }
 
     /**
@@ -159,7 +169,7 @@ final class Product
     }
 
     /**
-     * @return int
+     * @return Price
      */
     public function getPrice()
     {
@@ -167,9 +177,9 @@ final class Product
     }
 
     /**
-     * @param int $price
+     * @param Price $price
      */
-    public function setPrice($price)
+    public function setPrice(Price $price)
     {
         $this->price = $price;
     }
@@ -191,7 +201,7 @@ final class Product
     }
 
     /**
-     * @return ArrayCollection
+     * @return Collection
      */
     public function getAttributes()
     {
@@ -199,9 +209,9 @@ final class Product
     }
 
     /**
-     * @param ArrayCollection $attributes
+     * @param Collection $attributes
      */
-    public function setAttributes(ArrayCollection $attributes)
+    public function setAttributes(Collection $attributes)
     {
         $this->attributes = $attributes;
     }

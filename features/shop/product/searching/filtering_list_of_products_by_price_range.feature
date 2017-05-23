@@ -5,8 +5,7 @@ Feature: Filtering list of products by price range
     I want to be able to filter the products
 
     Background:
-        Given the store operates on a single channel in "United States"
-        And the store has a product "Banana T-Shirt" priced at "$100"
+        Given the store has a product "Banana T-Shirt" priced at "$100"
         And the store also has a product "Star Wars T-Shirt" priced at "$150"
         And the store also has a product "LOTR T-Shirt" priced at "$300"
         And the store also has a product "Breaking Bad T-Shirt" priced at "$50"

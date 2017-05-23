@@ -11,7 +11,7 @@ use Zend\Stdlib\PriorityQueue;
 final class FilterSetProvider implements FilterSetProviderInterface
 {
     /**
-     * @var FilterSetProviderInterface[]
+     * @var PriorityQueue
      */
     private $filterSetProviders;
 
@@ -34,6 +34,7 @@ final class FilterSetProvider implements FilterSetProviderInterface
      */
     public function getFilterSetConfiguration($filterSetName)
     {
+        /** @var FilterSetProviderInterface $filterSetProvider */
         foreach ($this->filterSetProviders as $filterSetProvider) {
             try {
                 return $filterSetProvider->getFilterSetConfiguration($filterSetName);

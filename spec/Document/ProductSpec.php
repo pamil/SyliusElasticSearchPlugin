@@ -2,8 +2,8 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Document;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Sylius\ElasticSearchPlugin\Document\Attribute;
+use ONGR\ElasticsearchBundle\Collection\Collection;
+use Sylius\ElasticSearchPlugin\Document\Price;
 use Sylius\ElasticSearchPlugin\Document\Product;
 use PhpSpec\ObjectBehavior;
 
@@ -51,9 +51,10 @@ final class ProductSpec extends ObjectBehavior
 
     function it_has_price()
     {
-        $this->setPrice(1000);
+        $price = new Price();
+        $this->setPrice($price);
 
-        $this->getPrice()->shouldReturn(1000);
+        $this->getPrice()->shouldReturn($price);
     }
 
     function it_has_taxon_code()
@@ -65,7 +66,7 @@ final class ProductSpec extends ObjectBehavior
 
     function it_has_attributes()
     {
-        $attributes = new ArrayCollection([new Attribute()]);
+        $attributes = new Collection();
         $this->setAttributes($attributes);
 
         $this->getAttributes()->shouldReturn($attributes);

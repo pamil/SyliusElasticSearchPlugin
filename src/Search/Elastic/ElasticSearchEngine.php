@@ -23,11 +23,18 @@ final class ElasticSearchEngine implements SearchEngineInterface
     private $searchCriteriaApplicators = [];
 
     /**
-     * @param Manager $manager
+     * @var SearchCriteriaApplicatorInterface
      */
-    public function __construct(Manager $manager)
+    private $sortingApplicator;
+
+    /**
+     * @param Manager $manager
+     * @param SearchCriteriaApplicatorInterface $sortingApplicator
+     */
+    public function __construct(Manager $manager, SearchCriteriaApplicatorInterface $sortingApplicator)
     {
         $this->manager = $manager;
+        $this->sortingApplicator = $sortingApplicator;
     }
 
     /**
@@ -50,7 +57,7 @@ final class ElasticSearchEngine implements SearchEngineInterface
 
         $search = $repository->createSearch();
 
-        foreach ($this->searchCriteriaApplicators as $filter => $searchCriteriaApplicator) {
+        foreach ($criteria->getFiltering()->getFields() as $filter) {
             if (!is_object($filter)) {
                 continue;
             }
@@ -59,6 +66,8 @@ final class ElasticSearchEngine implements SearchEngineInterface
                 $this->searchCriteriaApplicators[get_class($filter)]->apply($filter, $search);
             }
         }
+
+        $this->sortingApplicator->applyOrdering($criteria->getOrdering(), $search);
 
         return $repository->findDocuments($search);
     }

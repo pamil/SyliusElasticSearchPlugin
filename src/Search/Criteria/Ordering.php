@@ -28,7 +28,7 @@ final class Ordering
      */
     private function __construct($field, $direction)
     {
-        $this->field = $field;
+        $this->field = $field.'.raw';
         $this->direction = $direction;
     }
 

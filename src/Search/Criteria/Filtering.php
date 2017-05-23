@@ -30,7 +30,7 @@ final class Filtering
         $fields = $queryParameters;
 
         unset($fields['page']);
-        unset($fields['per_page']);
+        unset($fields['limit']);
         unset($fields['sort']);
 
         return new self($fields);

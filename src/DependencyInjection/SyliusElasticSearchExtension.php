@@ -18,15 +18,6 @@ final class SyliusElasticSearchExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $loader->load('services.xml');
-        $this->createFilterSetsParameter($config['filter_sets'], $container);
-    }
-
-    /**
-     * @param array $config
-     * @param ContainerBuilder $container
-     */
-    private function createFilterSetsParameter(array $config, ContainerBuilder $container)
-    {
-        $container->setParameter('sylius_elastic_search.filter_sets', $config);
+        $container->setParameter('sylius_elastic_search.filter_sets', $config['filter_sets']);
     }
 }

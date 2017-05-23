@@ -7,6 +7,7 @@
     <services>
         <service id="sylius_elastic_search.search.elastic_engine" class="Sylius\ElasticSearchPlugin\Search\Elastic\ElasticSearchEngine">
             <argument type="service" id="es.manager.default" />
+            <argument type="service" id="sylius_elastic_search.search_criteria_applicator.sort_by_field" />
         </service>
     </services>
 </container>

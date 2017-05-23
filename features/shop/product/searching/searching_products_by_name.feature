@@ -5,8 +5,7 @@ Feature: Searching products by name
     I want to be able to filter the products
 
     Background:
-        Given the store operates on a channel named "Europe"
-        And the store has a product "Banana T-Shirt"
+        Given the store has a product "Banana T-Shirt"
         And the store has a product "Star Wars T-Shirt"
         And the store has a product "Star Wars Rogue T-Shirt"
         And the store has a product "Breaking Bad Saul T-Shirt"

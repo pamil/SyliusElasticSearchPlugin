@@ -12,8 +12,8 @@
 namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Domain\Shop;
 
 use Behat\Behat\Context\Context;
-use FOS\ElasticaBundle\Paginator\PaginatorAdapterInterface;
-use FOS\ElasticaBundle\Paginator\PartialResultsInterface;
+use ONGR\ElasticsearchBundle\Result\DocumentIterator;
+use Sylius\ElasticSearchPlugin\Document\Product;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductHasOptionCodesFilter;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInChannelFilter;
@@ -22,15 +22,8 @@ use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInTaxonFilter;
 use Sylius\ElasticSearchPlugin\Search\Criteria\SearchPhrase;
 use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
 use Sylius\Behat\Service\SharedStorageInterface;
-use Sylius\Component\Core\Model\ChannelInterface;
-use Sylius\Component\Core\Model\Product;
-use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Core\Model\TaxonInterface;
 use Webmozart\Assert\Assert;
 
-/**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
- */
 final class ProductContext implements Context
 {
     /**
@@ -95,7 +88,6 @@ final class ProductContext implements Context
      */
     public function iFilterThemByPriceBetweenAnd($graterThan, $lessThan)
     {
-        sleep(3);
         $criteria = Criteria::fromQueryParameters(Product::class, [new ProductInPriceRangeFilter($graterThan, $lessThan)]);
         $this->match($criteria);
     }
@@ -110,23 +102,21 @@ final class ProductContext implements Context
     }
 
     /**
-     * @When /^I filter them by (channel "[^"]+")$/
+     * @When I filter them by channel :channelCode
      */
-    public function iFilterThemByChannel(ChannelInterface $channel)
+    public function iFilterThemByChannel($channelCode)
     {
-        sleep(3);
-        $criteria = Criteria::fromQueryParameters(Product::class, [new ProductInChannelFilter($channel->getCode())]);
+        $criteria = Criteria::fromQueryParameters(Product::class, [new ProductInChannelFilter($channelCode)]);
         $this->match($criteria);
     }
 
     /**
-     * @When /^I filter them by (channel "[^"]+") and price between ("[^"]+") and ("[^"]+")$/
+     * @When /^I filter them by channel "([^"]+)" and price between ("[^"]+") and ("[^"]+")$/
      */
-    public function iFilterThemByChannelAndPriceBetweenAnd(ChannelInterface $channel, $graterThan, $lessThan)
+    public function iFilterThemByChannelAndPriceBetweenAnd($channelCode, $graterThan, $lessThan)
     {
-        sleep(3);
         $criteria = Criteria::fromQueryParameters(Product::class, [
-            new ProductInChannelFilter($channel->getCode()),
+            new ProductInChannelFilter($channelCode),
             new ProductInPriceRangeFilter($graterThan, $lessThan),
         ]);
 
@@ -134,11 +124,11 @@ final class ProductContext implements Context
     }
 
     /**
-     * @When I filter them by :taxon taxon
+     * @When I filter them by :taxonCode taxon
      */
-    public function iFilterThemByTaxon(TaxonInterface $taxon)
+    public function iFilterThemByTaxon($taxonCode)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, [new ProductInTaxonFilter($taxon->getCode())]);
+        $criteria = Criteria::fromQueryParameters(Product::class, [new ProductInTaxonFilter($taxonCode)]);
         $this->match($criteria);
     }
 
@@ -147,7 +137,6 @@ final class ProductContext implements Context
      */
     public function iSortThemByNameInAscendingOrder($field, $order)
     {
-        sleep(3);
         if ('descending' === $order) {
             $field = '-' . $field;
         }
@@ -161,8 +150,6 @@ final class ProductContext implements Context
      */
     public function iSearchForProductsWithName($name)
     {
-        sleep(3);
-
         $criteria = Criteria::fromQueryParameters(Product::class, [new SearchPhrase($name)]);
         $this->match($criteria);
     }
@@ -172,11 +159,10 @@ final class ProductContext implements Context
      */
     public function iShouldSeeProductsOnTheList($numberOfProducts)
     {
-        /** @var PaginatorAdapterInterface $result */
+        /** @var DocumentIterator $result */
         $result = $this->sharedStorage->get('search_result');
 
-        var_dump($result->getResults(1, 10)->toArray());
-//        Assert::eq($result->getTotalHits, $numberOfProducts);
+        Assert::eq($result->count(), $numberOfProducts);
     }
 
     /**
@@ -184,24 +170,21 @@ final class ProductContext implements Context
      */
     public function iShouldSeeProductsInOrderLike(...$productNames)
     {
-        /** @var PaginatorAdapterInterface $result */
+        /** @var DocumentIterator $searchResult */
         $searchResult = $this->sharedStorage->get('search_result');
-
-        /** @var PartialResultsInterface $partialResult */
-        $partialResult = $searchResult->getResults(0, 100);
 
         /**
          * @var int $position
-         * @var ProductInterface $result
+         * @var Product $product
          */
-        foreach ($partialResult->toArray() as $position => $result) {
-            if ($result->getName() !== $productNames[$position]) {
+        foreach ($searchResult as $position => $product) {
+            if ($product->getName() !== $productNames[$position]) {
                 throw new \RuntimeException(
                     sprintf(
                         'Sorting failed at position "%s" expected value was "%s", but got "%s"',
                         $position + 1,
                         $productNames[$position],
-                        $result
+                        $product->getName()
                     )
                 );
             }
@@ -216,31 +199,12 @@ final class ProductContext implements Context
      */
     public function itShouldBe(...$expectedProductNames)
     {
-        /** @var PaginatorAdapterInterface $result */
+        /** @var DocumentIterator $searchResult */
         $searchResult = $this->sharedStorage->get('search_result');
 
-        /** @var PartialResultsInterface $partialResult */
-        $partialResult = $searchResult->getResults(0, 100);
-
-        $resultProductNames = array_map(function (ProductInterface $product) {
-            return $product->getName();
-        }, $partialResult->toArray());
-
-        $expectedProductCount = count($expectedProductNames);
-        $resultProductCount = count($resultProductNames);
-
-        Assert::same($expectedProductCount, $resultProductCount);
-
-        foreach ($expectedProductNames as $expectedProductName) {
-            Assert::oneOf(
-                $expectedProductName,
-                $resultProductNames,
-                sprintf(
-                    'Expected product with name "%s", does not exist in search result. Got "%s"',
-                    $expectedProductName,
-                    implode(',', $resultProductNames)
-                )
-            );
+        /** @var Product $product */
+        foreach ($searchResult as $product) {
+            Assert::oneOf($product->getName(), $expectedProductNames);
         }
     }
 

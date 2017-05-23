@@ -21,7 +21,7 @@ final class OrderingSpec extends ObjectBehavior
             'sort' => 'code',
         ]]);
 
-        $this->getField()->shouldReturn('code');
+        $this->getField()->shouldReturn('code.raw');
         $this->getDirection()->shouldReturn('asc');
     }
 
@@ -31,7 +31,7 @@ final class OrderingSpec extends ObjectBehavior
             'sort' => '-code',
         ]]);
 
-        $this->getField()->shouldReturn('code');
+        $this->getField()->shouldReturn('code.raw');
         $this->getDirection()->shouldReturn('desc');
     }
 }

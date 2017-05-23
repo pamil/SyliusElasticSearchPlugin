@@ -19,6 +19,6 @@ final class ProductInMainTaxonQueryFactory implements QueryFactoryInterface
             throw new MissingQueryParameterException('taxon_code', get_class($this));
         }
 
-        return new TermQuery('taxonCode', strtolower($parameters['taxon_code']));
+        return new TermQuery('taxon_code', strtolower($parameters['taxon_code']));
     }
 }

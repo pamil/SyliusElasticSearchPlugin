@@ -32,7 +32,7 @@ final class FilteringSpec extends ObjectBehavior
             'size' => 'm',
             'sort' => 'name',
             'page' => 10,
-            'per_page' => 50,
+            'limit' => 50,
         ]]);
 
         $this->getFields()->shouldReturn(['option' => 'blue', 'size' => 'm',]);
