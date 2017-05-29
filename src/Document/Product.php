@@ -63,18 +63,25 @@ final class Product
     private $price;
 
     /**
-     * @var string
+     * @var TaxonCode
      *
-     * @ElasticSearch\Property(type="keyword")
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:TaxonCode")
      */
-    private $taxonCode;
+    private $mainTaxonCode;
 
     /**
      * @var Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Attribute", multiple=true)
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:TaxonCode", multiple=true)
      */
-    private $attributes;
+    private $taxonCodes;
+
+    /**
+     * @var Collection
+     *
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:AttributeValue", multiple=true)
+     */
+    private $attributeValues;
 
     /**
      * @var \DateTime
@@ -85,7 +92,8 @@ final class Product
 
     public function __construct()
     {
-        $this->attributes = new Collection();
+        $this->attributeValues = new Collection();
+        $this->taxonCodes = new Collection();
     }
 
     /**
@@ -185,35 +193,51 @@ final class Product
     }
 
     /**
-     * @return string
+     * @return TaxonCode
      */
-    public function getTaxonCode()
+    public function getMainTaxonCode()
     {
-        return $this->taxonCode;
+        return $this->mainTaxonCode;
     }
 
     /**
-     * @param string $taxonCode
+     * @param TaxonCode $mainTaxonCode
      */
-    public function setTaxonCode($taxonCode)
+    public function setMainTaxonCode(TaxonCode $mainTaxonCode)
     {
-        $this->taxonCode = $taxonCode;
+        $this->mainTaxonCode = $mainTaxonCode;
     }
 
     /**
      * @return Collection
      */
-    public function getAttributes()
+    public function getTaxonCodes()
     {
-        return $this->attributes;
+        return $this->taxonCodes;
     }
 
     /**
-     * @param Collection $attributes
+     * @param Collection $taxonCodes
      */
-    public function setAttributes(Collection $attributes)
+    public function setTaxonCodes(Collection $taxonCodes)
     {
-        $this->attributes = $attributes;
+        $this->taxonCodes = $taxonCodes;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getAttributeValues()
+    {
+        return $this->attributeValues;
+    }
+
+    /**
+     * @param Collection $attributeValues
+     */
+    public function setAttributeValues(Collection $attributeValues)
+    {
+        $this->attributeValues = $attributeValues;
     }
 
     /**

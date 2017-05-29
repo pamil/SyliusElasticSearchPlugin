@@ -2,6 +2,7 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Document;
 
+use ONGR\ElasticsearchBundle\Collection\Collection;
 use Sylius\ElasticSearchPlugin\Document\Attribute;
 use PhpSpec\ObjectBehavior;
 
@@ -12,11 +13,11 @@ final class AttributeSpec extends ObjectBehavior
         $this->shouldHaveType(Attribute::class);
     }
 
-    function it_has_value()
+    function it_has_code()
     {
-        $this->setValue('red');
+        $this->setCode('color');
 
-        $this->getValue()->shouldReturn('red');
+        $this->getCode()->shouldReturn('color');
     }
 
     function it_has_name()

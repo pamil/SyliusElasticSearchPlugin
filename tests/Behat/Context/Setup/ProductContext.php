@@ -16,6 +16,7 @@ use Doctrine\ORM\Id\UuidGenerator;
 use ONGR\ElasticsearchBundle\Service\Manager;
 use Sylius\ElasticSearchPlugin\Document\Price;
 use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\TaxonCode;
 
 final class ProductContext implements Context
 {
@@ -37,9 +38,18 @@ final class ProductContext implements Context
      */
     public function theStoreHasAboutMugsAndStickers($mugsNumber, $stickersNumber, $booksNumber)
     {
-        $this->generateProductsInTaxon($mugsNumber, 'mugs');
-        $this->generateProductsInTaxon($stickersNumber, 'stickers');
-        $this->generateProductsInTaxon($booksNumber, 'books');
+        $mugsTaxonCode = new TaxonCode();
+        $mugsTaxonCode->setValue('mugs');
+
+        $stickersTaxonCode = new TaxonCode();
+        $stickersTaxonCode->setValue('stickers');
+
+        $booksTaxonCode = new TaxonCode();
+        $booksTaxonCode->setValue('books');
+
+        $this->generateProductsInTaxon($mugsNumber, $mugsTaxonCode);
+        $this->generateProductsInTaxon($stickersNumber, $stickersTaxonCode);
+        $this->generateProductsInTaxon($booksNumber, $booksTaxonCode);
     }
 
     /**
@@ -57,13 +67,13 @@ final class ProductContext implements Context
 
     /**
      * @param int $howMany
-     * @param string $taxonCode
+     * @param TaxonCode $taxonCode
      */
-    private function generateProductsInTaxon($howMany, $taxonCode)
+    private function generateProductsInTaxon($howMany, TaxonCode $taxonCode)
     {
         for ($i = 0; $i < $howMany; $i++) {
             $product = new Product();
-            $product->setTaxonCode($taxonCode);
+            $product->setMainTaxonCode($taxonCode);
             $product->setCode(uniqid());
             $this->manager->persist($product);
         }

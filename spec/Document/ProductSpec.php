@@ -6,6 +6,7 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 use Sylius\ElasticSearchPlugin\Document\Price;
 use Sylius\ElasticSearchPlugin\Document\Product;
 use PhpSpec\ObjectBehavior;
+use Sylius\ElasticSearchPlugin\Document\TaxonCode;
 
 final class ProductSpec extends ObjectBehavior
 {
@@ -57,18 +58,27 @@ final class ProductSpec extends ObjectBehavior
         $this->getPrice()->shouldReturn($price);
     }
 
-    function it_has_taxon_code()
+    function it_has_main_taxon_code()
     {
-        $this->setTaxonCode('Tree');
+        $taxonCode = new TaxonCode();
+        $this->setMainTaxonCode($taxonCode);
 
-        $this->getTaxonCode()->shouldReturn('Tree');
+        $this->getMainTaxonCode()->shouldReturn($taxonCode);
+    }
+
+    function it_has_taxon_codes()
+    {
+        $taxonCodes = new Collection();
+        $this->setTaxonCodes($taxonCodes);
+
+        $this->getTaxonCodes()->shouldReturn($taxonCodes);
     }
 
     function it_has_attributes()
     {
-        $attributes = new Collection();
-        $this->setAttributes($attributes);
+        $attributeValues = new Collection();
+        $this->setAttributeValues($attributeValues);
 
-        $this->getAttributes()->shouldReturn($attributes);
+        $this->getAttributeValues()->shouldReturn($attributeValues);
     }
 }

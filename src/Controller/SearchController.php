@@ -12,8 +12,12 @@
 namespace Sylius\ElasticSearchPlugin\Controller;
 
 use FOS\RestBundle\View\ConfigurableViewHandlerInterface;
+use FOS\RestBundle\View\View;
+use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
@@ -42,9 +46,18 @@ final class SearchController
 
     /**
      * @param Request $request
+     *
+     * @return Response
      */
     public function searchAction(Request $request)
     {
+        $content = $request->getContent();
+        $criteria = Criteria::fromQueryParameters(Product::class, json_decode($content, true));
 
+        $result = $this->searchEngine->match($criteria);
+
+        $view = View::create($result);
+
+        return $this->restViewHandler->handle($view);
     }
 }
