@@ -13,6 +13,8 @@ namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Domain\Shop;
 
 use Behat\Behat\Context\Context;
 use ONGR\ElasticsearchBundle\Result\DocumentIterator;
+use Porpaginas\Page;
+use Porpaginas\Result;
 use Sylius\ElasticSearchPlugin\Document\Product;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductHasOptionCodesFilter;
@@ -47,48 +49,11 @@ final class ProductContext implements Context
     }
 
     /**
-     * @When I filter them by :mugTypeValue mug type
-     */
-    public function iFilterThemByDoubleMugType($mugTypeValue)
-    {
-        $criteria = Criteria::fromQueryParameters(Product::class, [
-            new ProductHasOptionCodesFilter([sprintf('mug_type_%s', $mugTypeValue)]),
-        ]);
-
-        $this->match($criteria);
-    }
-
-    /**
-     * @When I filter them by :mugTypeValue mug type or sticker size :stickerSizeValue
-     */
-    public function iFilterThemByDoubleMugTypeAndStickerSize($mugTypeValue, $stickerSizeValue)
-    {
-        $criteria = Criteria::fromQueryParameters(Product::class, [
-            new ProductHasOptionCodesFilter([sprintf('mug_type_%s', $mugTypeValue)]),
-            new ProductHasOptionCodesFilter([sprintf('sticker_size_%s', $stickerSizeValue)]),
-        ]);
-
-        $this->match($criteria);
-    }
-
-    /**
-     * @When I filter them by stickier size :stickerSizeValue
-     */
-    public function iFilterThemByStickierSize($stickerSizeValue)
-    {
-        $criteria = Criteria::fromQueryParameters(Product::class, [
-            new ProductHasOptionCodesFilter([sprintf('sticker_size_%s', $stickerSizeValue)]),
-        ]);
-
-        $this->match($criteria);
-    }
-
-    /**
      * @When /^I filter them by price between ("[^"]+") and ("[^"]+")$/
      */
     public function iFilterThemByPriceBetweenAnd($graterThan, $lessThan)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, [new ProductInPriceRangeFilter($graterThan, $lessThan)]);
+        $criteria = Criteria::fromQueryParameters(Product::class, ['product_price_range' => ['grater_than' => $graterThan, 'less_than' => $lessThan]]);
         $this->match($criteria);
     }
 
@@ -106,7 +71,7 @@ final class ProductContext implements Context
      */
     public function iFilterThemByChannel($channelCode)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, [new ProductInChannelFilter($channelCode)]);
+        $criteria = Criteria::fromQueryParameters(Product::class, ['channel_code' => $channelCode]);
         $this->match($criteria);
     }
 
@@ -116,8 +81,8 @@ final class ProductContext implements Context
     public function iFilterThemByChannelAndPriceBetweenAnd($channelCode, $graterThan, $lessThan)
     {
         $criteria = Criteria::fromQueryParameters(Product::class, [
-            new ProductInChannelFilter($channelCode),
-            new ProductInPriceRangeFilter($graterThan, $lessThan),
+            'channel_code' => $channelCode,
+            'product_price_range' => ['grater_than' => $graterThan, 'less_than' => $lessThan],
         ]);
 
         $this->match($criteria);
@@ -128,7 +93,7 @@ final class ProductContext implements Context
      */
     public function iFilterThemByTaxon($taxonCode)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, [new ProductInTaxonFilter($taxonCode)]);
+        $criteria = Criteria::fromQueryParameters(Product::class, ['taxon_code' => $taxonCode]);
         $this->match($criteria);
     }
 
@@ -150,7 +115,7 @@ final class ProductContext implements Context
      */
     public function iSearchForProductsWithName($name)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, [new SearchPhrase($name)]);
+        $criteria = Criteria::fromQueryParameters(Product::class, ['search' => $name]);
         $this->match($criteria);
     }
 
@@ -159,7 +124,7 @@ final class ProductContext implements Context
      */
     public function iShouldSeeProductsOnTheList($numberOfProducts)
     {
-        /** @var DocumentIterator $result */
+        /** @var Result $result */
         $result = $this->sharedStorage->get('search_result');
 
         Assert::eq($result->count(), $numberOfProducts);
@@ -170,7 +135,7 @@ final class ProductContext implements Context
      */
     public function iShouldSeeProductsInOrderLike(...$productNames)
     {
-        /** @var DocumentIterator $searchResult */
+        /** @var Result $searchResult */
         $searchResult = $this->sharedStorage->get('search_result');
 
         /**
@@ -178,13 +143,13 @@ final class ProductContext implements Context
          * @var Product $product
          */
         foreach ($searchResult as $position => $product) {
-            if ($product->getName() !== $productNames[$position]) {
+            if ($product['name'] !== $productNames[$position]) {
                 throw new \RuntimeException(
                     sprintf(
                         'Sorting failed at position "%s" expected value was "%s", but got "%s"',
                         $position + 1,
                         $productNames[$position],
-                        $product->getName()
+                        $product['name']
                     )
                 );
             }
@@ -199,12 +164,12 @@ final class ProductContext implements Context
      */
     public function itShouldBe(...$expectedProductNames)
     {
-        /** @var DocumentIterator $searchResult */
+        /** @var Result $searchResult */
         $searchResult = $this->sharedStorage->get('search_result');
 
         /** @var Product $product */
         foreach ($searchResult as $product) {
-            Assert::oneOf($product->getName(), $expectedProductNames);
+            Assert::oneOf($product['name'], $expectedProductNames);
         }
     }
 

@@ -19,9 +19,9 @@ final class PaginatingSpec extends ObjectBehavior
     {
         $this->beConstructedThrough('fromQueryParameters', [[]]);
 
-        $this->getCurrentPage()->shouldReturn(1);
-        $this->getItemsPerPage()->shouldReturn(10);
-        $this->getOffset()->shouldReturn(0);
+        $this->currentPage()->shouldReturn(1);
+        $this->itemsPerPage()->shouldReturn(10);
+        $this->offset()->shouldReturn(0);
     }
 
     function it_can_be_created_from_query_parameters_with_default_values_if_parameters_are_not_valid()
@@ -31,9 +31,9 @@ final class PaginatingSpec extends ObjectBehavior
             'limit' => -100,
         ]]);
 
-        $this->getCurrentPage()->shouldReturn(1);
-        $this->getItemsPerPage()->shouldReturn(10);
-        $this->getOffset()->shouldReturn(0);
+        $this->currentPage()->shouldReturn(1);
+        $this->itemsPerPage()->shouldReturn(10);
+        $this->offset()->shouldReturn(0);
     }
 
     function it_can_be_created_from_query_parameters()
@@ -43,8 +43,8 @@ final class PaginatingSpec extends ObjectBehavior
             'limit' => 50,
         ]]);
 
-        $this->getCurrentPage()->shouldReturn(2);
-        $this->getItemsPerPage()->shouldReturn(50);
-        $this->getOffset()->shouldReturn(50);
+        $this->currentPage()->shouldReturn(2);
+        $this->itemsPerPage()->shouldReturn(50);
+        $this->offset()->shouldReturn(50);
     }
 }

@@ -21,8 +21,8 @@ final class OrderingSpec extends ObjectBehavior
             'sort' => 'code',
         ]]);
 
-        $this->getField()->shouldReturn('code.raw');
-        $this->getDirection()->shouldReturn('asc');
+        $this->field()->shouldReturn('code.raw');
+        $this->direction()->shouldReturn('asc');
     }
 
     function it_can_be_created_from_query_parameters()
@@ -31,7 +31,7 @@ final class OrderingSpec extends ObjectBehavior
             'sort' => '-code',
         ]]);
 
-        $this->getField()->shouldReturn('code.raw');
-        $this->getDirection()->shouldReturn('desc');
+        $this->field()->shouldReturn('code.raw');
+        $this->direction()->shouldReturn('desc');
     }
 }

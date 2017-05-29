@@ -4,6 +4,8 @@ namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter;
 
 use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
 use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
+use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInChannelFilter;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter\ProductInChannelApplicator;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
@@ -36,10 +38,21 @@ final class ProductInChannelApplicatorSpec extends ObjectBehavior
         Search $search,
         NestedQuery $nestedQuery
     ) {
-        $criteria = new ProductInChannelFilter('web');
-        $productInChannelQueryFactory->create(['channel_code' => 'web'])->willReturn($nestedQuery);
+        $criteria = Criteria::fromQueryParameters(Product::class, ['channel_code' => 'web']);
+        $productInChannelQueryFactory->create($criteria->filtering()->fields())->willReturn($nestedQuery);
         $search->addPostFilter($nestedQuery, BoolQuery::MUST)->shouldBeCalled();
 
         $this->apply($criteria, $search);
+    }
+
+    function it_supports_channel_code_parameter()
+    {
+        $criteria = Criteria::fromQueryParameters(Product::class, ['channel_code' => 'web']);
+
+        $this->supports($criteria)->shouldReturn(true);
+
+        $criteria = Criteria::fromQueryParameters(Product::class, ['taxon_code' => 'tree']);
+
+        $this->supports($criteria)->shouldReturn(false);
     }
 }

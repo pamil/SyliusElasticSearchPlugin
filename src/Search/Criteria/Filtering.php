@@ -39,7 +39,7 @@ final class Filtering
     /**
      * @return array
      */
-    public function getFields()
+    public function fields()
     {
         return $this->fields;
     }

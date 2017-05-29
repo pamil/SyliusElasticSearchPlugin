@@ -16,10 +16,10 @@ final class MatchProductNameQueryFactory implements QueryFactoryInterface
      */
     public function create(array $parameters = [])
     {
-        if (!isset($parameters['phrase']) || null == $parameters['phrase']) {
+        if (!isset($parameters['search']) || null == $parameters['search']) {
             throw new MissingQueryParameterException('search', get_class($this));
         }
 
-        return new MatchQuery('name', $parameters['phrase']);
+        return new MatchQuery('name', $parameters['search']);
     }
 }

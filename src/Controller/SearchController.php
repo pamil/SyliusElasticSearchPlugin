@@ -11,8 +11,8 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
-use FOS\RestBundle\View\ConfigurableViewHandlerInterface;
 use FOS\RestBundle\View\View;
+use FOS\RestBundle\View\ViewHandlerInterface;
 use Sylius\ElasticSearchPlugin\Document\Product;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Response;
 final class SearchController
 {
     /**
-     * @var ConfigurableViewHandlerInterface
+     * @var ViewHandlerInterface
      */
     private $restViewHandler;
 
@@ -35,10 +35,10 @@ final class SearchController
     private $searchEngine;
 
     /**
-     * @param ConfigurableViewHandlerInterface $restViewHandler
+     * @param ViewHandlerInterface $restViewHandler
      * @param SearchEngineInterface $searchEngine
      */
-    public function __construct(ConfigurableViewHandlerInterface $restViewHandler, SearchEngineInterface $searchEngine)
+    public function __construct(ViewHandlerInterface $restViewHandler, SearchEngineInterface $searchEngine)
     {
         $this->restViewHandler = $restViewHandler;
         $this->searchEngine = $searchEngine;
@@ -49,15 +49,19 @@ final class SearchController
      *
      * @return Response
      */
-    public function searchAction(Request $request)
+    public function __invoke(Request $request)
     {
-        $content = $request->getContent();
-        $criteria = Criteria::fromQueryParameters(Product::class, json_decode($content, true));
+        $content = json_decode($request->getContent(), true);
+
+        if (null === $content) {
+            $content = $request->query->all();
+        }
+
+        $criteria = Criteria::fromQueryParameters(Product::class, $content);
 
         $result = $this->searchEngine->match($criteria);
+        $page = $result->take($criteria->paginating()->offset(), $criteria->paginating()->itemsPerPage());
 
-        $view = View::create($result);
-
-        return $this->restViewHandler->handle($view);
+        return $this->restViewHandler->handle(View::create($page, Response::HTTP_OK));
     }
 }

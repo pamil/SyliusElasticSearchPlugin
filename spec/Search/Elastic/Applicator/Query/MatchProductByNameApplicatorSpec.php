@@ -3,6 +3,8 @@
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Query;
 
 use ONGR\ElasticsearchDSL\Query\FullText\MatchQuery;
+use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Criteria\SearchPhrase;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Query\MatchProductByNameApplicator;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
@@ -16,9 +18,9 @@ use PhpSpec\ObjectBehavior;
  */
 final class MatchProductByNameApplicatorSpec extends ObjectBehavior
 {
-    function let(QueryFactoryInterface $matchProductNameQueryFactory, QueryFactoryInterface $emptyQueryFactory)
+    function let(QueryFactoryInterface $matchProductNameQueryFactory)
     {
-        $this->beConstructedWith($matchProductNameQueryFactory, $emptyQueryFactory);
+        $this->beConstructedWith($matchProductNameQueryFactory);
     }
 
     function it_is_initializable()
@@ -36,22 +38,19 @@ final class MatchProductByNameApplicatorSpec extends ObjectBehavior
         MatchQuery $matchQuery,
         Search $search
     ) {
-        $criteria = new SearchPhrase('banana');
-        $matchProductNameQueryFactory->create(['phrase' => 'banana'])->willReturn($matchQuery);
+        $criteria = Criteria::fromQueryParameters(Product::class, ['search' => 'banana']);
+        $matchProductNameQueryFactory->create($criteria->filtering()->fields())->willReturn($matchQuery);
         $search->addQuery($matchQuery)->shouldBeCalled();
 
         $this->apply($criteria, $search);
     }
 
-    function it_applies_match_all_for_empty_search_phrase(
-        QueryFactoryInterface $emptyQueryFactory,
-        MatchAllQuery $matchAllQuery,
-        Search $search
-    ) {
-        $criteria = new SearchPhrase('');
-        $emptyQueryFactory->create()->willReturn($matchAllQuery);
-        $search->addQuery($matchAllQuery)->shouldBeCalled();
+    function it_supports_search_parameter()
+    {
+        $criteria = Criteria::fromQueryParameters(Product::class, ['search' => 'banana']);
+        $this->supports($criteria)->shouldReturn(true);
 
-        $this->apply($criteria, $search);
+        $criteria = Criteria::fromQueryParameters(Product::class, []);
+        $this->supports($criteria)->shouldReturn(false);
     }
 }

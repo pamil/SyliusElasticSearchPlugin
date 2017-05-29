@@ -1,4 +1,4 @@
-Sylius ElasticSearchBundle
+Sylius ElasticSearchPlugin
 ==========================
 Elastic search for Sylius.
 [![Build status on Linux](https://img.shields.io/travis/Lakion/SyliusElasticSearchBundle/master.svg)](http://travis-ci.org/Lakion/SyliusELasticSearchBundle)
@@ -8,12 +8,12 @@ Elastic search for Sylius.
 1. Install it:
 
     ```bash
-    $ composer require lakion/sylius-elastic-search-bundle
+    $ composer require sylius/elastic-search-plugin
     ```
 2. Install elastic search server:
 
     ```bash
-    $ brew install elasticsearch@2.4
+    $ brew install elasticsearch@5.0
     ```
 
 3. Run elastic search server:
@@ -25,8 +25,8 @@ Elastic search for Sylius.
 4. Add this bundle to `AppKernel.php`:
 
     ```php
-    new \FOS\ElasticaBundle\FOSElasticaBundle(),
-    new \Lakion\SyliusElasticSearchBundle\LakionSyliusElasticSearchBundle(),
+    new \ONGR\ElasticsearchBundle\ONGRElasticsearchBundle(),
+    new \Lakion\SyliusElasticSearchBundle\SyliusElasticSearchPlugin(),
     ```
 
 5. Create/Setup database:
@@ -37,37 +37,16 @@ Elastic search for Sylius.
     $ app/console syl:fix:lo
     ```
 
-6. Populate your elastic search server with command or your custom code:
-
-    ```bash
-    $ app/console fos:elastic:pop
-    ```
-
 7. Import config file in `app/config/config.yml` for default filter set configuration:
 
     ```yaml
     imports:
-       - { resource: "@LakionSyliusElasticSearchBundle/Resources/config/app/config.yml" }
+       - { resource: "@SyliusElasticSearchPlugin/Resources/config/app/config.yml" }
     ```
 
 8. Import routing files in `app/config/routing.yml`:
 
     ```yaml
     sylius_search:
-        resource: "@LakionSyliusElasticSearchBundle/Resources/config/routing.yml"
-    ```
-
-8. Configuration reference:
-
-    ```yaml
-    sylius_elastic_search:
-        filter_sets:
-            mugs:
-                filters:
-                    product_options:
-                        type: option
-                        options:
-                            code: mug_type
-                    product_price:
-                        type: price
+        resource: "@SyliusElasticSearchPlugin/Resources/config/routing.yml"
     ```

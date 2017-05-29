@@ -31,7 +31,7 @@ final class RegisterSearchCriteriaApplicatorPassTest extends AbstractCompilerPas
         $this->setDefinition('sylius_elastic_search.search.elastic_engine', new Definition());
         $this->setDefinition(
             'sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes',
-            (new Definition(\stdClass::class))->addTag('search_criteria_applicator', ['applies' => 'productHasOption'])
+            (new Definition(\stdClass::class))->addTag('search_criteria_applicator')
         );
 
         $this->compile();
@@ -40,8 +40,7 @@ final class RegisterSearchCriteriaApplicatorPassTest extends AbstractCompilerPas
             'sylius_elastic_search.search.elastic_engine',
             'addSearchCriteriaApplicator',
             [
-                new Reference('sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes'),
-                'productHasOption'
+                new Reference('sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes')
             ]
         );
     }
@@ -54,21 +53,6 @@ final class RegisterSearchCriteriaApplicatorPassTest extends AbstractCompilerPas
         $this->compile();
 
         $this->assertContainerBuilderNotHasService('sylius_elastic_search.search.elastic_engine');
-    }
-
-    /**
-     * @test
-     */
-    public function tagged_applicators_must_have_applies_attribute_configured()
-    {
-        $this->setDefinition('sylius_elastic_search.search.elastic_engine', new Definition());
-        $this->setDefinition(
-            'sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes',
-            (new Definition(\stdClass::class))->addTag('search_criteria_applicator')
-        );
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->compile();
     }
 
     /**

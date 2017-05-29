@@ -12,6 +12,7 @@
 namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator;
 
 use ONGR\ElasticsearchDSL\Search;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
@@ -19,8 +20,15 @@ use ONGR\ElasticsearchDSL\Search;
 interface SearchCriteriaApplicatorInterface
 {
     /**
-     * @param mixed $criteria
+     * @param Criteria $criteria
      * @param Search $search
      */
-    public function apply($criteria, Search $search);
+    public function apply(Criteria $criteria, Search $search);
+
+    /**
+     * @param Criteria $criteria
+     *
+     * @return bool
+     */
+    public function supports(Criteria $criteria);
 }

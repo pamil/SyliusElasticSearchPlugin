@@ -29,7 +29,9 @@ final class ProductPublisher
     {
         $product = $event->getEntity();
         if ($product instanceof ProductInterface) {
-            $this->eventBus->handle(ProductCreated::occur($product));
+            if ($product->isSimple()) {
+                $this->eventBus->handle(ProductCreated::occur($product));
+            }
         }
     }
 }

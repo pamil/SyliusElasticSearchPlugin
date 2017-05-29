@@ -27,20 +27,20 @@ final class CriteriaSpec extends ObjectBehavior
             'option' => 'red',
         ]]);
 
-        $this->getResourceAlias()->shouldReturn('sylius.product');
-        $this->getFiltering()->shouldBeLike(Filtering::fromQueryParameters([
+        $this->documentClass()->shouldReturn('sylius.product');
+        $this->filtering()->shouldBeLike(Filtering::fromQueryParameters([
             'page' => 2,
             'per_page' => 50,
             'sort' => '-price',
             'option' => 'red',
         ]));
-        $this->getPaginating()->shouldBeLike(Paginating::fromQueryParameters([
+        $this->paginating()->shouldBeLike(Paginating::fromQueryParameters([
             'page' => 2,
             'per_page' => 50,
             'sort' => '-price',
             'option' => 'red',
         ]));
-        $this->getOrdering()->shouldBeLike(Ordering::fromQueryParameters([
+        $this->ordering()->shouldBeLike(Ordering::fromQueryParameters([
             'page' => 2,
             'per_page' => 50,
             'sort' => '-price',

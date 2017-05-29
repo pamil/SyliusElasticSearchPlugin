@@ -17,5 +17,5 @@ sylius_api:
     prefix: /api
 
 sylius_search:
-    resource: "@LakionSyliusElasticSearchBundle/Resources/config/routing.yml"
+    resource: "@SyliusElasticSearchPlugin/Resources/config/routing.yml"
     prefix: /

@@ -24,6 +24,7 @@ final class ProductPublisherSpec extends ObjectBehavior
 
     function it_publishes_product_event(MessageBus $eventBus, LifecycleEventArgs $event, ProductInterface $product)
     {
+        $product->isSimple()->willReturn(true);
         $event->getEntity()->willReturn($product);
 
         $eventBus->handle(ProductCreated::occur($product->getWrappedObject()))->shouldBeCalled();
@@ -34,6 +35,19 @@ final class ProductPublisherSpec extends ObjectBehavior
     function it_does_not_publish_product_event_if_entity_is_not_a_product(MessageBus $eventBus, LifecycleEventArgs $event)
     {
         $event->getEntity()->willReturn(new \stdClass());
+
+        $eventBus->handle(Argument::any())->shouldNotBeCalled();
+
+        $this->postPersist($event);
+    }
+
+    function it_does_not_publish_product_event_if_entity_is_not_a_simple_product(
+        MessageBus $eventBus,
+        LifecycleEventArgs $event,
+        ProductInterface $product
+    ) {
+        $product->isSimple()->willReturn(false);
+        $event->getEntity()->willReturn($product);
 
         $eventBus->handle(Argument::any())->shouldNotBeCalled();
 

@@ -1,0 +1,6 @@
+sylius_shop_search:
+    path: /search
+    methods: [GET]
+    defaults:
+        _controller: sylius_elastic_search.controller.search
+        _format: json

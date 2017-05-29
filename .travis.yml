@@ -2,7 +2,6 @@ language: php
 
 php:
     - 7.1
-    - 5.6
 
 jdk:
   - oraclejdk8
@@ -13,7 +12,7 @@ addons:
             - elasticsearch-5.x
         packages:
             - elasticsearch
-            - oracle-java8-installer
+            - oracle-java8-set-default
 
 services:
     - elasticsearch

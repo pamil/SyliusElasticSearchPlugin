@@ -60,7 +60,7 @@ final class Paginating
     /**
      * @return int
      */
-    public function getCurrentPage()
+    public function currentPage()
     {
         return $this->currentPage;
     }
@@ -68,7 +68,7 @@ final class Paginating
     /**
      * @return int
      */
-    public function getItemsPerPage()
+    public function itemsPerPage()
     {
         return $this->itemsPerPage;
     }
@@ -76,7 +76,7 @@ final class Paginating
     /**
      * @return int
      */
-    public function getOffset()
+    public function offset()
     {
         return $this->offset;
     }

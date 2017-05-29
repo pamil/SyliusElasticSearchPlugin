@@ -53,7 +53,7 @@ final class Ordering
     /**
      * @return string
      */
-    public function getField()
+    public function field()
     {
         return $this->field;
     }
@@ -61,7 +61,7 @@ final class Ordering
     /**
      * @return string
      */
-    public function getDirection()
+    public function direction()
     {
         return $this->direction;
     }

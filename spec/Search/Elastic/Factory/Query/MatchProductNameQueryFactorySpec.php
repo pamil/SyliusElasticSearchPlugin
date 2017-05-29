@@ -25,7 +25,7 @@ final class MatchProductNameQueryFactorySpec extends ObjectBehavior
 
     function it_creates_match_query_with_name_field_by_default()
     {
-        $this->create(['phrase' => 'banana'])->shouldBeLike(new MatchQuery('name', 'banana'));
+        $this->create(['search' => 'banana'])->shouldBeLike(new MatchQuery('name', 'banana'));
     }
 
     function it_cannot_be_created_without_search_parameter()

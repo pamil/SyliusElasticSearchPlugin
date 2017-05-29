@@ -10,7 +10,7 @@ final class Criteria
     /**
      * @var string
      */
-    private $resourceAlias;
+    private $documentClass;
 
     /**
      * @var Paginating
@@ -28,46 +28,46 @@ final class Criteria
     private $filtering;
 
     /**
-     * @param string $resourceAlias
+     * @param string $documentClass
      * @param Paginating $paginating
      * @param Ordering $ordering
      * @param Filtering $filtering
      */
-    private function __construct($resourceAlias, Paginating $paginating, Ordering $ordering, Filtering $filtering)
+    private function __construct($documentClass, Paginating $paginating, Ordering $ordering, Filtering $filtering)
     {
-        $this->resourceAlias = $resourceAlias;
+        $this->documentClass = $documentClass;
         $this->paginating = $paginating;
         $this->ordering = $ordering;
         $this->filtering = $filtering;
     }
 
     /**
-     * @param $resourceAlias
+     * @param string $documentClass
      * @param array $parameters
      *
      * @return Criteria
      */
-    public static function fromQueryParameters($resourceAlias, array $parameters)
+    public static function fromQueryParameters($documentClass, array $parameters)
     {
         $paginating = Paginating::fromQueryParameters($parameters);
         $ordering = Ordering::fromQueryParameters($parameters);
         $filtering = Filtering::fromQueryParameters($parameters);
 
-        return new self($resourceAlias, $paginating, $ordering, $filtering);
+        return new self($documentClass, $paginating, $ordering, $filtering);
     }
 
     /**
      * @return string
      */
-    public function getResourceAlias()
+    public function documentClass()
     {
-        return $this->resourceAlias;
+        return $this->documentClass;
     }
 
     /**
      * @return Paginating
      */
-    public function getPaginating()
+    public function paginating()
     {
         return $this->paginating;
     }
@@ -75,7 +75,7 @@ final class Criteria
     /**
      * @return Ordering
      */
-    public function getOrdering()
+    public function ordering()
     {
         return $this->ordering;
     }
@@ -83,7 +83,7 @@ final class Criteria
     /**
      * @return Filtering
      */
-    public function getFiltering()
+    public function filtering()
     {
         return $this->filtering;
     }

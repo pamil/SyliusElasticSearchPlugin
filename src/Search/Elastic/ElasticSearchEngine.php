@@ -3,6 +3,7 @@
 namespace Sylius\ElasticSearchPlugin\Search\Elastic;
 
 use ONGR\ElasticsearchBundle\Service\Manager;
+use Porpaginas\Arrays\ArrayResult;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
 use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
@@ -23,29 +24,20 @@ final class ElasticSearchEngine implements SearchEngineInterface
     private $searchCriteriaApplicators = [];
 
     /**
-     * @var SearchCriteriaApplicatorInterface
-     */
-    private $sortingApplicator;
-
-    /**
      * @param Manager $manager
      * @param SearchCriteriaApplicatorInterface $sortingApplicator
      */
     public function __construct(Manager $manager, SearchCriteriaApplicatorInterface $sortingApplicator)
     {
         $this->manager = $manager;
-        $this->sortingApplicator = $sortingApplicator;
     }
 
     /**
      * @param SearchCriteriaApplicatorInterface $searchCriteriaApplicator
-     * @param string $criteriaClass
      */
-    public function addSearchCriteriaApplicator(
-        SearchCriteriaApplicatorInterface $searchCriteriaApplicator,
-        $criteriaClass
-    ) {
-        $this->searchCriteriaApplicators[$criteriaClass] = $searchCriteriaApplicator;
+    public function addSearchCriteriaApplicator(SearchCriteriaApplicatorInterface $searchCriteriaApplicator)
+    {
+        $this->searchCriteriaApplicators[] = $searchCriteriaApplicator;
     }
 
     /**
@@ -53,22 +45,15 @@ final class ElasticSearchEngine implements SearchEngineInterface
      */
     public function match(Criteria $criteria)
     {
-        $repository = $this->manager->getRepository($criteria->getResourceAlias());
+        $repository = $this->manager->getRepository($criteria->documentClass());
 
         $search = $repository->createSearch();
-
-        foreach ($criteria->getFiltering()->getFields() as $filter) {
-            if (!is_object($filter)) {
-                continue;
-            }
-
-            if (isset($this->searchCriteriaApplicators[get_class($filter)])) {
-                $this->searchCriteriaApplicators[get_class($filter)]->apply($filter, $search);
+        foreach ($this->searchCriteriaApplicators as $searchCriteriaApplicator) {
+            if ($searchCriteriaApplicator->supports($criteria)) {
+                $searchCriteriaApplicator->apply($criteria, $search);
             }
         }
 
-        $this->sortingApplicator->applyOrdering($criteria->getOrdering(), $search);
-
-        return $repository->findDocuments($search);
+        return new ArrayResult(iterator_to_array($repository->findArray($search)));
     }
 }
