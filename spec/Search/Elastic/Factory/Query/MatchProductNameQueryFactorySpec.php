@@ -1,12 +1,11 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
-use Lakion\SyliusElasticSearchBundle\Exception\MissingQueryParameterException;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\MatchProductNameQueryFactory;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\MatchQuery;
-use ONGR\ElasticsearchDSL\Query\NestedQuery;
+use ONGR\ElasticsearchDSL\Query\FullText\MatchQuery;
+use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\MatchProductNameQueryFactory;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -26,7 +25,7 @@ final class MatchProductNameQueryFactorySpec extends ObjectBehavior
 
     function it_creates_match_query_with_name_field_by_default()
     {
-        $this->create(['phrase' => 'banana'])->shouldBeLike(new NestedQuery('translations', new MatchQuery('translations.name', 'banana')));
+        $this->create(['search' => 'banana'])->shouldBeLike(new MatchQuery('name', 'banana'));
     }
 
     function it_cannot_be_created_without_search_parameter()

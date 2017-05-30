@@ -1,17 +1,17 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Form\Configuration\Provider;
+namespace Sylius\ElasticSearchPlugin\Form\Configuration\Provider;
 
-use Lakion\SyliusElasticSearchBundle\Exception\FilterSetConfigurationNotFoundException;
+use Sylius\ElasticSearchPlugin\Exception\FilterSetConfigurationNotFoundException;
 use Zend\Stdlib\PriorityQueue;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class FilterSetProvider implements FilterSetProviderInterface
 {
     /**
-     * @var FilterSetProviderInterface[]
+     * @var PriorityQueue
      */
     private $filterSetProviders;
 
@@ -34,6 +34,7 @@ final class FilterSetProvider implements FilterSetProviderInterface
      */
     public function getFilterSetConfiguration($filterSetName)
     {
+        /** @var FilterSetProviderInterface $filterSetProvider */
         foreach ($this->filterSetProviders as $filterSetProvider) {
             try {
                 return $filterSetProvider->getFilterSetConfiguration($filterSetName);

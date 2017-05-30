@@ -9,19 +9,26 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
 use ONGR\ElasticsearchDSL\Search;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 interface SearchCriteriaApplicatorInterface
 {
     /**
-     * @param mixed $criteria
+     * @param Criteria $criteria
      * @param Search $search
      */
-    public function apply($criteria, Search $search);
+    public function apply(Criteria $criteria, Search $search);
+
+    /**
+     * @param Criteria $criteria
+     *
+     * @return bool
+     */
+    public function supports(Criteria $criteria);
 }

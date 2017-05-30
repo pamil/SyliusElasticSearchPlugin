@@ -9,53 +9,28 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\Lakion\SyliusElasticSearchBundle\Behat\Context\Setup;
+namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Setup;
 
 use Behat\Behat\Context\Context;
-use Tests\Lakion\SyliusElasticSearchBundle\Behat\Services\SuspenderInterface;
-use Sylius\Bundle\FixturesBundle\Fixture\FixtureInterface;
+use Doctrine\ORM\Id\UuidGenerator;
+use ONGR\ElasticsearchBundle\Service\Manager;
+use Sylius\ElasticSearchPlugin\Document\Price;
+use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\TaxonCode;
 
-/**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
- */
 final class ProductContext implements Context
 {
     /**
-     * @var FixtureInterface
+     * @var Manager
      */
-    private $bookProductFixture;
+    private $manager;
 
     /**
-     * @var FixtureInterface
+     * @param Manager $manager
      */
-    private $mugProductFixture;
-
-    /**
-     * @var FixtureInterface
-     */
-    private $stickerProductFixture;
-
-    /**
-     * @var SuspenderInterface
-     */
-    private $elasticSearchSuspender;
-
-    /**
-     * @param FixtureInterface $bookProductFixture
-     * @param FixtureInterface $mugProductFixture
-     * @param FixtureInterface $stickerProductFixture
-     * @param SuspenderInterface $elasticSearchSuspender
-     */
-    public function __construct(
-        FixtureInterface $bookProductFixture,
-        FixtureInterface $mugProductFixture,
-        FixtureInterface $stickerProductFixture,
-        SuspenderInterface $elasticSearchSuspender
-    ) {
-        $this->bookProductFixture = $bookProductFixture;
-        $this->mugProductFixture = $mugProductFixture;
-        $this->stickerProductFixture = $stickerProductFixture;
-        $this->elasticSearchSuspender = $elasticSearchSuspender;
+    public function __construct(Manager $manager)
+    {
+        $this->manager = $manager;
     }
 
     /**
@@ -63,10 +38,68 @@ final class ProductContext implements Context
      */
     public function theStoreHasAboutMugsAndStickers($mugsNumber, $stickersNumber, $booksNumber)
     {
-        $this->mugProductFixture->load(['amount' => (int) $mugsNumber]);
-        $this->stickerProductFixture->load(['amount' => (int) $stickersNumber]);
-        $this->bookProductFixture->load(['amount' => (int) $booksNumber]);
+        $mugsTaxonCode = new TaxonCode();
+        $mugsTaxonCode->setValue('mugs');
 
-        $this->elasticSearchSuspender->waitForLoadingNumberOfData((int) $mugsNumber + (int) $stickersNumber + (int) $booksNumber, 5);
+        $stickersTaxonCode = new TaxonCode();
+        $stickersTaxonCode->setValue('stickers');
+
+        $booksTaxonCode = new TaxonCode();
+        $booksTaxonCode->setValue('books');
+
+        $this->generateProductsInTaxon($mugsNumber, $mugsTaxonCode);
+        $this->generateProductsInTaxon($stickersNumber, $stickersTaxonCode);
+        $this->generateProductsInTaxon($booksNumber, $booksTaxonCode);
+    }
+
+    /**
+     * @Given the store has a product :productName
+     * @Given the store has a :productName product
+     * @Given I added a product :productName
+     * @Given /^the store(?:| also) has a product "([^"]+)" priced at ("[^"]+")$/
+     * @Given /^the store(?:| also) has a product "([^"]+)" priced at ("[^"]+") in "([^"]+)" channel$/
+     */
+    public function storeHasAProductPricedAt($productName, $price = 100, $channelCode = null)
+    {
+        $this->manager->persist($this->createProduct($productName, $price, $channelCode));
+        $this->manager->commit();
+    }
+
+    /**
+     * @param int $howMany
+     * @param TaxonCode $taxonCode
+     */
+    private function generateProductsInTaxon($howMany, TaxonCode $taxonCode)
+    {
+        for ($i = 0; $i < $howMany; $i++) {
+            $product = new Product();
+            $product->setMainTaxonCode($taxonCode);
+            $product->setCode(uniqid());
+            $this->manager->persist($product);
+        }
+
+        $this->manager->commit();
+    }
+
+    /**
+     * @param string $productName
+     * @param int $priceAmount
+     * @param string $channelCode
+     *
+     * @return Product
+     */
+    private function createProduct($productName, $priceAmount, $channelCode)
+    {
+        $price = new Price();
+        $price->setCurrency('USD');
+        $price->setAmount($priceAmount);
+
+        $product = new Product();
+        $product->setCode(uniqid());
+        $product->setPrice($price);
+        $product->setChannelCode($channelCode);
+        $product->setName($productName);
+
+        return $product;
     }
 }

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Exception;
+namespace Sylius\ElasticSearchPlugin\Exception;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class MissingQueryParameterException extends \RuntimeException
 {

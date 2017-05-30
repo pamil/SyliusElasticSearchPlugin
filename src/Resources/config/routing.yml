@@ -1,34 +1,6 @@
-lakion_elastic_search_shop_product_index:
-    path: /products
+sylius_shop_search:
+    path: /search
     methods: [GET]
     defaults:
-        _controller: lakion_sylius_elastic_search.controller.search:filterAction
-        _sylius:
-            template: "@LakionSyliusElasticSearch/Product/index.html.twig"
-            resource_class: "%sylius.model.product.class%"
-            filter_set: mug_type_and_stickers_set
-    requirements:
-        slug: .+
-
-lakion_elastic_search_shop_global_search:
-    path: /render-filter-set/{filterSetName}
-    methods: [GET]
-    defaults:
-        _controller: lakion_sylius_elastic_search.controller.search:renderFilterSetAction
-        _sylius:
-            template: "@LakionSyliusElasticSearch/Product/_globalSearch.html.twig"
-            resource_class: "%sylius.model.product.class%"
-    requirements:
-        slug: .+
-
-sylius_shop_product_index:
-    path: /taxons/{slug}
-    methods: [GET]
-    defaults:
-        _controller: lakion_sylius_elastic_search.controller.search:filterByTaxonAction
-        _sylius:
-            template: "@LakionSyliusElasticSearch/Product/indexByTaxon.html.twig"
-            resource_class: "%sylius.model.product.class%"
-            filter_set: mug_type_and_stickers_set
-    requirements:
-        slug: .+
+        _controller: sylius_elastic_search.controller.search
+        _format: json

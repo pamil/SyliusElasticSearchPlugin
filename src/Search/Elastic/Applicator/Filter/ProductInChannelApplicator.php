@@ -1,17 +1,17 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\Filter;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductInChannelFilter;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicator;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\BoolQuery;
+use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use ONGR\ElasticsearchDSL\Search;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
-final class ProductInChannelApplicator extends SearchCriteriaApplicator
+final class ProductInChannelApplicator implements SearchCriteriaApplicatorInterface
 {
     /**
      * @var QueryFactoryInterface
@@ -29,8 +29,19 @@ final class ProductInChannelApplicator extends SearchCriteriaApplicator
     /**
      * {@inheritdoc}
      */
-    public function applyProductInChannelFilter(ProductInChannelFilter $inChannelFilter, Search $search)
+    public function apply(Criteria $criteria, Search $search)
     {
-        $search->addFilter($this->productInChannelQueryFactory->create(['channel_code' => $inChannelFilter->getChannelCode()]), BoolQuery::MUST);
+        $search->addPostFilter($this->productInChannelQueryFactory->create($criteria->filtering()->fields()), BoolQuery::MUST);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function supports(Criteria $criteria)
+    {
+        return
+            array_key_exists('channel_code', $criteria->filtering()->fields()) &&
+            null !== $criteria->filtering()->fields()['channel_code']
+        ;
     }
 }

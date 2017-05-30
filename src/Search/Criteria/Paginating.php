@@ -1,14 +1,14 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Criteria;
+namespace Sylius\ElasticSearchPlugin\Search\Criteria;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class Paginating
 {
     const DEFAULT_CURRENT_PAGE = 1;
-    const DEFAULT_ITEMS_PER_PAGE = 10;
+    const DEFAULT_ITEMS_LIMIT = 10;
 
     /**
      * @var int
@@ -38,7 +38,7 @@ final class Paginating
 
         $this->itemsPerPage = (int) $itemsPerPage;
         if (0 >= $itemsPerPage) {
-            $this->itemsPerPage = self::DEFAULT_ITEMS_PER_PAGE;
+            $this->itemsPerPage = self::DEFAULT_ITEMS_LIMIT;
         }
 
         $this->offset = $this->currentPage * $this->itemsPerPage - $this->itemsPerPage;
@@ -52,7 +52,7 @@ final class Paginating
     public static function fromQueryParameters(array $parameters)
     {
         $currentPage = isset($parameters['page']) ? $parameters['page'] : self::DEFAULT_CURRENT_PAGE;
-        $itemsPerPage = isset($parameters['per_page']) ? $parameters['per_page'] : self::DEFAULT_ITEMS_PER_PAGE;
+        $itemsPerPage = isset($parameters['limit']) ? $parameters['limit'] : self::DEFAULT_ITEMS_LIMIT;
 
         return new self($currentPage, $itemsPerPage);
     }
@@ -60,7 +60,7 @@ final class Paginating
     /**
      * @return int
      */
-    public function getCurrentPage()
+    public function currentPage()
     {
         return $this->currentPage;
     }
@@ -68,7 +68,7 @@ final class Paginating
     /**
      * @return int
      */
-    public function getItemsPerPage()
+    public function itemsPerPage()
     {
         return $this->itemsPerPage;
     }
@@ -76,7 +76,7 @@ final class Paginating
     /**
      * @return int
      */
-    public function getOffset()
+    public function offset()
     {
         return $this->offset;
     }

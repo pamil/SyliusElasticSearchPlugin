@@ -1,42 +1,30 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
-namespace Tests\Lakion\SyliusElasticSearchBundle\Behat\Context\Hook;
+namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Hook;
 
 use Behat\Behat\Context\Context;
-use FOS\ElasticaBundle\Index\Resetter;
+use ONGR\ElasticsearchBundle\Service\Manager;
 
-/**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
- */
 final class ElasticSearchContext implements Context
 {
     /**
-     * @var Resetter
+     * @var Manager
      */
-    private $resetter;
+    private $manager;
 
     /**
-     * @param Resetter $resetter
+     * @param Manager $manager
      */
-    public function __construct(Resetter $resetter)
+    public function __construct(Manager $manager)
     {
-        $this->resetter = $resetter;
+        $this->manager = $manager;
     }
 
     /**
      * @BeforeScenario
      */
-    public function resetElasticSearch()
+    public function purge()
     {
-        $this->resetter->resetAllIndexes();
+        $this->manager->dropAndCreateIndex();
     }
 }

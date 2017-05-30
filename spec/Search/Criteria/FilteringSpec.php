@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Criteria;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Criteria;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -22,7 +22,7 @@ final class FilteringSpec extends ObjectBehavior
             'size' => 's',
         ]]);
 
-        $this->getFields()->shouldReturn(['option' => 'red', 'size' => 's',]);
+        $this->fields()->shouldReturn(['option' => 'red', 'size' => 's',]);
     }
 
     function it_removes_page_per_page_and_sort_attributes_from_query_parameters()
@@ -32,9 +32,9 @@ final class FilteringSpec extends ObjectBehavior
             'size' => 'm',
             'sort' => 'name',
             'page' => 10,
-            'per_page' => 50,
+            'limit' => 50,
         ]]);
 
-        $this->getFields()->shouldReturn(['option' => 'blue', 'size' => 'm',]);
+        $this->fields()->shouldReturn(['option' => 'blue', 'size' => 'm',]);
     }
 }

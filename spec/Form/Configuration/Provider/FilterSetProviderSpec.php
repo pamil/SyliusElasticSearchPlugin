@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Form\Configuration\Provider;
+namespace spec\Sylius\ElasticSearchPlugin\Form\Configuration\Provider;
 
-use Lakion\SyliusElasticSearchBundle\Exception\FilterSetConfigurationNotFoundException;
-use Lakion\SyliusElasticSearchBundle\Form\Configuration\FilterSet;
-use Lakion\SyliusElasticSearchBundle\Form\Configuration\Provider\FilterSetProvider;
-use Lakion\SyliusElasticSearchBundle\Form\Configuration\Provider\FilterSetProviderInterface;
+use Sylius\ElasticSearchPlugin\Exception\FilterSetConfigurationNotFoundException;
+use Sylius\ElasticSearchPlugin\Form\Configuration\FilterSet;
+use Sylius\ElasticSearchPlugin\Form\Configuration\Provider\FilterSetProvider;
+use Sylius\ElasticSearchPlugin\Form\Configuration\Provider\FilterSetProviderInterface;
 use PhpSpec\ObjectBehavior;
 
 /**

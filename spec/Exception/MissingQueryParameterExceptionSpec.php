@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Exception;
+namespace spec\Sylius\ElasticSearchPlugin\Exception;
 
-use Lakion\SyliusElasticSearchBundle\Exception\MissingQueryParameterException;
+use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 use PhpSpec\ObjectBehavior;
 
 /**

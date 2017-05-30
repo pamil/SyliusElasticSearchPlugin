@@ -1,3 +1,2 @@
 imports:
     - suites/shop/domain/product/searching_products.yml
-    - suites/shop/ui/product/searching_products.yml

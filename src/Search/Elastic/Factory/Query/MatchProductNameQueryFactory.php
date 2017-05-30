@@ -1,13 +1,13 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
-use Lakion\SyliusElasticSearchBundle\Exception\MissingQueryParameterException;
-use ONGR\ElasticsearchDSL\Query\MatchQuery;
-use ONGR\ElasticsearchDSL\Query\NestedQuery;
+use ONGR\ElasticsearchDSL\Query\FullText\MatchQuery;
+use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
+use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class MatchProductNameQueryFactory implements QueryFactoryInterface
 {
@@ -16,10 +16,10 @@ final class MatchProductNameQueryFactory implements QueryFactoryInterface
      */
     public function create(array $parameters = [])
     {
-        if (!isset($parameters['phrase']) || null == $parameters['phrase']) {
+        if (!isset($parameters['search']) || null == $parameters['search']) {
             throw new MissingQueryParameterException('search', get_class($this));
         }
 
-        return new NestedQuery('translations', new MatchQuery('translations.name', $parameters['phrase']));
+        return new MatchQuery('name', $parameters['search']);
     }
 }

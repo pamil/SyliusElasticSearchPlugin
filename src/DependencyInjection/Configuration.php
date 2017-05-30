@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\DependencyInjection;
+namespace Sylius\ElasticSearchPlugin\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class Configuration implements ConfigurationInterface
 {
@@ -26,7 +26,7 @@ final class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('lakion_sylius_elastic_search');
+        $rootNode = $treeBuilder->root('sylius_elastic_search');
 
         $this->buildFilterSetNode($rootNode);
 

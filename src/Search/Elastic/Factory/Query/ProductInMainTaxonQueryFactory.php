@@ -1,12 +1,12 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
-use Lakion\SyliusElasticSearchBundle\Exception\MissingQueryParameterException;
-use ONGR\ElasticsearchDSL\Query\TermQuery;
+use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
+use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class ProductInMainTaxonQueryFactory implements QueryFactoryInterface
 {
@@ -19,6 +19,6 @@ final class ProductInMainTaxonQueryFactory implements QueryFactoryInterface
             throw new MissingQueryParameterException('taxon_code', get_class($this));
         }
 
-        return new TermQuery('mainTaxon.code', strtolower($parameters['taxon_code']));
+        return new TermQuery('main_taxon_code.value', strtolower($parameters['taxon_code']));
     }
 }

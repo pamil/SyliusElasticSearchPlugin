@@ -11,14 +11,16 @@ final class AppKernel extends Kernel
     public function registerBundles()
     {
         return array_merge([
-            new \Lakion\SyliusElasticSearchBundle\LakionSyliusElasticSearchBundle(),
+            new \Sylius\ElasticSearchPlugin\SyliusElasticSearchPlugin(),
         ], parent::registerBundles(), [
             new \Sylius\Bundle\AdminBundle\SyliusAdminBundle(),
             new \Sylius\Bundle\ShopBundle\SyliusShopBundle(),
 
             new \FOS\OAuthServerBundle\FOSOAuthServerBundle(), // Required by SyliusAdminApiBundle
             new \Sylius\Bundle\AdminApiBundle\SyliusAdminApiBundle(),
-            new \FOS\ElasticaBundle\FOSElasticaBundle(),
+            new \ONGR\ElasticsearchBundle\ONGRElasticsearchBundle(),
+            new \SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle(),
+            new \SimpleBus\SymfonyBridge\SimpleBusEventBusBundle(),
         ]);
     }
 

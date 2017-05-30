@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\EmptyCriteriaQueryFactory;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\QueryFactoryInterface;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\EmptyCriteriaQueryFactory;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use PhpSpec\ObjectBehavior;
 

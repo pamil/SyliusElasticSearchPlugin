@@ -1,9 +1,9 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Criteria;
+namespace Sylius\ElasticSearchPlugin\Search\Criteria;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class Filtering
 {
@@ -30,7 +30,7 @@ final class Filtering
         $fields = $queryParameters;
 
         unset($fields['page']);
-        unset($fields['per_page']);
+        unset($fields['limit']);
         unset($fields['sort']);
 
         return new self($fields);
@@ -39,7 +39,7 @@ final class Filtering
     /**
      * @return array
      */
-    public function getFields()
+    public function fields()
     {
         return $this->fields;
     }

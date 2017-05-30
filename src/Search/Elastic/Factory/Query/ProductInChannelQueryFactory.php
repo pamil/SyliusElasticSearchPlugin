@@ -1,13 +1,13 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query;
 
-use Lakion\SyliusElasticSearchBundle\Exception\MissingQueryParameterException;
-use ONGR\ElasticsearchDSL\Query\NestedQuery;
-use ONGR\ElasticsearchDSL\Query\TermQuery;
+use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
+use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
+use Sylius\ElasticSearchPlugin\Exception\MissingQueryParameterException;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class ProductInChannelQueryFactory implements QueryFactoryInterface
 {
@@ -20,6 +20,6 @@ final class ProductInChannelQueryFactory implements QueryFactoryInterface
             throw new MissingQueryParameterException('channel_code', get_class($this));
         }
 
-        return new NestedQuery('channels', new TermQuery('channels.code', strtolower($parameters['channel_code'])));
+        return new TermQuery('channel_code', strtolower($parameters['channel_code']));
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\Sort;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Sort;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Ordering;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\Sort\SortByFieldApplicator;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Sort\SortFactoryInterface;
+use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Sort\SortByFieldApplicator;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort\SortFactoryInterface;
 use ONGR\ElasticsearchDSL\Search;
 use ONGR\ElasticsearchDSL\Sort\FieldSort;
 use PhpSpec\ObjectBehavior;
@@ -36,8 +36,8 @@ final class SortByFieldApplicatorSpec extends ObjectBehavior
         Search $search,
         FieldSort $fieldSort
     ) {
-        $criteria = Ordering::fromQueryParameters(['sort' => '-name']);
-        $sortByFieldSortFactory->create($criteria)->willReturn($fieldSort);
+        $criteria = Criteria::fromQueryParameters(Product::class, ['sort' => '-name']);
+        $sortByFieldSortFactory->create($criteria->ordering())->willReturn($fieldSort);
         $search->addSort($fieldSort)->shouldBeCalled();
 
         $this->apply($criteria, $search);

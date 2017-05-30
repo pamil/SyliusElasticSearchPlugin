@@ -1,18 +1,16 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\Sort;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Sort;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Ordering;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicator;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Sort\SortFactoryInterface;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort\SortFactoryInterface;
 use ONGR\ElasticsearchDSL\Search;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
-final class SortByFieldApplicator extends SearchCriteriaApplicator
+final class SortByFieldApplicator implements SearchCriteriaApplicatorInterface
 {
     /**
      * @var SortFactoryInterface
@@ -30,8 +28,16 @@ final class SortByFieldApplicator extends SearchCriteriaApplicator
     /**
      * {@inheritdoc}
      */
-    public function applyOrdering(Ordering $ordering, Search $search)
+    public function apply(Criteria $criteria, Search $search)
     {
-        $search->addSort($this->sortByFieldQueryFactory->create($ordering));
+        $search->addSort($this->sortByFieldQueryFactory->create($criteria->ordering()));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function supports(Criteria $criteria)
+    {
+        return null != $criteria->ordering()->field() && null != $criteria->ordering()->direction();
     }
 }

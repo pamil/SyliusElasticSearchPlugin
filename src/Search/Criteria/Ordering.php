@@ -1,9 +1,9 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Criteria;
+namespace Sylius\ElasticSearchPlugin\Search\Criteria;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class Ordering
 {
@@ -28,7 +28,7 @@ final class Ordering
      */
     private function __construct($field, $direction)
     {
-        $this->field = $field;
+        $this->field = $field.'.raw';
         $this->direction = $direction;
     }
 
@@ -53,7 +53,7 @@ final class Ordering
     /**
      * @return string
      */
-    public function getField()
+    public function field()
     {
         return $this->field;
     }
@@ -61,7 +61,7 @@ final class Ordering
     /**
      * @return string
      */
-    public function getDirection()
+    public function direction()
     {
         return $this->direction;
     }

@@ -9,29 +9,23 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Controller;
+namespace Sylius\ElasticSearchPlugin\Controller;
 
-use FOS\RestBundle\View\ConfigurableViewHandlerInterface;
 use FOS\RestBundle\View\View;
-use Lakion\SyliusElasticSearchBundle\Form\Type\FilterSetType;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductInChannelFilter;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductInTaxonFilter;
-use Lakion\SyliusElasticSearchBundle\Search\SearchEngineInterface;
-use Sylius\Component\Core\Context\ShopperContextInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
-use Symfony\Component\Form\FormFactoryInterface;
+use FOS\RestBundle\View\ViewHandlerInterface;
+use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 final class SearchController
 {
     /**
-     * @var ConfigurableViewHandlerInterface
+     * @var ViewHandlerInterface
      */
     private $restViewHandler;
 
@@ -41,39 +35,13 @@ final class SearchController
     private $searchEngine;
 
     /**
-     * @var FormFactoryInterface
-     */
-    private $formFactory;
-
-    /**
-     * @var TaxonRepositoryInterface
-     */
-    private $taxonRepository;
-
-    /**
-     * @var ShopperContextInterface
-     */
-    private $shopperContext;
-
-    /**
-     * @param ConfigurableViewHandlerInterface $restViewHandler
+     * @param ViewHandlerInterface $restViewHandler
      * @param SearchEngineInterface $searchEngine
-     * @param FormFactoryInterface $formFactory
-     * @param TaxonRepositoryInterface $taxonRepository
-     * @param ShopperContextInterface $shopperContext
      */
-    public function __construct(
-        ConfigurableViewHandlerInterface $restViewHandler,
-        SearchEngineInterface $searchEngine,
-        FormFactoryInterface $formFactory,
-        TaxonRepositoryInterface $taxonRepository,
-        ShopperContextInterface $shopperContext
-    ) {
+    public function __construct(ViewHandlerInterface $restViewHandler, SearchEngineInterface $searchEngine)
+    {
         $this->restViewHandler = $restViewHandler;
         $this->searchEngine = $searchEngine;
-        $this->formFactory = $formFactory;
-        $this->taxonRepository = $taxonRepository;
-        $this->shopperContext = $shopperContext;
     }
 
     /**
@@ -81,170 +49,19 @@ final class SearchController
      *
      * @return Response
      */
-    public function filterAction(Request $request)
+    public function __invoke(Request $request)
     {
-        $view = View::create();
-        if ($this->isHtmlRequest($request)) {
-            $view->setTemplate($this->getTemplateFromRequest($request));
+        $content = json_decode($request->getContent(), true);
+
+        if (null === $content) {
+            $content = $request->query->all();
         }
 
-        $form = $this->formFactory->create(
-            FilterSetType::class,
-            Criteria::fromQueryParameters(
-                $this->getResourceClassFromRequest($request),
-                [
-                    'per_page' => $request->get('per_page'),
-                    new ProductInChannelFilter($this->shopperContext->getChannel()->getCode())
-                ]
-            ),
-            ['filter_set' => $this->getFilterSetFromRequest($request)]
-        );
-        $form->handleRequest($request);
-
-        /** @var Criteria $criteria */
-        $criteria = $form->getData();
+        $criteria = Criteria::fromQueryParameters(Product::class, $content);
 
         $result = $this->searchEngine->match($criteria);
-        $partialResult = $result->getResults($criteria->getPaginating()->getOffset(), $criteria->getPaginating()->getItemsPerPage());
+        $page = $result->take($criteria->paginating()->offset(), $criteria->paginating()->itemsPerPage());
 
-        $view->setData([
-            'products' => $partialResult->toArray(),
-            'form' => $form->createView(),
-            'criteria' => $criteria,
-        ]);
-
-        return $this->restViewHandler->handle($view);
-    }
-
-    /**
-     * @param string $slug
-     * @param Request $request
-     *
-     * @return Response
-     */
-    public function filterByTaxonAction($slug, Request $request)
-    {
-        $view = View::create();
-        if ($this->isHtmlRequest($request)) {
-            $view->setTemplate($this->getTemplateFromRequest($request));
-        }
-        $locale = $this->shopperContext->getLocaleCode();
-        $taxon = $this->taxonRepository->findOneBySlug($slug, $locale);
-
-        $form = $this->formFactory->create(
-            FilterSetType::class,
-            Criteria::fromQueryParameters(
-                $this->getResourceClassFromRequest($request),
-                ['per_page' => $request->get('per_page')]
-            ),
-            ['filter_set' => $taxon->getCode()]
-        );
-        $form->handleRequest($request);
-
-        /** @var Criteria $criteria */
-        $criteria = $form->getData();
-        $criteria = Criteria::fromQueryParameters(
-            $criteria->getResourceAlias(),
-            array_merge($criteria->getFiltering()->getFields(), [
-                    new ProductInTaxonFilter($taxon->getCode()),
-                    new ProductInChannelFilter($this->shopperContext->getChannel()->getCode())
-                ]
-            )
-        );
-
-        $result = $this->searchEngine->match($criteria);
-        $partialResult = $result->getResults($criteria->getPaginating()->getOffset(), $criteria->getPaginating()->getItemsPerPage());
-
-        $view->setData([
-            'products' => $partialResult->toArray(),
-            'form' => $form->createView(),
-            'criteria' => $criteria,
-        ]);
-
-        return $this->restViewHandler->handle($view);
-    }
-
-    /**
-     * @param string $filterSetName
-     *
-     * @return Response
-     */
-    public function renderFilterSetAction(Request $request, $filterSetName)
-    {
-        $view = View::create();
-        $view->setTemplate($this->getTemplateFromRequest($request));
-        if (!$this->isHtmlRequest($request)) {
-            throw new HttpException(Response::HTTP_BAD_REQUEST);
-        }
-
-        $form = $this->formFactory->create(
-            FilterSetType::class,
-            null,
-            ['filter_set' => $filterSetName]
-        );
-
-        $view->setData([
-            'form' => $form->createView(),
-        ]);
-
-        return $this->restViewHandler->handle($view);
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return string
-     */
-    private function getTemplateFromRequest(Request $request)
-    {
-        $syliusAttributes = $request->attributes->get('_sylius');
-
-        if (!isset($syliusAttributes['template'])) {
-            throw new HttpException(Response::HTTP_BAD_REQUEST, 'You need to configure template in routing!');
-        }
-
-        return $syliusAttributes['template'];
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return string
-     */
-    private function getResourceClassFromRequest(Request $request)
-    {
-        $syliusAttributes = $request->attributes->get('_sylius');
-
-        if (!isset($syliusAttributes['resource_class'])) {
-            throw new HttpException(Response::HTTP_BAD_REQUEST, 'You need to configure resource class in routing!');
-        }
-
-        return $syliusAttributes['resource_class'];
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return bool
-     */
-    private function isHtmlRequest(Request $request)
-    {
-        return !$request->isXmlHttpRequest() && 'html' === $request->getRequestFormat();
-    }
-
-    /**
-     * @param Request $request
-     *
-     * @return string
-     */
-    private function getFilterSetFromRequest(Request $request)
-    {
-        $syliusAttributes = $request->attributes->get('_sylius');
-
-        if (!isset($syliusAttributes['filter_set'])) {
-            throw new HttpException(Response::HTTP_BAD_REQUEST, 'You need to configure filter set in routing!');
-        }
-
-        return $syliusAttributes['filter_set'];
+        return $this->restViewHandler->handle(View::create($page, Response::HTTP_OK));
     }
 }

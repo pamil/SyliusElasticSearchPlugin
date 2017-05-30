@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Sort;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Sort;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Ordering;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Ordering;
 use ONGR\ElasticsearchDSL\BuilderInterface;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 interface SortFactoryInterface
 {

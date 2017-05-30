@@ -1,19 +1,17 @@
 <?php
 
-namespace Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\Filter;
+namespace Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Filtering\ProductInTaxonFilter;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicator;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
-use Lakion\SyliusElasticSearchBundle\Search\Elastic\Factory\Query\QueryFactoryInterface;
-use ONGR\ElasticsearchDSL\Query\BoolQuery;
+use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
+use Sylius\ElasticSearchPlugin\Search\Elastic\Factory\Query\QueryFactoryInterface;
 use ONGR\ElasticsearchDSL\Search;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
-final class ProductInTaxonApplicator extends SearchCriteriaApplicator
+final class ProductInTaxonApplicator implements SearchCriteriaApplicatorInterface
 {
     /**
      * @var QueryFactoryInterface
@@ -21,28 +19,32 @@ final class ProductInTaxonApplicator extends SearchCriteriaApplicator
     private $productInMainTaxonQueryFactory;
 
     /**
-     * @var QueryFactoryInterface
-     */
-    private $productInProductTaxonsQueryFactory;
-
-    /**
      * @param QueryFactoryInterface $productInMainTaxonQueryFactory
-     * @param QueryFactoryInterface $productInProductTaxonsQueryFactory
      */
-    public function __construct(
-        QueryFactoryInterface $productInMainTaxonQueryFactory,
-        QueryFactoryInterface $productInProductTaxonsQueryFactory
-    ) {
+    public function __construct(QueryFactoryInterface $productInMainTaxonQueryFactory)
+    {
         $this->productInMainTaxonQueryFactory = $productInMainTaxonQueryFactory;
-        $this->productInProductTaxonsQueryFactory = $productInProductTaxonsQueryFactory;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function applyProductInTaxonFilter(ProductInTaxonFilter $inTaxonFilter, Search $search)
+    public function apply(Criteria $criteria, Search $search)
     {
-        $search->addFilter($this->productInMainTaxonQueryFactory->create(['taxon_code' => $inTaxonFilter->getTaxonCode()]), BoolQuery::SHOULD);
-        $search->addFilter($this->productInProductTaxonsQueryFactory->create(['taxon_code' => $inTaxonFilter->getTaxonCode()]), BoolQuery::SHOULD);
+        $search->addPostFilter($this->productInMainTaxonQueryFactory->create(
+            $criteria->filtering()->fields()),
+            BoolQuery::SHOULD
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function supports(Criteria $criteria)
+    {
+        return
+            array_key_exists('taxon_code', $criteria->filtering()->fields()) &&
+            null != $criteria->filtering()->fields()['taxon_code']
+        ;
     }
 }

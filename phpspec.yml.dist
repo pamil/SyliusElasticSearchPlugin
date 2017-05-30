@@ -1,4 +1,4 @@
 suites:
     default:
-        namespace: Lakion\SyliusElasticSearchBundle
-        psr4_prefix: Lakion\SyliusElasticSearchBundle
+        namespace: Sylius\ElasticSearchPlugin
+        psr4_prefix: Sylius\ElasticSearchPlugin

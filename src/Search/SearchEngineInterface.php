@@ -9,20 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace Lakion\SyliusElasticSearchBundle\Search;
+namespace Sylius\ElasticSearchPlugin\Search;
 
-use FOS\ElasticaBundle\Paginator\PaginatorAdapterInterface;
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Criteria;
+use ONGR\ElasticsearchBundle\Result\DocumentIterator;
+use Porpaginas\Result;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 
 /**
- * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
+ * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
  */
 interface SearchEngineInterface
 {
     /**
      * @param Criteria $criteria
      *
-     * @return PaginatorAdapterInterface
+     * @return Result
      */
     public function match(Criteria $criteria);
 }

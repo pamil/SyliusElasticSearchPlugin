@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Tests\Lakion\SyliusElasticSearchBundle\DependencyInjection\Compiler;
+namespace Tests\Sylius\ElasticSearchPlugin\DependencyInjection\Compiler;
 
-use Lakion\SyliusElasticSearchBundle\DependencyInjection\Compiler\RegisterSearchCriteriaApplicatorPass;
+use Sylius\ElasticSearchPlugin\DependencyInjection\Compiler\RegisterSearchCriteriaApplicatorPass;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractCompilerPassTestCase;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\DefinitionHasMethodCallConstraint;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -28,20 +28,19 @@ final class RegisterSearchCriteriaApplicatorPassTest extends AbstractCompilerPas
      */
     public function it_collects_tagged_search_criteria_applicators()
     {
-        $this->setDefinition('lakion_sylius_elastic_search.search.elastic_engine', new Definition());
+        $this->setDefinition('sylius_elastic_search.search.elastic_engine', new Definition());
         $this->setDefinition(
-            'lakion_sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes',
-            (new Definition(\stdClass::class))->addTag('search_criteria_applicator', ['applies' => 'productHasOption'])
+            'sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes',
+            (new Definition(\stdClass::class))->addTag('search_criteria_applicator')
         );
 
         $this->compile();
 
         $this->assertContainerBuilderHasServiceDefinitionWithMethodCall(
-            'lakion_sylius_elastic_search.search.elastic_engine',
+            'sylius_elastic_search.search.elastic_engine',
             'addSearchCriteriaApplicator',
             [
-                new Reference('lakion_sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes'),
-                'productHasOption'
+                new Reference('sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes')
             ]
         );
     }
@@ -53,22 +52,7 @@ final class RegisterSearchCriteriaApplicatorPassTest extends AbstractCompilerPas
     {
         $this->compile();
 
-        $this->assertContainerBuilderNotHasService('lakion_sylius_elastic_search.search.elastic_engine');
-    }
-
-    /**
-     * @test
-     */
-    public function tagged_applicators_must_have_applies_attribute_configured()
-    {
-        $this->setDefinition('lakion_sylius_elastic_search.search.elastic_engine', new Definition());
-        $this->setDefinition(
-            'lakion_sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes',
-            (new Definition(\stdClass::class))->addTag('search_criteria_applicator')
-        );
-
-        $this->expectException(\InvalidArgumentException::class);
-        $this->compile();
+        $this->assertContainerBuilderNotHasService('sylius_elastic_search.search.elastic_engine');
     }
 
     /**
@@ -76,18 +60,18 @@ final class RegisterSearchCriteriaApplicatorPassTest extends AbstractCompilerPas
      */
     public function it_does_nothing_if_there_is_no_tagged_applicators()
     {
-        $this->setDefinition('lakion_sylius_elastic_search.search.elastic_engine', new Definition());
+        $this->setDefinition('sylius_elastic_search.search.elastic_engine', new Definition());
         $this->setDefinition(
-            'lakion_sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes',
+            'sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes',
             new Definition(\stdClass::class)
         );
 
         $this->compile();
 
         $this->assertContainerBuilderNotHasServiceDefinitionWithMethodCall(
-            'lakion_sylius_elastic_search.search.elastic_engine',
+            'sylius_elastic_search.search.elastic_engine',
             'addSearchCriteriaApplicator',
-            [new Reference('lakion_sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes')]
+            [new Reference('sylius_elastic_search.search_criteria_applicator.product_has_multiple_option_codes')]
         );
     }
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace spec\Lakion\SyliusElasticSearchBundle\Search\Criteria;
+namespace spec\Sylius\ElasticSearchPlugin\Search\Criteria;
 
-use Lakion\SyliusElasticSearchBundle\Search\Criteria\Ordering;
+use Sylius\ElasticSearchPlugin\Search\Criteria\Ordering;
 use PhpSpec\ObjectBehavior;
 
 /**
@@ -21,8 +21,8 @@ final class OrderingSpec extends ObjectBehavior
             'sort' => 'code',
         ]]);
 
-        $this->getField()->shouldReturn('code');
-        $this->getDirection()->shouldReturn('asc');
+        $this->field()->shouldReturn('code.raw');
+        $this->direction()->shouldReturn('asc');
     }
 
     function it_can_be_created_from_query_parameters()
@@ -31,7 +31,7 @@ final class OrderingSpec extends ObjectBehavior
             'sort' => '-code',
         ]]);
 
-        $this->getField()->shouldReturn('code');
-        $this->getDirection()->shouldReturn('desc');
+        $this->field()->shouldReturn('code.raw');
+        $this->direction()->shouldReturn('desc');
     }
 }
