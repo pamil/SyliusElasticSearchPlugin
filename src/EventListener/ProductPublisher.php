@@ -5,6 +5,7 @@ namespace Sylius\ElasticSearchPlugin\EventListener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use SimpleBus\Message\Bus\MessageBus;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 
 final class ProductPublisher
@@ -27,11 +28,11 @@ final class ProductPublisher
      */
     public function postPersist(LifecycleEventArgs $event)
     {
+        /** @var ProductInterface $product */
         $product = $event->getEntity();
-        if ($product instanceof ProductInterface) {
-            if ($product->isSimple()) {
-                $this->eventBus->handle(ProductCreated::occur($product));
-            }
+
+        if ($product instanceof ProductInterface && $product->isSimple()) {
+            $this->eventBus->handle(ProductCreated::occur($product));
         }
     }
 }
