@@ -2,7 +2,6 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Document;
 
-use ONGR\ElasticsearchBundle\Collection\Collection;
 use Sylius\ElasticSearchPlugin\Document\Attribute;
 use PhpSpec\ObjectBehavior;
 
