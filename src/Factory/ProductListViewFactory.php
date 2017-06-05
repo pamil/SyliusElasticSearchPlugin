@@ -7,9 +7,12 @@ namespace Sylius\ElasticSearchPlugin\Factory;
 use Porpaginas\Arrays\ArrayResult;
 use Porpaginas\Result;
 use Sylius\ElasticSearchPlugin\Controller\PriceView;
+use Sylius\ElasticSearchPlugin\Controller\ProductAttributeView;
 use Sylius\ElasticSearchPlugin\Controller\ProductListItemView;
 use Sylius\ElasticSearchPlugin\Controller\ProductListView;
 use Sylius\ElasticSearchPlugin\Controller\ProductVariantItemView;
+use Sylius\ElasticSearchPlugin\Controller\TaxonItemView;
+use Sylius\ElasticSearchPlugin\Document\AttributeValue;
 use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Paginating;
 
@@ -55,7 +58,24 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
             $productListItemView->channelCode = $this->provideAttribute('channel_code', $item, null);
             $productListItemView->mainTaxon = $this->provideAttribute('main_taxon', $item, null);
 
-            $productListItemView->attributes = $this->provideAttribute('attribute_values', $item, []);
+            $productAttributeValues = $this->provideAttribute('attribute_values', $item, []);
+
+            $productListItemView->attributes = array_map(function ($attributeValue) {
+                $productAttributeView = new ProductAttributeView();
+                $productAttributeView->value = $this->provideAttribute('value', $attributeValue, null);
+                $productAttributeView->code = $this->provideAttribute(
+                    'code',
+                    $this->provideAttribute('attribute', $attributeValue, []),
+                    null
+                );
+                $productAttributeView->name = $this->provideAttribute(
+                    'name',
+                    $this->provideAttribute('attribute', $attributeValue, []),
+                    null
+                );
+
+                return $productAttributeView;
+            }, $productAttributeValues);
 
             $priceView = new PriceView();
             $priceView->current = $this->provideAttribute(
