@@ -5,7 +5,6 @@ namespace spec\Sylius\ElasticSearchPlugin\Document;
 use Sylius\ElasticSearchPlugin\Document\Attribute;
 use Sylius\ElasticSearchPlugin\Document\AttributeValue;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 final class AttributeValueSpec extends ObjectBehavior
 {
@@ -27,12 +26,5 @@ final class AttributeValueSpec extends ObjectBehavior
         $this->setAttribute($attribute);
 
         $this->getAttribute()->shouldReturn($attribute);
-    }
-
-    function it_has_code()
-    {
-        $this->setCode('red');
-
-        $this->getCode()->shouldReturn('red');
     }
 }

@@ -1,0 +1,175 @@
+{
+    "page": 1,
+    "limit": 10,
+    "total": 4,
+    "pages": 1,
+    "items": [
+        {
+            "code": "LOGAN_MUG_CODE",
+            "name": "Logan Becher",
+            "slug": "logan-becher",
+            "taxons": [
+                {
+                    "code": "MUG",
+                    "slug": "mugs",
+                    "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                }
+            ],
+            "variants": [
+                {
+                    "code": "LOGAN_MUG_CODE",
+                    "name": "Logan Becher",
+                    "price": {
+                        "current": 1999,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [
+                {
+                    "value": "FEIERTAGSKOLLEKTION",
+                    "attribute": {
+                        "code": "MUG_COLLECTION_CODE",
+                        "name": "Mug collection"
+                    }
+                },
+                {
+                    "value": "Holz",
+                    "attribute": {
+                        "code": "MUG_MATERIAL_CODE",
+                        "name": "Mug material"
+                    }
+                }
+            ],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "de_DE",
+            "mainTaxon": {
+                "code": "MUG",
+                "slug": "mugs",
+                "images": [],
+                "description": "@string@"
+            }
+        },
+        {
+            "code": "LOGAN_MUG_CODE",
+            "name": "Logan Mug",
+            "slug": "logan-mug",
+            "taxons": [
+                {
+                    "code": "MUG",
+                    "slug": "mugs",
+                    "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                }
+            ],
+            "variants": [
+                {
+                    "code": "LOGAN_MUG_CODE",
+                    "name": "Logan Mug",
+                    "price": {
+                        "current": 1999,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [
+                {
+                    "value": "HOLIDAY COLLECTION",
+                    "attribute": {
+                        "code": "MUG_COLLECTION_CODE",
+                        "name": "Mug collection"
+                    }
+                },
+                {
+                    "value": "Wood",
+                    "attribute": {
+                        "code": "MUG_MATERIAL_CODE",
+                        "name": "Mug material"
+                    }
+                }
+            ],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB",
+            "mainTaxon": {
+                "code": "MUG",
+                "slug": "mugs",
+                "images": [],
+                "description": "@string@"
+            }
+        },
+        {
+            "code": "LOGAN_T_SHIRT_CODE",
+            "name": "Logan T-Shirt",
+            "slug": "logan-t-shirt",
+            "taxons": [
+                {
+                    "code": "T_SHIRTS",
+                    "slug": "t-shirts",
+                    "position": 2,
+                    "images": [],
+                    "description": "@string@"
+                }
+            ],
+            "variants": [
+                {
+                    "code": "LOGAN_T_SHIRT_CODE",
+                    "name": "Logan T-Shirt",
+                    "price": {
+                        "current": 1999,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB",
+            "mainTaxon": {
+                "code": "T_SHIRTS",
+                "slug": "t-shirts",
+                "images": [],
+                "description": "@string@"
+            }
+        },
+        {
+            "code": "LOGAN_T_SHIRT_CODE",
+            "taxons": [
+                {
+                    "code": "T_SHIRTS",
+                    "slug": "t-shirts",
+                    "position": 2,
+                    "images": [],
+                    "description": "@string@"
+                }
+            ],
+            "variants": [
+                {
+                    "code": "LOGAN_T_SHIRT_CODE",
+                    "price": {
+                        "current": 1999,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "de_DE",
+            "mainTaxon": {
+                "code": "T_SHIRTS",
+                "slug": "t-shirts",
+                "images": [],
+                "description": "@string@"
+            }
+        }
+    ]
+}

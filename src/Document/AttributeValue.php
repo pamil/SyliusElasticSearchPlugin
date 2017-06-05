@@ -12,13 +12,6 @@ final class AttributeValue
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="keyword")
-     */
-    private $code;
-
-    /**
-     * @var string
-     *
      * @ElasticSearch\Property(type="text")
      */
     private $value;
@@ -29,22 +22,6 @@ final class AttributeValue
      * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Attribute")
      */
     private $attribute;
-
-    /**
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param string $code
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-    }
 
     /**
      * @return string
