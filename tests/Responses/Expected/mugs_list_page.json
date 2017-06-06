@@ -31,17 +31,13 @@
             "attributes": [
                 {
                     "value": "FEIERTAGSKOLLEKTION",
-                    "attribute": {
-                        "code": "MUG_COLLECTION_CODE",
-                        "name": "Mug collection"
-                    }
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection"
                 },
                 {
                     "value": "Holz",
-                    "attribute": {
-                        "code": "MUG_MATERIAL_CODE",
-                        "name": "Mug material"
-                    }
+                    "code": "MUG_MATERIAL_CODE",
+                    "name": "Mug material"
                 }
             ],
             "images": [],
@@ -81,17 +77,13 @@
             "attributes": [
                 {
                     "value": "HOLIDAY COLLECTION",
-                    "attribute": {
-                        "code": "MUG_COLLECTION_CODE",
-                        "name": "Mug collection"
-                    }
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection"
                 },
                 {
                     "value": "Wood",
-                    "attribute": {
-                        "code": "MUG_MATERIAL_CODE",
-                        "name": "Mug material"
-                    }
+                    "code": "MUG_MATERIAL_CODE",
+                    "name": "Mug material"
                 }
             ],
             "images": [],
