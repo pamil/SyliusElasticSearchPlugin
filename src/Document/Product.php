@@ -8,7 +8,7 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 /**
  * @ElasticSearch\Document(type="product")
  */
-final class Product
+class Product
 {
     /**
      * @var string
