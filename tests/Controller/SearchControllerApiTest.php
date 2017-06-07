@@ -26,6 +26,20 @@ final class SearchControllerApiTest extends JsonApiTestCase
     /**
      * @test
      */
+    public function it_respects_product_updates_on_paginated_product_list()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', [], [], ['ACCEPT' => 'application/json'], '{}');
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'product_list_page', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
     public function it_shows_paginated_product_list_by_mugs()
     {
         $this->loadFixturesFromFile('shop.yml');

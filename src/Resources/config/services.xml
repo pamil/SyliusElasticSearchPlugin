@@ -13,7 +13,13 @@
     </imports>
     <services>
         <service id="sylius_elastic_search.form_registry.filters" class="Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry" />
-        <service id="sylius_elastic_search.event_listener" class="Sylius\ElasticSearchPlugin\EventListener\ProductPublisher">
+
+        <service id="sylius_elastic_search.event_listener.product_created_publisher" class="Sylius\ElasticSearchPlugin\EventListener\ProductCreatedPublisher">
+            <argument type="service" id="event_bus" />
+            <tag name="doctrine.event_listener" event="onFlush"/>
+        </service>
+
+        <service id="sylius_elastic_search.event_listener.product_updated_publisher" class="Sylius\ElasticSearchPlugin\EventListener\ProductUpdatedPublisher">
             <argument type="service" id="event_bus" />
             <tag name="doctrine.event_listener" event="onFlush"/>
         </service>

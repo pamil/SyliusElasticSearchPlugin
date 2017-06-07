@@ -4,18 +4,18 @@ namespace Tests\Sylius\ElasticSearchPlugin;
 
 use Prophecy\Prophecy\ObjectProphecy;
 use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\ElasticSearchPlugin\Event\ProductCreated;
+use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
 
-final class ProductCreatedTest extends \PHPUnit_Framework_TestCase
+final class ProductUpdatedTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test
      */
-    function it_is_immutable_fact_of_product_creation()
+    function it_is_immutable_fact_of_product_updation()
     {
         /** @var ProductInterface|ObjectProphecy $product */
         $product = $this->prophesize(ProductInterface::class);
-        $event = ProductCreated::occur($product->reveal());
+        $event = ProductUpdated::occur($product->reveal());
 
         $this->assertEquals($product->reveal(), $event->product());
     }

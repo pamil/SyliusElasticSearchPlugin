@@ -7,8 +7,9 @@ use Doctrine\ORM\Event\PostFlushEventArgs;
 use SimpleBus\Message\Bus\MessageBus;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
+use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
 
-final class ProductPublisher
+final class ProductCreatedPublisher
 {
     /**
      * @var MessageBus
