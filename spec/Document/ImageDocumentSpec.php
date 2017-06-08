@@ -2,14 +2,14 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Document;
 
-use Sylius\ElasticSearchPlugin\Document\Image;
+use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use PhpSpec\ObjectBehavior;
 
-final class ImageSpec extends ObjectBehavior
+final class ImageDocumentSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(Image::class);
+        $this->shouldHaveType(ImageDocument::class);
     }
 
     function it_has_code()

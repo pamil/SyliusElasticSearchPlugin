@@ -7,7 +7,7 @@ use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
 /**
  * @ElasticSearch\Object
  */
-final class Image
+final class ImageDocument
 {
     /**
      * @var string

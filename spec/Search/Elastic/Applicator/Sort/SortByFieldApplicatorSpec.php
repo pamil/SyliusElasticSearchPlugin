@@ -2,7 +2,7 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Sort;
 
-use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Sort\SortByFieldApplicator;
@@ -36,7 +36,7 @@ final class SortByFieldApplicatorSpec extends ObjectBehavior
         Search $search,
         FieldSort $fieldSort
     ) {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['sort' => '-name']);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['sort' => '-name']);
         $sortByFieldSortFactory->create($criteria->ordering())->willReturn($fieldSort);
         $search->addSort($fieldSort)->shouldBeCalled();
 

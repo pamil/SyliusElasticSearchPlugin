@@ -5,7 +5,7 @@ namespace Sylius\ElasticSearchPlugin\Projection;
 use ONGR\ElasticsearchBundle\Service\Manager;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
-use Sylius\ElasticSearchPlugin\Factory\ProductFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
 
 final class ProductProjector
 {
@@ -15,15 +15,15 @@ final class ProductProjector
     private $manager;
 
     /**
-     * @var ProductFactoryInterface
+     * @var ProductDocumentFactoryInterface
      */
     private $productDocumentFactory;
 
     /**
      * @param Manager $manager
-     * @param ProductFactoryInterface $productDocumentFactory
+     * @param ProductDocumentFactoryInterface $productDocumentFactory
      */
-    public function __construct(Manager $manager, ProductFactoryInterface $productDocumentFactory)
+    public function __construct(Manager $manager, ProductDocumentFactoryInterface $productDocumentFactory)
     {
         $this->manager = $manager;
         $this->productDocumentFactory = $productDocumentFactory;

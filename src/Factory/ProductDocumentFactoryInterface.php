@@ -5,21 +5,16 @@ namespace Sylius\ElasticSearchPlugin\Factory;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
-use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 
-interface ProductFactoryInterface
+interface ProductDocumentFactoryInterface
 {
-    /**
-     * @return Product
-     */
-    public function create();
-
     /**
      * @param ProductInterface $product
      * @param LocaleInterface $locale
      * @param ChannelInterface $channel
      *
-     * @return Product
+     * @return ProductDocument
      */
     public function createFromSyliusSimpleProductModel(
         ProductInterface $product,

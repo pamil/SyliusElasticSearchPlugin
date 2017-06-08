@@ -7,7 +7,7 @@ use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
 /**
  * @ElasticSearch\Object
  */
-final class AttributeValue
+final class AttributeValueDocument
 {
     /**
      * @var string
@@ -17,9 +17,9 @@ final class AttributeValue
     private $value;
 
     /**
-     * @var Attribute
+     * @var AttributeDocument
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Attribute")
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:AttributeDocument")
      */
     private $attribute;
 
@@ -40,7 +40,7 @@ final class AttributeValue
     }
 
     /**
-     * @return Attribute
+     * @return AttributeDocument
      */
     public function getAttribute()
     {
@@ -48,9 +48,9 @@ final class AttributeValue
     }
 
     /**
-     * @param Attribute $attribute
+     * @param AttributeDocument $attribute
      */
-    public function setAttribute(Attribute $attribute)
+    public function setAttribute(AttributeDocument $attribute)
     {
         $this->attribute = $attribute;
     }

@@ -7,7 +7,7 @@ use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
 /**
  * @ElasticSearch\Object
  */
-final class Attribute
+final class AttributeDocument
 {
     /**
      * @var string

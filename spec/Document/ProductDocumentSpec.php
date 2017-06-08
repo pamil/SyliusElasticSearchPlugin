@@ -3,16 +3,16 @@
 namespace spec\Sylius\ElasticSearchPlugin\Document;
 
 use ONGR\ElasticsearchBundle\Collection\Collection;
-use Sylius\ElasticSearchPlugin\Document\Price;
-use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\PriceDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use PhpSpec\ObjectBehavior;
-use Sylius\ElasticSearchPlugin\Document\Taxon;
+use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
-final class ProductSpec extends ObjectBehavior
+final class ProductDocumentSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(Product::class);
+        $this->shouldHaveType(ProductDocument::class);
     }
 
     function it_has_code()
@@ -52,7 +52,7 @@ final class ProductSpec extends ObjectBehavior
 
     function it_has_price()
     {
-        $price = new Price();
+        $price = new PriceDocument();
         $this->setPrice($price);
 
         $this->getPrice()->shouldReturn($price);
@@ -60,7 +60,7 @@ final class ProductSpec extends ObjectBehavior
 
     function it_has_main_taxon()
     {
-        $taxon = new Taxon();
+        $taxon = new TaxonDocument();
         $this->setMainTaxon($taxon);
 
         $this->getMainTaxon()->shouldReturn($taxon);

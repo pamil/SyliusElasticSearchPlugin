@@ -10,30 +10,22 @@ use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
-use Sylius\ElasticSearchPlugin\Document\Attribute;
-use Sylius\ElasticSearchPlugin\Document\AttributeValue;
-use Sylius\ElasticSearchPlugin\Document\Image;
-use Sylius\ElasticSearchPlugin\Document\Price;
-use Sylius\ElasticSearchPlugin\Document\Product;
-use Sylius\ElasticSearchPlugin\Document\Taxon;
+use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
+use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
+use Sylius\ElasticSearchPlugin\Document\ImageDocument;
+use Sylius\ElasticSearchPlugin\Document\PriceDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
 
-final class ProductFactory implements ProductFactoryInterface
+final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 {
-    /**
-     * @return Product
-     */
-    public function create()
-    {
-        return new Product();
-    }
-
     /**
      * @param ProductInterface $syliusProduct
      * @param LocaleInterface $locale
      * @param ChannelInterface $channel
      *
-     * @return Product
+     * @return ProductDocument
      */
     public function createFromSyliusSimpleProductModel(ProductInterface $syliusProduct, LocaleInterface $locale, ChannelInterface $channel)
     {
@@ -59,9 +51,9 @@ final class ProductFactory implements ProductFactoryInterface
         );
         $syliusProductTaxons = $syliusProduct->getProductTaxons();
 
-        $product = new Product();
-        $price = new Price();
-        $taxon = new Taxon();
+        $product = new ProductDocument();
+        $price = new PriceDocument();
+        $taxon = new TaxonDocument();
         $taxon->setCode($syliusProduct->getMainTaxon()->getCode());
         $taxon->setSlug($syliusProduct->getMainTaxon()->getSlug());
         $taxon->setDescription($syliusProduct->getMainTaxon()->getDescription());
@@ -82,7 +74,7 @@ final class ProductFactory implements ProductFactoryInterface
         $productImages = [];
         $syliusProductImages = $syliusProduct->getImages();
         foreach ($syliusProductImages as $syliusProductImage) {
-            $productImage = new Image();
+            $productImage = new ImageDocument();
             $productImage->setPath($syliusProductImage->getPath());
             $productImage->setCode($syliusProductImage->getType());
             $productImages[] = $productImage;
@@ -91,7 +83,7 @@ final class ProductFactory implements ProductFactoryInterface
 
         $productTaxons = [];
         foreach ($syliusProductTaxons as $syliusProductTaxon) {
-            $productTaxon = new Taxon();
+            $productTaxon = new TaxonDocument();
             $productTaxon->setCode($syliusProductTaxon->getTaxon()->getCode());
             $productTaxon->setSlug($syliusProductTaxon->getTaxon()->getSlug());
             $productTaxon->setPosition($syliusProductTaxon->getTaxon()->getPosition());
@@ -100,7 +92,7 @@ final class ProductFactory implements ProductFactoryInterface
             $productTaxonImages = [];
             $syliusTaxonImages = $syliusProductTaxon->getTaxon()->getImages();
             foreach ($syliusTaxonImages as $syliusTaxonImage) {
-                $productTaxonImage = new Image();
+                $productTaxonImage = new ImageDocument();
                 $productTaxonImage->setPath($syliusTaxonImage->getPath());
                 $productTaxonImage->setCode($syliusTaxonImage->getType());
                 $productTaxonImages[] = $productTaxonImage;
@@ -113,10 +105,10 @@ final class ProductFactory implements ProductFactoryInterface
 
         $productAttributeValues = [];
         foreach ($syliusProductAttributes as $syliusProductAttributeValue) {
-            $productAttributeValue = new AttributeValue();
+            $productAttributeValue = new AttributeValueDocument();
             $productAttributeValue->setValue($syliusProductAttributeValue->getValue());
 
-            $attribute = new Attribute();
+            $attribute = new AttributeDocument();
             $attribute->setCode($syliusProductAttributeValue->getAttribute()->getCode());
             $attribute->setName($syliusProductAttributeValue->getAttribute()->getName());
             $productAttributeValue->setAttribute($attribute);

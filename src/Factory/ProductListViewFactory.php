@@ -11,8 +11,6 @@ use Sylius\ElasticSearchPlugin\Controller\ProductAttributeView;
 use Sylius\ElasticSearchPlugin\Controller\ProductListItemView;
 use Sylius\ElasticSearchPlugin\Controller\ProductListView;
 use Sylius\ElasticSearchPlugin\Controller\ProductVariantItemView;
-use Sylius\ElasticSearchPlugin\Controller\TaxonItemView;
-use Sylius\ElasticSearchPlugin\Document\AttributeValue;
 use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Paginating;
 

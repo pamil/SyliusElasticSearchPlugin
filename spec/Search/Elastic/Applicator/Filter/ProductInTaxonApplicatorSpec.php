@@ -4,7 +4,7 @@ namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter;
 
 use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
 use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
-use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInTaxonFilter;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Filter\ProductInTaxonApplicator;
@@ -38,7 +38,7 @@ final class ProductInTaxonApplicatorSpec extends ObjectBehavior
         TermQuery $termQuery,
         Search $search
     ) {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['taxon_code' => 'mugs']);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['taxon_code' => 'mugs']);
 
         $productInMainTaxon->create($criteria->filtering()->fields())->willReturn($termQuery);
 
@@ -49,10 +49,10 @@ final class ProductInTaxonApplicatorSpec extends ObjectBehavior
 
     function it_supports_taxon_code_paramter()
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['taxon_code' => 'mugs']);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['taxon_code' => 'mugs']);
         $this->supports($criteria)->shouldReturn(true);
 
-        $criteria = Criteria::fromQueryParameters(Product::class, []);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, []);
         $this->supports($criteria)->shouldReturn(false);
     }
 }
