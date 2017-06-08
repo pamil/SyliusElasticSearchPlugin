@@ -13,7 +13,7 @@ namespace Sylius\ElasticSearchPlugin\Controller;
 
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
-use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Factory\ProductListViewFactoryInterface;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
@@ -65,7 +65,7 @@ final class SearchController
             $content = $request->query->all();
         }
 
-        $criteria = Criteria::fromQueryParameters(Product::class, $content);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, $content);
 
         $result = $this->searchEngine->match($criteria);
 

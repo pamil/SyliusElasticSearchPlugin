@@ -15,7 +15,7 @@ use Behat\Behat\Context\Context;
 use ONGR\ElasticsearchBundle\Result\DocumentIterator;
 use Porpaginas\Page;
 use Porpaginas\Result;
-use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductHasOptionCodesFilter;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Filtering\ProductInChannelFilter;
@@ -53,7 +53,7 @@ final class ProductContext implements Context
      */
     public function iFilterThemByPriceBetweenAnd($graterThan, $lessThan)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['product_price_range' => ['grater_than' => $graterThan, 'less_than' => $lessThan]]);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['product_price_range' => ['grater_than' => $graterThan, 'less_than' => $lessThan]]);
         $this->match($criteria);
     }
 
@@ -62,7 +62,7 @@ final class ProductContext implements Context
      */
     public function iViewTheListOfTheProductsWithoutFiltering()
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, []);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, []);
         $this->match($criteria);
     }
 
@@ -71,7 +71,7 @@ final class ProductContext implements Context
      */
     public function iFilterThemByChannel($channelCode)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['channel_code' => $channelCode]);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['channel_code' => $channelCode]);
         $this->match($criteria);
     }
 
@@ -80,7 +80,7 @@ final class ProductContext implements Context
      */
     public function iFilterThemByChannelAndPriceBetweenAnd($channelCode, $graterThan, $lessThan)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, [
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, [
             'channel_code' => $channelCode,
             'product_price_range' => ['grater_than' => $graterThan, 'less_than' => $lessThan],
         ]);
@@ -93,7 +93,7 @@ final class ProductContext implements Context
      */
     public function iFilterThemByTaxon($taxonCode)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['taxon_code' => $taxonCode]);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['taxon_code' => $taxonCode]);
         $this->match($criteria);
     }
 
@@ -106,7 +106,7 @@ final class ProductContext implements Context
             $field = '-' . $field;
         }
 
-        $criteria = Criteria::fromQueryParameters(Product::class, ['sort' => $field]);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['sort' => $field]);
         $this->match($criteria);
     }
 
@@ -115,7 +115,7 @@ final class ProductContext implements Context
      */
     public function iSearchForProductsWithName($name)
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['search' => $name]);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['search' => $name]);
         $this->match($criteria);
     }
 
@@ -140,7 +140,7 @@ final class ProductContext implements Context
 
         /**
          * @var int $position
-         * @var Product $product
+         * @var ProductDocument $product
          */
         foreach ($searchResult as $position => $product) {
             if ($product['name'] !== $productNames[$position]) {
@@ -167,7 +167,7 @@ final class ProductContext implements Context
         /** @var Result $searchResult */
         $searchResult = $this->sharedStorage->get('search_result');
 
-        /** @var Product $product */
+        /** @var ProductDocument $product */
         foreach ($searchResult as $product) {
             Assert::oneOf($product['name'], $expectedProductNames);
         }

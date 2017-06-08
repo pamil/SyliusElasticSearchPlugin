@@ -14,9 +14,9 @@ namespace Tests\Sylius\ElasticSearchPlugin\Behat\Context\Setup;
 use Behat\Behat\Context\Context;
 use Doctrine\ORM\Id\UuidGenerator;
 use ONGR\ElasticsearchBundle\Service\Manager;
-use Sylius\ElasticSearchPlugin\Document\Price;
-use Sylius\ElasticSearchPlugin\Document\Product;
-use Sylius\ElasticSearchPlugin\Document\Taxon;
+use Sylius\ElasticSearchPlugin\Document\PriceDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 final class ProductContext implements Context
 {
@@ -38,13 +38,13 @@ final class ProductContext implements Context
      */
     public function theStoreHasAboutMugsAndStickers($mugsNumber, $stickersNumber, $booksNumber)
     {
-        $mugsTaxon = new Taxon();
+        $mugsTaxon = new TaxonDocument();
         $mugsTaxon->setCode('mugs');
 
-        $stickersTaxon = new Taxon();
+        $stickersTaxon = new TaxonDocument();
         $stickersTaxon->setCode('stickers');
 
-        $booksTaxon = new Taxon();
+        $booksTaxon = new TaxonDocument();
         $booksTaxon->setCode('books');
 
         $this->generateProductsInTaxon($mugsNumber, $mugsTaxon);
@@ -67,12 +67,12 @@ final class ProductContext implements Context
 
     /**
      * @param int $howMany
-     * @param Taxon $taxonCode
+     * @param TaxonDocument $taxonCode
      */
-    private function generateProductsInTaxon($howMany, Taxon $taxonCode)
+    private function generateProductsInTaxon($howMany, TaxonDocument $taxonCode)
     {
         for ($i = 0; $i < $howMany; $i++) {
-            $product = new Product();
+            $product = new ProductDocument();
             $product->setMainTaxon($taxonCode);
             $product->setCode(uniqid());
             $this->manager->persist($product);
@@ -86,15 +86,15 @@ final class ProductContext implements Context
      * @param int $priceAmount
      * @param string $channelCode
      *
-     * @return Product
+     * @return ProductDocument
      */
     private function createProduct($productName, $priceAmount, $channelCode)
     {
-        $price = new Price();
+        $price = new PriceDocument();
         $price->setCurrency('USD');
         $price->setAmount($priceAmount);
 
-        $product = new Product();
+        $product = new ProductDocument();
         $product->setCode(uniqid());
         $product->setPrice($price);
         $product->setChannelCode($channelCode);

@@ -2,15 +2,15 @@
 
 namespace spec\Sylius\ElasticSearchPlugin\Document;
 
-use Sylius\ElasticSearchPlugin\Document\Attribute;
-use Sylius\ElasticSearchPlugin\Document\AttributeValue;
+use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
+use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use PhpSpec\ObjectBehavior;
 
-final class AttributeValueSpec extends ObjectBehavior
+final class AttributeValueDocumentSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(AttributeValue::class);
+        $this->shouldHaveType(AttributeValueDocument::class);
     }
 
     function it_has_value()
@@ -22,7 +22,7 @@ final class AttributeValueSpec extends ObjectBehavior
 
     function it_has_attribute()
     {
-        $attribute = new Attribute();
+        $attribute = new AttributeDocument();
         $this->setAttribute($attribute);
 
         $this->getAttribute()->shouldReturn($attribute);

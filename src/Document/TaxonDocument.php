@@ -8,7 +8,7 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 /**
  * @ElasticSearch\Object
  */
-final class Taxon
+final class TaxonDocument
 {
     /**
      * @var string
@@ -32,9 +32,9 @@ final class Taxon
     private $position;
 
     /**
-     * @var Image[]|Collection
+     * @var ImageDocument[]|Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Image", multiple=true)
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:ImageDocument", multiple=true)
      */
     private $images;
 

@@ -8,7 +8,7 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 /**
  * @ElasticSearch\Document(type="product")
  */
-class Product
+class ProductDocument
 {
     /**
      * @var string
@@ -63,37 +63,37 @@ class Product
     private $description;
 
     /**
-     * @var Price
+     * @var PriceDocument
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Price")
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:PriceDocument")
      */
     private $price;
 
     /**
-     * @var Taxon
+     * @var TaxonDocument
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Taxon")
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:TaxonDocument")
      */
     private $mainTaxon;
 
     /**
      * @var Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Taxon", multiple=true)
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:TaxonDocument", multiple=true)
      */
     private $taxons;
 
     /**
      * @var Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:AttributeValue", multiple=true)
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:AttributeValueDocument", multiple=true)
      */
     private $attributeValues;
 
     /**
      * @var Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:Image", multiple=true)
+     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:ImageDocument", multiple=true)
      */
     private $images;
 
@@ -208,7 +208,7 @@ class Product
     }
 
     /**
-     * @return Price
+     * @return PriceDocument
      */
     public function getPrice()
     {
@@ -216,15 +216,15 @@ class Product
     }
 
     /**
-     * @param Price $price
+     * @param PriceDocument $price
      */
-    public function setPrice(Price $price)
+    public function setPrice(PriceDocument $price)
     {
         $this->price = $price;
     }
 
     /**
-     * @return Taxon
+     * @return TaxonDocument
      */
     public function getMainTaxon()
     {
@@ -232,9 +232,9 @@ class Product
     }
 
     /**
-     * @param Taxon $mainTaxon
+     * @param TaxonDocument $mainTaxon
      */
-    public function setMainTaxon(Taxon $mainTaxon)
+    public function setMainTaxon(TaxonDocument $mainTaxon)
     {
         $this->mainTaxon = $mainTaxon;
     }

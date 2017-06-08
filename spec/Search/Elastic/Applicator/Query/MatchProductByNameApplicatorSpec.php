@@ -3,7 +3,7 @@
 namespace spec\Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Query;
 
 use ONGR\ElasticsearchDSL\Query\FullText\MatchQuery;
-use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Criteria\SearchPhrase;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\Query\MatchProductByNameApplicator;
@@ -38,7 +38,7 @@ final class MatchProductByNameApplicatorSpec extends ObjectBehavior
         MatchQuery $matchQuery,
         Search $search
     ) {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['search' => 'banana']);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['search' => 'banana']);
         $matchProductNameQueryFactory->create($criteria->filtering()->fields())->willReturn($matchQuery);
         $search->addQuery($matchQuery)->shouldBeCalled();
 
@@ -47,10 +47,10 @@ final class MatchProductByNameApplicatorSpec extends ObjectBehavior
 
     function it_supports_search_parameter()
     {
-        $criteria = Criteria::fromQueryParameters(Product::class, ['search' => 'banana']);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, ['search' => 'banana']);
         $this->supports($criteria)->shouldReturn(true);
 
-        $criteria = Criteria::fromQueryParameters(Product::class, []);
+        $criteria = Criteria::fromQueryParameters(ProductDocument::class, []);
         $this->supports($criteria)->shouldReturn(false);
     }
 }

@@ -14,35 +14,15 @@ use Sylius\Component\Currency\Model\Currency;
 use Sylius\Component\Locale\Model\Locale;
 use Sylius\Component\Product\Model\ProductAttribute;
 use Sylius\Component\Product\Model\ProductAttributeValue;
-use Sylius\ElasticSearchPlugin\Document\Attribute;
-use Sylius\ElasticSearchPlugin\Document\AttributeValue;
-use Sylius\ElasticSearchPlugin\Document\Product;
-use Sylius\ElasticSearchPlugin\Document\Taxon;
+use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
+use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
-use Sylius\ElasticSearchPlugin\Factory\ProductFactory;
+use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactory;
 
-final class ProductFactoryTest extends \PHPUnit_Framework_TestCase
+final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
 {
-    /**
-     * @test
-     */
-    public function it_creates_new_empty_product_document()
-    {
-        $factory = new ProductFactory();
-        /** @var Product $product */
-        $product = $factory->create();
-
-        $this->assertEquals(null, $product->getCode());
-        $this->assertEquals(null, $product->getName());
-        $this->assertEquals(null, $product->getLocaleCode());
-        $this->assertEquals(new Collection(), $product->getAttributeValues());
-        $this->assertEquals(null, $product->getPrice());
-        $this->assertEquals(null, $product->getChannelCode());
-        $this->assertEquals(null, $product->getCreatedAt());
-        $this->assertEquals(null, $product->getDescription());
-        $this->assertEquals(new Collection(), $product->getTaxons());
-    }
-
     /**
      * @test
      */
@@ -101,31 +81,31 @@ final class ProductFactoryTest extends \PHPUnit_Framework_TestCase
         $syliusProduct->setCode('banana');
         $syliusProduct->addAttribute($syliusProductAttributeValue);
 
-        $factory = new ProductFactory();
-        /** @var Product $product */
+        $factory = new ProductDocumentFactory();
+        /** @var ProductDocument $product */
         $product = $factory->createFromSyliusSimpleProductModel(
             $syliusProduct,
             $syliusLocale,
             $syliusChannel
         );
 
-        $taxon = new Taxon();
+        $taxon = new TaxonDocument();
         $taxon->setCode('tree');
         $taxon->setPosition(0);
         $taxon->setSlug('/tree');
         $taxon->setDescription('Lorem ipsum');
 
-        $productTaxon = new Taxon();
+        $productTaxon = new TaxonDocument();
         $productTaxon->setCode('tree');
         $productTaxon->setSlug('/tree');
         $productTaxon->setPosition(0);
         $productTaxon->setDescription('Lorem ipsum');
 
-        $productAttribute = new Attribute();
+        $productAttribute = new AttributeDocument();
         $productAttribute->setCode('red');
         $productAttribute->setName('Color red');
 
-        $productAttributeValue = new AttributeValue();
+        $productAttributeValue = new AttributeValueDocument();
         $productAttributeValue->setValue('red');
         $productAttributeValue->setAttribute($productAttribute);
 
@@ -156,7 +136,7 @@ final class ProductFactoryTest extends \PHPUnit_Framework_TestCase
     public function it_cannot_create_product_document_from_configurable_product()
     {
         $this->expectException(UnsupportedFactoryMethodException::class);
-        $factory = new ProductFactory();
+        $factory = new ProductDocumentFactory();
 
         $syliusProduct = new SyliusProduct();
         $syliusProduct->addVariant(new ProductVariant());

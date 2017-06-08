@@ -3,14 +3,14 @@
 namespace spec\Sylius\ElasticSearchPlugin\Document;
 
 use ONGR\ElasticsearchBundle\Collection\Collection;
-use Sylius\ElasticSearchPlugin\Document\Taxon;
+use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use PhpSpec\ObjectBehavior;
 
-final class TaxonSpec extends ObjectBehavior
+final class TaxonDocumentSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType(Taxon::class);
+        $this->shouldHaveType(TaxonDocument::class);
     }
 
     function it_has_code()
