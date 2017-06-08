@@ -1,7 +1,7 @@
 Sylius ElasticSearchPlugin
 ==========================
 Elastic search for Sylius.
-[![Build status on Linux](https://img.shields.io/travis/Sylius/SyliusElasticSearchPlugin/master.svg)](http://travis-ci.org/Lakion/SyliusELasticSearchBundle)
+[![Build status on Linux](https://img.shields.io/travis/Sylius/SyliusElasticSearchPlugin/master.svg)](https://travis-ci.org/Sylius/SyliusElasticSearchPlugin)
 
 ## Usage
 
