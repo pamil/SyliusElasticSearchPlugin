@@ -1,7 +1,7 @@
 Sylius ElasticSearchPlugin
 ==========================
 Elastic search for Sylius.
-[![Build status on Linux](https://img.shields.io/travis/Lakion/SyliusElasticSearchBundle/master.svg)](http://travis-ci.org/Lakion/SyliusELasticSearchBundle)
+[![Build status on Linux](https://img.shields.io/travis/Sylius/SyliusElasticSearchPlugin/master.svg)](http://travis-ci.org/Lakion/SyliusELasticSearchBundle)
 
 ## Usage
 
@@ -26,7 +26,7 @@ Elastic search for Sylius.
 
     ```php
     new \ONGR\ElasticsearchBundle\ONGRElasticsearchBundle(),
-    new \Lakion\SyliusElasticSearchBundle\SyliusElasticSearchPlugin(),
+    new \Sylius\ElasticSearchPlugin\SyliusElasticSearchPlugin(),
     ```
 
 5. Create/Setup database:
