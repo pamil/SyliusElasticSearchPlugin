@@ -54,6 +54,9 @@ final class ElasticSearchEngine implements SearchEngineInterface
             }
         }
 
-        return new ArrayResult(iterator_to_array($repository->findArray($search)));
+        $search->setSize($criteria->paginating()->itemsPerPage());
+        $search->setFrom($criteria->paginating()->offset());
+
+        return $repository->findDocuments($search);
     }
 }

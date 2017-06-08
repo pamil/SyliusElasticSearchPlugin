@@ -16,8 +16,7 @@
         "sylius/sylius": "^1.0@beta",
         "ongr/elasticsearch-dsl": "^5.0",
         "ongr/elasticsearch-bundle": "^5.0",
-        "simple-bus/symfony-bridge": "^4.1",
-        "beberlei/porpaginas": "^1.0"
+        "simple-bus/symfony-bridge": "^4.1"
     },
     "require-dev": {
         "symfony/symfony": "~3.2, <3.3",

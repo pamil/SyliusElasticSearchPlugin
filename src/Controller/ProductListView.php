@@ -25,7 +25,7 @@ final class ProductListView
     public $pages;
 
     /**
-     * @var ProductListItemView[]
+     * @var ProductView[]
      */
     public $items = [];
 }

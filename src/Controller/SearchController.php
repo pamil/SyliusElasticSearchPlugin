@@ -71,7 +71,7 @@ final class SearchController
 
         return $this->restViewHandler->handle(
             View::create(
-                $this->productListViewFactory->createFromSearchResultAndPaginating($result, $criteria->paginating()),
+                $this->productListViewFactory->createFromDocumentIteratorAndPaginating($result, $criteria->paginating()),
                 Response::HTTP_OK
             )
         );

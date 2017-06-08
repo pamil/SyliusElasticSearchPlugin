@@ -2,17 +2,17 @@
 
 namespace Sylius\ElasticSearchPlugin\Factory;
 
-use Porpaginas\Result;
+use ONGR\ElasticsearchBundle\Result\DocumentIterator;
 use Sylius\ElasticSearchPlugin\Controller\ProductListView;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Paginating;
 
 interface ProductListViewFactoryInterface
 {
     /**
-     * @param Result $result
+     * @param DocumentIterator $result
      * @param Paginating $paginating
      *
      * @return ProductListView
      */
-    public function createFromSearchResultAndPaginating(Result $result, Paginating $paginating);
+    public function createFromDocumentIteratorAndPaginating(DocumentIterator $result, Paginating $paginating);
 }
