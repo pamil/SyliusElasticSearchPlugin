@@ -16,6 +16,8 @@ use Sylius\Component\Product\Model\ProductAttribute;
 use Sylius\Component\Product\Model\ProductAttributeValue;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
+use Sylius\ElasticSearchPlugin\Document\ImageDocument;
+use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
@@ -81,7 +83,14 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $syliusProduct->setCode('banana');
         $syliusProduct->addAttribute($syliusProductAttributeValue);
 
-        $factory = new ProductDocumentFactory();
+        $factory = new ProductDocumentFactory(
+            ProductDocument::class,
+            AttributeDocument::class,
+            AttributeValueDocument::class,
+            ImageDocument::class,
+            PriceDocument::class,
+            TaxonDocument::class
+        );
         /** @var ProductDocument $product */
         $product = $factory->createFromSyliusSimpleProductModel(
             $syliusProduct,
@@ -136,7 +145,14 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
     public function it_cannot_create_product_document_from_configurable_product()
     {
         $this->expectException(UnsupportedFactoryMethodException::class);
-        $factory = new ProductDocumentFactory();
+        $factory = new ProductDocumentFactory(
+            ProductDocument::class,
+            AttributeDocument::class,
+            AttributeValueDocument::class,
+            ImageDocument::class,
+            PriceDocument::class,
+            TaxonDocument::class
+        );
 
         $syliusProduct = new SyliusProduct();
         $syliusProduct->addVariant(new ProductVariant());

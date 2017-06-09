@@ -13,6 +13,12 @@ namespace Tests\Sylius\ElasticSearchPlugin\DependencyInjection;
 
 use Sylius\ElasticSearchPlugin\DependencyInjection\Configuration;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
+use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
+use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
+use Sylius\ElasticSearchPlugin\Document\ImageDocument;
+use Sylius\ElasticSearchPlugin\Document\PriceDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
@@ -24,107 +30,24 @@ final class ConfigurationTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function configuration_can_be_empty()
+    public function it_has_document_classes()
     {
-        $this->assertConfigurationIsValid([]);
-    }
-
-    /**
-     * @test
-     */
-    public function filter_sets_cannot_be_empty()
-    {
-        $this->assertConfigurationIsInvalid([[
-            'filter_scope' => [],
-        ]]);
-    }
-
-    /**
-     * @test
-     */
-    public function filter_set_cannot_be_empty()
-    {
-        $this->assertConfigurationIsInvalid([[
-            'filter_scope' => [
-                'first_filter_set' => [],
-                'second_filter_set' => [],
-            ],
-        ]]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_builds_filter_scope_configuration()
-    {
-        $this->assertProcessedConfigurationEquals(
-            [[
-                'filter_sets' => [
-                    't_shirts' => [
-                        'filters' => [
-                            'color' => [
-                                'type' => 'option',
-                                'options' => [
-                                    'code' => 'tshirt_color',
-                                ]
-                            ],
-                            'size' => [
-                                'type' => 'option',
-                                'options' => [
-                                    'code' => 'tshirt_size',
-                                ]
-                            ]
-                        ]
-                    ],
-                    'smartphones' => [
-                        'filters' => [
-                            'brand' => [
-                                'type' => 'taxon',
-                                'options' => [
-                                    'code' => 'smartphone_brand',
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]],
-            [
-                'filter_sets' => [
-                    't_shirts' => [
-                        'filters' => [
-                            'color' => [
-                                'type' => 'option',
-                                'options' => [
-                                    'code' => 'tshirt_color',
-                                ]
-                            ],
-                            'size' => [
-                                'type' => 'option',
-                                'options' => [
-                                    'code' => 'tshirt_size',
-                                ]
-                            ]
-                        ]
-                    ],
-                    'smartphones' => [
-                        'filters' => [
-                            'brand' => [
-                                'type' => 'taxon',
-                                'options' => [
-                                    'code' => 'smartphone_brand',
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+        $this->assertProcessedConfigurationEquals([], [
+            'document_classes' => [
+                'product' => ProductDocument::class,
+                'attribute' => AttributeDocument::class,
+                'attribute_value' => AttributeValueDocument::class,
+                'image' => ImageDocument::class,
+                'price' => PriceDocument::class,
+                'taxon' => TaxonDocument::class,
             ]
-        );
+        ], 'document_classes');
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getConfiguration()
+    protected function getConfiguration()
     {
         return new Configuration();
     }

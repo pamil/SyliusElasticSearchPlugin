@@ -11,6 +11,12 @@
 
 namespace Sylius\ElasticSearchPlugin\DependencyInjection;
 
+use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
+use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
+use Sylius\ElasticSearchPlugin\Document\ImageDocument;
+use Sylius\ElasticSearchPlugin\Document\PriceDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -29,8 +35,32 @@ final class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('sylius_elastic_search');
 
         $this->buildFilterSetNode($rootNode);
+        $this->buildDocumentClassesNode($rootNode);
 
         return $treeBuilder;
+    }
+
+    /**
+     * @param ArrayNodeDefinition $rootNode
+     */
+    private function buildDocumentClassesNode(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('document_classes')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('product')->defaultValue(ProductDocument::class)->end()
+                        ->scalarNode('attribute')->defaultValue(AttributeDocument::class)->end()
+                        ->scalarNode('attribute_value')->defaultValue(AttributeValueDocument::class)->end()
+                        ->scalarNode('image')->defaultValue(ImageDocument::class)->end()
+                        ->scalarNode('price')->defaultValue(PriceDocument::class)->end()
+                        ->scalarNode('taxon')->defaultValue(TaxonDocument::class)->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
     }
 
     /**

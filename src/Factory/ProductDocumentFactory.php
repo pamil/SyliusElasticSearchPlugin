@@ -20,6 +20,59 @@ use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
 
 final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 {
+    /** @var string */
+    private $productDocumentClass;
+
+    /** @var string */
+    private $attributeDocumentClass;
+
+    /** @var string */
+    private $attributeValueDocumentClass;
+
+    /** @var string */
+    private $imageDocumentClass;
+
+    /** @var string */
+    private $priceDocumentClass;
+
+    /** @var string */
+    private $taxonDocumentClass;
+
+    /**
+     * @param string $productDocumentClass
+     * @param string $attributeDocumentClass
+     * @param string $attributeValueDocumentClass
+     * @param string $imageDocumentClass
+     * @param string $priceDocumentClass
+     * @param string $taxonDocumentClass
+     */
+    public function __construct(
+        $productDocumentClass,
+        $attributeDocumentClass,
+        $attributeValueDocumentClass,
+        $imageDocumentClass,
+        $priceDocumentClass,
+        $taxonDocumentClass
+    ) {
+        $this->assertClassExtends($productDocumentClass, ProductDocument::class);
+        $this->productDocumentClass = $productDocumentClass;
+
+        $this->assertClassExtends($attributeDocumentClass, AttributeDocument::class);
+        $this->attributeDocumentClass = $attributeDocumentClass;
+
+        $this->assertClassExtends($attributeValueDocumentClass, AttributeValueDocument::class);
+        $this->attributeValueDocumentClass = $attributeValueDocumentClass;
+
+        $this->assertClassExtends($imageDocumentClass, ImageDocument::class);
+        $this->imageDocumentClass = $imageDocumentClass;
+
+        $this->assertClassExtends($priceDocumentClass, PriceDocument::class);
+        $this->priceDocumentClass = $priceDocumentClass;
+
+        $this->assertClassExtends($taxonDocumentClass, TaxonDocument::class);
+        $this->taxonDocumentClass = $taxonDocumentClass;
+    }
+
     /**
      * @param ProductInterface $syliusProduct
      * @param LocaleInterface $locale
@@ -51,30 +104,34 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         );
         $syliusProductTaxons = $syliusProduct->getProductTaxons();
 
-        $product = new ProductDocument();
-        $price = new PriceDocument();
-        $taxon = new TaxonDocument();
-        $taxon->setCode($syliusProduct->getMainTaxon()->getCode());
-        $taxon->setSlug($syliusProduct->getMainTaxon()->getSlug());
-        $taxon->setDescription($syliusProduct->getMainTaxon()->getDescription());
-
-        $price->setAmount($channelPrice->getPrice());
-        $price->setCurrency($channel->getBaseCurrency()->getCode());
-
+        /** @var ProductDocument $product */
+        $product = new $this->productDocumentClass();
         $product->setLocaleCode($locale->getCode());
         $product->setSlug($productTranslation->getSlug());
         $product->setName($productTranslation->getName());
         $product->setDescription($productTranslation->getDescription());
         $product->setChannelCode($channel->getCode());
-        $product->setPrice($price);
         $product->setCode($syliusProduct->getCode());
         $product->setCreatedAt($syliusProduct->getCreatedAt());
-        $product->setMainTaxon($taxon);
+
+        /** @var TaxonDocument $mainTaxon */
+        $mainTaxon = new $this->taxonDocumentClass();
+        $mainTaxon->setCode($syliusProduct->getMainTaxon()->getCode());
+        $mainTaxon->setSlug($syliusProduct->getMainTaxon()->getSlug());
+        $mainTaxon->setDescription($syliusProduct->getMainTaxon()->getDescription());
+        $product->setMainTaxon($mainTaxon);
+
+        /** @var PriceDocument $price */
+        $price = new $this->priceDocumentClass();
+        $price->setAmount($channelPrice->getPrice());
+        $price->setCurrency($channel->getBaseCurrency()->getCode());
+        $product->setPrice($price);
 
         $productImages = [];
         $syliusProductImages = $syliusProduct->getImages();
         foreach ($syliusProductImages as $syliusProductImage) {
-            $productImage = new ImageDocument();
+            /** @var ImageDocument $productImage */
+            $productImage = new $this->imageDocumentClass();
             $productImage->setPath($syliusProductImage->getPath());
             $productImage->setCode($syliusProductImage->getType());
             $productImages[] = $productImage;
@@ -83,7 +140,8 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         $productTaxons = [];
         foreach ($syliusProductTaxons as $syliusProductTaxon) {
-            $productTaxon = new TaxonDocument();
+            /** @var TaxonDocument $productTaxon */
+            $productTaxon = new $this->taxonDocumentClass();
             $productTaxon->setCode($syliusProductTaxon->getTaxon()->getCode());
             $productTaxon->setSlug($syliusProductTaxon->getTaxon()->getSlug());
             $productTaxon->setPosition($syliusProductTaxon->getTaxon()->getPosition());
@@ -92,7 +150,8 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
             $productTaxonImages = [];
             $syliusTaxonImages = $syliusProductTaxon->getTaxon()->getImages();
             foreach ($syliusTaxonImages as $syliusTaxonImage) {
-                $productTaxonImage = new ImageDocument();
+                /** @var ImageDocument $productTaxonImage */
+                $productTaxonImage = new $this->imageDocumentClass();
                 $productTaxonImage->setPath($syliusTaxonImage->getPath());
                 $productTaxonImage->setCode($syliusTaxonImage->getType());
                 $productTaxonImages[] = $productTaxonImage;
@@ -105,10 +164,12 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         $productAttributeValues = [];
         foreach ($syliusProductAttributes as $syliusProductAttributeValue) {
-            $productAttributeValue = new AttributeValueDocument();
+            /** @var AttributeValueDocument $productAttributeValue */
+            $productAttributeValue = new $this->attributeValueDocumentClass();
             $productAttributeValue->setValue($syliusProductAttributeValue->getValue());
 
-            $attribute = new AttributeDocument();
+            /** @var AttributeDocument $attribute */
+            $attribute = new $this->attributeDocumentClass();
             $attribute->setCode($syliusProductAttributeValue->getAttribute()->getCode());
             $attribute->setName($syliusProductAttributeValue->getAttribute()->getName());
             $productAttributeValue->setAttribute($attribute);
@@ -140,5 +201,18 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         }
 
         return null;
+    }
+
+    /**
+     * @param string $class
+     * @param string $parentClass
+     *
+     * @throws \InvalidArgumentException
+     */
+    private function assertClassExtends($class, $parentClass)
+    {
+        if ($class !== $parentClass && !in_array($parentClass, class_parents($class), true)) {
+            throw new \InvalidArgumentException(sprintf('Class %s MUST extend class %s!', $class, $parentClass));
+        }
     }
 }
