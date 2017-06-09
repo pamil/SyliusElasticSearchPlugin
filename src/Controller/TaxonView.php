@@ -2,7 +2,7 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
-final class TaxonView
+class TaxonView
 {
     /**
      * @var string

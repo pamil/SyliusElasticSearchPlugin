@@ -11,6 +11,13 @@
 
 namespace Sylius\ElasticSearchPlugin\DependencyInjection;
 
+use Sylius\ElasticSearchPlugin\Controller\AttributeView;
+use Sylius\ElasticSearchPlugin\Controller\ImageView;
+use Sylius\ElasticSearchPlugin\Controller\PriceView;
+use Sylius\ElasticSearchPlugin\Controller\ProductListView;
+use Sylius\ElasticSearchPlugin\Controller\ProductView;
+use Sylius\ElasticSearchPlugin\Controller\TaxonView;
+use Sylius\ElasticSearchPlugin\Controller\VariantView;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
@@ -36,6 +43,7 @@ final class Configuration implements ConfigurationInterface
 
         $this->buildFilterSetNode($rootNode);
         $this->buildDocumentClassesNode($rootNode);
+        $this->buildViewClassesNode($rootNode);
 
         return $treeBuilder;
     }
@@ -57,6 +65,30 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('image')->defaultValue(ImageDocument::class)->end()
                         ->scalarNode('price')->defaultValue(PriceDocument::class)->end()
                         ->scalarNode('taxon')->defaultValue(TaxonDocument::class)->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    /**
+     * @param ArrayNodeDefinition $rootNode
+     */
+    private function buildViewClassesNode(ArrayNodeDefinition $rootNode)
+    {
+        $rootNode
+            ->addDefaultsIfNotSet()
+            ->children()
+                ->arrayNode('view_classes')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('product_list')->defaultValue(ProductListView::class)->end()
+                        ->scalarNode('product')->defaultValue(ProductView::class)->end()
+                        ->scalarNode('product_variant')->defaultValue(VariantView::class)->end()
+                        ->scalarNode('attribute')->defaultValue(AttributeView::class)->end()
+                        ->scalarNode('image')->defaultValue(ImageView::class)->end()
+                        ->scalarNode('price')->defaultValue(PriceView::class)->end()
+                        ->scalarNode('taxon')->defaultValue(TaxonView::class)->end()
                     ->end()
                 ->end()
             ->end()

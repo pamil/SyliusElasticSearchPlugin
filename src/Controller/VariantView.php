@@ -2,7 +2,7 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
-final class VariantView
+class VariantView
 {
     /**
      * @var string

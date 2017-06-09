@@ -2,7 +2,7 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
-final class ImageView
+class ImageView
 {
     /**
      * @var string
