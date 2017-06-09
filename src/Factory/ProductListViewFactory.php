@@ -13,11 +13,11 @@ use Sylius\ElasticSearchPlugin\Controller\ProductView;
 use Sylius\ElasticSearchPlugin\Controller\ProductListView;
 use Sylius\ElasticSearchPlugin\Controller\VariantView;
 use Sylius\ElasticSearchPlugin\Controller\TaxonView;
-use Sylius\ElasticSearchPlugin\Document\AttributeValue;
-use Sylius\ElasticSearchPlugin\Document\Image;
-use Sylius\ElasticSearchPlugin\Document\Price;
-use Sylius\ElasticSearchPlugin\Document\Product;
-use Sylius\ElasticSearchPlugin\Document\Taxon;
+use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
+use Sylius\ElasticSearchPlugin\Document\ImageDocument;
+use Sylius\ElasticSearchPlugin\Document\PriceDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 final class ProductListViewFactory implements ProductListViewFactoryInterface
 {
@@ -30,7 +30,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         $productListView = new ProductListView();
         $productListView->filters = $response->getFilters();
 
-        /** @var Product $product */
+        /** @var ProductDocument $product */
         foreach ($result as $product) {
             $productListView->items[] = $this->getProductView($product);
         }
@@ -39,7 +39,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     }
 
     /**
-     * @param Collection|Image[] $images
+     * @param Collection|ImageDocument[] $images
      *
      * @return ImageView[]
      */
@@ -58,7 +58,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     }
 
     /**
-     * @param Collection|Taxon[] $taxons
+     * @param Collection|TaxonDocument[] $taxons
      *
      * @return TaxonView[]
      */
@@ -73,7 +73,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     }
 
     /**
-     * @param Collection|AttributeValue[] $attributeValues
+     * @param Collection|AttributeValueDocument[] $attributeValues
      *
      * @return AttributeView[]
      */
@@ -93,11 +93,11 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     }
 
     /**
-     * @param Taxon $taxon
+     * @param TaxonDocument $taxon
      *
      * @return TaxonView
      */
-    private function getTaxonView(Taxon $taxon)
+    private function getTaxonView(TaxonDocument $taxon)
     {
         $taxonView = new TaxonView();
         $taxonView->code = $taxon->getCode();
@@ -110,11 +110,11 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     }
 
     /**
-     * @param Price $price
+     * @param PriceDocument $price
      *
      * @return PriceView
      */
-    private function getPriceView(Price $price)
+    private function getPriceView(PriceDocument $price)
     {
         $priceView = new PriceView();
         $priceView->current = $price->getAmount();
@@ -124,11 +124,11 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     }
 
     /**
-     * @param Product $product
+     * @param ProductDocument $product
      *
      * @return VariantView
      */
-    private function getVariantView(Product $product)
+    private function getVariantView(ProductDocument $product)
     {
         $variantView = new VariantView();
         $variantView->price = $this->getPriceView($product->getPrice());
@@ -140,11 +140,11 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     }
 
     /**
-     * @param Product $product
+     * @param ProductDocument $product
      *
      * @return ProductView
      */
-    private function getProductView(Product $product)
+    private function getProductView(ProductDocument $product)
     {
         $productView = new ProductView();
         $productView->slug = $product->getSlug();
