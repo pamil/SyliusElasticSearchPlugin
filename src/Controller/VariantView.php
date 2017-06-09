@@ -2,7 +2,7 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
-final class ProductVariantItemView
+final class VariantView
 {
     /**
      * @var string
@@ -20,7 +20,7 @@ final class ProductVariantItemView
     public $price;
 
     /**
-     * @var
+     * @var array
      */
-    public $images;
+    public $images = [];
 }

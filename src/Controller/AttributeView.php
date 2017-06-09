@@ -2,7 +2,7 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
-final class ImageItemView
+final class AttributeView
 {
     /**
      * @var string
@@ -12,5 +12,10 @@ final class ImageItemView
     /**
      * @var string
      */
-    public $path;
+    public $name;
+
+    /**
+     * @var mixed
+     */
+    public $value;
 }

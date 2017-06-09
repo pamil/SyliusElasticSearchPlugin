@@ -2,7 +2,7 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
-final class ProductListItemView
+final class ProductView
 {
     /**
      * @var string
@@ -22,22 +22,22 @@ final class ProductListItemView
     /**
      * @var array
      */
-    public $taxons;
+    public $taxons = [];
 
     /**
      * @var array
      */
-    public $variants;
+    public $variants = [];
 
     /**
      * @var array
      */
-    public $attributes;
+    public $attributes = [];
 
     /**
      * @var array
      */
-    public $images;
+    public $images = [];
 
     /**
      * @var string

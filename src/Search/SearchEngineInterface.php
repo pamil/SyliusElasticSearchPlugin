@@ -12,7 +12,6 @@
 namespace Sylius\ElasticSearchPlugin\Search;
 
 use ONGR\ElasticsearchBundle\Result\DocumentIterator;
-use Porpaginas\Result;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 
 /**
@@ -23,7 +22,7 @@ interface SearchEngineInterface
     /**
      * @param Criteria $criteria
      *
-     * @return Result
+     * @return DocumentIterator
      */
     public function match(Criteria $criteria);
 }

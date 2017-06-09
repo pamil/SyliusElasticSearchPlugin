@@ -1,55 +1,5 @@
 {
-    "page": 1,
-    "limit": 10,
-    "total": 2,
-    "pages": 1,
     "items": [
-        {
-            "code": "LOGAN_MUG_CODE",
-            "name": "Logan Becher",
-            "slug": "logan-becher",
-            "taxons": [
-                {
-                    "code": "MUG",
-                    "slug": "mugs",
-                    "position": 0,
-                    "images": [],
-                    "description": "@string@"
-                }
-            ],
-            "variants": [
-                {
-                    "code": "LOGAN_MUG_CODE",
-                    "name": "Logan Becher",
-                    "price": {
-                        "current": 1999,
-                        "currency": "GBP"
-                    },
-                    "images": []
-                }
-            ],
-            "attributes": [
-                {
-                    "value": "FEIERTAGSKOLLEKTION",
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection"
-                },
-                {
-                    "value": "Holz",
-                    "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material"
-                }
-            ],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "de_DE",
-            "mainTaxon": {
-                "code": "MUG",
-                "slug": "mugs",
-                "images": [],
-                "description": "@string@"
-            }
-        },
         {
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Mug",
@@ -95,6 +45,280 @@
                 "images": [],
                 "description": "@string@"
             }
+        },
+        {
+            "code": "LOGAN_MUG_CODE",
+            "name": "Logan Becher",
+            "slug": "logan-becher",
+            "taxons": [
+                {
+                    "code": "MUG",
+                    "slug": "mugs",
+                    "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                }
+            ],
+            "variants": [
+                {
+                    "code": "LOGAN_MUG_CODE",
+                    "name": "Logan Becher",
+                    "price": {
+                        "current": 1999,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [
+                {
+                    "value": "FEIERTAGSKOLLEKTION",
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection"
+                },
+                {
+                    "value": "Holz",
+                    "code": "MUG_MATERIAL_CODE",
+                    "name": "Mug material"
+                }
+            ],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "de_DE",
+            "mainTaxon": {
+                "code": "MUG",
+                "slug": "mugs",
+                "images": [],
+                "description": "@string@"
+            }
         }
-    ]
+    ],
+    "filters": {
+        "main_taxon": {
+            "state": {
+                "active": true,
+                "value": "MUG",
+                "urlParameters": {
+                    "mainTaxonCode": "MUG"
+                },
+                "name": "main_taxon",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "resetUrlParameters": [],
+            "name": "main_taxon",
+            "choices": [
+                {
+                    "active": true,
+                    "default": false,
+                    "urlParameters": [],
+                    "label": "MUG",
+                    "count": 2
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "mainTaxonCode": "T_SHIRTS"
+                    },
+                    "label": "T_SHIRTS",
+                    "count": 2
+                }
+            ]
+        },
+        "taxon": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "taxon",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "resetUrlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "name": "taxon",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "mainTaxonCode": "MUG",
+                        "taxonCode": [
+                            "MUG"
+                        ]
+                    },
+                    "label": "MUG",
+                    "count": 2
+                }
+            ]
+        },
+        "price_range": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "price_range",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "resetUrlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "name": "price_range",
+            "minBounds": 1999,
+            "maxBounds": 1999
+        },
+        "locale": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "locale",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "resetUrlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "name": "locale",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "mainTaxonCode": "MUG",
+                        "localeCode": "de_DE"
+                    },
+                    "label": "de_DE",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "mainTaxonCode": "MUG",
+                        "localeCode": "en_GB"
+                    },
+                    "label": "en_GB",
+                    "count": 1
+                }
+            ]
+        },
+        "attribute_values": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "attribute_values",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "resetUrlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "name": "attribute_values",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "mainTaxonCode": "MUG",
+                        "attributeValues": [
+                            "FEIERTAGSKOLLEKTION"
+                        ]
+                    },
+                    "label": "FEIERTAGSKOLLEKTION",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "mainTaxonCode": "MUG",
+                        "attributeValues": [
+                            "HOLIDAY COLLECTION"
+                        ]
+                    },
+                    "label": "HOLIDAY COLLECTION",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "mainTaxonCode": "MUG",
+                        "attributeValues": [
+                            "Holz"
+                        ]
+                    },
+                    "label": "Holz",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "mainTaxonCode": "MUG",
+                        "attributeValues": [
+                            "Wood"
+                        ]
+                    },
+                    "label": "Wood",
+                    "count": 1
+                }
+            ]
+        },
+        "paginator": {
+            "state": {
+                "active": false,
+                "value": 1,
+                "urlParameters": [],
+                "name": "paginator",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "resetUrlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "name": "paginator",
+            "currentPage": 1,
+            "totalItems": 2,
+            "maxPages": 10,
+            "itemsPerPage": 10,
+            "numPages": 1,
+            "options": []
+        },
+        "search": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "search",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "resetUrlParameters": {
+                "mainTaxonCode": "MUG"
+            },
+            "name": "search"
+        }
+    }
 }

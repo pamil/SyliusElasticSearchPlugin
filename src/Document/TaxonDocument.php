@@ -8,7 +8,7 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 /**
  * @ElasticSearch\Object
  */
-final class TaxonDocument
+class TaxonDocument
 {
     /**
      * @var string

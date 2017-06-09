@@ -7,12 +7,12 @@ use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
 /**
  * @ElasticSearch\Object
  */
-final class AttributeValueDocument
+class AttributeValueDocument
 {
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="text")
+     * @ElasticSearch\Property(type="keyword")
      */
     private $value;
 

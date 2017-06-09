@@ -124,7 +124,7 @@ final class ProductContext implements Context
      */
     public function iShouldSeeProductsOnTheList($numberOfProducts)
     {
-        /** @var Result $result */
+        /** @var DocumentIterator $result */
         $result = $this->sharedStorage->get('search_result');
 
         Assert::eq($result->count(), $numberOfProducts);
@@ -135,7 +135,7 @@ final class ProductContext implements Context
      */
     public function iShouldSeeProductsInOrderLike(...$productNames)
     {
-        /** @var Result $searchResult */
+        /** @var DocumentIterator $searchResult */
         $searchResult = $this->sharedStorage->get('search_result');
 
         /**
@@ -143,7 +143,7 @@ final class ProductContext implements Context
          * @var ProductDocument $product
          */
         foreach ($searchResult as $position => $product) {
-            if ($product['name'] !== $productNames[$position]) {
+            if ($product->getName() !== $productNames[$position]) {
                 throw new \RuntimeException(
                     sprintf(
                         'Sorting failed at position "%s" expected value was "%s", but got "%s"',
@@ -169,7 +169,7 @@ final class ProductContext implements Context
 
         /** @var ProductDocument $product */
         foreach ($searchResult as $product) {
-            Assert::oneOf($product['name'], $expectedProductNames);
+            Assert::oneOf($product->getName(), $expectedProductNames);
         }
     }
 
