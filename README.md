@@ -10,6 +10,7 @@ Elastic search for Sylius.
     ```bash
     $ composer require sylius/elastic-search-plugin
     ```
+
 2. Install elastic search server:
 
     ```bash
@@ -25,8 +26,10 @@ Elastic search for Sylius.
 4. Add this bundle to `AppKernel.php`:
 
     ```php
-    new \ONGR\ElasticsearchBundle\ONGRElasticsearchBundle(),
-    new \Sylius\ElasticSearchPlugin\SyliusElasticSearchPlugin(),
+     new \ONGR\ElasticsearchBundle\ONGRElasticsearchBundle(),
+     new \SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle(),
+     new \SimpleBus\SymfonyBridge\SimpleBusEventBusBundle(),
+     new \ONGR\FilterManagerBundle\ONGRFilterManagerBundle(),
     ```
 
 5. Create/Setup database:
@@ -43,6 +46,7 @@ Elastic search for Sylius.
     imports:
        - { resource: "@SyliusElasticSearchPlugin/Resources/config/app/config.yml" }
     ```
+    For more configuration take a look at [ONGRFilterManager](http://docs.ongr.io/FilterManagerBundle)
 
 8. Import routing files in `app/config/routing.yml`:
 

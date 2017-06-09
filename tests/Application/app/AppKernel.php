@@ -21,7 +21,7 @@ final class AppKernel extends Kernel
             new \ONGR\ElasticsearchBundle\ONGRElasticsearchBundle(),
             new \SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle(),
             new \SimpleBus\SymfonyBridge\SimpleBusEventBusBundle(),
-            new  \ONGR\FilterManagerBundle\ONGRFilterManagerBundle(),
+            new \ONGR\FilterManagerBundle\ONGRFilterManagerBundle(),
         ]);
     }
 
