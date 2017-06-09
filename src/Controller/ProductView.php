@@ -2,7 +2,7 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
-final class ProductView
+class ProductView
 {
     /**
      * @var string

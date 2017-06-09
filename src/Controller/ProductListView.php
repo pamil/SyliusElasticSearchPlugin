@@ -4,7 +4,7 @@ namespace Sylius\ElasticSearchPlugin\Controller;
 
 use ONGR\FilterManagerBundle\Filter\ViewData;
 
-final class ProductListView
+class ProductListView
 {
     /**
      * @var int

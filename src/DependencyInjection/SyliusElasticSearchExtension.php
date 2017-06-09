@@ -18,8 +18,13 @@ final class SyliusElasticSearchExtension extends Extension
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $container->setParameter('sylius_elastic_search.filter_sets', $config['filter_sets']);
+
         foreach ($config['document_classes'] as $document => $class) {
             $container->setParameter(sprintf('sylius_elastic_search.document.%s.class', $document), $class);
+        }
+
+        foreach ($config['view_classes'] as $view => $class) {
+            $container->setParameter(sprintf('sylius_elastic_search.view.%s.class', $view), $class);
         }
 
         $loader->load('services.xml');

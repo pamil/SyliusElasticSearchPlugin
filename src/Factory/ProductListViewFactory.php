@@ -21,13 +21,54 @@ use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 final class ProductListViewFactory implements ProductListViewFactoryInterface
 {
+    /** @var string */
+    private $productListViewClass;
+
+    /** @var string */
+    private $productViewClass;
+
+    /** @var string */
+    private $productVariantViewClass;
+
+    /** @var string */
+    private $attributeViewClass;
+
+    /** @var string */
+    private $imageViewClass;
+
+    /** @var string */
+    private $priceViewClass;
+
+    /** @var string */
+    private $taxonViewClass;
+
+    public function __construct(
+        $productListViewClass,
+        $productViewClass,
+        $productVariantViewClass,
+        $attributeViewClass,
+        $imageViewClass,
+        $priceViewClass,
+        $taxonViewClass
+    ) {
+        $this->productListViewClass = $productListViewClass;
+        $this->productViewClass = $productViewClass;
+        $this->productVariantViewClass = $productVariantViewClass;
+        $this->attributeViewClass = $attributeViewClass;
+        $this->imageViewClass = $imageViewClass;
+        $this->priceViewClass = $priceViewClass;
+        $this->taxonViewClass = $taxonViewClass;
+    }
+
     /**
      * {@inheritdoc}
      */
     public function createFromSearchResponse(SearchResponse $response)
     {
         $result = $response->getResult();
-        $productListView = new ProductListView();
+
+        /** @var ProductListView $productListView */
+        $productListView = new $this->productListViewClass();
         $productListView->filters = $response->getFilters();
 
         /** @var ProductDocument $product */
@@ -47,7 +88,8 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     {
         $imageViews = [];
         foreach ($images as $image) {
-            $imageView = new ImageView();
+            /** @var ImageView $imageView */
+            $imageView = new $this->imageViewClass();
             $imageView->code = $image->getCode();
             $imageView->path = $image->getPath();
 
@@ -81,7 +123,8 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     {
         $attributeValueViews = [];
         foreach ($attributeValues as $attributeValue) {
-            $attributeView = new AttributeView();
+            /** @var AttributeView $attributeView */
+            $attributeView = new $this->attributeViewClass();
             $attributeView->value = $attributeValue->getValue();
             $attributeView->code = $attributeValue->getAttribute()->getCode();
             $attributeView->name = $attributeValue->getAttribute()->getName();
@@ -99,7 +142,8 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      */
     private function getTaxonView(TaxonDocument $taxon)
     {
-        $taxonView = new TaxonView();
+        /** @var TaxonView $taxonView */
+        $taxonView = new $this->taxonViewClass();
         $taxonView->code = $taxon->getCode();
         $taxonView->slug = $taxon->getSlug();
         $taxonView->position = $taxon->getPosition();
@@ -116,7 +160,8 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      */
     private function getPriceView(PriceDocument $price)
     {
-        $priceView = new PriceView();
+        /** @var PriceView $priceView */
+        $priceView = new $this->priceViewClass();
         $priceView->current = $price->getAmount();
         $priceView->currency = $price->getCurrency();
 
@@ -130,7 +175,8 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      */
     private function getVariantView(ProductDocument $product)
     {
-        $variantView = new VariantView();
+        /** @var VariantView $variantView */
+        $variantView = new $this->productVariantViewClass();
         $variantView->price = $this->getPriceView($product->getPrice());
         $variantView->code = $product->getCode();
         $variantView->name = $product->getName();
@@ -146,7 +192,8 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      */
     private function getProductView(ProductDocument $product)
     {
-        $productView = new ProductView();
+        /** @var ProductView $productView */
+        $productView = new $this->productViewClass();
         $productView->slug = $product->getSlug();
         $productView->name = $product->getName();
         $productView->code = $product->getCode();
