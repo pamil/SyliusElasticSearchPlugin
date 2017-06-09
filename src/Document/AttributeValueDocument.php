@@ -12,7 +12,7 @@ final class AttributeValueDocument
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="text")
+     * @ElasticSearch\Property(type="keyword")
      */
     private $value;
 

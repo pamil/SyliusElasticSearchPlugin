@@ -13,10 +13,8 @@ namespace Sylius\ElasticSearchPlugin\Controller;
 
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
-use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use ONGR\FilterManagerBundle\Search\FilterManagerInterface;
 use Sylius\ElasticSearchPlugin\Factory\ProductListViewFactoryInterface;
-use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
-use Sylius\ElasticSearchPlugin\Search\SearchEngineInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,25 +29,28 @@ final class SearchController
     private $restViewHandler;
 
     /**
-     * @var SearchEngineInterface
-     */
-    private $searchEngine;
-
-    /**
      * @var ProductListViewFactoryInterface
      */
     private $productListViewFactory;
 
     /**
-     * @param ViewHandlerInterface $restViewHandler
-     * @param SearchEngineInterface $searchEngine
-     * @param ProductListViewFactoryInterface $productListViewFactory
+     * @var FilterManagerInterface
      */
-    public function __construct(ViewHandlerInterface $restViewHandler, SearchEngineInterface $searchEngine, ProductListViewFactoryInterface $productListViewFactory)
-    {
+    private $filterManager;
+
+    /**
+     * @param ViewHandlerInterface $restViewHandler
+     * @param ProductListViewFactoryInterface $productListViewFactory
+     * @param FilterManagerInterface $filterManager
+     */
+    public function __construct(
+        ViewHandlerInterface $restViewHandler,
+        ProductListViewFactoryInterface $productListViewFactory,
+        FilterManagerInterface $filterManager
+    ) {
         $this->restViewHandler = $restViewHandler;
-        $this->searchEngine = $searchEngine;
         $this->productListViewFactory = $productListViewFactory;
+        $this->filterManager = $filterManager;
     }
 
     /**
@@ -59,19 +60,11 @@ final class SearchController
      */
     public function __invoke(Request $request)
     {
-        $content = json_decode($request->getContent(), true);
-
-        if (null === $content) {
-            $content = $request->query->all();
-        }
-
-        $criteria = Criteria::fromQueryParameters(ProductDocument::class, $content);
-
-        $result = $this->searchEngine->match($criteria);
+        $response = $this->filterManager->handleRequest($request);
 
         return $this->restViewHandler->handle(
             View::create(
-                $this->productListViewFactory->createFromDocumentIteratorAndPaginating($result, $criteria->paginating()),
+                $this->productListViewFactory->createFromSearchResponse($response),
                 Response::HTTP_OK
             )
         );

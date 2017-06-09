@@ -3,6 +3,8 @@
 namespace Sylius\ElasticSearchPlugin\Search\Elastic;
 
 use ONGR\ElasticsearchBundle\Service\Manager;
+use ONGR\ElasticsearchDSL\Aggregation\Bucketing\GlobalAggregation;
+use ONGR\ElasticsearchDSL\Aggregation\Bucketing\TermsAggregation;
 use Porpaginas\Arrays\ArrayResult;
 use Sylius\ElasticSearchPlugin\Search\Criteria\Criteria;
 use Sylius\ElasticSearchPlugin\Search\Elastic\Applicator\SearchCriteriaApplicatorInterface;
@@ -56,6 +58,11 @@ final class ElasticSearchEngine implements SearchEngineInterface
 
         $search->setSize($criteria->paginating()->itemsPerPage());
         $search->setFrom($criteria->paginating()->offset());
+        $globalAggregation = new GlobalAggregation('filter_set');
+        $globalAggregation->addAggregation(new TermsAggregation('filter_set', 'main_taxon.code'));
+        $search->addAggregation($globalAggregation);
+
+        $result = $repository->findDocuments($search);
 
         return $repository->findDocuments($search);
     }

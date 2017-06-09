@@ -2,6 +2,8 @@
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
+use ONGR\FilterManagerBundle\Filter\ViewData;
+
 final class ProductListView
 {
     /**
@@ -28,4 +30,9 @@ final class ProductListView
      * @var ProductView[]
      */
     public $items = [];
+
+    /**
+     * @var ViewData[]
+     */
+    public $filters;
 }

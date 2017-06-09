@@ -4,114 +4,160 @@ declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Factory;
 
-use Porpaginas\Arrays\ArrayResult;
-use Porpaginas\Result;
+use ONGR\ElasticsearchBundle\Collection\Collection;
+use ONGR\FilterManagerBundle\Search\SearchResponse;
+use Sylius\ElasticSearchPlugin\Controller\ImageView;
 use Sylius\ElasticSearchPlugin\Controller\PriceView;
-use Sylius\ElasticSearchPlugin\Controller\ProductAttributeView;
-use Sylius\ElasticSearchPlugin\Controller\ProductListItemView;
+use Sylius\ElasticSearchPlugin\Controller\AttributeView;
+use Sylius\ElasticSearchPlugin\Controller\ProductView;
 use Sylius\ElasticSearchPlugin\Controller\ProductListView;
-use Sylius\ElasticSearchPlugin\Controller\ProductVariantItemView;
-use Sylius\ElasticSearchPlugin\Controller\TaxonItemView;
+use Sylius\ElasticSearchPlugin\Controller\VariantView;
+use Sylius\ElasticSearchPlugin\Controller\TaxonView;
 use Sylius\ElasticSearchPlugin\Document\AttributeValue;
-use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
-use Sylius\ElasticSearchPlugin\Search\Criteria\Paginating;
+use Sylius\ElasticSearchPlugin\Document\Image;
+use Sylius\ElasticSearchPlugin\Document\Price;
+use Sylius\ElasticSearchPlugin\Document\Product;
+use Sylius\ElasticSearchPlugin\Document\Taxon;
 
 final class ProductListViewFactory implements ProductListViewFactoryInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function createFromSearchResultAndPaginating(Result $result, Paginating $paginating)
+    public function createFromSearchResponse(SearchResponse $response)
     {
-        if (!$result instanceof ArrayResult) {
-            throw new UnsupportedFactoryMethodException(
-                __METHOD__,
-                sprintf('Method supports only ArrayResult, but got "%s"', get_class($result))
-            );
-        }
-
-        return $this->fromArrayResult($result, $paginating);
-    }
-
-    /**
-     * @param ArrayResult $result
-     * @param Paginating $paginating
-     *
-     * @return ProductListView
-     */
-    private function fromArrayResult(ArrayResult $result, Paginating $paginating)
-    {
-        $partialResult = $result->take($paginating->offset(), $paginating->itemsPerPage());
+        $result = $response->getResult();
         $productListView = new ProductListView();
-        $productListView->page = $partialResult->getCurrentPage();
-        $productListView->limit = $paginating->itemsPerPage();
-        $productListView->total = $partialResult->totalCount();
-        $productListView->pages = (int) ceil($partialResult->totalCount() / $paginating->itemsPerPage());
-        foreach ($partialResult as $item) {
-            $productListItemView = new ProductListItemView();
-            $productListItemView->images = $this->provideAttribute('images', $item, []);
-            $productListItemView->slug = $this->provideAttribute('slug', $item, null);
-            $productListItemView->name = $this->provideAttribute('name', $item, null);
-            $productListItemView->code = $this->provideAttribute('code', $item, null);
-            $productListItemView->taxons = $this->provideAttribute('taxons', $item, []);
-            $productListItemView->localeCode = $this->provideAttribute('locale_code', $item, null);
-            $productListItemView->channelCode = $this->provideAttribute('channel_code', $item, null);
-            $productListItemView->mainTaxon = $this->provideAttribute('main_taxon', $item, null);
+        $productListView->filters = $response->getFilters();
 
-            $productAttributeValues = $this->provideAttribute('attribute_values', $item, []);
-
-            $productListItemView->attributes = array_map(function ($attributeValue) {
-                $productAttributeView = new ProductAttributeView();
-                $productAttributeView->value = $this->provideAttribute('value', $attributeValue, null);
-                $productAttributeView->code = $this->provideAttribute(
-                    'code',
-                    $this->provideAttribute('attribute', $attributeValue, []),
-                    null
-                );
-                $productAttributeView->name = $this->provideAttribute(
-                    'name',
-                    $this->provideAttribute('attribute', $attributeValue, []),
-                    null
-                );
-
-                return $productAttributeView;
-            }, $productAttributeValues);
-
-            $priceView = new PriceView();
-            $priceView->current = $this->provideAttribute(
-                'amount',
-                $this->provideAttribute('price', $item, []),
-                null
-            );
-            $priceView->currency = $this->provideAttribute(
-                'currency',
-                $this->provideAttribute('price', $item, []),
-                null
-            );
-
-            $productVariantItemView = new ProductVariantItemView();
-            $productVariantItemView->price = $priceView;
-            $productVariantItemView->code = $this->provideAttribute('code', $item, null);
-            $productVariantItemView->images = $this->provideAttribute('images', $item, []);
-            $productVariantItemView->name = $this->provideAttribute('name', $item, null);
-
-            $productListItemView->variants = [$productVariantItemView];
-
-            $productListView->items[] = $productListItemView;
+        /** @var Product $product */
+        foreach ($result as $product) {
+            $productListView->items[] = $this->getProductView($product);
         }
 
         return $productListView;
     }
 
     /**
-     * @param string $key
-     * @param array $item
-     * @param string|array $default
+     * @param Collection|Image[] $images
      *
-     * @return string|array
+     * @return ImageView[]
      */
-    private function provideAttribute($key, array $item, $default)
+    private function getImageViews(Collection $images)
     {
-        return isset($item[$key]) ? $item[$key] : $default;
+        $imageViews = [];
+        foreach ($images as $image) {
+            $imageView = new ImageView();
+            $imageView->code = $image->getCode();
+            $imageView->path = $image->getPath();
+
+            $imageViews[] = $imageView;
+        }
+
+        return $imageViews;
+    }
+
+    /**
+     * @param Collection|Taxon[] $taxons
+     *
+     * @return TaxonView[]
+     */
+    private function getTaxonViews(Collection $taxons)
+    {
+        $taxonViews = [];
+        foreach ($taxons as $taxon) {
+            $taxonViews[] = $this->getTaxonView($taxon);
+        }
+
+        return $taxonViews;
+    }
+
+    /**
+     * @param Collection|AttributeValue[] $attributeValues
+     *
+     * @return AttributeView[]
+     */
+    private function getAttributeViews(Collection $attributeValues)
+    {
+        $attributeValueViews = [];
+        foreach ($attributeValues as $attributeValue) {
+            $attributeView = new AttributeView();
+            $attributeView->value = $attributeValue->getValue();
+            $attributeView->code = $attributeValue->getAttribute()->getCode();
+            $attributeView->name = $attributeValue->getAttribute()->getName();
+
+            $attributeValueViews[] = $attributeView;
+        }
+
+        return $attributeValueViews;
+    }
+
+    /**
+     * @param Taxon $taxon
+     *
+     * @return TaxonView
+     */
+    private function getTaxonView(Taxon $taxon)
+    {
+        $taxonView = new TaxonView();
+        $taxonView->code = $taxon->getCode();
+        $taxonView->slug = $taxon->getSlug();
+        $taxonView->position = $taxon->getPosition();
+        $taxonView->description = $taxon->getDescription();
+        $taxonView->images = $this->getImageViews($taxon->getImages());
+
+        return $taxonView;
+    }
+
+    /**
+     * @param Price $price
+     *
+     * @return PriceView
+     */
+    private function getPriceView(Price $price)
+    {
+        $priceView = new PriceView();
+        $priceView->current = $price->getAmount();
+        $priceView->currency = $price->getCurrency();
+
+        return $priceView;
+    }
+
+    /**
+     * @param Product $product
+     *
+     * @return VariantView
+     */
+    private function getVariantView(Product $product)
+    {
+        $variantView = new VariantView();
+        $variantView->price = $this->getPriceView($product->getPrice());
+        $variantView->code = $product->getCode();
+        $variantView->name = $product->getName();
+        $variantView->images = $this->getImageViews($product->getImages());
+
+        return $variantView;
+    }
+
+    /**
+     * @param Product $product
+     *
+     * @return ProductView
+     */
+    private function getProductView(Product $product)
+    {
+        $productView = new ProductView();
+        $productView->slug = $product->getSlug();
+        $productView->name = $product->getName();
+        $productView->code = $product->getCode();
+        $productView->localeCode = $product->getLocaleCode();
+        $productView->channelCode = $product->getChannelCode();
+        $productView->images = $this->getImageViews($product->getImages());
+        $productView->taxons = $this->getTaxonViews($product->getTaxons());
+        $productView->mainTaxon = $this->getTaxonView($product->getMainTaxon());
+        $productView->attributes = $this->getAttributeViews($product->getAttributeValues());
+        $productView->variants = [$this->getVariantView($product)];
+
+        return $productView;
     }
 }

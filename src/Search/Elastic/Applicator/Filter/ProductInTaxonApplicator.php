@@ -31,8 +31,8 @@ final class ProductInTaxonApplicator implements SearchCriteriaApplicatorInterfac
      */
     public function apply(Criteria $criteria, Search $search)
     {
-        $search->addPostFilter($this->productInMainTaxonQueryFactory->create(
-            $criteria->filtering()->fields()),
+        $search->addPostFilter(
+            $this->productInMainTaxonQueryFactory->create($criteria->filtering()->fields()),
             BoolQuery::SHOULD
         );
     }
