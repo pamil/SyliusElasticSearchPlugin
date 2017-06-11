@@ -16,6 +16,11 @@ final class ProductPublisher
     private $eventBus;
 
     /**
+     * @var ProductInterface[]
+     */
+    private $scheduledProducts = [];
+
+    /**
      * @param MessageBus $eventBus
      */
     public function __construct(MessageBus $eventBus)
@@ -32,8 +37,20 @@ final class ProductPublisher
 
         foreach ($scheduledInsertions as $entity) {
             if ($entity instanceof ProductInterface && $entity->isSimple()) {
-                $this->eventBus->handle(ProductCreated::occur($entity));
+                $this->scheduledProducts[] = $entity;
             }
         }
+    }
+
+    /**
+     * @param PostFlushEventArgs $event
+     */
+    public function postFlush(PostFlushEventArgs $event)
+    {
+        foreach ($this->scheduledProducts as $product) {
+            $this->eventBus->handle(ProductCreated::occur($product));
+        }
+
+        $this->scheduledProducts = [];
     }
 }
