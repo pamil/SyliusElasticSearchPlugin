@@ -162,7 +162,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     {
         /** @var PriceView $priceView */
         $priceView = new $this->priceViewClass();
-        $priceView->amount = $price->getAmount();
+        $priceView->current = $price->getAmount();
         $priceView->currency = $price->getCurrency();
 
         return $priceView;

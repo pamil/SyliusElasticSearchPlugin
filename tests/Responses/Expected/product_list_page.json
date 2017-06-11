@@ -18,7 +18,7 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Mug",
                     "price": {
-                        "amount": 1999,
+                        "current": 1999,
                         "currency": "GBP"
                     },
                     "images": []
@@ -64,7 +64,7 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Becher",
                     "price": {
-                        "amount": 1999,
+                        "current": 1999,
                         "currency": "GBP"
                     },
                     "images": []
@@ -110,7 +110,7 @@
                     "code": "LOGAN_T_SHIRT_CODE",
                     "name": "Logan T-Shirt",
                     "price": {
-                        "amount": 1999,
+                        "current": 1999,
                         "currency": "GBP"
                     },
                     "images": []
@@ -142,7 +142,7 @@
                 {
                     "code": "LOGAN_T_SHIRT_CODE",
                     "price": {
-                        "amount": 1999,
+                        "current": 1999,
                         "currency": "GBP"
                     },
                     "images": []
