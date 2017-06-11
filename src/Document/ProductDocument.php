@@ -65,35 +65,35 @@ class ProductDocument
     /**
      * @var PriceDocument
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:PriceDocument")
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\PriceDocument")
      */
     private $price;
 
     /**
      * @var TaxonDocument
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:TaxonDocument")
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\TaxonDocument")
      */
     private $mainTaxon;
 
     /**
      * @var Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:TaxonDocument", multiple=true)
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\TaxonDocument", multiple=true)
      */
     private $taxons;
 
     /**
      * @var Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:AttributeValueDocument", multiple=true)
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\AttributeValueDocument", multiple=true)
      */
     private $attributeValues;
 
     /**
      * @var Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:ImageDocument", multiple=true)
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ImageDocument", multiple=true)
      */
     private $images;
 
