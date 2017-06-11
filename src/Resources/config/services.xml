@@ -16,6 +16,7 @@
         <service id="sylius_elastic_search.event_listener" class="Sylius\ElasticSearchPlugin\EventListener\ProductPublisher">
             <argument type="service" id="event_bus" />
             <tag name="doctrine.event_listener" event="onFlush"/>
+            <tag name="doctrine.event_listener" event="postFlush"/>
         </service>
 
         <service id="sylius_elastic_search.factory.product" class="Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactory">
