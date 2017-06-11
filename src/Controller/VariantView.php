@@ -15,12 +15,12 @@ class VariantView
     public $name;
 
     /**
-     * @var string
+     * @var PriceView
      */
     public $price;
 
     /**
-     * @var array
+     * @var ImageView[]
      */
     public $images = [];
 }
