@@ -19,7 +19,7 @@ class AttributeValueDocument
     /**
      * @var AttributeDocument
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:AttributeDocument")
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\AttributeDocument")
      */
     private $attribute;
 

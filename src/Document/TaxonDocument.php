@@ -34,7 +34,7 @@ class TaxonDocument
     /**
      * @var ImageDocument[]|Collection
      *
-     * @ElasticSearch\Embedded(class="SyliusElasticSearchPlugin:ImageDocument", multiple=true)
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ImageDocument", multiple=true)
      */
     private $images;
 

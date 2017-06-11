@@ -18,7 +18,7 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Mug",
                     "price": {
-                        "current": 1999,
+                        "amount": 1999,
                         "currency": "GBP"
                     },
                     "images": []
@@ -64,7 +64,7 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Becher",
                     "price": {
-                        "current": 1999,
+                        "amount": 1999,
                         "currency": "GBP"
                     },
                     "images": []

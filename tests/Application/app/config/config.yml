@@ -54,39 +54,10 @@ sylius_grid:
     drivers:
         - doctrine/orm
 
-sylius_elastic_search:
-    filter_sets:
-        mug_type_and_stickers_set:
-            filters:
-                mug_type:
-                    type: option
-                    options:
-                        option_code: mug_type
-                sticker_size:
-                    type: option
-                    options:
-                        option_code: sticker_size
-                product_price:
-                    type: price
-                search:
-                    type: search
-        mugs:
-            filters:
-                mug_type:
-                    type: option
-                    options:
-                        option_code: mug_type
-                product_price:
-                        type: price
-                search:
-                    type: search
+ongr_elasticsearch:
+    managers:
         default:
-            filters:
-                price_range:
-                    type: price
-                search:
-                    type: search
-        global_search:
-            filters:
-                search:
-                    type: search
+            index:
+                index_name: sylius
+            mappings:
+                SyliusElasticSearchPlugin: {}

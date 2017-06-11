@@ -48,6 +48,18 @@ Elastic search for Sylius.
     ```
     For more configuration take a look at [ONGRFilterManager](http://docs.ongr.io/FilterManagerBundle)
 
+8. Configure ONGR bundle in `app/config/config.yml`:
+
+    ```yaml
+    ongr_elasticsearch:
+        managers:
+            default:
+                index:
+                    index_name: sylius
+                mappings:
+                    SyliusElasticSearchPlugin: {}
+    ```
+
 8. Import routing files in `app/config/routing.yml`:
 
     ```yaml

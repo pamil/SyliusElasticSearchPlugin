@@ -1,11 +1,3 @@
-ongr_elasticsearch:
-    managers:
-        default:
-            index:
-                index_name: sylius
-            mappings:
-                - SyliusElasticSearchPlugin
-
 ongr_filter_manager:
     managers:
         search_list:
