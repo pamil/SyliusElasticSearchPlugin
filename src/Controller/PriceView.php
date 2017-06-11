@@ -9,7 +9,7 @@ class PriceView
     /**
      * @var int
      */
-    public $current;
+    public $amount;
 
     /**
      * @var string
