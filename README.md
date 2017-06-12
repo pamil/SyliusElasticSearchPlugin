@@ -58,6 +58,52 @@ Elastic search for Sylius.
                     index_name: sylius
                 mappings:
                     SyliusElasticSearchPlugin: {}
+    
+    ongr_filter_manager:
+        managers:
+            search_list:
+                filters:
+                    - main_taxon
+                    - taxon
+                    - price_range
+                    - locale
+                    - attribute_values
+                    - paginator
+                    - search
+                repository: es.manager.default.product
+        filters:
+            main_taxon:
+                type: choice
+                request_field: mainTaxonCode
+                document_field: main_taxon.code
+            taxon:
+                type: multi_choice
+                request_field: taxonCode
+                document_field: taxons.code
+            price_range:
+                type: range
+                request_field: price
+                document_field: price.amount
+            locale:
+                type: choice
+                request_field: localeCode
+                document_field: locale_code
+            attribute_values:
+                type: multi_choice
+                request_field: attributeValues
+                document_field: attribute_values.value
+            paginator:
+                type: pager
+                document_field: ~
+                request_field: page
+                options:
+                    count_per_page: 10
+            search:
+                type: match
+                request_field: search
+                document_field: name,description,attribute_values.value
+                options:
+                    operator: and
     ```
 
 8. Import routing files in `app/config/routing.yml`:
