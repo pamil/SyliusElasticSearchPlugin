@@ -26,14 +26,14 @@
             ],
             "attributes": [
                 {
-                    "value": "HOLIDAY COLLECTION",
                     "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection"
+                    "name": "Mug collection",
+                    "value": "HOLIDAY COLLECTION"
                 },
                 {
-                    "value": "Wood",
                     "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material"
+                    "name": "Mug material",
+                    "value": "Wood"
                 }
             ],
             "images": [],
@@ -72,14 +72,14 @@
             ],
             "attributes": [
                 {
-                    "value": "FEIERTAGSKOLLEKTION",
                     "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection"
+                    "name": "Mug collection",
+                    "value": "FEIERTAGSKOLLEKTION"
                 },
                 {
-                    "value": "Holz",
                     "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material"
+                    "name": "Mug material",
+                    "value": "Holz"
                 }
             ],
             "images": [],
@@ -161,70 +161,66 @@
         }
     ],
     "filters": {
-        "main_taxon": {
+        "channel": {
             "state": {
-                "active": false,
-                "urlParameters": [],
-                "name": "main_taxon",
+                "active": true,
+                "value": "WEB_GB",
+                "urlParameters": {
+                    "channel": "WEB_GB"
+                },
+                "name": "channel",
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
+            "urlParameters": {
+                "channel": "WEB_GB"
+            },
             "resetUrlParameters": [],
-            "name": "main_taxon",
+            "name": "channel",
             "choices": [
                 {
-                    "active": false,
+                    "active": true,
                     "default": false,
-                    "urlParameters": {
-                        "mainTaxonCode": "MUG"
-                    },
-                    "label": "MUG",
-                    "count": 2
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "mainTaxonCode": "T_SHIRTS"
-                    },
-                    "label": "T_SHIRTS",
-                    "count": 2
+                    "urlParameters": [],
+                    "label": "WEB_GB",
+                    "count": 4
                 }
             ]
         },
-        "taxon": {
+        "taxon_slug": {
             "state": {
                 "active": false,
                 "urlParameters": [],
-                "name": "taxon",
+                "name": "taxon_slug",
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
-            "name": "taxon",
+            "urlParameters": {
+                "channel": "WEB_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB"
+            },
+            "name": "taxon_slug",
             "choices": [
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
-                        "taxonCode": [
-                            "MUG"
-                        ]
+                        "channel": "WEB_GB",
+                        "taxon_slug": "mugs"
                     },
-                    "label": "MUG",
+                    "label": "mugs",
                     "count": 2
                 },
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
-                        "taxonCode": [
-                            "T_SHIRTS"
-                        ]
+                        "channel": "WEB_GB",
+                        "taxon_slug": "t-shirts"
                     },
-                    "label": "T_SHIRTS",
+                    "label": "t-shirts",
                     "count": 2
                 }
             ]
@@ -237,8 +233,12 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "channel": "WEB_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB"
+            },
             "name": "price_range",
             "minBounds": 1999,
             "maxBounds": 1999
@@ -251,15 +251,20 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "channel": "WEB_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB"
+            },
             "name": "locale",
             "choices": [
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
-                        "localeCode": "de_DE"
+                        "channel": "WEB_GB",
+                        "locale_code": "de_DE"
                     },
                     "label": "de_DE",
                     "count": 2
@@ -268,7 +273,8 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
-                        "localeCode": "en_GB"
+                        "channel": "WEB_GB",
+                        "locale_code": "en_GB"
                     },
                     "label": "en_GB",
                     "count": 2
@@ -283,14 +289,19 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "channel": "WEB_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB"
+            },
             "name": "attribute_values",
             "choices": [
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "attributeValues": [
                             "FEIERTAGSKOLLEKTION"
                         ]
@@ -302,6 +313,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "attributeValues": [
                             "HOLIDAY COLLECTION"
                         ]
@@ -313,6 +325,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "attributeValues": [
                             "Holz"
                         ]
@@ -324,6 +337,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "attributeValues": [
                             "Wood"
                         ]
@@ -342,8 +356,12 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "channel": "WEB_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB"
+            },
             "name": "paginator",
             "currentPage": 1,
             "totalItems": 4,
@@ -360,8 +378,12 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "channel": "WEB_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB"
+            },
             "name": "search"
         }
     }

@@ -2,8 +2,8 @@ ongr_filter_manager:
     managers:
         search_list:
             filters:
-                - main_taxon
-                - taxon
+                - channel
+                - taxon_slug
                 - price_range
                 - locale
                 - attribute_values
@@ -11,21 +11,21 @@ ongr_filter_manager:
                 - search
             repository: es.manager.default.product
     filters:
-        main_taxon:
+        channel:
             type: choice
-            request_field: mainTaxonCode
-            document_field: main_taxon.code
-        taxon:
-            type: multi_choice
-            request_field: taxonCode
-            document_field: taxons.code
+            request_field: channel
+            document_field: channel_code
+        taxon_slug:
+            type: choice
+            request_field: taxon_slug
+            document_field: taxons.slug
         price_range:
             type: range
             request_field: price
             document_field: price.amount
         locale:
             type: choice
-            request_field: localeCode
+            request_field: locale_code
             document_field: locale_code
         attribute_values:
             type: multi_choice

@@ -30,7 +30,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('shop.yml');
 
-        $this->client->request('GET', '/shop-api/products', ['mainTaxonCode' => 'MUG'], [], ['ACCEPT' => 'application/json']);
+        $this->client->request('GET', '/shop-api/taxons/mugs/products', [], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
 
@@ -44,7 +44,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('shop.yml');
 
-        $this->client->request('GET', '/shop-api/products', ['channelCode' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
 
