@@ -1,13 +1,13 @@
 shop_api_product_show_catalog:
-    path: /shop-api/products
+    path: /shop-api/taxons/{taxon_slug}/products
     methods: [GET]
     defaults:
         _controller: sylius_elastic_search.controller.search
         _format: json
 
-ongr_search_page:
-    path: /search
-    methods:  [GET]
+shop_api_product_show_catalog_all:
+    path: /shop-api/products
+    methods: [GET]
     defaults:
-        _controller: ONGRFilterManagerBundle:Manager:json
-        managerName: "search_list"
+        _controller: sylius_elastic_search.controller.search
+        _format: json
