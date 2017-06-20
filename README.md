@@ -23,21 +23,30 @@ Elastic search for Sylius.
     $ elasticsearch
     ```
 
-4. Add this bundle to `AppKernel.php`:
+4. Add those bundles to `AppKernel.php`:
 
     ```php
      new \ONGR\ElasticsearchBundle\ONGRElasticsearchBundle(),
      new \SimpleBus\SymfonyBridge\SimpleBusCommandBusBundle(),
      new \SimpleBus\SymfonyBridge\SimpleBusEventBusBundle(),
      new \ONGR\FilterManagerBundle\ONGRFilterManagerBundle(),
+     new \Sylius\ElasticSearchPlugin\SyliusElasticSearchPlugin(),
     ```
 
 5. Create/Setup database:
 
     ```bash
-    $ app/console do:da:cr
-    $ app/console do:sch:cr
-    $ app/console syl:fix:lo
+    $ bin/console ongr:es:index:create
+    $ bin/console do:da:cr
+    $ bin/console do:sch:cr
+    $ bin/console syl:fix:lo
+    ```
+
+    If there is a problem with creating elastic search index run those commands:
+
+    ```bash
+    $ bin/console ongr:es:index:drop --force
+    $ bin/console ongr:es:index:create
     ```
 
 7. Import config file in `app/config/config.yml` for default filter set configuration:
@@ -90,7 +99,7 @@ Elastic search for Sylius.
                 document_field: locale_code
             attribute_values:
                 type: multi_choice
-                request_field: attributeValues
+                request_field: attribute_values
                 document_field: attribute_values.value
             paginator:
                 type: pager

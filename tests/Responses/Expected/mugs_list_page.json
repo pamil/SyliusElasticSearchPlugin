@@ -234,7 +234,7 @@
                     "default": false,
                     "urlParameters": {
                         "taxon_slug": "mugs",
-                        "attributeValues": [
+                        "attribute_values": [
                             "FEIERTAGSKOLLEKTION"
                         ]
                     },
@@ -246,7 +246,7 @@
                     "default": false,
                     "urlParameters": {
                         "taxon_slug": "mugs",
-                        "attributeValues": [
+                        "attribute_values": [
                             "HOLIDAY COLLECTION"
                         ]
                     },
@@ -258,7 +258,7 @@
                     "default": false,
                     "urlParameters": {
                         "taxon_slug": "mugs",
-                        "attributeValues": [
+                        "attribute_values": [
                             "Holz"
                         ]
                     },
@@ -270,7 +270,7 @@
                     "default": false,
                     "urlParameters": {
                         "taxon_slug": "mugs",
-                        "attributeValues": [
+                        "attribute_values": [
                             "Wood"
                         ]
                     },

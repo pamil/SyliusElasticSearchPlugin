@@ -302,7 +302,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "attributeValues": [
+                        "attribute_values": [
                             "FEIERTAGSKOLLEKTION"
                         ]
                     },
@@ -314,7 +314,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "attributeValues": [
+                        "attribute_values": [
                             "HOLIDAY COLLECTION"
                         ]
                     },
@@ -326,7 +326,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "attributeValues": [
+                        "attribute_values": [
                             "Holz"
                         ]
                     },
@@ -338,7 +338,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "attributeValues": [
+                        "attribute_values": [
                             "Wood"
                         ]
                     },
