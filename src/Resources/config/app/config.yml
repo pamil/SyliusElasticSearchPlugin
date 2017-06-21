@@ -29,7 +29,7 @@ ongr_filter_manager:
             document_field: locale_code
         attribute_values:
             type: multi_choice
-            request_field: attributeValues
+            request_field: attribute_values
             document_field: attribute_values.value
         paginator:
             type: pager
