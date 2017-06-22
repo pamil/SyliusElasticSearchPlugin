@@ -122,23 +122,6 @@ Elastic search for Sylius.
            resource: "@SyliusElasticSearchPlugin/Resources/config/routing.yml"
     ```
 
-    ```yaml
-       #routing.yml
-       shop_api_product_show_catalog:
-           path: /shop-api/taxons/{taxon_slug}/products
-           methods: [GET]
-           defaults:
-               _controller: sylius_elastic_search.controller.search
-               _format: json
-
-       shop_api_product_show_catalog_all:
-           path: /shop-api/products
-           methods: [GET]
-           defaults:
-               _controller: sylius_elastic_search.controller.search
-               _format: json
-    ```
-
 9. Example Request/Response:
 
 To activate filter you need to pass in parameter (query, request, attribute) ``requested field`` see reference in configuration section.
