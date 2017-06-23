@@ -46,8 +46,8 @@ Sylius\Component\Core\Model\Product:
         attributes:
             - "@en_gb_mug_holiday_collection_value"
             - "@de_de_mug_holiday_collection_value"
-            - "@en_gb_mug_holiday_material_value"
-            - "@de_de_mug_holiday_material_value"
+            - "@en_gb_mug_wood_material_value"
+            - "@de_de_mug_wood_material_value"
         variants: ["@mug_variant"]
     t_shirt:
         code: "LOGAN_T_SHIRT_CODE"
@@ -123,7 +123,7 @@ Sylius\Component\Core\Model\Taxon:
         currentLocale: "en_GB"
         currentTranslation: "@en_gb_category_translation"
         translations: ["@en_gb_category_translation", "@de_de_category_translation"]
-        children: ["@mug_taxon", "@hat_taxon", "@t_shirt_taxon"]
+        children: ["@mug_taxon", "@t_shirt_taxon"]
     mug_taxon:
         code: "MUG"
         currentLocale: "en_GB"
@@ -131,34 +131,12 @@ Sylius\Component\Core\Model\Taxon:
         translations: ["@en_gb_mug_taxon_translation", "@de_de_mug_taxon_translation"]
         parent: "@category_taxon"
         root: "@category_taxon"
-    hat_taxon:
-        code: "HAT"
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_hat_translation"
-        translations: ["@en_gb_hat_translation", "@de_de_hat_translation"]
-        parent: "@category_taxon"
-        root: "@category_taxon"
     t_shirt_taxon:
         code: "T_SHIRTS"
         currentLocale: "en_GB"
         currentTranslation: "@en_gb_t_shirt_taxon_translation"
         translations: ["@en_gb_t_shirt_taxon_translation", "@de_de_t_shirt_taxon_translation"]
-        children: ["@men_t_shirt_taxon", "@women_t_shirt_taxon"]
         parent: "@category_taxon"
-        root: "@category_taxon"
-    men_t_shirt_taxon:
-        code: "MEN_T_SHIRTS"
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_men_t_shirt_translation"
-        translations: ["@en_gb_men_t_shirt_translation", "@de_de_men_t_shirt_translation"]
-        parent: "@t_shirt_taxon"
-        root: "@category_taxon"
-    women_t_shirt_taxon:
-        code: "WOMEN_T_SHIRTS"
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_women_t_shirt_translation"
-        translations: ["@en_gb_women_t_shirt_translation", "@de_de_women_t_shirt_translation"]
-        parent: "@t_shirt_taxon"
         root: "@category_taxon"
     brand_taxon:
         code: "BRAND"
@@ -174,35 +152,17 @@ Sylius\Component\Taxonomy\Model\TaxonTranslation:
         description: <paragraph(2)>
         translatable: "@category_taxon"
     en_gb_mug_taxon_translation:
-        slug: "mugs"
+        slug: "categories/mugs"
         locale: "en_GB"
         name: "Mugs"
         description: <paragraph(2)>
         translatable: "@mug_taxon"
-    en_gb_hat_translation:
-        slug: "hats"
-        locale: "en_GB"
-        name: "Hats"
-        description: <paragraph(2)>
-        translatable: "@hat_taxon"
     en_gb_t_shirt_taxon_translation:
-        slug: "t-shirts"
+        slug: "categories/t-shirts"
         locale: "en_GB"
         name: "T-Shirts"
         description: <paragraph(2)>
         translatable: "@t_shirt_taxon"
-    en_gb_men_t_shirt_translation:
-        slug: "men-t-shirts"
-        locale: "en_GB"
-        name: "Men T-Shirts"
-        description: <paragraph(2)>
-        translatable: "@men_t_shirt_taxon"
-    en_gb_women_t_shirt_translation:
-        slug: "women-t-shirts"
-        locale: "en_GB"
-        name: "Women T-Shirts"
-        description: <paragraph(2)>
-        translatable: "@women_t_shirt_taxon"
     en_gb_brand_translation:
         slug: "brands"
         locale: "en_GB"
@@ -216,35 +176,17 @@ Sylius\Component\Taxonomy\Model\TaxonTranslation:
         description: <paragraph(2)>
         translatable: "@category_taxon"
     de_de_mug_taxon_translation:
-        slug: "tassen"
+        slug: "kategorien/1tassen"
         locale: "de_DE"
         name: "Tassen"
         description: <paragraph(2)>
         translatable: "@mug_taxon"
-    de_de_hat_translation:
-        slug: "hute"
-        locale: "de_DE"
-        name: "Hüte"
-        description: <paragraph(2)>
-        translatable: "@hat_taxon"
     de_de_t_shirt_taxon_translation:
-        slug: "t-shirts"
+        slug: "kategorien/1t-shirts"
         locale: "de_DE"
         name: "T-Shirts"
         description: <paragraph(2)>
         translatable: "@t_shirt_taxon"
-    de_de_men_t_shirt_translation:
-        slug: "männer-t-shirts"
-        locale: "de_DE"
-        name: "Männer T-Shirts"
-        description: <paragraph(2)>
-        translatable: "@men_t_shirt_taxon"
-    de_de_women_t_shirt_translation:
-        slug: "frauen-t-shirts"
-        locale: "de_DE"
-        name: "Frauen T-Shirts"
-        description: <paragraph(2)>
-        translatable: "@women_t_shirt_taxon"
     de_de_brand_translation:
         slug: "marken"
         locale: "de_DE"
@@ -315,12 +257,12 @@ Sylius\Component\Product\Model\ProductAttributeValue:
         attribute: "@mug_collection"
         localeCode: "de_DE"
         text: "FEIERTAGSKOLLEKTION"
-    en_gb_mug_holiday_material_value:
+    en_gb_mug_wood_material_value:
         subject: "@mug"
         attribute: "@mug_material"
         localeCode: "en_GB"
         text: "Wood"
-    de_de_mug_holiday_material_value:
+    de_de_mug_wood_material_value:
         subject: "@mug"
         attribute: "@mug_material"
         localeCode: "de_DE"

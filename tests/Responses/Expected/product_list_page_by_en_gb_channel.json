@@ -7,7 +7,7 @@
             "taxons": [
                 {
                     "code": "MUG",
-                    "slug": "mugs",
+                    "slug": "categories\/mugs",
                     "position": 0,
                     "images": [],
                     "description": "@string@"
@@ -41,7 +41,7 @@
             "localeCode": "en_GB",
             "mainTaxon": {
                 "code": "MUG",
-                "slug": "mugs",
+                "slug": "categories\/mugs",
                 "images": [],
                 "description": "@string@"
             }
@@ -53,7 +53,7 @@
             "taxons": [
                 {
                     "code": "MUG",
-                    "slug": "mugs",
+                    "slug": "categories\/mugs",
                     "position": 0,
                     "images": [],
                     "description": "@string@"
@@ -87,7 +87,7 @@
             "localeCode": "de_DE",
             "mainTaxon": {
                 "code": "MUG",
-                "slug": "mugs",
+                "slug": "categories\/mugs",
                 "images": [],
                 "description": "@string@"
             }
@@ -99,8 +99,8 @@
             "taxons": [
                 {
                     "code": "T_SHIRTS",
-                    "slug": "t-shirts",
-                    "position": 2,
+                    "slug": "categories\/t-shirts",
+                    "position": 1,
                     "images": [],
                     "description": "@string@"
                 }
@@ -122,7 +122,7 @@
             "localeCode": "en_GB",
             "mainTaxon": {
                 "code": "T_SHIRTS",
-                "slug": "t-shirts",
+                "slug": "categories\/t-shirts",
                 "images": [],
                 "description": "@string@"
             }
@@ -132,8 +132,8 @@
             "taxons": [
                 {
                     "code": "T_SHIRTS",
-                    "slug": "t-shirts",
-                    "position": 2,
+                    "slug": "categories\/t-shirts",
+                    "position": 1,
                     "images": [],
                     "description": "@string@"
                 }
@@ -154,7 +154,7 @@
             "localeCode": "de_DE",
             "mainTaxon": {
                 "code": "T_SHIRTS",
-                "slug": "t-shirts",
+                "slug": "categories\/t-shirts",
                 "images": [],
                 "description": "@string@"
             }
@@ -208,9 +208,9 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "taxon_slug": "mugs"
+                        "taxon_slug": "categories\/mugs"
                     },
-                    "label": "mugs",
+                    "label": "categories\/mugs",
                     "count": 2
                 },
                 {
@@ -218,9 +218,9 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "taxon_slug": "t-shirts"
+                        "taxon_slug": "categories\/t-shirts"
                     },
-                    "label": "t-shirts",
+                    "label": "categories\/t-shirts",
                     "count": 2
                 }
             ]
