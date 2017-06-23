@@ -5,7 +5,7 @@ shop_api_product_show_catalog:
         _controller: sylius_elastic_search.controller.search
         _format: json
     requirements:
-        taxonomySlug: .+
+        taxon_slug: .+
 
 shop_api_product_show_catalog_all:
     path: /shop-api/products
