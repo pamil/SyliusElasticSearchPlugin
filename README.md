@@ -145,7 +145,7 @@ To activate filter you need to pass in parameter (query, request, attribute) ``r
 For e.g:
 
 ```
-    /shop-api/taxons/mugs/products?channel=WEB_DE&price=2000;3000
+    /shop-api/taxon-products/mugs?channel=WEB_DE&price=2000;3000
 ```
 
 It will activate ``taxon_slug``, ``price_range`` and ``channel`` filter.
@@ -153,7 +153,7 @@ It will activate ``taxon_slug``, ``price_range`` and ``channel`` filter.
 Request:
 
 ```
-    /shop-api/taxons/mugs/products
+    /shop-api/taxon-products/mugs
 ```
 
 Response:
