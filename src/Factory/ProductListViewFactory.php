@@ -201,9 +201,12 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         $productView->channelCode = $product->getChannelCode();
         $productView->images = $this->getImageViews($product->getImages());
         $productView->taxons = $this->getTaxonViews($product->getTaxons());
-        $productView->mainTaxon = $this->getTaxonView($product->getMainTaxon());
         $productView->attributes = $this->getAttributeViews($product->getAttributeValues());
         $productView->variants = [$this->getVariantView($product)];
+
+        if (null !== $product->getMainTaxon()) {
+            $productView->mainTaxon = $this->getTaxonView($product->getMainTaxon());
+        }
 
         return $productView;
     }

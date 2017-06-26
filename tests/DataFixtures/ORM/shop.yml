@@ -42,20 +42,31 @@ Sylius\Component\Core\Model\Product:
         currentTranslation: "@en_gb_mug_product_translation"
         translations: ["@en_gb_mug_product_translation", "@de_de_mug_product_translation"]
         mainTaxon: "@mug_taxon"
-        productTaxons: ["@mug_product_taxon"]
+        productTaxons: ["@mug_product_taxon", "@mug_brand_taxon"]
         attributes:
             - "@en_gb_mug_holiday_collection_value"
             - "@de_de_mug_holiday_collection_value"
             - "@en_gb_mug_wood_material_value"
             - "@de_de_mug_wood_material_value"
         variants: ["@mug_variant"]
+    hat:
+        code: "LOGAN_HAT_CODE"
+        channels: ["@gb_web_channel"]
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_hat_product_translation"
+        translations: ["@en_gb_hat_product_translation", "@de_de_hat_product_translation"]
+        productTaxons: ["@hat_product_taxon", "@hat_brand_taxon"]
+        attributes:
+            - "@en_gb_mug_holiday_collection_value"
+            - "@de_de_mug_holiday_collection_value"
+        variants: ["@hat_variant"]
     t_shirt:
         code: "LOGAN_T_SHIRT_CODE"
         channels: ["@gb_web_channel"]
         currentLocale: "en_GB"
         currentTranslation: "@t_shirt_translation"
         mainTaxon: "@t_shirt_taxon"
-        productTaxons: ["@t_shirt_product_taxon"]
+        productTaxons: ["@t_shirt_product_taxon", "@t_shirt_brand_taxon"]
         variants: ["@t_shirt_small"]
 
 Sylius\Component\Core\Model\ProductTranslation:
@@ -71,6 +82,18 @@ Sylius\Component\Core\Model\ProductTranslation:
         name: "Logan Becher"
         description: <paragraph(2)>
         translatable: "@mug"
+    en_gb_hat_product_translation:
+        slug: "logan-hat"
+        locale: "en_GB"
+        name: "Logan Hat"
+        description: <paragraph(2)>
+        translatable: "@hat"
+    de_de_hat_product_translation:
+        slug: "logan-hut"
+        locale: "de_DE"
+        name: "Logan Hut"
+        description: <paragraph(2)>
+        translatable: "@hat"
     t_shirt_translation:
         slug: "logan-t-shirt"
         locale: "en_GB"
@@ -87,6 +110,14 @@ Sylius\Component\Core\Model\ProductVariant:
         translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
         channelPricings:
             WEB_GB: "@gb_mug_web_channel_pricing"
+    hat_variant:
+        code: "LOGAN_HAT_CODE"
+        product: "@hat"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_hat_variant_translation"
+        translations: ["@en_gb_hat_variant_translation", "@de_de_hat_variant_translation"]
+        channelPricings:
+            WEB_GB: "@gb_hat_web_channel_pricing"
     t_shirt_small:
         code: "SMALL_LOGAN_T_SHIRT_CODE"
         product: "@t_shirt"
@@ -104,6 +135,14 @@ Sylius\Component\Product\Model\ProductVariantTranslation:
         locale: "de_DE"
         name: "Logan Becher"
         translatable: "@mug_variant"
+    en_gb_hat_variant_translation:
+        locale: "en_GB"
+        name: "Logan Hat"
+        translatable: "@hat_variant"
+    de_de_hat_variant_translation:
+        locale: "de_DE"
+        name: "Logan Hut"
+        translatable: "@hat_variant"
     small_t_shirt_translation:
         locale: "en_GB"
         name: "Small Logan T-Shirt"
@@ -113,6 +152,9 @@ Sylius\Component\Core\Model\ChannelPricing:
     gb_mug_web_channel_pricing:
         channelCode: "WEB_GB"
         price: 1999
+    gb_hat_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 2999
     gb_small_t_shirt_web_channel_pricing:
         channelCode: "WEB_GB"
         price: 1999
@@ -129,6 +171,13 @@ Sylius\Component\Core\Model\Taxon:
         currentLocale: "en_GB"
         currentTranslation: "@en_gb_mug_taxon_translation"
         translations: ["@en_gb_mug_taxon_translation", "@de_de_mug_taxon_translation"]
+        parent: "@category_taxon"
+        root: "@category_taxon"
+    hat_taxon:
+        code: "HAT"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_hat_taxon_translation"
+        translations: ["@en_gb_hat_taxon_translation", "@de_de_hat_taxon_translation"]
         parent: "@category_taxon"
         root: "@category_taxon"
     t_shirt_taxon:
@@ -169,6 +218,12 @@ Sylius\Component\Taxonomy\Model\TaxonTranslation:
         name: "Brands"
         description: <paragraph(2)>
         translatable: "@brand_taxon"
+    en_gb_hat_taxon_translation:
+        slug: "categories/hats"
+        locale: "en_GB"
+        name: "Hats"
+        description: <paragraph(2)>
+        translatable: "@hat_taxon"
     de_de_category_translation:
         slug: "kategorien"
         locale: "de_DE"
@@ -193,16 +248,28 @@ Sylius\Component\Taxonomy\Model\TaxonTranslation:
         name: "Marken"
         description: <paragraph(2)>
         translatable: "@brand_taxon"
+    de_de_hat_taxon_translation:
+        slug: "kategorien/hut"
+        locale: "de_DE"
+        name: "Hut"
+        description: <paragraph(2)>
+        translatable: "@hat_taxon"
 
 Sylius\Component\Core\Model\ProductTaxon:
     mug_product_taxon:
         product: "@mug"
         taxon: "@mug_taxon"
+    hat_product_taxon:
+        product: "@hat"
+        taxon: "@hat_taxon"
     t_shirt_product_taxon:
         product: "@t_shirt"
         taxon: "@t_shirt_taxon"
     mug_brand_taxon:
         product: "@mug"
+        taxon: "@brand_taxon"
+    hat_brand_taxon:
+        product: "@hat"
         taxon: "@brand_taxon"
     t_shirt_brand_taxon:
         product: "@t_shirt"
