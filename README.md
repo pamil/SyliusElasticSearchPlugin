@@ -113,6 +113,9 @@ Elastic search for Sylius.
                 document_field: name,description,attribute_values.value
                 options:
                     operator: and
+
+    sylius_elastic_search:
+        attribute_whitelist: ['MUG_COLLECTION_CODE', 'MUG_MATERIAL_CODE'] #Only attibutes with these codes will be indexed
     ```
 
 8. Import routing file:
