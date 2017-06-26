@@ -38,6 +38,9 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     /** @var string */
     private $taxonDocumentClass;
 
+    /** @var array */
+    private $attributeWhitelist = [];
+
     /**
      * @param string $productDocumentClass
      * @param string $attributeDocumentClass
@@ -45,6 +48,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      * @param string $imageDocumentClass
      * @param string $priceDocumentClass
      * @param string $taxonDocumentClass
+     * @param array $attributeWhitelist
      */
     public function __construct(
         $productDocumentClass,
@@ -52,7 +56,8 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $attributeValueDocumentClass,
         $imageDocumentClass,
         $priceDocumentClass,
-        $taxonDocumentClass
+        $taxonDocumentClass,
+        array $attributeWhitelist
     ) {
         $this->assertClassExtends($productDocumentClass, ProductDocument::class);
         $this->productDocumentClass = $productDocumentClass;
@@ -71,6 +76,8 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         $this->assertClassExtends($taxonDocumentClass, TaxonDocument::class);
         $this->taxonDocumentClass = $taxonDocumentClass;
+
+        $this->attributeWhitelist = $attributeWhitelist;
     }
 
     /**
@@ -163,20 +170,21 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
             $productTaxons[] = $productTaxon;
         }
         $product->setTaxons(new Collection($productTaxons));
-
         $productAttributeValues = [];
         foreach ($syliusProductAttributes as $syliusProductAttributeValue) {
-            /** @var AttributeValueDocument $productAttributeValue */
-            $productAttributeValue = new $this->attributeValueDocumentClass();
-            $productAttributeValue->setValue($syliusProductAttributeValue->getValue());
+            if (in_array($syliusProductAttributeValue->getAttribute()->getCode(), $this->attributeWhitelist)) {
+                /** @var AttributeValueDocument $productAttributeValue */
+                $productAttributeValue = new $this->attributeValueDocumentClass();
+                $productAttributeValue->setValue($syliusProductAttributeValue->getValue());
 
-            /** @var AttributeDocument $attribute */
-            $attribute = new $this->attributeDocumentClass();
-            $attribute->setCode($syliusProductAttributeValue->getAttribute()->getCode());
-            $attribute->setName($syliusProductAttributeValue->getAttribute()->getName());
-            $productAttributeValue->setAttribute($attribute);
+                /** @var AttributeDocument $attribute */
+                $attribute = new $this->attributeDocumentClass();
+                $attribute->setCode($syliusProductAttributeValue->getAttribute()->getCode());
+                $attribute->setName($syliusProductAttributeValue->getAttribute()->getName());
+                $productAttributeValue->setAttribute($attribute);
 
-            $productAttributeValues[] = $productAttributeValue;
+                $productAttributeValues[] = $productAttributeValue;
+            }
         }
         $productAttributeValues = new Collection($productAttributeValues);
         $product->setAttributeValues($productAttributeValues);

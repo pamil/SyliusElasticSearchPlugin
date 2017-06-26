@@ -60,4 +60,14 @@ final class SyliusElasticSearchExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasParameter('sylius_elastic_search.view.price.class', PriceView::class);
         $this->assertContainerBuilderHasParameter('sylius_elastic_search.view.taxon.class', TaxonView::class);
     }
+
+    /**
+     * @test
+     */
+    public function it_defines_attribute_whitelist_parameter()
+    {
+        $this->load([]);
+
+        $this->assertContainerBuilderHasParameter('sylius_elastic_search.attribute_whitelist', []);
+    }
 }
