@@ -17,7 +17,7 @@ final class SyliusElasticSearchExtension extends Extension
         $config = $this->processConfiguration($this->getConfiguration([], $container), $configs);
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $container->setParameter('sylius_elastic_search.filter_sets', $config['filter_sets']);
+        $container->setParameter('sylius_elastic_search.attribute_whitelist', $config['attribute_whitelist']);
 
         foreach ($config['document_classes'] as $document => $class) {
             $container->setParameter(sprintf('sylius_elastic_search.document.%s.class', $document), $class);

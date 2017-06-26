@@ -41,7 +41,7 @@ final class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('sylius_elastic_search');
 
-        $this->buildFilterSetNode($rootNode);
+        $this->buildAttributeWhitelistNode($rootNode);
         $this->buildDocumentClassesNode($rootNode);
         $this->buildViewClassesNode($rootNode);
 
@@ -98,52 +98,15 @@ final class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $rootNode
      */
-    private function buildFilterSetNode(ArrayNodeDefinition $rootNode)
+    private function buildAttributeWhitelistNode(ArrayNodeDefinition $rootNode)
     {
-        $filterSetNode = $rootNode
+        $rootNode
+            ->addDefaultsIfNotSet()
             ->children()
-                ->arrayNode('filter_sets')
-                    ->useAttributeAsKey('name')
-                    ->prototype('array')
-            ->validate()
-                ->ifEmpty()
-                ->thenInvalid('"%s" cannot be empty')
+                ->arrayNode('attribute_whitelist')
+                    ->prototype('scalar')->end()
+                ->end()
             ->end()
-        ;
-
-        $this->buildFiltersNode($filterSetNode);
-    }
-
-    /**
-     * @param ArrayNodeDefinition $filterSetNode
-     */
-    private function buildFiltersNode(ArrayNodeDefinition $filterSetNode)
-    {
-        $filtersNode = $filterSetNode
-            ->children()
-                ->arrayNode('filters')
-                    ->useAttributeAsKey('name')
-                    ->prototype('array')
-            ->validate()
-                ->ifEmpty()
-                ->thenInvalid('"%s"" cannot be empty')
-            ->end()
-        ;
-
-        $this->buildFilterNode($filtersNode);
-    }
-
-    /**
-     * @param ArrayNodeDefinition $filtersNode
-     */
-    private function buildFilterNode(ArrayNodeDefinition $filtersNode)
-    {
-        $filtersNode
-            ->children()
-                ->scalarNode('type')->cannotBeEmpty()->end()
-                ->arrayNode('options')
-                    ->useAttributeAsKey('name')
-                    ->prototype('scalar')
         ;
     }
 }

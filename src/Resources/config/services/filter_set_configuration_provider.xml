@@ -9,7 +9,7 @@
             <call method="addFilterSetProvider">
                 <argument type="service">
                     <service class="Sylius\ElasticSearchPlugin\Form\Configuration\Provider\FromArrayFilterSetProvider">
-                        <argument>%sylius_elastic_search.filter_sets%</argument>
+                        <argument>[]</argument>
                     </service>
                 </argument>
                 <argument>1</argument>

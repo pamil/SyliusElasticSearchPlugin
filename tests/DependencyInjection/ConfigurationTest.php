@@ -66,6 +66,18 @@ final class ConfigurationTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @test
+     */
+    public function it_has_attribute_white_list()
+    {
+        $this->assertProcessedConfigurationEquals(
+            ['sylius_elastic_search' => ['attribute_whitelist' => ['color']]],
+            ['attribute_whitelist' => ['color']],
+            'attribute_whitelist'
+        );
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function getConfiguration()
