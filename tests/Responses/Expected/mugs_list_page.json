@@ -11,6 +11,13 @@
                     "position": 0,
                     "images": [],
                     "description": "@string@"
+                },
+                {
+                    "code": "BRAND",
+                    "slug": "brands",
+                    "position": 1,
+                    "images": [],
+                    "description": "@string@"
                 }
             ],
             "variants": [
@@ -55,6 +62,13 @@
                     "code": "MUG",
                     "slug": "categories\/mugs",
                     "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                },
+                {
+                    "code": "BRAND",
+                    "slug": "brands",
+                    "position": 1,
                     "images": [],
                     "description": "@string@"
                 }
@@ -125,7 +139,7 @@
         "taxon_slug": {
             "state": {
                 "active": true,
-                "value": "categories/mugs",
+                "value": "categories\/mugs",
                 "urlParameters": {
                     "taxon_slug": "categories\/mugs"
                 },
@@ -139,6 +153,15 @@
             "resetUrlParameters": [],
             "name": "taxon_slug",
             "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "categories\/hats"
+                    },
+                    "label": "categories\/hats",
+                    "count": 2
+                },
                 {
                     "active": true,
                     "default": false,
@@ -154,6 +177,15 @@
                     },
                     "label": "categories\/t-shirts",
                     "count": 2
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "brands"
+                    },
+                    "label": "brands",
+                    "count": 6
                 }
             ]
         },
@@ -173,7 +205,7 @@
             },
             "name": "price_range",
             "minBounds": 1999,
-            "maxBounds": 1999
+            "maxBounds": 2999
         },
         "locale": {
             "state": {

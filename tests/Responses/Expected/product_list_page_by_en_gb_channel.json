@@ -10,7 +10,14 @@
                     "slug": "categories\/mugs",
                     "position": 0,
                     "images": [],
-                    "description": "@string@"
+                    "description": "Et natus voluptas quo qui. Sunt accusamus nihil odit provident. Nemo vel amet voluptatem enim ipsam recusandae omnis."
+                },
+                {
+                    "code": "BRAND",
+                    "slug": "brands",
+                    "position": 1,
+                    "images": [],
+                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
                 }
             ],
             "variants": [
@@ -43,7 +50,7 @@
                 "code": "MUG",
                 "slug": "categories\/mugs",
                 "images": [],
-                "description": "@string@"
+                "description": "Et natus voluptas quo qui. Sunt accusamus nihil odit provident. Nemo vel amet voluptatem enim ipsam recusandae omnis."
             }
         },
         {
@@ -56,7 +63,14 @@
                     "slug": "categories\/mugs",
                     "position": 0,
                     "images": [],
-                    "description": "@string@"
+                    "description": "Et natus voluptas quo qui. Sunt accusamus nihil odit provident. Nemo vel amet voluptatem enim ipsam recusandae omnis."
+                },
+                {
+                    "code": "BRAND",
+                    "slug": "brands",
+                    "position": 1,
+                    "images": [],
+                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
                 }
             ],
             "variants": [
@@ -89,8 +103,92 @@
                 "code": "MUG",
                 "slug": "categories\/mugs",
                 "images": [],
-                "description": "@string@"
+                "description": "Et natus voluptas quo qui. Sunt accusamus nihil odit provident. Nemo vel amet voluptatem enim ipsam recusandae omnis."
             }
+        },
+        {
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hat",
+            "slug": "logan-hat",
+            "taxons": [
+                {
+                    "code": "HAT",
+                    "slug": "categories\/hats",
+                    "position": 2,
+                    "images": [],
+                    "description": "Rem ea similique enim vitae exercitationem voluptatem. Magnam dolorem saepe officia quis. Tenetur est iure nihil et voluptatem."
+                },
+                {
+                    "code": "BRAND",
+                    "slug": "brands",
+                    "position": 1,
+                    "images": [],
+                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
+                }
+            ],
+            "variants": [
+                {
+                    "code": "LOGAN_HAT_CODE",
+                    "name": "Logan Hat",
+                    "price": {
+                        "current": 2999,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [
+                {
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection",
+                    "value": "HOLIDAY COLLECTION"
+                }
+            ],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
+        },
+        {
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hut",
+            "slug": "logan-hut",
+            "taxons": [
+                {
+                    "code": "HAT",
+                    "slug": "categories\/hats",
+                    "position": 2,
+                    "images": [],
+                    "description": "Rem ea similique enim vitae exercitationem voluptatem. Magnam dolorem saepe officia quis. Tenetur est iure nihil et voluptatem."
+                },
+                {
+                    "code": "BRAND",
+                    "slug": "brands",
+                    "position": 1,
+                    "images": [],
+                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
+                }
+            ],
+            "variants": [
+                {
+                    "code": "LOGAN_HAT_CODE",
+                    "name": "Logan Hut",
+                    "price": {
+                        "current": 2999,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [
+                {
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection",
+                    "value": "FEIERTAGSKOLLEKTION"
+                }
+            ],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "de_DE"
         },
         {
             "code": "LOGAN_T_SHIRT_CODE",
@@ -102,7 +200,14 @@
                     "slug": "categories\/t-shirts",
                     "position": 1,
                     "images": [],
-                    "description": "@string@"
+                    "description": "Nobis doloribus recusandae ut aliquam sit numquam fuga. Et et esse quia voluptatem."
+                },
+                {
+                    "code": "BRAND",
+                    "slug": "brands",
+                    "position": 1,
+                    "images": [],
+                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
                 }
             ],
             "variants": [
@@ -124,7 +229,7 @@
                 "code": "T_SHIRTS",
                 "slug": "categories\/t-shirts",
                 "images": [],
-                "description": "@string@"
+                "description": "Nobis doloribus recusandae ut aliquam sit numquam fuga. Et et esse quia voluptatem."
             }
         },
         {
@@ -135,7 +240,14 @@
                     "slug": "categories\/t-shirts",
                     "position": 1,
                     "images": [],
-                    "description": "@string@"
+                    "description": "Nobis doloribus recusandae ut aliquam sit numquam fuga. Et et esse quia voluptatem."
+                },
+                {
+                    "code": "BRAND",
+                    "slug": "brands",
+                    "position": 1,
+                    "images": [],
+                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
                 }
             ],
             "variants": [
@@ -156,7 +268,7 @@
                 "code": "T_SHIRTS",
                 "slug": "categories\/t-shirts",
                 "images": [],
-                "description": "@string@"
+                "description": "Nobis doloribus recusandae ut aliquam sit numquam fuga. Et et esse quia voluptatem."
             }
         }
     ],
@@ -183,7 +295,7 @@
                     "default": false,
                     "urlParameters": [],
                     "label": "WEB_GB",
-                    "count": 4
+                    "count": 6
                 }
             ]
         },
@@ -208,6 +320,16 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "taxon_slug": "categories\/hats"
+                    },
+                    "label": "categories\/hats",
+                    "count": 2
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
                         "taxon_slug": "categories\/mugs"
                     },
                     "label": "categories\/mugs",
@@ -222,6 +344,16 @@
                     },
                     "label": "categories\/t-shirts",
                     "count": 2
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "taxon_slug": "brands"
+                    },
+                    "label": "brands",
+                    "count": 6
                 }
             ]
         },
@@ -241,7 +373,7 @@
             },
             "name": "price_range",
             "minBounds": 1999,
-            "maxBounds": 1999
+            "maxBounds": 2999
         },
         "locale": {
             "state": {
@@ -267,7 +399,7 @@
                         "locale_code": "de_DE"
                     },
                     "label": "de_DE",
-                    "count": 2
+                    "count": 3
                 },
                 {
                     "active": false,
@@ -277,7 +409,7 @@
                         "locale_code": "en_GB"
                     },
                     "label": "en_GB",
-                    "count": 2
+                    "count": 3
                 }
             ]
         },
@@ -303,30 +435,6 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "attribute_values": [
-                            "FEIERTAGSKOLLEKTION"
-                        ]
-                    },
-                    "label": "FEIERTAGSKOLLEKTION",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "attribute_values": [
-                            "HOLIDAY COLLECTION"
-                        ]
-                    },
-                    "label": "HOLIDAY COLLECTION",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "attribute_values": [
                             "Holz"
                         ]
                     },
@@ -344,6 +452,30 @@
                     },
                     "label": "Wood",
                     "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "attribute_values": [
+                            "FEIERTAGSKOLLEKTION"
+                        ]
+                    },
+                    "label": "FEIERTAGSKOLLEKTION",
+                    "count": 2
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "attribute_values": [
+                            "HOLIDAY COLLECTION"
+                        ]
+                    },
+                    "label": "HOLIDAY COLLECTION",
+                    "count": 2
                 }
             ]
         },
@@ -364,7 +496,7 @@
             },
             "name": "paginator",
             "currentPage": 1,
-            "totalItems": 4,
+            "totalItems": 6,
             "maxPages": 10,
             "itemsPerPage": 10,
             "numPages": 1,
