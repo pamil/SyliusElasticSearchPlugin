@@ -10,14 +10,14 @@
                     "slug": "categories\/mugs",
                     "position": 0,
                     "images": [],
-                    "description": "Et natus voluptas quo qui. Sunt accusamus nihil odit provident. Nemo vel amet voluptatem enim ipsam recusandae omnis."
+                    "description": "@string@"
                 },
                 {
                     "code": "BRAND",
                     "slug": "brands",
                     "position": 1,
                     "images": [],
-                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
+                    "description": "@string@"
                 }
             ],
             "variants": [
@@ -50,7 +50,7 @@
                 "code": "MUG",
                 "slug": "categories\/mugs",
                 "images": [],
-                "description": "Et natus voluptas quo qui. Sunt accusamus nihil odit provident. Nemo vel amet voluptatem enim ipsam recusandae omnis."
+                "description": "@string@"
             }
         },
         {
@@ -60,17 +60,17 @@
             "taxons": [
                 {
                     "code": "MUG",
-                    "slug": "categories\/mugs",
+                    "slug": "kategorien\/1tassen",
                     "position": 0,
                     "images": [],
-                    "description": "Et natus voluptas quo qui. Sunt accusamus nihil odit provident. Nemo vel amet voluptatem enim ipsam recusandae omnis."
+                    "description": "@string@"
                 },
                 {
                     "code": "BRAND",
-                    "slug": "brands",
+                    "slug": "marken",
                     "position": 1,
                     "images": [],
-                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
+                    "description": "@string@"
                 }
             ],
             "variants": [
@@ -101,9 +101,9 @@
             "localeCode": "de_DE",
             "mainTaxon": {
                 "code": "MUG",
-                "slug": "categories\/mugs",
+                "slug": "kategorien\/1tassen",
                 "images": [],
-                "description": "Et natus voluptas quo qui. Sunt accusamus nihil odit provident. Nemo vel amet voluptatem enim ipsam recusandae omnis."
+                "description": "@string@"
             }
         },
         {
@@ -116,14 +116,14 @@
                     "slug": "categories\/hats",
                     "position": 2,
                     "images": [],
-                    "description": "Rem ea similique enim vitae exercitationem voluptatem. Magnam dolorem saepe officia quis. Tenetur est iure nihil et voluptatem."
+                    "description": "@string@"
                 },
                 {
                     "code": "BRAND",
                     "slug": "brands",
                     "position": 1,
                     "images": [],
-                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
+                    "description": "@string@"
                 }
             ],
             "variants": [
@@ -155,17 +155,17 @@
             "taxons": [
                 {
                     "code": "HAT",
-                    "slug": "categories\/hats",
+                    "slug": "kategorien\/hut",
                     "position": 2,
                     "images": [],
-                    "description": "Rem ea similique enim vitae exercitationem voluptatem. Magnam dolorem saepe officia quis. Tenetur est iure nihil et voluptatem."
+                    "description": "@string@"
                 },
                 {
                     "code": "BRAND",
-                    "slug": "brands",
+                    "slug": "marken",
                     "position": 1,
                     "images": [],
-                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
+                    "description": "@string@"
                 }
             ],
             "variants": [
@@ -200,14 +200,14 @@
                     "slug": "categories\/t-shirts",
                     "position": 1,
                     "images": [],
-                    "description": "Nobis doloribus recusandae ut aliquam sit numquam fuga. Et et esse quia voluptatem."
+                    "description": "@string@"
                 },
                 {
                     "code": "BRAND",
                     "slug": "brands",
                     "position": 1,
                     "images": [],
-                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
+                    "description": "@string@"
                 }
             ],
             "variants": [
@@ -229,7 +229,7 @@
                 "code": "T_SHIRTS",
                 "slug": "categories\/t-shirts",
                 "images": [],
-                "description": "Nobis doloribus recusandae ut aliquam sit numquam fuga. Et et esse quia voluptatem."
+                "description": "@string@"
             }
         },
         {
@@ -237,17 +237,17 @@
             "taxons": [
                 {
                     "code": "T_SHIRTS",
-                    "slug": "categories\/t-shirts",
+                    "slug": "kategorien\/1t-shirts",
                     "position": 1,
                     "images": [],
-                    "description": "Nobis doloribus recusandae ut aliquam sit numquam fuga. Et et esse quia voluptatem."
+                    "description": "@string@"
                 },
                 {
                     "code": "BRAND",
-                    "slug": "brands",
+                    "slug": "marken",
                     "position": 1,
                     "images": [],
-                    "description": "Esse aut et consequatur similique corrupti. Quas cupiditate quae repellendus eaque. Itaque amet eveniet enim laborum autem repellat."
+                    "description": "@string@"
                 }
             ],
             "variants": [
@@ -266,9 +266,9 @@
             "localeCode": "de_DE",
             "mainTaxon": {
                 "code": "T_SHIRTS",
-                "slug": "categories\/t-shirts",
+                "slug": "kategorien\/1t-shirts",
                 "images": [],
-                "description": "Nobis doloribus recusandae ut aliquam sit numquam fuga. Et et esse quia voluptatem."
+                "description": "@string@"
             }
         }
     ],
@@ -323,7 +323,7 @@
                         "taxon_slug": "categories\/hats"
                     },
                     "label": "categories\/hats",
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": false,
@@ -333,7 +333,7 @@
                         "taxon_slug": "categories\/mugs"
                     },
                     "label": "categories\/mugs",
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": false,
@@ -343,7 +343,37 @@
                         "taxon_slug": "categories\/t-shirts"
                     },
                     "label": "categories\/t-shirts",
-                    "count": 2
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "taxon_slug": "kategorien\/1t-shirts"
+                    },
+                    "label": "kategorien\/1t-shirts",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "taxon_slug": "kategorien\/1tassen"
+                    },
+                    "label": "kategorien\/1tassen",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "taxon_slug": "kategorien\/hut"
+                    },
+                    "label": "kategorien\/hut",
+                    "count": 1
                 },
                 {
                     "active": false,
@@ -353,7 +383,17 @@
                         "taxon_slug": "brands"
                     },
                     "label": "brands",
-                    "count": 6
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "taxon_slug": "marken"
+                    },
+                    "label": "marken",
+                    "count": 3
                 }
             ]
         },
