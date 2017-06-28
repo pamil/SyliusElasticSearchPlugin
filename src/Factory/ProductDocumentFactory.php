@@ -123,15 +123,15 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $product->setCreatedAt($syliusProduct->getCreatedAt());
 
         if (null !== $syliusProduct->getMainTaxon()) {
-            /** @var TaxonDocument $mainTaxon */
-            $mainTaxon = new $this->taxonDocumentClass();
+            /** @var TaxonDocument $mainTaxonDocument */
+            $mainTaxonDocument = new $this->taxonDocumentClass();
             /** @var TaxonTranslation $mainTaxonTranslation */
             $mainTaxonTranslation = $syliusProduct->getMainTaxon()->getTranslation($locale->getCode());
 
-            $mainTaxon->setCode($syliusProduct->getMainTaxon()->getCode());
-            $mainTaxon->setSlug($mainTaxonTranslation->getSlug());
-            $mainTaxon->setDescription($mainTaxonTranslation->getDescription());
-            $product->setMainTaxon($mainTaxon);
+            $mainTaxonDocument->setCode($syliusProduct->getMainTaxon()->getCode());
+            $mainTaxonDocument->setSlug($mainTaxonTranslation->getSlug());
+            $mainTaxonDocument->setDescription($mainTaxonTranslation->getDescription());
+            $product->setMainTaxon($mainTaxonDocument);
         }
 
         /** @var PriceDocument $price */
