@@ -138,6 +138,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Lorem ipsum', $product->getDescription());
         $this->assertEquals($taxon, $product->getMainTaxon());
         $this->assertEquals(new Collection([$productTaxon]), $product->getTaxons());
+        $this->assertEquals(0.0, $product->getAverageReviewRating());
     }
 
     /**
@@ -299,5 +300,6 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Lorem ipsum', $product->getDescription());
         $this->assertEquals($taxon, $product->getMainTaxon());
         $this->assertEquals(new Collection([$productTaxon]), $product->getTaxons());
+        $this->assertEquals(0.0, $product->getAverageReviewRating());
     }
 }

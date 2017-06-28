@@ -98,6 +98,11 @@ class ProductDocument
     private $images;
 
     /**
+     * @var float
+     */
+    private $averageReviewRating;
+
+    /**
      * @var \DateTime
      *
      * @ElasticSearch\Property(type="date")
@@ -285,6 +290,22 @@ class ProductDocument
     public function setImages(Collection $images)
     {
         $this->images = $images;
+    }
+
+    /**
+     * @return float
+     */
+    public function getAverageReviewRating()
+    {
+        return $this->averageReviewRating;
+    }
+
+    /**
+     * @param float $averageReviewRating
+     */
+    public function setAverageReviewRating($averageReviewRating)
+    {
+        $this->averageReviewRating = $averageReviewRating;
     }
 
     /**

@@ -120,6 +120,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $product->setChannelCode($channel->getCode());
         $product->setCode($syliusProduct->getCode());
         $product->setCreatedAt($syliusProduct->getCreatedAt());
+        $product->setAverageReviewRating($syliusProduct->getAverageRating());
 
         if (null !== $syliusProduct->getMainTaxon()) {
             /** @var TaxonDocument $mainTaxon */

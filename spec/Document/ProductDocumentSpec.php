@@ -96,4 +96,11 @@ final class ProductDocumentSpec extends ObjectBehavior
 
         $this->getImages()->shouldReturn($images);
     }
+
+    function it_has_average_review_rating()
+    {
+        $this->setAverageReviewRating(2.4);
+
+        $this->getAverageReviewRating()->shouldReturn(2.4);
+    }
 }
