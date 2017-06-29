@@ -8,9 +8,10 @@ use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
+use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
-use Sylius\Component\Taxonomy\Model\TaxonTranslation;
+use Sylius\Component\Taxonomy\Model\TaxonTranslationInterface;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
@@ -126,7 +127,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         if (null !== $syliusProduct->getMainTaxon()) {
             /** @var TaxonDocument $mainTaxonDocument */
             $mainTaxonDocument = new $this->taxonDocumentClass();
-            /** @var TaxonTranslation $mainTaxonTranslation */
+            /** @var TaxonTranslationInterface $mainTaxonTranslation */
             $mainTaxonTranslation = $syliusProduct->getMainTaxon()->getTranslation($locale->getCode());
 
             $mainTaxonDocument->setCode($syliusProduct->getMainTaxon()->getCode());
@@ -154,26 +155,13 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         $productTaxons = [];
         foreach ($syliusProductTaxons as $syliusProductTaxon) {
-            /** @var TaxonDocument $productTaxon */
-            $productTaxon = new $this->taxonDocumentClass();
-            $productTaxonTranslation = $syliusProductTaxon->getTaxon()->getTranslation($locale->getCode());
-            $productTaxon->setCode($syliusProductTaxon->getTaxon()->getCode());
-            $productTaxon->setSlug($productTaxonTranslation->getSlug());
-            $productTaxon->setPosition($syliusProductTaxon->getTaxon()->getPosition());
-            $productTaxon->setDescription($productTaxonTranslation->getDescription());
+            $syliusProductTaxonAncestors = $this->getAncestorsFromTaxon($syliusProductTaxon->getTaxon());
 
-            $productTaxonImages = [];
-            $syliusTaxonImages = $syliusProductTaxon->getTaxon()->getImages();
-            foreach ($syliusTaxonImages as $syliusTaxonImage) {
-                /** @var ImageDocument $productTaxonImage */
-                $productTaxonImage = new $this->imageDocumentClass();
-                $productTaxonImage->setPath($syliusTaxonImage->getPath());
-                $productTaxonImage->setCode($syliusTaxonImage->getType());
-                $productTaxonImages[] = $productTaxonImage;
+            $productTaxons[] = $this->createTaxonDocumentFromSyliusTaxon($syliusProductTaxon->getTaxon(), $locale->getCode());
+
+            foreach ($syliusProductTaxonAncestors as $syliusProductTaxonAncestor) {
+                $productTaxons[] = $this->createTaxonDocumentFromSyliusTaxon($syliusProductTaxonAncestor, $locale->getCode());
             }
-            $productTaxon->setImages(new Collection($productTaxonImages));
-
-            $productTaxons[] = $productTaxon;
         }
         $product->setTaxons(new Collection($productTaxons));
         $productAttributeValues = [];
@@ -196,6 +184,55 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $product->setAttributeValues($productAttributeValues);
 
         return $product;
+    }
+
+    /**
+     * @param TaxonInterface $taxon
+     * @param string $localeCode
+     *
+     * @return TaxonDocument
+     */
+    private function createTaxonDocumentFromSyliusTaxon(TaxonInterface $taxon, $localeCode = null)
+    {
+        /** @var TaxonTranslationInterface $taxonTranslation */
+        $taxonTranslation = $taxon->getTranslation($localeCode);
+
+        /** @var TaxonDocument $taxonDocument */
+        $taxonDocument = new $this->taxonDocumentClass();
+        $taxonDocument->setCode($taxon->getCode());
+        $taxonDocument->setSlug($taxonTranslation->getSlug());
+        $taxonDocument->setPosition($taxon->getPosition());
+        $taxonDocument->setDescription($taxonTranslation->getDescription());
+
+        $taxonDocumentImages = [];
+        $syliusTaxonImages = $taxon->getImages();
+        foreach ($syliusTaxonImages as $syliusTaxonImage) {
+            /** @var ImageDocument $taxonDocumentImage */
+            $taxonDocumentImage = new $this->imageDocumentClass();
+            $taxonDocumentImage->setPath($syliusTaxonImage->getPath());
+            $taxonDocumentImage->setCode($syliusTaxonImage->getType());
+            $taxonDocumentImages[] = $taxonDocumentImage;
+        }
+        $taxonDocument->setImages(new Collection($taxonDocumentImages));
+
+        return $taxonDocument;
+    }
+
+    /**
+     * @param TaxonInterface $taxon
+     *
+     * @return array
+     */
+    private function getAncestorsFromTaxon(TaxonInterface $taxon)
+    {
+        $ancestors = [];
+        while (null !== $taxon->getParent()) {
+            $taxon = $taxon->getParent();
+
+            $ancestors[] = $taxon;
+        }
+
+        return $ancestors;
     }
 
     /**
