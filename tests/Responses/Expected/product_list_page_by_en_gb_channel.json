@@ -13,6 +13,13 @@
                     "description": "@string@"
                 },
                 {
+                    "code": "CATEGORY",
+                    "slug": "categories",
+                    "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                },
+                {
                     "code": "BRAND",
                     "slug": "brands",
                     "position": 1,
@@ -61,6 +68,13 @@
                 {
                     "code": "MUG",
                     "slug": "kategorien\/1tassen",
+                    "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                },
+                {
+                    "code": "CATEGORY",
+                    "slug": "kategorien",
                     "position": 0,
                     "images": [],
                     "description": "@string@"
@@ -119,6 +133,13 @@
                     "description": "@string@"
                 },
                 {
+                    "code": "CATEGORY",
+                    "slug": "categories",
+                    "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                },
+                {
                     "code": "BRAND",
                     "slug": "brands",
                     "position": 1,
@@ -157,6 +178,13 @@
                     "code": "HAT",
                     "slug": "kategorien\/hut",
                     "position": 2,
+                    "images": [],
+                    "description": "@string@"
+                },
+                {
+                    "code": "CATEGORY",
+                    "slug": "kategorien",
+                    "position": 0,
                     "images": [],
                     "description": "@string@"
                 },
@@ -203,6 +231,13 @@
                     "description": "@string@"
                 },
                 {
+                    "code": "CATEGORY",
+                    "slug": "categories",
+                    "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                },
+                {
                     "code": "BRAND",
                     "slug": "brands",
                     "position": 1,
@@ -239,6 +274,13 @@
                     "code": "T_SHIRTS",
                     "slug": "kategorien\/1t-shirts",
                     "position": 1,
+                    "images": [],
+                    "description": "@string@"
+                },
+                {
+                    "code": "CATEGORY",
+                    "slug": "kategorien",
+                    "position": 0,
                     "images": [],
                     "description": "@string@"
                 },
@@ -383,6 +425,26 @@
                         "taxon_slug": "brands"
                     },
                     "label": "brands",
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "taxon_slug": "categories"
+                    },
+                    "label": "categories",
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "taxon_slug": "kategorien"
+                    },
+                    "label": "kategorien",
                     "count": 3
                 },
                 {

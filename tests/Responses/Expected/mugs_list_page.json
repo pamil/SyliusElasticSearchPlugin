@@ -13,6 +13,13 @@
                     "description": "@string@"
                 },
                 {
+                    "code": "CATEGORY",
+                    "slug": "categories",
+                    "position": 0,
+                    "images": [],
+                    "description": "@string@"
+                },
+                {
                     "code": "BRAND",
                     "slug": "brands",
                     "position": 1,
@@ -159,6 +166,24 @@
                         "taxon_slug": "brands"
                     },
                     "label": "brands",
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "categories"
+                    },
+                    "label": "categories",
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "kategorien"
+                    },
+                    "label": "kategorien",
                     "count": 3
                 },
                 {
