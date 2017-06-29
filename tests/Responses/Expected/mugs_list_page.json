@@ -52,59 +52,6 @@
                 "images": [],
                 "description": "@string@"
             }
-        },
-        {
-            "code": "LOGAN_MUG_CODE",
-            "name": "Logan Becher",
-            "slug": "logan-becher",
-            "taxons": [
-                {
-                    "code": "MUG",
-                    "slug": "categories\/mugs",
-                    "position": 0,
-                    "images": [],
-                    "description": "@string@"
-                },
-                {
-                    "code": "BRAND",
-                    "slug": "brands",
-                    "position": 1,
-                    "images": [],
-                    "description": "@string@"
-                }
-            ],
-            "variants": [
-                {
-                    "code": "LOGAN_MUG_CODE",
-                    "name": "Logan Becher",
-                    "price": {
-                        "current": 1999,
-                        "currency": "GBP"
-                    },
-                    "images": []
-                }
-            ],
-            "attributes": [
-                {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "FEIERTAGSKOLLEKTION"
-                },
-                {
-                    "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material",
-                    "value": "Holz"
-                }
-            ],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "de_DE",
-            "mainTaxon": {
-                "code": "MUG",
-                "slug": "categories\/mugs",
-                "images": [],
-                "description": "@string@"
-            }
         }
     ],
     "filters": {
@@ -132,7 +79,7 @@
                         "channel": "WEB_GB"
                     },
                     "label": "WEB_GB",
-                    "count": 2
+                    "count": 1
                 }
             ]
         },
@@ -160,14 +107,14 @@
                         "taxon_slug": "categories\/hats"
                     },
                     "label": "categories\/hats",
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": true,
                     "default": false,
                     "urlParameters": [],
                     "label": "categories\/mugs",
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": false,
@@ -176,7 +123,34 @@
                         "taxon_slug": "categories\/t-shirts"
                     },
                     "label": "categories\/t-shirts",
-                    "count": 2
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "kategorien\/1t-shirts"
+                    },
+                    "label": "kategorien\/1t-shirts",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "kategorien\/1tassen"
+                    },
+                    "label": "kategorien\/1tassen",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "kategorien\/hut"
+                    },
+                    "label": "kategorien\/hut",
+                    "count": 1
                 },
                 {
                     "active": false,
@@ -185,7 +159,16 @@
                         "taxon_slug": "brands"
                     },
                     "label": "brands",
-                    "count": 6
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "marken"
+                    },
+                    "label": "marken",
+                    "count": 3
                 }
             ]
         },
@@ -228,16 +211,6 @@
                     "default": false,
                     "urlParameters": {
                         "taxon_slug": "categories\/mugs",
-                        "locale_code": "de_DE"
-                    },
-                    "label": "de_DE",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "categories\/mugs",
                         "locale_code": "en_GB"
                     },
                     "label": "en_GB",
@@ -267,34 +240,10 @@
                     "urlParameters": {
                         "taxon_slug": "categories\/mugs",
                         "attribute_values": [
-                            "FEIERTAGSKOLLEKTION"
-                        ]
-                    },
-                    "label": "FEIERTAGSKOLLEKTION",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "categories\/mugs",
-                        "attribute_values": [
                             "HOLIDAY COLLECTION"
                         ]
                     },
                     "label": "HOLIDAY COLLECTION",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "categories\/mugs",
-                        "attribute_values": [
-                            "Holz"
-                        ]
-                    },
-                    "label": "Holz",
                     "count": 1
                 },
                 {
@@ -328,7 +277,7 @@
             },
             "name": "paginator",
             "currentPage": 1,
-            "totalItems": 2,
+            "totalItems": 1,
             "maxPages": 10,
             "itemsPerPage": 10,
             "numPages": 1,

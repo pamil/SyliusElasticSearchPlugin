@@ -10,6 +10,7 @@ use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
+use Sylius\Component\Taxonomy\Model\TaxonTranslation;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
@@ -123,12 +124,15 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $product->setAverageReviewRating($syliusProduct->getAverageRating());
 
         if (null !== $syliusProduct->getMainTaxon()) {
-            /** @var TaxonDocument $mainTaxon */
-            $mainTaxon = new $this->taxonDocumentClass();
-            $mainTaxon->setCode($syliusProduct->getMainTaxon()->getCode());
-            $mainTaxon->setSlug($syliusProduct->getMainTaxon()->getSlug());
-            $mainTaxon->setDescription($syliusProduct->getMainTaxon()->getDescription());
-            $product->setMainTaxon($mainTaxon);
+            /** @var TaxonDocument $mainTaxonDocument */
+            $mainTaxonDocument = new $this->taxonDocumentClass();
+            /** @var TaxonTranslation $mainTaxonTranslation */
+            $mainTaxonTranslation = $syliusProduct->getMainTaxon()->getTranslation($locale->getCode());
+
+            $mainTaxonDocument->setCode($syliusProduct->getMainTaxon()->getCode());
+            $mainTaxonDocument->setSlug($mainTaxonTranslation->getSlug());
+            $mainTaxonDocument->setDescription($mainTaxonTranslation->getDescription());
+            $product->setMainTaxon($mainTaxonDocument);
         }
 
         /** @var PriceDocument $price */
@@ -152,10 +156,11 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         foreach ($syliusProductTaxons as $syliusProductTaxon) {
             /** @var TaxonDocument $productTaxon */
             $productTaxon = new $this->taxonDocumentClass();
+            $productTaxonTranslation = $syliusProductTaxon->getTaxon()->getTranslation($locale->getCode());
             $productTaxon->setCode($syliusProductTaxon->getTaxon()->getCode());
-            $productTaxon->setSlug($syliusProductTaxon->getTaxon()->getSlug());
+            $productTaxon->setSlug($productTaxonTranslation->getSlug());
             $productTaxon->setPosition($syliusProductTaxon->getTaxon()->getPosition());
-            $productTaxon->setDescription($syliusProductTaxon->getTaxon()->getDescription());
+            $productTaxon->setDescription($productTaxonTranslation->getDescription());
 
             $productTaxonImages = [];
             $syliusTaxonImages = $syliusProductTaxon->getTaxon()->getImages();

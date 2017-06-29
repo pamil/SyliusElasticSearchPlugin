@@ -60,14 +60,14 @@
             "taxons": [
                 {
                     "code": "MUG",
-                    "slug": "categories\/mugs",
+                    "slug": "kategorien\/1tassen",
                     "position": 0,
                     "images": [],
                     "description": "@string@"
                 },
                 {
                     "code": "BRAND",
-                    "slug": "brands",
+                    "slug": "marken",
                     "position": 1,
                     "images": [],
                     "description": "@string@"
@@ -101,7 +101,7 @@
             "localeCode": "de_DE",
             "mainTaxon": {
                 "code": "MUG",
-                "slug": "categories\/mugs",
+                "slug": "kategorien\/1tassen",
                 "images": [],
                 "description": "@string@"
             }
@@ -155,14 +155,14 @@
             "taxons": [
                 {
                     "code": "HAT",
-                    "slug": "categories\/hats",
+                    "slug": "kategorien\/hut",
                     "position": 2,
                     "images": [],
                     "description": "@string@"
                 },
                 {
                     "code": "BRAND",
-                    "slug": "brands",
+                    "slug": "marken",
                     "position": 1,
                     "images": [],
                     "description": "@string@"
@@ -237,14 +237,14 @@
             "taxons": [
                 {
                     "code": "T_SHIRTS",
-                    "slug": "categories\/t-shirts",
+                    "slug": "kategorien\/1t-shirts",
                     "position": 1,
                     "images": [],
                     "description": "@string@"
                 },
                 {
                     "code": "BRAND",
-                    "slug": "brands",
+                    "slug": "marken",
                     "position": 1,
                     "images": [],
                     "description": "@string@"
@@ -266,7 +266,7 @@
             "localeCode": "de_DE",
             "mainTaxon": {
                 "code": "T_SHIRTS",
-                "slug": "categories\/t-shirts",
+                "slug": "kategorien\/1t-shirts",
                 "images": [],
                 "description": "@string@"
             }
@@ -315,7 +315,7 @@
                         "taxon_slug": "categories\/hats"
                     },
                     "label": "categories\/hats",
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": false,
@@ -324,7 +324,7 @@
                         "taxon_slug": "categories\/mugs"
                     },
                     "label": "categories\/mugs",
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": false,
@@ -333,7 +333,34 @@
                         "taxon_slug": "categories\/t-shirts"
                     },
                     "label": "categories\/t-shirts",
-                    "count": 2
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "kategorien\/1t-shirts"
+                    },
+                    "label": "kategorien\/1t-shirts",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "kategorien\/1tassen"
+                    },
+                    "label": "kategorien\/1tassen",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "kategorien\/hut"
+                    },
+                    "label": "kategorien\/hut",
+                    "count": 1
                 },
                 {
                     "active": false,
@@ -342,7 +369,16 @@
                         "taxon_slug": "brands"
                     },
                     "label": "brands",
-                    "count": 6
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "taxon_slug": "marken"
+                    },
+                    "label": "marken",
+                    "count": 3
                 }
             ]
         },
