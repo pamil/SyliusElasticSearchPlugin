@@ -4,29 +4,14 @@
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Mug",
             "slug": "logan-mug",
-            "taxons": [
-                {
-                    "code": "MUG",
-                    "slug": "categories\/mugs",
-                    "position": 0,
-                    "images": [],
-                    "description": "@string@"
-                },
-                {
-                    "code": "CATEGORY",
-                    "slug": "categories",
-                    "position": 0,
-                    "images": [],
-                    "description": "@string@"
-                },
-                {
-                    "code": "BRAND",
-                    "slug": "brands",
-                    "position": 1,
-                    "images": [],
-                    "description": "@string@"
-                }
-            ],
+            "taxons": {
+                "main": "MUG",
+                "others": [
+                    "MUG",
+                    "CATEGORY",
+                    "BRAND"
+                ]
+            },
             "variants": [
                 {
                     "code": "LOGAN_MUG_CODE",
@@ -52,13 +37,7 @@
             ],
             "images": [],
             "channelCode": "WEB_GB",
-            "localeCode": "en_GB",
-            "mainTaxon": {
-                "code": "MUG",
-                "slug": "categories\/mugs",
-                "images": [],
-                "description": "@string@"
-            }
+            "localeCode": "en_GB"
         }
     ],
     "filters": {

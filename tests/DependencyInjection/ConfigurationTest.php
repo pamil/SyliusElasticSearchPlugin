@@ -61,7 +61,6 @@ final class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'attribute' => AttributeView::class,
             'image' => ImageView::class,
             'price' => PriceView::class,
-            'taxon' => TaxonView::class,
         ]], 'view_classes');
     }
 

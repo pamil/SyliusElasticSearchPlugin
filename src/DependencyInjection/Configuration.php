@@ -88,7 +88,6 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('attribute')->defaultValue(AttributeView::class)->end()
                         ->scalarNode('image')->defaultValue(ImageView::class)->end()
                         ->scalarNode('price')->defaultValue(PriceView::class)->end()
-                        ->scalarNode('taxon')->defaultValue(TaxonView::class)->end()
                     ->end()
                 ->end()
             ->end()
