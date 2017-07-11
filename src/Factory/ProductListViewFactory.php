@@ -101,17 +101,21 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
 
     /**
      * @param Collection|TaxonDocument[] $taxons
+     * @param TaxonDocument|null $mainTaxonDocument
      *
-     * @return TaxonView[]
+     * @return TaxonView
      */
-    private function getTaxonViews(Collection $taxons)
+    private function getTaxonView(Collection $taxons, ?TaxonDocument $mainTaxonDocument)
     {
-        $taxonViews = [];
+        /** @var TaxonView $taxonView */
+        $taxonView = new $this->taxonViewClass();
+
+        $taxonView->main = null === $mainTaxonDocument ? null : $mainTaxonDocument->getCode();
         foreach ($taxons as $taxon) {
-            $taxonViews[] = $this->getTaxonView($taxon);
+            $taxonView->others[] = $taxon->getCode();
         }
 
-        return $taxonViews;
+        return $taxonView;
     }
 
     /**
@@ -133,24 +137,6 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         }
 
         return $attributeValueViews;
-    }
-
-    /**
-     * @param TaxonDocument $taxon
-     *
-     * @return TaxonView
-     */
-    private function getTaxonView(TaxonDocument $taxon)
-    {
-        /** @var TaxonView $taxonView */
-        $taxonView = new $this->taxonViewClass();
-        $taxonView->code = $taxon->getCode();
-        $taxonView->slug = $taxon->getSlug();
-        $taxonView->position = $taxon->getPosition();
-        $taxonView->description = $taxon->getDescription();
-        $taxonView->images = $this->getImageViews($taxon->getImages());
-
-        return $taxonView;
     }
 
     /**
@@ -200,13 +186,9 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         $productView->localeCode = $product->getLocaleCode();
         $productView->channelCode = $product->getChannelCode();
         $productView->images = $this->getImageViews($product->getImages());
-        $productView->taxons = $this->getTaxonViews($product->getTaxons());
+        $productView->taxons = $this->getTaxonView($product->getTaxons(), $product->getMainTaxon());
         $productView->attributes = $this->getAttributeViews($product->getAttributeValues());
         $productView->variants = [$this->getVariantView($product)];
-
-        if (null !== $product->getMainTaxon()) {
-            $productView->mainTaxon = $this->getTaxonView($product->getMainTaxon());
-        }
 
         return $productView;
     }

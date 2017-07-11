@@ -7,25 +7,10 @@ class TaxonView
     /**
      * @var string
      */
-    public $code;
+    public $main;
 
     /**
-     * @var string
+     * @var string[]
      */
-    public $slug;
-
-    /**
-     * @var int
-     */
-    public $position;
-
-    /**
-     * @var ImageView[]
-     */
-    public $images = [];
-
-    /**
-     * @var string
-     */
-    public $description;
+    public $others = [];
 }
