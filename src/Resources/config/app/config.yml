@@ -3,7 +3,7 @@ ongr_filter_manager:
         search_list:
             filters:
                 - channel
-                - taxon_slug
+                - taxon_code
                 - price_range
                 - locale
                 - attribute_values
@@ -15,10 +15,10 @@ ongr_filter_manager:
             type: choice
             request_field: channel
             document_field: channel_code
-        taxon_slug:
+        taxon_code:
             type: choice
-            request_field: taxon_slug
-            document_field: taxons.slug
+            request_field: taxon_code
+            document_field: taxons.code
         price_range:
             type: range
             request_field: price
