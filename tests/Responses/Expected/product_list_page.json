@@ -1,465 +1,520 @@
 {
-    "items": [
+    "items":[
         {
-            "code": "LOGAN_MUG_CODE",
-            "name": "Logan Mug",
-            "slug": "logan-mug",
-            "taxons": {
-                "main": "MUG",
-                "others": [
+            "code":"LOGAN_MUG_CODE",
+            "name":"Logan Mug",
+            "slug":"logan-mug",
+            "taxons":{
+                "main":"MUG",
+                "others":[
                     "MUG",
                     "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": [
+            "variants":[
                 {
-                    "code": "LOGAN_MUG_CODE",
-                    "name": "Logan Mug",
-                    "price": {
-                        "current": 1999,
-                        "currency": "GBP"
+                    "code":"LOGAN_MUG_CODE",
+                    "name":"Logan Mug",
+                    "price":{
+                        "current":1999,
+                        "currency":"GBP"
                     },
-                    "images": []
+                    "images":[
+
+                    ]
                 }
             ],
-            "attributes": [
+            "attributes":[
                 {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "HOLIDAY COLLECTION"
+                    "code":"MUG_COLLECTION_CODE",
+                    "name":"Mug collection",
+                    "value":"HOLIDAY COLLECTION"
                 },
                 {
-                    "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material",
-                    "value": "Wood"
+                    "code":"MUG_MATERIAL_CODE",
+                    "name":"Mug material",
+                    "value":"Wood"
                 }
             ],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "en_GB"
+            "images":[
+
+            ],
+            "channelCode":"WEB_GB",
+            "localeCode":"en_GB"
         },
         {
-            "code": "LOGAN_MUG_CODE",
-            "name": "Logan Becher",
-            "slug": "logan-becher",
-            "taxons": {
-                "main": "MUG",
-                "others": [
+            "code":"LOGAN_MUG_CODE",
+            "name":"Logan Becher",
+            "slug":"logan-becher",
+            "taxons":{
+                "main":"MUG",
+                "others":[
                     "MUG",
                     "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": [
+            "variants":[
                 {
-                    "code": "LOGAN_MUG_CODE",
-                    "name": "Logan Becher",
-                    "price": {
-                        "current": 1999,
-                        "currency": "GBP"
+                    "code":"LOGAN_MUG_CODE",
+                    "name":"Logan Becher",
+                    "price":{
+                        "current":1999,
+                        "currency":"GBP"
                     },
-                    "images": []
+                    "images":[
+
+                    ]
                 }
             ],
-            "attributes": [
+            "attributes":[
                 {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "FEIERTAGSKOLLEKTION"
+                    "code":"MUG_COLLECTION_CODE",
+                    "name":"Mug collection",
+                    "value":"FEIERTAGSKOLLEKTION"
                 },
                 {
-                    "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material",
-                    "value": "Holz"
+                    "code":"MUG_MATERIAL_CODE",
+                    "name":"Mug material",
+                    "value":"Holz"
                 }
             ],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "de_DE"
+            "images":[
+
+            ],
+            "channelCode":"WEB_GB",
+            "localeCode":"de_DE"
         },
         {
-            "code": "LOGAN_HAT_CODE",
-            "name": "Logan Hat",
-            "slug": "logan-hat",
-            "taxons": {
-                "others": [
+            "code":"LOGAN_HAT_CODE",
+            "name":"Logan Hat",
+            "slug":"logan-hat",
+            "taxons":{
+                "others":[
                     "HAT",
                     "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": [
+            "variants":[
                 {
-                    "code": "LOGAN_HAT_CODE",
-                    "name": "Logan Hat",
-                    "price": {
-                        "current": 2999,
-                        "currency": "GBP"
+                    "code":"LOGAN_HAT_CODE",
+                    "name":"Logan Hat",
+                    "price":{
+                        "current":2999,
+                        "currency":"GBP"
                     },
-                    "images": []
+                    "images":[
+
+                    ]
                 }
             ],
-            "attributes": [
+            "attributes":[
                 {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "HOLIDAY COLLECTION"
+                    "code":"MUG_COLLECTION_CODE",
+                    "name":"Mug collection",
+                    "value":"HOLIDAY COLLECTION"
                 }
             ],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "en_GB"
+            "images":[
+
+            ],
+            "channelCode":"WEB_GB",
+            "localeCode":"en_GB"
         },
         {
-            "code": "LOGAN_HAT_CODE",
-            "name": "Logan Hut",
-            "slug": "logan-hut",
-            "taxons": {
-                "others": [
+            "code":"LOGAN_HAT_CODE",
+            "name":"Logan Hut",
+            "slug":"logan-hut",
+            "taxons":{
+                "others":[
                     "HAT",
                     "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": [
+            "variants":[
                 {
-                    "code": "LOGAN_HAT_CODE",
-                    "name": "Logan Hut",
-                    "price": {
-                        "current": 2999,
-                        "currency": "GBP"
+                    "code":"LOGAN_HAT_CODE",
+                    "name":"Logan Hut",
+                    "price":{
+                        "current":2999,
+                        "currency":"GBP"
                     },
-                    "images": []
+                    "images":[
+
+                    ]
                 }
             ],
-            "attributes": [
+            "attributes":[
                 {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "FEIERTAGSKOLLEKTION"
+                    "code":"MUG_COLLECTION_CODE",
+                    "name":"Mug collection",
+                    "value":"FEIERTAGSKOLLEKTION"
                 }
             ],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "de_DE"
+            "images":[
+
+            ],
+            "channelCode":"WEB_GB",
+            "localeCode":"de_DE"
         },
         {
-            "code": "LOGAN_T_SHIRT_CODE",
-            "name": "Logan T-Shirt",
-            "slug": "logan-t-shirt",
-            "taxons": {
-                "main": "T_SHIRTS",
-                "others": [
+            "code":"LOGAN_T_SHIRT_CODE",
+            "name":"Logan T-Shirt",
+            "slug":"logan-t-shirt",
+            "taxons":{
+                "main":"T_SHIRTS",
+                "others":[
                     "T_SHIRTS",
                     "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": [
+            "variants":[
                 {
-                    "code": "LOGAN_T_SHIRT_CODE",
-                    "name": "Logan T-Shirt",
-                    "price": {
-                        "current": 1999,
-                        "currency": "GBP"
+                    "code":"LOGAN_T_SHIRT_CODE",
+                    "name":"Logan T-Shirt",
+                    "price":{
+                        "current":1999,
+                        "currency":"GBP"
                     },
-                    "images": []
+                    "images":[
+
+                    ]
                 }
             ],
-            "attributes": [],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "en_GB"
+            "attributes":[
+
+            ],
+            "images":[
+
+            ],
+            "channelCode":"WEB_GB",
+            "localeCode":"en_GB"
         },
         {
-            "code": "LOGAN_T_SHIRT_CODE",
-            "taxons": {
-                "main": "T_SHIRTS",
-                "others": [
+            "code":"LOGAN_T_SHIRT_CODE",
+            "taxons":{
+                "main":"T_SHIRTS",
+                "others":[
                     "T_SHIRTS",
                     "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": [
+            "variants":[
                 {
-                    "code": "LOGAN_T_SHIRT_CODE",
-                    "price": {
-                        "current": 1999,
-                        "currency": "GBP"
+                    "code":"LOGAN_T_SHIRT_CODE",
+                    "price":{
+                        "current":1999,
+                        "currency":"GBP"
                     },
-                    "images": []
+                    "images":[
+
+                    ]
                 }
             ],
-            "attributes": [],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "de_DE"
+            "attributes":[
+
+            ],
+            "images":[
+
+            ],
+            "channelCode":"WEB_GB",
+            "localeCode":"de_DE"
         }
     ],
-    "filters": {
-        "channel": {
-            "state": {
-                "active": false,
-                "urlParameters": [],
-                "name": "channel",
-                "options": []
+    "filters":{
+        "channel":{
+            "state":{
+                "active":false,
+                "urlParameters":[
+
+                ],
+                "name":"channel",
+                "options":[
+
+                ]
             },
-            "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
-            "name": "channel",
-            "choices": [
+            "tags":[
+
+            ],
+            "urlParameters":[
+
+            ],
+            "resetUrlParameters":[
+
+            ],
+            "name":"channel",
+            "choices":[
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB"
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "channel":"WEB_GB"
                     },
-                    "label": "WEB_GB",
-                    "count": 6
+                    "label":"WEB_GB",
+                    "count":6
                 }
             ]
         },
-        "taxon_slug": {
-            "state": {
-                "active": false,
-                "urlParameters": [],
-                "name": "taxon_slug",
-                "options": []
+        "taxon_code":{
+            "state":{
+                "active":false,
+                "urlParameters":[
+
+                ],
+                "name":"taxon_code",
+                "options":[
+
+                ]
             },
-            "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
-            "name": "taxon_slug",
-            "choices": [
+            "tags":[
+
+            ],
+            "urlParameters":[
+
+            ],
+            "resetUrlParameters":[
+
+            ],
+            "name":"taxon_code",
+            "choices":[
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "categories\/hats"
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "taxonCode":"HAT"
                     },
-                    "label": "categories\/hats",
-                    "count": 1
+                    "label":"HAT",
+                    "count":2
                 },
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "categories\/mugs"
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "taxonCode":"MUG"
                     },
-                    "label": "categories\/mugs",
-                    "count": 1
+                    "label":"MUG",
+                    "count":2
                 },
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "categories\/t-shirts"
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "taxonCode":"T_SHIRTS"
                     },
-                    "label": "categories\/t-shirts",
-                    "count": 1
+                    "label":"T_SHIRTS",
+                    "count":2
                 },
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "kategorien\/1t-shirts"
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "taxonCode":"BRAND"
                     },
-                    "label": "kategorien\/1t-shirts",
-                    "count": 1
+                    "label":"BRAND",
+                    "count":6
                 },
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "kategorien\/1tassen"
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "taxonCode":"CATEGORY"
                     },
-                    "label": "kategorien\/1tassen",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "kategorien\/hut"
-                    },
-                    "label": "kategorien\/hut",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "brands"
-                    },
-                    "label": "brands",
-                    "count": 3
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "categories"
-                    },
-                    "label": "categories",
-                    "count": 3
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "kategorien"
-                    },
-                    "label": "kategorien",
-                    "count": 3
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "taxon_slug": "marken"
-                    },
-                    "label": "marken",
-                    "count": 3
+                    "label":"CATEGORY",
+                    "count":6
                 }
             ]
         },
-        "price_range": {
-            "state": {
-                "active": false,
-                "urlParameters": [],
-                "name": "price_range",
-                "options": []
+        "price_range":{
+            "state":{
+                "active":false,
+                "urlParameters":[
+
+                ],
+                "name":"price_range",
+                "options":[
+
+                ]
             },
-            "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
-            "name": "price_range",
-            "minBounds": 1999,
-            "maxBounds": 2999
+            "tags":[
+
+            ],
+            "urlParameters":[
+
+            ],
+            "resetUrlParameters":[
+
+            ],
+            "name":"price_range",
+            "minBounds":1999,
+            "maxBounds":2999
         },
-        "locale": {
-            "state": {
-                "active": false,
-                "urlParameters": [],
-                "name": "locale",
-                "options": []
+        "locale":{
+            "state":{
+                "active":false,
+                "urlParameters":[
+
+                ],
+                "name":"locale",
+                "options":[
+
+                ]
             },
-            "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
-            "name": "locale",
-            "choices": [
+            "tags":[
+
+            ],
+            "urlParameters":[
+
+            ],
+            "resetUrlParameters":[
+
+            ],
+            "name":"locale",
+            "choices":[
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "locale_code": "de_DE"
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "locale_code":"de_DE"
                     },
-                    "label": "de_DE",
-                    "count": 3
+                    "label":"de_DE",
+                    "count":3
                 },
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "locale_code": "en_GB"
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "locale_code":"en_GB"
                     },
-                    "label": "en_GB",
-                    "count": 3
+                    "label":"en_GB",
+                    "count":3
                 }
             ]
         },
-        "attribute_values": {
-            "state": {
-                "active": false,
-                "urlParameters": [],
-                "name": "attribute_values",
-                "options": []
+        "attribute_values":{
+            "state":{
+                "active":false,
+                "urlParameters":[
+
+                ],
+                "name":"attribute_values",
+                "options":[
+
+                ]
             },
-            "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
-            "name": "attribute_values",
-            "choices": [
+            "tags":[
+
+            ],
+            "urlParameters":[
+
+            ],
+            "resetUrlParameters":[
+
+            ],
+            "name":"attribute_values",
+            "choices":[
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "attribute_values": [
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "attribute_values":[
                             "Holz"
                         ]
                     },
-                    "label": "Holz",
-                    "count": 1
+                    "label":"Holz",
+                    "count":1
                 },
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "attribute_values": [
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "attribute_values":[
                             "Wood"
                         ]
                     },
-                    "label": "Wood",
-                    "count": 1
+                    "label":"Wood",
+                    "count":1
                 },
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "attribute_values": [
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "attribute_values":[
                             "FEIERTAGSKOLLEKTION"
                         ]
                     },
-                    "label": "FEIERTAGSKOLLEKTION",
-                    "count": 2
+                    "label":"FEIERTAGSKOLLEKTION",
+                    "count":2
                 },
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "attribute_values": [
+                    "active":false,
+                    "default":false,
+                    "urlParameters":{
+                        "attribute_values":[
                             "HOLIDAY COLLECTION"
                         ]
                     },
-                    "label": "HOLIDAY COLLECTION",
-                    "count": 2
+                    "label":"HOLIDAY COLLECTION",
+                    "count":2
                 }
             ]
         },
-        "paginator": {
-            "state": {
-                "active": false,
-                "value": 1,
-                "urlParameters": [],
-                "name": "paginator",
-                "options": []
+        "paginator":{
+            "state":{
+                "active":false,
+                "value":1,
+                "urlParameters":[
+
+                ],
+                "name":"paginator",
+                "options":[
+
+                ]
             },
-            "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
-            "name": "paginator",
-            "currentPage": 1,
-            "totalItems": 6,
-            "maxPages": 10,
-            "itemsPerPage": 10,
-            "numPages": 1,
-            "options": []
+            "tags":[
+
+            ],
+            "urlParameters":[
+
+            ],
+            "resetUrlParameters":[
+
+            ],
+            "name":"paginator",
+            "currentPage":1,
+            "totalItems":6,
+            "maxPages":10,
+            "itemsPerPage":10,
+            "numPages":1,
+            "options":[
+
+            ]
         },
-        "search": {
-            "state": {
-                "active": false,
-                "urlParameters": [],
-                "name": "search",
-                "options": []
+        "search":{
+            "state":{
+                "active":false,
+                "urlParameters":[
+
+                ],
+                "name":"search",
+                "options":[
+
+                ]
             },
-            "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
-            "name": "search"
+            "tags":[
+
+            ],
+            "urlParameters":[
+
+            ],
+            "resetUrlParameters":[
+
+            ],
+            "name":"search"
         }
     }
 }

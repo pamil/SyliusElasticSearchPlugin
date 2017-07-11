@@ -1,11 +1,9 @@
 shop_api_product_show_catalog:
-    path: /shop-api/taxon-products/{taxon_slug}
+    path: /shop-api/taxon-products/{taxonCode}
     methods: [GET]
     defaults:
         _controller: sylius_elastic_search.controller.search
         _format: json
-    requirements:
-        taxon_slug: .+
 
 shop_api_product_show_catalog_all:
     path: /shop-api/products
