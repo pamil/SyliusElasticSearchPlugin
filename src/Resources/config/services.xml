@@ -41,6 +41,7 @@
             <argument>%sylius_elastic_search.view.attribute.class%</argument>
             <argument>%sylius_elastic_search.view.image.class%</argument>
             <argument>%sylius_elastic_search.view.price.class%</argument>
+            <argument>%sylius_elastic_search.view.taxon.class%</argument>
         </service>
 
         <service id="sylius_elastic_search.command.update_product" class="Sylius\ElasticSearchPlugin\Command\UpdateSimpleProducts">

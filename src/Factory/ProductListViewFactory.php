@@ -39,13 +39,17 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     /** @var string */
     private $priceViewClass;
 
+    /** @var string */
+    private $taxonViewClass;
+
     public function __construct(
         $productListViewClass,
         $productViewClass,
         $productVariantViewClass,
         $attributeViewClass,
         $imageViewClass,
-        $priceViewClass
+        $priceViewClass,
+        $taxonViewClass
     ) {
         $this->productListViewClass = $productListViewClass;
         $this->productViewClass = $productViewClass;
@@ -53,6 +57,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         $this->attributeViewClass = $attributeViewClass;
         $this->imageViewClass = $imageViewClass;
         $this->priceViewClass = $priceViewClass;
+        $this->taxonViewClass = $taxonViewClass;
     }
 
     /**
@@ -98,20 +103,19 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      * @param Collection|TaxonDocument[] $taxons
      * @param TaxonDocument|null $mainTaxonDocument
      *
-     * @return array
+     * @return TaxonView
      */
-    private function getTaxonCodes(Collection $taxons, TaxonDocument $mainTaxonDocument = null)
+    private function getTaxonView(Collection $taxons, ?TaxonDocument $mainTaxonDocument)
     {
-        $taxonViews = [];
-        if (null !== $mainTaxonDocument) {
-            $taxonViews['main'] = $mainTaxonDocument->getCode();
-        }
+        /** @var TaxonView $taxonView */
+        $taxonView = new $this->taxonViewClass();
 
+        $taxonView->main = null === $mainTaxonDocument ? null : $mainTaxonDocument->getCode();
         foreach ($taxons as $taxon) {
-            $taxonViews['others'][] = $taxon->getCode();
+            $taxonView->others[] = $taxon->getCode();
         }
 
-        return $taxonViews;
+        return $taxonView;
     }
 
     /**
@@ -182,7 +186,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         $productView->localeCode = $product->getLocaleCode();
         $productView->channelCode = $product->getChannelCode();
         $productView->images = $this->getImageViews($product->getImages());
-        $productView->taxons = $this->getTaxonCodes($product->getTaxons(), $product->getMainTaxon());
+        $productView->taxons = $this->getTaxonView($product->getTaxons(), $product->getMainTaxon());
         $productView->attributes = $this->getAttributeViews($product->getAttributeValues());
         $productView->variants = [$this->getVariantView($product)];
 
