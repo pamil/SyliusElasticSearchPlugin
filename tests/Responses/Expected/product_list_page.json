@@ -286,7 +286,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"HAT"
+                        "taxonCode":"HAT"
                     },
                     "label":"HAT",
                     "count":2
@@ -295,7 +295,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"MUG"
+                        "taxonCode":"MUG"
                     },
                     "label":"MUG",
                     "count":2
@@ -304,7 +304,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"T_SHIRTS"
+                        "taxonCode":"T_SHIRTS"
                     },
                     "label":"T_SHIRTS",
                     "count":2
@@ -313,7 +313,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"BRAND"
+                        "taxonCode":"BRAND"
                     },
                     "label":"BRAND",
                     "count":6
@@ -322,7 +322,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"CATEGORY"
+                        "taxonCode":"CATEGORY"
                     },
                     "label":"CATEGORY",
                     "count":6

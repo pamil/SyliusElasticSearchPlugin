@@ -103,10 +103,10 @@
 
             ],
             "urlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "resetUrlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "name":"channel",
             "choices":[
@@ -114,7 +114,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"MUG",
+                        "taxonCode":"MUG",
                         "channel":"WEB_GB"
                     },
                     "label":"WEB_GB",
@@ -127,7 +127,7 @@
                 "active":true,
                 "value":"MUG",
                 "urlParameters":{
-                    "taxon_code":"MUG"
+                    "taxonCode":"MUG"
                 },
                 "name":"taxon_code",
                 "options":[
@@ -138,7 +138,7 @@
 
             ],
             "urlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "resetUrlParameters":[
 
@@ -149,7 +149,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"HAT"
+                        "taxonCode":"HAT"
                     },
                     "label":"HAT",
                     "count":2
@@ -167,7 +167,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"T_SHIRTS"
+                        "taxonCode":"T_SHIRTS"
                     },
                     "label":"T_SHIRTS",
                     "count":2
@@ -176,7 +176,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"BRAND"
+                        "taxonCode":"BRAND"
                     },
                     "label":"BRAND",
                     "count":6
@@ -185,7 +185,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"CATEGORY"
+                        "taxonCode":"CATEGORY"
                     },
                     "label":"CATEGORY",
                     "count":6
@@ -207,10 +207,10 @@
 
             ],
             "urlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "resetUrlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "name":"price_range",
             "minBounds":1999,
@@ -231,10 +231,10 @@
 
             ],
             "urlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "resetUrlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "name":"locale",
             "choices":[
@@ -242,7 +242,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"MUG",
+                        "taxonCode":"MUG",
                         "locale_code":"de_DE"
                     },
                     "label":"de_DE",
@@ -252,7 +252,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"MUG",
+                        "taxonCode":"MUG",
                         "locale_code":"en_GB"
                     },
                     "label":"en_GB",
@@ -275,10 +275,10 @@
 
             ],
             "urlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "resetUrlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "name":"attribute_values",
             "choices":[
@@ -286,7 +286,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"MUG",
+                        "taxonCode":"MUG",
                         "attribute_values":[
                             "FEIERTAGSKOLLEKTION"
                         ]
@@ -298,7 +298,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"MUG",
+                        "taxonCode":"MUG",
                         "attribute_values":[
                             "HOLIDAY COLLECTION"
                         ]
@@ -310,7 +310,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"MUG",
+                        "taxonCode":"MUG",
                         "attribute_values":[
                             "Holz"
                         ]
@@ -322,7 +322,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "taxon_code":"MUG",
+                        "taxonCode":"MUG",
                         "attribute_values":[
                             "Wood"
                         ]
@@ -348,10 +348,10 @@
 
             ],
             "urlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "resetUrlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "name":"paginator",
             "currentPage":1,
@@ -378,10 +378,10 @@
 
             ],
             "urlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "resetUrlParameters":{
-                "taxon_code":"MUG"
+                "taxonCode":"MUG"
             },
             "name":"search"
         }

@@ -17,7 +17,7 @@ ongr_filter_manager:
             document_field: channel_code
         taxon_code:
             type: choice
-            request_field: taxon_code
+            request_field: taxonCode
             document_field: taxons.code
         price_range:
             type: range
