@@ -1,4 +1,8 @@
 {
+    "page":1,
+    "limit":10,
+    "total":2,
+    "pages":1,
     "items":[
         {
             "code":"LOGAN_MUG_CODE",
@@ -122,14 +126,14 @@
                 }
             ]
         },
-        "taxon_code":{
+        "taxonCode":{
             "state":{
                 "active":true,
                 "value":"MUG",
                 "urlParameters":{
                     "taxonCode":"MUG"
                 },
-                "name":"taxon_code",
+                "name":"taxonCode",
                 "options":[
 
                 ]
@@ -143,7 +147,7 @@
             "resetUrlParameters":[
 
             ],
-            "name":"taxon_code",
+            "name":"taxonCode",
             "choices":[
                 {
                     "active":false,
@@ -192,13 +196,13 @@
                 }
             ]
         },
-        "price_range":{
+        "priceRange":{
             "state":{
                 "active":false,
                 "urlParameters":[
 
                 ],
-                "name":"price_range",
+                "name":"priceRange",
                 "options":[
 
                 ]
@@ -212,7 +216,7 @@
             "resetUrlParameters":{
                 "taxonCode":"MUG"
             },
-            "name":"price_range",
+            "name":"priceRange",
             "minBounds":1999,
             "maxBounds":2999
         },
@@ -268,9 +272,9 @@
 
                 ],
                 "name":"paginator",
-                "options":[
-
-                ]
+                "options":{
+                    "limit":10
+                }
             },
             "tags":[
 
@@ -284,12 +288,13 @@
             "name":"paginator",
             "currentPage":1,
             "totalItems":2,
-            "maxPages":10,
+            "maxPages":20,
             "itemsPerPage":10,
             "numPages":1,
             "options":[
 
-            ]
+            ],
+            "limit":10
         },
         "search":{
             "state":{
