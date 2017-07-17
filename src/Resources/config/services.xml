@@ -22,7 +22,6 @@
         <service id="sylius_elastic_search.factory.product" class="Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactory">
             <argument>%sylius_elastic_search.document.product.class%</argument>
             <argument>%sylius_elastic_search.document.attribute.class%</argument>
-            <argument>%sylius_elastic_search.document.attribute_value.class%</argument>
             <argument>%sylius_elastic_search.document.image.class%</argument>
             <argument>%sylius_elastic_search.document.price.class%</argument>
             <argument>%sylius_elastic_search.document.taxon.class%</argument>

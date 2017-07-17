@@ -13,7 +13,7 @@ use Sylius\ElasticSearchPlugin\Controller\ProductView;
 use Sylius\ElasticSearchPlugin\Controller\ProductListView;
 use Sylius\ElasticSearchPlugin\Controller\VariantView;
 use Sylius\ElasticSearchPlugin\Controller\TaxonView;
-use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
+use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
@@ -119,19 +119,19 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     }
 
     /**
-     * @param Collection|AttributeValueDocument[] $attributeValues
+     * @param Collection|AttributeDocument[] $attributes
      *
      * @return AttributeView[]
      */
-    private function getAttributeViews(Collection $attributeValues)
+    private function getAttributeViews(Collection $attributes)
     {
         $attributeValueViews = [];
-        foreach ($attributeValues as $attributeValue) {
+        foreach ($attributes as $attribute) {
             /** @var AttributeView $attributeView */
             $attributeView = new $this->attributeViewClass();
-            $attributeView->value = $attributeValue->getValue();
-            $attributeView->code = $attributeValue->getAttribute()->getCode();
-            $attributeView->name = $attributeValue->getAttribute()->getName();
+            $attributeView->code = $attribute->getCode();
+            $attributeView->value = $attribute->getValue();
+            $attributeView->name = $attribute->getName();
 
             $attributeValueViews[] = $attributeView;
         }
@@ -187,7 +187,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         $productView->channelCode = $product->getChannelCode();
         $productView->images = $this->getImageViews($product->getImages());
         $productView->taxons = $this->getTaxonView($product->getTaxons(), $product->getMainTaxon());
-        $productView->attributes = $this->getAttributeViews($product->getAttributeValues());
+        $productView->attributes = $this->getAttributeViews($product->getAttributes());
         $productView->variants = [$this->getVariantView($product)];
 
         return $productView;

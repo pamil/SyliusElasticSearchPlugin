@@ -25,4 +25,11 @@ final class AttributeDocumentSpec extends ObjectBehavior
 
         $this->getName()->shouldReturn('color');
     }
+
+    function it_has_value()
+    {
+        $this->setValue('red');
+
+        $this->getValue()->shouldReturn('red');
+    }
 }

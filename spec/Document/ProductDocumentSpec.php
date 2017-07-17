@@ -77,9 +77,9 @@ final class ProductDocumentSpec extends ObjectBehavior
     function it_has_attributes()
     {
         $attributeValues = new Collection();
-        $this->setAttributeValues($attributeValues);
+        $this->setAttributes($attributeValues);
 
-        $this->getAttributeValues()->shouldReturn($attributeValues);
+        $this->getAttributes()->shouldReturn($attributeValues);
     }
 
     function it_has_slug()

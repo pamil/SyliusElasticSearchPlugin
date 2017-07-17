@@ -379,7 +379,7 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "locale_code":"de_DE"
+                        "locale":"de_DE"
                     },
                     "label":"de_DE",
                     "count":3
@@ -388,78 +388,10 @@
                     "active":false,
                     "default":false,
                     "urlParameters":{
-                        "locale_code":"en_GB"
+                        "locale":"en_GB"
                     },
                     "label":"en_GB",
                     "count":3
-                }
-            ]
-        },
-        "attribute_values":{
-            "state":{
-                "active":false,
-                "urlParameters":[
-
-                ],
-                "name":"attribute_values",
-                "options":[
-
-                ]
-            },
-            "tags":[
-
-            ],
-            "urlParameters":[
-
-            ],
-            "resetUrlParameters":[
-
-            ],
-            "name":"attribute_values",
-            "choices":[
-                {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "attribute_values":[
-                            "Holz"
-                        ]
-                    },
-                    "label":"Holz",
-                    "count":1
-                },
-                {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "attribute_values":[
-                            "Wood"
-                        ]
-                    },
-                    "label":"Wood",
-                    "count":1
-                },
-                {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "attribute_values":[
-                            "FEIERTAGSKOLLEKTION"
-                        ]
-                    },
-                    "label":"FEIERTAGSKOLLEKTION",
-                    "count":2
-                },
-                {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "attribute_values":[
-                            "HOLIDAY COLLECTION"
-                        ]
-                    },
-                    "label":"HOLIDAY COLLECTION",
-                    "count":2
                 }
             ]
         },
@@ -515,6 +447,110 @@
 
             ],
             "name":"search"
+        },
+        "attributes":{
+            "state":{
+                "active":false,
+                "urlParameters":[
+
+                ],
+                "name":"attributes",
+                "options":[
+
+                ]
+            },
+            "tags":[
+
+            ],
+            "urlParameters":[
+
+            ],
+            "resetUrlParameters":[
+
+            ],
+            "name":"attributes",
+            "items":[
+                {
+                    "tags":[
+
+                    ],
+                    "urlParameters":[
+
+                    ],
+                    "resetUrlParameters":[
+
+                    ],
+                    "name":"Mug collection",
+                    "choices":{
+                        "FEIERTAGSKOLLEKTION":{
+                            "active":false,
+                            "default":false,
+                            "urlParameters":{
+                                "attributes":{
+                                    "Mug collection":[
+                                        "FEIERTAGSKOLLEKTION"
+                                    ]
+                                }
+                            },
+                            "label":"FEIERTAGSKOLLEKTION",
+                            "count":2
+                        },
+                        "HOLIDAY COLLECTION":{
+                            "active":false,
+                            "default":false,
+                            "urlParameters":{
+                                "attributes":{
+                                    "Mug collection":[
+                                        "HOLIDAY COLLECTION"
+                                    ]
+                                }
+                            },
+                            "label":"HOLIDAY COLLECTION",
+                            "count":2
+                        }
+                    }
+                },
+                {
+                    "tags":[
+
+                    ],
+                    "urlParameters":[
+
+                    ],
+                    "resetUrlParameters":[
+
+                    ],
+                    "name":"Mug material",
+                    "choices":{
+                        "Holz":{
+                            "active":false,
+                            "default":false,
+                            "urlParameters":{
+                                "attributes":{
+                                    "Mug material":[
+                                        "Holz"
+                                    ]
+                                }
+                            },
+                            "label":"Holz",
+                            "count":1
+                        },
+                        "Wood":{
+                            "active":false,
+                            "default":false,
+                            "urlParameters":{
+                                "attributes":{
+                                    "Mug material":[
+                                        "Wood"
+                                    ]
+                                }
+                            },
+                            "label":"Wood",
+                            "count":1
+                        }
+                    }
+                }
+            ]
         }
     }
 }
