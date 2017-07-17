@@ -73,40 +73,42 @@ Elastic search for Sylius.
             search_list:
                 filters:
                     - channel
-                    - taxon_slug
+                    - taxon_code
                     - price_range
                     - locale
-                    - attribute_values
                     - paginator
                     - search
+                    - attributes
                 repository: es.manager.default.product
         filters:
             channel:
                 type: choice
                 request_field: channel
                 document_field: channel_code
-            taxon_slug:
+            taxon_code:
                 type: choice
-                request_field: taxon_slug
-                document_field: taxons.slug
+                request_field: taxonCode
+                document_field: taxons.code
             price_range:
                 type: range
                 request_field: price
                 document_field: price.amount
             locale:
                 type: choice
-                request_field: locale_code
+                request_field: locale
                 document_field: locale_code
-            attribute_values:
-                type: multi_choice
-                request_field: attribute_values
-                document_field: attribute_values.value
             paginator:
                 type: pager
                 document_field: ~
                 request_field: page
                 options:
                     count_per_page: 10
+            attributes:
+                type: multi_dynamic_aggregate
+                request_field: attributes
+                document_field: attributes>attributes.value
+                options:
+                    name_field: attributes.name
             search:
                 type: match
                 request_field: search
@@ -144,7 +146,7 @@ Request:
 
 Response:
 
-```
+```json
 {
     "items": [
         {
@@ -466,5 +468,669 @@ Response:
             "name": "search"
         }
     }
+}
+```
+
+10. Filtering by attributes:
+
+You need use attributes query parameter which is an associative array where key is the attribute name and value is an array of attribute values.
+For e.g:
+```php
+$this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Wood']]], [], ['ACCEPT' => 'application/json']);
+```
+
+This filter also aggregates all attribute values and it will group them by attribute name
+Aggregation response from this request:
+
+```json
+  "attributes":{
+      "state":{
+        "active":true,
+        "value":{
+          "Mug material":[
+            "Wood"
+          ]
+        },
+        "urlParameters":{
+          "attributes":{
+            "Mug material":[
+              "Wood"
+            ]
+          }
+        },
+        "name":"attributes",
+        "options":[
+
+        ]
+      },
+      "tags":[
+
+      ],
+      "urlParameters":{
+        "attributes":{
+          "Mug material":[
+            "Wood"
+          ]
+        }
+      },
+      "resetUrlParameters":[
+
+      ],
+      "name":"attributes",
+      "items":[
+        {
+          "tags":[
+
+          ],
+          "urlParameters":[
+
+          ],
+          "resetUrlParameters":[
+
+          ],
+          "name":"Mug collection",
+          "choices":{
+            "HOLIDAY COLLECTION":{
+              "active":false,
+              "default":false,
+              "urlParameters":{
+                "attributes":{
+                  "Mug material":[
+                    "Wood"
+                  ],
+                  "Mug collection":[
+                    "HOLIDAY COLLECTION"
+                  ]
+                }
+              },
+              "label":"HOLIDAY COLLECTION",
+              "count":1
+            }
+          }
+        },
+        {
+          "tags":[
+
+          ],
+          "urlParameters":[
+
+          ],
+          "resetUrlParameters":[
+
+          ],
+          "name":"Mug material",
+          "choices":{
+            "Holz":{
+              "active":false,
+              "default":false,
+              "urlParameters":{
+                "attributes":{
+                  "Mug material":[
+                    "Wood",
+                    "Holz"
+                  ]
+                }
+              },
+              "label":"Holz",
+              "count":1
+            },
+            "Wood":{
+              "active":true,
+              "default":false,
+              "urlParameters":{
+                "attributes":{
+                  "Mug material":[
+
+                  ]
+                }
+              },
+              "label":"Wood",
+              "count":1
+            }
+          }
+        }
+      ]
+    }
+```
+
+You can combine filters so for example if you want your products to be filtered in specific locale you can add another query parameter
+
+Example request with locale:
+```php
+$this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Wood']], 'locale' => 'en_GB'], [], ['ACCEPT' => 'application/json']);
+```
+
+Aggregation response from this request:
+
+```json
+  "attributes":{  
+         "state":{  
+            "active":true,
+            "value":{  
+               "Mug material":[  
+                  "Wood"
+               ]
+            },
+            "urlParameters":{  
+               "attributes":{  
+                  "Mug material":[  
+                     "Wood"
+                  ]
+               }
+            },
+            "name":"attributes",
+            "options":[  
+
+            ]
+         },
+         "tags":[  
+
+         ],
+         "urlParameters":{  
+            "locale":"en_GB",
+            "attributes":{  
+               "Mug material":[  
+                  "Wood"
+               ]
+            }
+         },
+         "resetUrlParameters":{  
+            "locale":"en_GB"
+         },
+         "name":"attributes",
+         "items":[  
+            {  
+               "tags":[  
+
+               ],
+               "urlParameters":[  
+
+               ],
+               "resetUrlParameters":{  
+                  "locale":"en_GB"
+               },
+               "name":"Mug collection",
+               "choices":{  
+                  "HOLIDAY COLLECTION":{  
+                     "active":false,
+                     "default":false,
+                     "urlParameters":{  
+                        "locale":"en_GB",
+                        "attributes":{  
+                           "Mug material":[  
+                              "Wood"
+                           ],
+                           "Mug collection":[  
+                              "HOLIDAY COLLECTION"
+                           ]
+                        }
+                     },
+                     "label":"HOLIDAY COLLECTION",
+                     "count":1
+                  }
+               }
+            },
+            {  
+               "tags":[  
+
+               ],
+               "urlParameters":[  
+
+               ],
+               "resetUrlParameters":{  
+                  "locale":"en_GB"
+               },
+               "name":"Mug material",
+               "choices":{  
+                  "Wood":{  
+                     "active":true,
+                     "default":false,
+                     "urlParameters":{  
+                        "locale":"en_GB",
+                        "attributes":{  
+                           "Mug material":[  
+
+                           ]
+                        }
+                     },
+                     "label":"Wood",
+                     "count":1
+                  }
+               }
+            }
+         ]
+      }
+```
+
+Whole response:
+
+```json
+{
+   "items":[
+      {
+         "code":"LOGAN_MUG_CODE",
+         "name":"Logan Mug",
+         "slug":"logan-mug",
+         "taxons":{
+            "main":"MUG",
+            "others":[
+               "MUG",
+               "CATEGORY",
+               "BRAND"
+            ]
+         },
+         "variants":[
+            {
+               "code":"LOGAN_MUG_CODE",
+               "name":"Logan Mug",
+               "price":{
+                  "current":1999,
+                  "currency":"GBP"
+               },
+               "images":[
+
+               ]
+            }
+         ],
+         "attributes":[
+            {
+               "code":"MUG_COLLECTION_CODE",
+               "name":"Mug collection",
+               "value":"HOLIDAY COLLECTION"
+            },
+            {
+               "code":"MUG_MATERIAL_CODE",
+               "name":"Mug material",
+               "value":"Wood"
+            }
+         ],
+         "images":[
+
+         ],
+         "channelCode":"WEB_GB",
+         "localeCode":"en_GB"
+      }
+   ],
+   "filters":{
+      "channel":{
+         "state":{
+            "active":false,
+            "urlParameters":[
+
+            ],
+            "name":"channel",
+            "options":[
+
+            ]
+         },
+         "tags":[
+
+         ],
+         "urlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "resetUrlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "name":"channel",
+         "choices":[
+            {
+               "active":false,
+               "default":false,
+               "urlParameters":{
+                  "locale":"en_GB",
+                  "attributes":{
+                     "Mug material":[
+                        "Wood"
+                     ]
+                  },
+                  "channel":"WEB_GB"
+               },
+               "label":"WEB_GB",
+               "count":1
+            }
+         ]
+      },
+      "taxon_code":{
+         "state":{
+            "active":false,
+            "urlParameters":[
+
+            ],
+            "name":"taxon_code",
+            "options":[
+
+            ]
+         },
+         "tags":[
+
+         ],
+         "urlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "resetUrlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "name":"taxon_code",
+         "choices":[
+            {
+               "active":false,
+               "default":false,
+               "urlParameters":{
+                  "locale":"en_GB",
+                  "attributes":{
+                     "Mug material":[
+                        "Wood"
+                     ]
+                  },
+                  "taxonCode":"BRAND"
+               },
+               "label":"BRAND",
+               "count":1
+            },
+            {
+               "active":false,
+               "default":false,
+               "urlParameters":{
+                  "locale":"en_GB",
+                  "attributes":{
+                     "Mug material":[
+                        "Wood"
+                     ]
+                  },
+                  "taxonCode":"CATEGORY"
+               },
+               "label":"CATEGORY",
+               "count":1
+            },
+            {
+               "active":false,
+               "default":false,
+               "urlParameters":{
+                  "locale":"en_GB",
+                  "attributes":{
+                     "Mug material":[
+                        "Wood"
+                     ]
+                  },
+                  "taxonCode":"MUG"
+               },
+               "label":"MUG",
+               "count":1
+            }
+         ]
+      },
+      "price_range":{
+         "state":{
+            "active":false,
+            "urlParameters":[
+
+            ],
+            "name":"price_range",
+            "options":[
+
+            ]
+         },
+         "tags":[
+
+         ],
+         "urlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "resetUrlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "name":"price_range",
+         "minBounds":1999,
+         "maxBounds":2999
+      },
+      "locale":{
+         "state":{
+            "active":true,
+            "value":"en_GB",
+            "urlParameters":{
+               "locale":"en_GB"
+            },
+            "name":"locale",
+            "options":[
+
+            ]
+         },
+         "tags":[
+
+         ],
+         "urlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "resetUrlParameters":{
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "name":"locale",
+         "choices":[
+            {
+               "active":true,
+               "default":false,
+               "urlParameters":{
+                  "attributes":{
+                     "Mug material":[
+                        "Wood"
+                     ]
+                  }
+               },
+               "label":"en_GB",
+               "count":1
+            }
+         ]
+      },
+      "paginator":{
+         "state":{
+            "active":false,
+            "value":1,
+            "urlParameters":[
+
+            ],
+            "name":"paginator",
+            "options":[
+
+            ]
+         },
+         "tags":[
+
+         ],
+         "urlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "resetUrlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "name":"paginator",
+         "currentPage":1,
+         "totalItems":1,
+         "maxPages":10,
+         "itemsPerPage":10,
+         "numPages":1,
+         "options":[
+
+         ]
+      },
+      "search":{
+         "state":{
+            "active":false,
+            "urlParameters":[
+
+            ],
+            "name":"search",
+            "options":[
+
+            ]
+         },
+         "tags":[
+
+         ],
+         "urlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "resetUrlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "name":"search"
+      },
+      "attributes":{
+         "state":{
+            "active":true,
+            "value":{
+               "Mug material":[
+                  "Wood"
+               ]
+            },
+            "urlParameters":{
+               "attributes":{
+                  "Mug material":[
+                     "Wood"
+                  ]
+               }
+            },
+            "name":"attributes",
+            "options":[
+
+            ]
+         },
+         "tags":[
+
+         ],
+         "urlParameters":{
+            "locale":"en_GB",
+            "attributes":{
+               "Mug material":[
+                  "Wood"
+               ]
+            }
+         },
+         "resetUrlParameters":{
+            "locale":"en_GB"
+         },
+         "name":"attributes",
+         "items":[
+            {
+               "tags":[
+
+               ],
+               "urlParameters":[
+
+               ],
+               "resetUrlParameters":{
+                  "locale":"en_GB"
+               },
+               "name":"Mug collection",
+               "choices":{
+                  "HOLIDAY COLLECTION":{
+                     "active":false,
+                     "default":false,
+                     "urlParameters":{
+                        "locale":"en_GB",
+                        "attributes":{
+                           "Mug material":[
+                              "Wood"
+                           ],
+                           "Mug collection":[
+                              "HOLIDAY COLLECTION"
+                           ]
+                        }
+                     },
+                     "label":"HOLIDAY COLLECTION",
+                     "count":1
+                  }
+               }
+            },
+            {
+               "tags":[
+
+               ],
+               "urlParameters":[
+
+               ],
+               "resetUrlParameters":{
+                  "locale":"en_GB"
+               },
+               "name":"Mug material",
+               "choices":{
+                  "Wood":{
+                     "active":true,
+                     "default":false,
+                     "urlParameters":{
+                        "locale":"en_GB",
+                        "attributes":{
+                           "Mug material":[
+
+                           ]
+                        }
+                     },
+                     "label":"Wood",
+                     "count":1
+                  }
+               }
+            }
+         ]
+      }
+   }
 }
 ```
