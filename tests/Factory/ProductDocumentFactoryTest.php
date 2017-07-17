@@ -110,6 +110,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $productTaxon->setDescription('Lorem ipsum');
 
         $productAttribute = new AttributeDocument();
+        $productAttribute->setCode('color');
         $productAttribute->setName('Color');
         $productAttribute->setValue('red');
 
@@ -257,10 +258,12 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $productTaxon->setDescription('Lorem ipsum');
 
         $firstProductAttribute = new AttributeDocument();
+        $firstProductAttribute->setCode('material');
         $firstProductAttribute->setName('Material');
         $firstProductAttribute->setValue('wood');
 
         $secondProductAttribute = new AttributeDocument();
+        $secondProductAttribute->setCode('size');
         $secondProductAttribute->setName('Size');
         $secondProductAttribute->setValue('M');
 
@@ -398,10 +401,12 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $productTaxon->setDescription('Lorem ipsum');
 
         $firstProductAttribute = new AttributeDocument();
+        $firstProductAttribute->setCode('material');
         $firstProductAttribute->setName('Material');
         $firstProductAttribute->setValue('wood');
 
         $secondProductAttribute = new AttributeDocument();
+        $secondProductAttribute->setCode('size');
         $secondProductAttribute->setName('Size');
         $secondProductAttribute->setValue('M');
 

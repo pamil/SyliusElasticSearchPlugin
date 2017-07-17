@@ -12,6 +12,13 @@ final class AttributeDocumentSpec extends ObjectBehavior
         $this->shouldHaveType(AttributeDocument::class);
     }
 
+    function it_has_code()
+    {
+        $this->setCode('color');
+
+        $this->getCode()->shouldReturn('color');
+    }
+
     function it_has_name()
     {
         $this->setName('color');

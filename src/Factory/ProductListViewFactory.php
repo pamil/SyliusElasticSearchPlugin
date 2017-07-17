@@ -129,6 +129,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         foreach ($attributes as $attribute) {
             /** @var AttributeView $attributeView */
             $attributeView = new $this->attributeViewClass();
+            $attributeView->code = $attribute->getCode();
             $attributeView->value = $attribute->getValue();
             $attributeView->name = $attribute->getName();
 

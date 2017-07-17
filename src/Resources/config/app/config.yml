@@ -38,7 +38,7 @@ ongr_filter_manager:
             request_field: attributes
             document_field: attributes>attributes.value
             options:
-              name_field: attributes.name
+                name_field: attributes.name
         search:
             type: match
             request_field: search

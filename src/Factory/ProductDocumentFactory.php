@@ -161,6 +161,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
             if (in_array($syliusProductAttributeValue->getAttribute()->getCode(), $this->attributeWhitelist)) {
                 /** @var AttributeDocument $productAttribute */
                 $productAttribute = new $this->attributeDocumentClass();
+                $productAttribute->setCode($syliusProductAttributeValue->getCode());
                 $productAttribute->setValue($syliusProductAttributeValue->getValue());
                 $productAttribute->setName($syliusProductAttributeValue->getAttribute()->getName());
 

@@ -47,6 +47,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
         $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
+
         $this->assertResponse($response, 'product_list_page_by_en_gb_channel', Response::HTTP_OK);
     }
 
