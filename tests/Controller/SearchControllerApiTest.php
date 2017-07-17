@@ -47,8 +47,21 @@ final class SearchControllerApiTest extends JsonApiTestCase
         $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
-
         $this->assertResponse($response, 'product_list_page_by_en_gb_channel', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_paginated_product_list_by_attributes()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Wood']]], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'product_list_page_by_wood_material', Response::HTTP_OK);
     }
 
     /**

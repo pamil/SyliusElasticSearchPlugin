@@ -5,7 +5,7 @@ namespace Sylius\ElasticSearchPlugin\Document;
 use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
 
 /**
- * @ElasticSearch\Object
+ * @ElasticSearch\Nested
  */
 class AttributeDocument
 {
@@ -14,30 +14,14 @@ class AttributeDocument
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $code;
+    private $name;
 
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="text")
+     * @ElasticSearch\Property(type="keyword")
      */
-    private $name;
-
-    /**
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * @param string $code
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-    }
+    private $value;
 
     /**
      * @return string
@@ -53,5 +37,21 @@ class AttributeDocument
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
     }
 }

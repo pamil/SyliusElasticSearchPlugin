@@ -61,7 +61,6 @@ final class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('product')->defaultValue(ProductDocument::class)->end()
                         ->scalarNode('attribute')->defaultValue(AttributeDocument::class)->end()
-                        ->scalarNode('attribute_value')->defaultValue(AttributeValueDocument::class)->end()
                         ->scalarNode('image')->defaultValue(ImageDocument::class)->end()
                         ->scalarNode('price')->defaultValue(PriceDocument::class)->end()
                         ->scalarNode('taxon')->defaultValue(TaxonDocument::class)->end()

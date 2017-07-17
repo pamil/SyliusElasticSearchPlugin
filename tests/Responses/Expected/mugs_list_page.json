@@ -27,12 +27,10 @@
             ],
             "attributes":[
                 {
-                    "code":"MUG_COLLECTION_CODE",
                     "name":"Mug collection",
                     "value":"HOLIDAY COLLECTION"
                 },
                 {
-                    "code":"MUG_MATERIAL_CODE",
                     "name":"Mug material",
                     "value":"Wood"
                 }
@@ -70,12 +68,10 @@
             ],
             "attributes":[
                 {
-                    "code":"MUG_COLLECTION_CODE",
                     "name":"Mug collection",
                     "value":"FEIERTAGSKOLLEKTION"
                 },
                 {
-                    "code":"MUG_MATERIAL_CODE",
                     "name":"Mug material",
                     "value":"Holz"
                 }
@@ -243,7 +239,7 @@
                     "default":false,
                     "urlParameters":{
                         "taxonCode":"MUG",
-                        "locale_code":"de_DE"
+                        "locale":"de_DE"
                     },
                     "label":"de_DE",
                     "count":1
@@ -253,81 +249,9 @@
                     "default":false,
                     "urlParameters":{
                         "taxonCode":"MUG",
-                        "locale_code":"en_GB"
+                        "locale":"en_GB"
                     },
                     "label":"en_GB",
-                    "count":1
-                }
-            ]
-        },
-        "attribute_values":{
-            "state":{
-                "active":false,
-                "urlParameters":[
-
-                ],
-                "name":"attribute_values",
-                "options":[
-
-                ]
-            },
-            "tags":[
-
-            ],
-            "urlParameters":{
-                "taxonCode":"MUG"
-            },
-            "resetUrlParameters":{
-                "taxonCode":"MUG"
-            },
-            "name":"attribute_values",
-            "choices":[
-                {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "taxonCode":"MUG",
-                        "attribute_values":[
-                            "FEIERTAGSKOLLEKTION"
-                        ]
-                    },
-                    "label":"FEIERTAGSKOLLEKTION",
-                    "count":1
-                },
-                {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "taxonCode":"MUG",
-                        "attribute_values":[
-                            "HOLIDAY COLLECTION"
-                        ]
-                    },
-                    "label":"HOLIDAY COLLECTION",
-                    "count":1
-                },
-                {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "taxonCode":"MUG",
-                        "attribute_values":[
-                            "Holz"
-                        ]
-                    },
-                    "label":"Holz",
-                    "count":1
-                },
-                {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "taxonCode":"MUG",
-                        "attribute_values":[
-                            "Wood"
-                        ]
-                    },
-                    "label":"Wood",
                     "count":1
                 }
             ]
@@ -384,6 +308,114 @@
                 "taxonCode":"MUG"
             },
             "name":"search"
+        },
+        "attributes":{
+            "state":{
+                "active":false,
+                "urlParameters":[
+
+                ],
+                "name":"attributes",
+                "options":[
+
+                ]
+            },
+            "tags":[
+
+            ],
+            "urlParameters":{
+                "taxonCode":"MUG"
+            },
+            "resetUrlParameters":{
+                "taxonCode":"MUG"
+            },
+            "name":"attributes",
+            "items":[
+                {
+                    "tags":[
+
+                    ],
+                    "urlParameters":[
+
+                    ],
+                    "resetUrlParameters":{
+                        "taxonCode":"MUG"
+                    },
+                    "name":"Mug collection",
+                    "choices":{
+                        "FEIERTAGSKOLLEKTION":{
+                            "active":false,
+                            "default":false,
+                            "urlParameters":{
+                                "taxonCode":"MUG",
+                                "attributes":{
+                                    "Mug collection":[
+                                        "FEIERTAGSKOLLEKTION"
+                                    ]
+                                }
+                            },
+                            "label":"FEIERTAGSKOLLEKTION",
+                            "count":1
+                        },
+                        "HOLIDAY COLLECTION":{
+                            "active":false,
+                            "default":false,
+                            "urlParameters":{
+                                "taxonCode":"MUG",
+                                "attributes":{
+                                    "Mug collection":[
+                                        "HOLIDAY COLLECTION"
+                                    ]
+                                }
+                            },
+                            "label":"HOLIDAY COLLECTION",
+                            "count":1
+                        }
+                    }
+                },
+                {
+                    "tags":[
+
+                    ],
+                    "urlParameters":[
+
+                    ],
+                    "resetUrlParameters":{
+                        "taxonCode":"MUG"
+                    },
+                    "name":"Mug material",
+                    "choices":{
+                        "Holz":{
+                            "active":false,
+                            "default":false,
+                            "urlParameters":{
+                                "taxonCode":"MUG",
+                                "attributes":{
+                                    "Mug material":[
+                                        "Holz"
+                                    ]
+                                }
+                            },
+                            "label":"Holz",
+                            "count":1
+                        },
+                        "Wood":{
+                            "active":false,
+                            "default":false,
+                            "urlParameters":{
+                                "taxonCode":"MUG",
+                                "attributes":{
+                                    "Mug material":[
+                                        "Wood"
+                                    ]
+                                }
+                            },
+                            "label":"Wood",
+                            "count":1
+                        }
+                    }
+                }
+            ]
         }
     }
 }

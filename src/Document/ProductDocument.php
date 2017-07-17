@@ -86,9 +86,9 @@ class ProductDocument
     /**
      * @var Collection
      *
-     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\AttributeValueDocument", multiple=true)
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\AttributeDocument", multiple=true)
      */
-    private $attributeValues;
+    private $attributes;
 
     /**
      * @var Collection
@@ -111,7 +111,7 @@ class ProductDocument
 
     public function __construct()
     {
-        $this->attributeValues = new Collection();
+        $this->attributes = new Collection();
         $this->taxons = new Collection();
         $this->images = new Collection();
     }
@@ -263,17 +263,17 @@ class ProductDocument
     /**
      * @return Collection
      */
-    public function getAttributeValues()
+    public function getAttributes()
     {
-        return $this->attributeValues;
+        return $this->attributes;
     }
 
     /**
-     * @param Collection $attributeValues
+     * @param Collection $attributes
      */
-    public function setAttributeValues(Collection $attributeValues)
+    public function setAttributes(Collection $attributes)
     {
-        $this->attributeValues = $attributeValues;
+        $this->attributes = $attributes;
     }
 
     /**

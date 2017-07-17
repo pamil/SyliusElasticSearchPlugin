@@ -15,7 +15,6 @@ use Sylius\Component\Locale\Model\Locale;
 use Sylius\Component\Product\Model\ProductAttribute;
 use Sylius\Component\Product\Model\ProductAttributeValue;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
-use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
@@ -86,7 +85,6 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new ProductDocumentFactory(
             ProductDocument::class,
             AttributeDocument::class,
-            AttributeValueDocument::class,
             ImageDocument::class,
             PriceDocument::class,
             TaxonDocument::class,
@@ -112,21 +110,17 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $productTaxon->setDescription('Lorem ipsum');
 
         $productAttribute = new AttributeDocument();
-        $productAttribute->setCode('color');
         $productAttribute->setName('Color');
-
-        $productAttributeValue = new AttributeValueDocument();
-        $productAttributeValue->setValue('red');
-        $productAttributeValue->setAttribute($productAttribute);
+        $productAttribute->setValue('red');
 
         $this->assertEquals('banana', $product->getCode());
         $this->assertEquals('Banana', $product->getName());
         $this->assertEquals('en_US', $product->getLocaleCode());
         $this->assertEquals(
             new Collection([
-                $productAttributeValue
+                $productAttribute
             ]),
-            $product->getAttributeValues()
+            $product->getAttributes()
         );
         $this->assertEquals(1000, $product->getPrice()->getAmount());
         $this->assertEquals('USD', $product->getPrice()->getCurrency());
@@ -150,7 +144,6 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new ProductDocumentFactory(
             ProductDocument::class,
             AttributeDocument::class,
-            AttributeValueDocument::class,
             ImageDocument::class,
             PriceDocument::class,
             TaxonDocument::class,
@@ -239,7 +232,6 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new ProductDocumentFactory(
             ProductDocument::class,
             AttributeDocument::class,
-            AttributeValueDocument::class,
             ImageDocument::class,
             PriceDocument::class,
             TaxonDocument::class,
@@ -265,29 +257,21 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $productTaxon->setDescription('Lorem ipsum');
 
         $firstProductAttribute = new AttributeDocument();
-        $firstProductAttribute->setCode('material');
         $firstProductAttribute->setName('Material');
-
-        $firstProductAttributeValue = new AttributeValueDocument();
-        $firstProductAttributeValue->setValue('wood');
-        $firstProductAttributeValue->setAttribute($firstProductAttribute);
+        $firstProductAttribute->setValue('wood');
 
         $secondProductAttribute = new AttributeDocument();
-        $secondProductAttribute->setCode('size');
         $secondProductAttribute->setName('Size');
-
-        $secondProductAttributeValue = new AttributeValueDocument();
-        $secondProductAttributeValue->setValue('M');
-        $secondProductAttributeValue->setAttribute($secondProductAttribute);
+        $secondProductAttribute->setValue('M');
 
         $this->assertEquals('banana', $product->getCode());
         $this->assertEquals('Banana', $product->getName());
         $this->assertEquals('en_US', $product->getLocaleCode());
         $this->assertEquals(
             new Collection([
-                $firstProductAttributeValue,
+                $firstProductAttribute,
             ]),
-            $product->getAttributeValues()
+            $product->getAttributes()
         );
 
         $this->assertEquals(1000, $product->getPrice()->getAmount());
@@ -383,7 +367,6 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $factory = new ProductDocumentFactory(
             ProductDocument::class,
             AttributeDocument::class,
-            AttributeValueDocument::class,
             ImageDocument::class,
             PriceDocument::class,
             TaxonDocument::class,
@@ -415,29 +398,21 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $productTaxon->setDescription('Lorem ipsum');
 
         $firstProductAttribute = new AttributeDocument();
-        $firstProductAttribute->setCode('material');
         $firstProductAttribute->setName('Material');
-
-        $firstProductAttributeValue = new AttributeValueDocument();
-        $firstProductAttributeValue->setValue('wood');
-        $firstProductAttributeValue->setAttribute($firstProductAttribute);
+        $firstProductAttribute->setValue('wood');
 
         $secondProductAttribute = new AttributeDocument();
-        $secondProductAttribute->setCode('size');
         $secondProductAttribute->setName('Size');
-
-        $secondProductAttributeValue = new AttributeValueDocument();
-        $secondProductAttributeValue->setValue('M');
-        $secondProductAttributeValue->setAttribute($secondProductAttribute);
+        $secondProductAttribute->setValue('M');
 
         $this->assertEquals('banana', $product->getCode());
         $this->assertEquals('Banana', $product->getName());
         $this->assertEquals('en_US', $product->getLocaleCode());
         $this->assertEquals(
             new Collection([
-                $firstProductAttributeValue,
+                $firstProductAttribute,
             ]),
-            $product->getAttributeValues()
+            $product->getAttributes()
         );
 
         $this->assertEquals(1000, $product->getPrice()->getAmount());

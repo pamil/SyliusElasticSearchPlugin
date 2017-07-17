@@ -21,7 +21,6 @@ use Sylius\ElasticSearchPlugin\Controller\VariantView;
 use Sylius\ElasticSearchPlugin\DependencyInjection\Configuration;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
-use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
@@ -42,7 +41,6 @@ final class ConfigurationTest extends \PHPUnit_Framework_TestCase
         $this->assertProcessedConfigurationEquals([], ['document_classes' => [
             'product' => ProductDocument::class,
             'attribute' => AttributeDocument::class,
-            'attribute_value' => AttributeValueDocument::class,
             'image' => ImageDocument::class,
             'price' => PriceDocument::class,
             'taxon' => TaxonDocument::class,
