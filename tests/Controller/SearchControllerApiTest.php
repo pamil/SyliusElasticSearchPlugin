@@ -66,6 +66,48 @@ final class SearchControllerApiTest extends JsonApiTestCase
     }
 
     /**
+     * @test
+     */
+    public function it_shows_paginated_product_list_with_limit()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['limit' => 1], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'limited_product_list_page', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_first_page_of_paginated_product_list()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['limit' => 3, 'page' => 1], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'first_page_of_limited_product_list_page', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_second_page_of_paginated_product_list()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['limit' => 3, 'page' => 2], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'second_page_of_limited_product_list_page', Response::HTTP_OK);
+    }
+
+    /**
      * @before
      */
     protected function purgeElasticSearch()

@@ -66,10 +66,17 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     public function createFromSearchResponse(SearchResponse $response)
     {
         $result = $response->getResult();
+        $filters = $response->getFilters();
 
         /** @var ProductListView $productListView */
         $productListView = new $this->productListViewClass();
-        $productListView->filters = $response->getFilters();
+        $productListView->filters = $filters;
+
+        $pager = $filters['paginator']->getSerializableData()['pager'];
+        $productListView->page = $pager['current_page'];
+        $productListView->total = $pager['total_items'];
+        $productListView->pages = $pager['num_pages'];
+        $productListView->limit = $pager['limit'];
 
         /** @var ProductDocument $product */
         foreach ($result as $product) {

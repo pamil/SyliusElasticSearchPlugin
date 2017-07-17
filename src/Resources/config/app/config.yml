@@ -3,8 +3,8 @@ ongr_filter_manager:
         search_list:
             filters:
                 - channel
-                - taxon_code
-                - price_range
+                - taxonCode
+                - priceRange
                 - locale
                 - paginator
                 - search
@@ -15,11 +15,11 @@ ongr_filter_manager:
             type: choice
             request_field: channel
             document_field: channel_code
-        taxon_code:
+        taxonCode:
             type: choice
             request_field: taxonCode
             document_field: taxons.code
-        price_range:
+        priceRange:
             type: range
             request_field: price
             document_field: price.amount
@@ -28,11 +28,12 @@ ongr_filter_manager:
             request_field: locale
             document_field: locale_code
         paginator:
-            type: pager
+            type: sylius_elastic_search.custom_pager
             document_field: ~
             request_field: page
             options:
-                count_per_page: 10
+                limit: 10
+                max_pages: 20
         attributes:
             type: multi_dynamic_aggregate
             request_field: attributes
