@@ -48,7 +48,6 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
      */
     public function modifySearch(Search $search, FilterState $state = null, SearchRequest $request = null)
     {
-
         if ($state && $state->isActive()) {
             $search->setFrom($this->getCountPerPage($state) * ($state->getValue() - 1));
         }
@@ -78,7 +77,6 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
     public function getViewData(DocumentIterator $result, ViewData $data)
     {
         /** @var ViewData\PagerAwareViewData $data */
-
         $data->setData(
             $result->count(),
             $data->getState()->getValue(),
