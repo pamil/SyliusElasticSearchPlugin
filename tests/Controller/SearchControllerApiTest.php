@@ -124,7 +124,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     /**
      * @test
      */
-    public function it_shows_paginated_product_list_by_attributes_and_locale()
+    public function it_shows_paginated_product_list_by_wood_attribute_and_en_GB_locale()
     {
         $this->loadFixturesFromFile('shop.yml');
 
@@ -161,6 +161,34 @@ final class SearchControllerApiTest extends JsonApiTestCase
         $response = $this->client->getResponse();
 
         $this->assertResponse($response, 'product_list_page_by_wood_material_and_en_GB_locale_using_search_query', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_product_list_page_by_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['locale' => 'de_DE'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'product_list_page_by_de_DE_locale', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_paginated_product_list_by_wood_attribute_and_de_DE_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Holz']], 'locale' => 'de_DE'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'product_list_page_by_wood_material_and_de_DE_locale', Response::HTTP_OK);
     }
 
     /**

@@ -155,4 +155,3 @@ Sylius\Component\Product\Model\ProductAttributeValue:
         attribute: "@mug_material"
         localeCode: "en_GB"
         text: "Wood"
-        
