@@ -45,6 +45,6 @@ ongr_filter_manager:
         search:
             type: match
             request_field: search
-            document_field: name,description,attribute_values.value
+            document_field: name,description,attributes>attributes.value
             options:
                 operator: and

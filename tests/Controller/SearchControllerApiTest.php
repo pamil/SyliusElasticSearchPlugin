@@ -136,6 +136,34 @@ final class SearchControllerApiTest extends JsonApiTestCase
     }
 
     /**
+     * @test
+     */
+    public function it_shows_paginated_product_list_by_name_using_search_query()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['search' => 'hat', 'locale' => 'en_GB'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'product_list_page_by_name', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_paginated_product_list_by_attribute_using_search_query()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['search' => 'Wood', 'locale' => 'en_GB'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'product_list_page_by_wood_material_and_en_GB_locale_using_search_query', Response::HTTP_OK);
+    }
+
+    /**
      * @before
      */
     protected function purgeElasticSearch()
