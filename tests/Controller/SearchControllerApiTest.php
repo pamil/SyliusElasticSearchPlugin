@@ -108,6 +108,20 @@ final class SearchControllerApiTest extends JsonApiTestCase
     }
 
     /**
+     * @test
+     */
+    public function it_shows_product_list_by_price_range()
+    {
+        $this->loadFixturesFromFile('shop_with_different_prices.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['price' => '1000;4999'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'product_list_page_by_price_range', Response::HTTP_OK);
+    }
+
+    /**
      * @before
      */
     protected function purgeElasticSearch()

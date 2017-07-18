@@ -23,6 +23,8 @@ ongr_filter_manager:
             type: range
             request_field: price
             document_field: price.amount
+            options:
+                inclusive: true
         locale:
             type: choice
             request_field: locale
