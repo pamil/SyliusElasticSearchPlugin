@@ -122,6 +122,20 @@ final class SearchControllerApiTest extends JsonApiTestCase
     }
 
     /**
+     * @test
+     */
+    public function it_shows_paginated_product_list_by_attributes_and_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Wood']], 'locale' => 'en_GB'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'product_list_page_by_wood_material_and_en_GB_locale', Response::HTTP_OK);
+    }
+
+    /**
      * @before
      */
     protected function purgeElasticSearch()
