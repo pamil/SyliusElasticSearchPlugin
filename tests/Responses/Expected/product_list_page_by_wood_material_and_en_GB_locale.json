@@ -24,8 +24,7 @@
                         "current": 1999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -40,8 +39,7 @@
                     "value": "Wood"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -50,14 +48,11 @@
         "channel": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "channel",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "attributes": {
@@ -96,14 +91,11 @@
         "taxonCode": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "taxonCode",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "attributes": {
@@ -172,14 +164,11 @@
         "priceRange": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "priceRange",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "attributes": {
@@ -208,11 +197,9 @@
                     "locale": "en_GB"
                 },
                 "name": "locale",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "attributes": {
@@ -249,15 +236,13 @@
             "state": {
                 "active": false,
                 "value": 1,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "paginator",
                 "options": {
                     "limit": 10
                 }
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "attributes": {
@@ -280,21 +265,17 @@
             "maxPages": 20,
             "itemsPerPage": 10,
             "numPages": 1,
-            "options": [
-            ],
+            "options": [],
             "limit": 10
         },
         "search": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "search",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "attributes": {
@@ -329,11 +310,9 @@
                     }
                 },
                 "name": "attributes",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "attributes": {
@@ -348,10 +327,8 @@
             "name": "attributes",
             "items": [
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "locale": "en_GB"
                     },
@@ -377,10 +354,8 @@
                     }
                 },
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "locale": "en_GB"
                     },
@@ -392,8 +367,7 @@
                             "urlParameters": {
                                 "locale": "en_GB",
                                 "attributes": {
-                                    "Mug material": [
-                                    ]
+                                    "Mug material": []
                                 }
                             },
                             "label": "Wood",

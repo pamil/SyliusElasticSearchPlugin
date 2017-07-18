@@ -24,8 +24,7 @@
                         "current": 1999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -40,8 +39,7 @@
                     "value": "Wood"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
@@ -65,24 +63,22 @@
                         "current": 1999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
                 {
                     "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
+                    "name": "Becher Sammlung",
                     "value": "FEIERTAGSKOLLEKTION"
                 },
                 {
                     "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material",
+                    "name": "Becher Material",
                     "value": "Holz"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "de_DE"
         },
@@ -105,8 +101,7 @@
                         "current": 2999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -116,8 +111,7 @@
                     "value": "HOLIDAY COLLECTION"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -126,18 +120,13 @@
         "channel": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "channel",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
-            "urlParameters": [
-            ],
-            "resetUrlParameters": [
-            ],
+            "tags": [],
+            "urlParameters": [],
+            "resetUrlParameters": [],
             "name": "channel",
             "choices": [
                 {
@@ -154,18 +143,13 @@
         "taxonCode": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "taxonCode",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
-            "urlParameters": [
-            ],
-            "resetUrlParameters": [
-            ],
+            "tags": [],
+            "urlParameters": [],
+            "resetUrlParameters": [],
             "name": "taxonCode",
             "choices": [
                 {
@@ -218,18 +202,13 @@
         "priceRange": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "priceRange",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
-            "urlParameters": [
-            ],
-            "resetUrlParameters": [
-            ],
+            "tags": [],
+            "urlParameters": [],
+            "resetUrlParameters": [],
             "name": "priceRange",
             "minBounds": 1999,
             "maxBounds": 2999
@@ -237,18 +216,13 @@
         "locale": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "locale",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
-            "urlParameters": [
-            ],
-            "resetUrlParameters": [
-            ],
+            "tags": [],
+            "urlParameters": [],
+            "resetUrlParameters": [],
             "name": "locale",
             "choices": [
                 {
@@ -275,85 +249,96 @@
             "state": {
                 "active": true,
                 "value": 1,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "paginator",
                 "options": {
                     "limit": 3
                 }
             },
-            "tags": [
-            ],
-            "urlParameters": [
-            ],
-            "resetUrlParameters": [
-            ],
+            "tags": [],
+            "urlParameters": [],
+            "resetUrlParameters": [],
             "name": "paginator",
             "currentPage": 1,
             "totalItems": 6,
             "maxPages": 20,
             "itemsPerPage": 3,
             "numPages": 2,
-            "options": [
-            ],
+            "options": [],
             "limit": 3
         },
         "search": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "search",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
-            "urlParameters": [
-            ],
-            "resetUrlParameters": [
-            ],
+            "tags": [],
+            "urlParameters": [],
+            "resetUrlParameters": [],
             "name": "search"
         },
         "attributes": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "attributes",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
-            "urlParameters": [
-            ],
-            "resetUrlParameters": [
-            ],
+            "tags": [],
+            "urlParameters": [],
+            "resetUrlParameters": [],
             "name": "attributes",
             "items": [
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
-                    "resetUrlParameters": [
-                    ],
-                    "name": "Mug collection",
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": [],
+                    "name": "Becher Material",
+                    "choices": {
+                        "Holz": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "attributes": {
+                                    "Becher Material": [
+                                        "Holz"
+                                    ]
+                                }
+                            },
+                            "label": "Holz",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": [],
+                    "name": "Becher Sammlung",
                     "choices": {
                         "FEIERTAGSKOLLEKTION": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
                                 "attributes": {
-                                    "Mug collection": [
+                                    "Becher Sammlung": [
                                         "FEIERTAGSKOLLEKTION"
                                     ]
                                 }
                             },
                             "label": "FEIERTAGSKOLLEKTION",
                             "count": 2
-                        },
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": [],
+                    "name": "Mug collection",
+                    "choices": {
                         "HOLIDAY COLLECTION": {
                             "active": false,
                             "default": false,
@@ -370,27 +355,11 @@
                     }
                 },
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
-                    "resetUrlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": [],
                     "name": "Mug material",
                     "choices": {
-                        "Holz": {
-                            "active": false,
-                            "default": false,
-                            "urlParameters": {
-                                "attributes": {
-                                    "Mug material": [
-                                        "Holz"
-                                    ]
-                                }
-                            },
-                            "label": "Holz",
-                            "count": 1
-                        },
                         "Wood": {
                             "active": false,
                             "default": false,

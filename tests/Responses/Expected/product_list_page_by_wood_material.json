@@ -365,20 +365,6 @@
                     ],
                     "name": "Mug material",
                     "choices": {
-                        "Holz": {
-                            "active": false,
-                            "default": false,
-                            "urlParameters": {
-                                "attributes": {
-                                    "Mug material": [
-                                        "Wood",
-                                        "Holz"
-                                    ]
-                                }
-                            },
-                            "label": "Holz",
-                            "count": 1
-                        },
                         "Wood": {
                             "active": true,
                             "default": false,
