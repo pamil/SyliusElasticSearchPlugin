@@ -6,10 +6,6 @@
 
     <imports>
         <import resource="services/controller.xml"/>
-        <import resource="services/filter_set_configuration_provider.xml"/>
-        <import resource="services/query_factory.xml" />
-        <import resource="services/search_criteria_applicator.xml" />
-        <import resource="services/search_engine.xml"/>
     </imports>
     <services>
         <service id="sylius_elastic_search.form_registry.filters" class="Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry" />
