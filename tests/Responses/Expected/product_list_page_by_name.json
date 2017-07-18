@@ -1,314 +1,291 @@
 {
-    "page":1,
-    "limit":10,
-    "total":1,
-    "pages":1,
-    "items":[
+    "page": 1,
+    "limit": 10,
+    "total": 1,
+    "pages": 1,
+    "items": [
         {
-            "code":"LOGAN_HAT_CODE",
-            "name":"Logan Hat",
-            "slug":"logan-hat",
-            "taxons":{
-                "others":[
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hat",
+            "slug": "logan-hat",
+            "taxons": {
+                "others": [
                     "HAT",
                     "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants":[
+            "variants": [
                 {
-                    "code":"LOGAN_HAT_CODE",
-                    "name":"Logan Hat",
-                    "price":{
-                        "current":2999,
-                        "currency":"GBP"
+                    "code": "LOGAN_HAT_CODE",
+                    "name": "Logan Hat",
+                    "price": {
+                        "current": 2999,
+                        "currency": "GBP"
                     },
-                    "images":[
-
+                    "images": [
                     ]
                 }
             ],
-            "attributes":[
+            "attributes": [
                 {
-                    "code":"MUG_COLLECTION_CODE",
-                    "name":"Mug collection",
-                    "value":"HOLIDAY COLLECTION"
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection",
+                    "value": "HOLIDAY COLLECTION"
                 }
             ],
-            "images":[
-
+            "images": [
             ],
-            "channelCode":"WEB_GB",
-            "localeCode":"en_GB"
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
         }
     ],
-    "filters":{
-        "channel":{
-            "state":{
-                "active":false,
-                "urlParameters":[
-
+    "filters": {
+        "channel": {
+            "state": {
+                "active": false,
+                "urlParameters": [
                 ],
-                "name":"channel",
-                "options":[
-
+                "name": "channel",
+                "options": [
                 ]
             },
-            "tags":[
-
+            "tags": [
             ],
-            "urlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "urlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "resetUrlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "resetUrlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "name":"channel",
-            "choices":[
+            "name": "channel",
+            "choices": [
                 {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "locale":"en_GB",
-                        "search":"hat",
-                        "channel":"WEB_GB"
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "en_GB",
+                        "search": "hat",
+                        "channel": "WEB_GB"
                     },
-                    "label":"WEB_GB",
-                    "count":1
+                    "label": "WEB_GB",
+                    "count": 1
                 }
             ]
         },
-        "taxonCode":{
-            "state":{
-                "active":false,
-                "urlParameters":[
-
+        "taxonCode": {
+            "state": {
+                "active": false,
+                "urlParameters": [
                 ],
-                "name":"taxonCode",
-                "options":[
-
+                "name": "taxonCode",
+                "options": [
                 ]
             },
-            "tags":[
-
+            "tags": [
             ],
-            "urlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "urlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "resetUrlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "resetUrlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "name":"taxonCode",
-            "choices":[
+            "name": "taxonCode",
+            "choices": [
                 {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "locale":"en_GB",
-                        "search":"hat",
-                        "taxonCode":"BRAND"
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "en_GB",
+                        "search": "hat",
+                        "taxonCode": "BRAND"
                     },
-                    "label":"BRAND",
-                    "count":1
+                    "label": "BRAND",
+                    "count": 1
                 },
                 {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "locale":"en_GB",
-                        "search":"hat",
-                        "taxonCode":"CATEGORY"
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "en_GB",
+                        "search": "hat",
+                        "taxonCode": "CATEGORY"
                     },
-                    "label":"CATEGORY",
-                    "count":1
+                    "label": "CATEGORY",
+                    "count": 1
                 },
                 {
-                    "active":false,
-                    "default":false,
-                    "urlParameters":{
-                        "locale":"en_GB",
-                        "search":"hat",
-                        "taxonCode":"HAT"
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "en_GB",
+                        "search": "hat",
+                        "taxonCode": "HAT"
                     },
-                    "label":"HAT",
-                    "count":1
+                    "label": "HAT",
+                    "count": 1
                 }
             ]
         },
-        "priceRange":{
-            "state":{
-                "active":false,
-                "urlParameters":[
-
+        "priceRange": {
+            "state": {
+                "active": false,
+                "urlParameters": [
                 ],
-                "name":"priceRange",
-                "options":[
-
+                "name": "priceRange",
+                "options": [
                 ]
             },
-            "tags":[
-
+            "tags": [
             ],
-            "urlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "urlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "resetUrlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "resetUrlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "name":"priceRange",
-            "minBounds":2999,
-            "maxBounds":2999
+            "name": "priceRange",
+            "minBounds": 2999,
+            "maxBounds": 2999
         },
-        "locale":{
-            "state":{
-                "active":true,
-                "value":"en_GB",
-                "urlParameters":{
-                    "locale":"en_GB"
+        "locale": {
+            "state": {
+                "active": true,
+                "value": "en_GB",
+                "urlParameters": {
+                    "locale": "en_GB"
                 },
-                "name":"locale",
-                "options":[
-
+                "name": "locale",
+                "options": [
                 ]
             },
-            "tags":[
-
+            "tags": [
             ],
-            "urlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "urlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "resetUrlParameters":{
-                "search":"hat"
+            "resetUrlParameters": {
+                "search": "hat"
             },
-            "name":"locale",
-            "choices":[
+            "name": "locale",
+            "choices": [
                 {
-                    "active":true,
-                    "default":false,
-                    "urlParameters":{
-                        "search":"hat"
+                    "active": true,
+                    "default": false,
+                    "urlParameters": {
+                        "search": "hat"
                     },
-                    "label":"en_GB",
-                    "count":1
+                    "label": "en_GB",
+                    "count": 1
                 }
             ]
         },
-        "paginator":{
-            "state":{
-                "active":false,
-                "value":1,
-                "urlParameters":[
-
+        "paginator": {
+            "state": {
+                "active": false,
+                "value": 1,
+                "urlParameters": [
                 ],
-                "name":"paginator",
-                "options":{
-                    "limit":10
+                "name": "paginator",
+                "options": {
+                    "limit": 10
                 }
             },
-            "tags":[
-
+            "tags": [
             ],
-            "urlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "urlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "resetUrlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "resetUrlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "name":"paginator",
-            "currentPage":1,
-            "totalItems":1,
-            "maxPages":20,
-            "itemsPerPage":10,
-            "numPages":1,
-            "options":[
-
+            "name": "paginator",
+            "currentPage": 1,
+            "totalItems": 1,
+            "maxPages": 20,
+            "itemsPerPage": 10,
+            "numPages": 1,
+            "options": [
             ],
-            "limit":10
+            "limit": 10
         },
-        "search":{
-            "state":{
-                "active":true,
-                "value":"hat",
-                "urlParameters":{
-                    "search":"hat"
+        "search": {
+            "state": {
+                "active": true,
+                "value": "hat",
+                "urlParameters": {
+                    "search": "hat"
                 },
-                "name":"search",
-                "options":[
-
+                "name": "search",
+                "options": [
                 ]
             },
-            "tags":[
-
+            "tags": [
             ],
-            "urlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "urlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "resetUrlParameters":{
-                "locale":"en_GB"
+            "resetUrlParameters": {
+                "locale": "en_GB"
             },
-            "name":"search"
+            "name": "search"
         },
-        "attributes":{
-            "state":{
-                "active":false,
-                "urlParameters":[
-
+        "attributes": {
+            "state": {
+                "active": false,
+                "urlParameters": [
                 ],
-                "name":"attributes",
-                "options":[
-
+                "name": "attributes",
+                "options": [
                 ]
             },
-            "tags":[
-
+            "tags": [
             ],
-            "urlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "urlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "resetUrlParameters":{
-                "locale":"en_GB",
-                "search":"hat"
+            "resetUrlParameters": {
+                "locale": "en_GB",
+                "search": "hat"
             },
-            "name":"attributes",
-            "items":[
+            "name": "attributes",
+            "items": [
                 {
-                    "tags":[
-
+                    "tags": [
                     ],
-                    "urlParameters":[
-
+                    "urlParameters": [
                     ],
-                    "resetUrlParameters":{
-                        "locale":"en_GB",
-                        "search":"hat"
+                    "resetUrlParameters": {
+                        "locale": "en_GB",
+                        "search": "hat"
                     },
-                    "name":"Mug collection",
-                    "choices":{
-                        "HOLIDAY COLLECTION":{
-                            "active":false,
-                            "default":false,
-                            "urlParameters":{
-                                "locale":"en_GB",
-                                "search":"hat",
-                                "attributes":{
-                                    "Mug collection":[
+                    "name": "Mug collection",
+                    "choices": {
+                        "HOLIDAY COLLECTION": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "locale": "en_GB",
+                                "search": "hat",
+                                "attributes": {
+                                    "Mug collection": [
                                         "HOLIDAY COLLECTION"
                                     ]
                                 }
                             },
-                            "label":"HOLIDAY COLLECTION",
-                            "count":1
+                            "label": "HOLIDAY COLLECTION",
+                            "count": 1
                         }
                     }
                 }

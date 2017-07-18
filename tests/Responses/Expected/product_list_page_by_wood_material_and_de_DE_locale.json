@@ -1,433 +1,407 @@
 {
-  "page":1,
-  "limit":10,
-  "total":1,
-  "pages":1,
-  "items":[
-    {
-      "code":"LOGAN_MUG_CODE",
-      "name":"Logan Becher",
-      "slug":"logan-becher",
-      "taxons":{
-        "main":"MUG",
-        "others":[
-          "MUG",
-          "CATEGORY",
-          "BRAND"
-        ]
-      },
-      "variants":[
+    "page": 1,
+    "limit": 10,
+    "total": 1,
+    "pages": 1,
+    "items": [
         {
-          "code":"LOGAN_MUG_CODE",
-          "name":"Logan Becher",
-          "price":{
-            "current":1999,
-            "currency":"GBP"
-          },
-          "images":[
-
-          ]
-        }
-      ],
-      "attributes":[
-        {
-          "code":"MUG_COLLECTION_CODE",
-          "name":"Mug collection",
-          "value":"FEIERTAGSKOLLEKTION"
-        },
-        {
-          "code":"MUG_MATERIAL_CODE",
-          "name":"Mug material",
-          "value":"Holz"
-        }
-      ],
-      "images":[
-
-      ],
-      "channelCode":"WEB_GB",
-      "localeCode":"de_DE"
-    }
-  ],
-  "filters":{
-    "channel":{
-      "state":{
-        "active":false,
-        "urlParameters":[
-
-        ],
-        "name":"channel",
-        "options":[
-
-        ]
-      },
-      "tags":[
-
-      ],
-      "urlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "resetUrlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "name":"channel",
-      "choices":[
-        {
-          "active":false,
-          "default":false,
-          "urlParameters":{
-            "locale":"de_DE",
-            "attributes":{
-              "Mug material":[
-                "Holz"
-              ]
+            "code": "LOGAN_MUG_CODE",
+            "name": "Logan Becher",
+            "slug": "logan-becher",
+            "taxons": {
+                "main": "MUG",
+                "others": [
+                    "MUG",
+                    "CATEGORY",
+                    "BRAND"
+                ]
             },
-            "channel":"WEB_GB"
-          },
-          "label":"WEB_GB",
-          "count":1
+            "variants": [
+                {
+                    "code": "LOGAN_MUG_CODE",
+                    "name": "Logan Becher",
+                    "price": {
+                        "current": 1999,
+                        "currency": "GBP"
+                    },
+                    "images": [
+                    ]
+                }
+            ],
+            "attributes": [
+                {
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection",
+                    "value": "FEIERTAGSKOLLEKTION"
+                },
+                {
+                    "code": "MUG_MATERIAL_CODE",
+                    "name": "Mug material",
+                    "value": "Holz"
+                }
+            ],
+            "images": [
+            ],
+            "channelCode": "WEB_GB",
+            "localeCode": "de_DE"
         }
-      ]
-    },
-    "taxonCode":{
-      "state":{
-        "active":false,
-        "urlParameters":[
-
-        ],
-        "name":"taxonCode",
-        "options":[
-
-        ]
-      },
-      "tags":[
-
-      ],
-      "urlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "resetUrlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "name":"taxonCode",
-      "choices":[
-        {
-          "active":false,
-          "default":false,
-          "urlParameters":{
-            "locale":"de_DE",
-            "attributes":{
-              "Mug material":[
-                "Holz"
-              ]
+    ],
+    "filters": {
+        "channel": {
+            "state": {
+                "active": false,
+                "urlParameters": [
+                ],
+                "name": "channel",
+                "options": [
+                ]
             },
-            "taxonCode":"BRAND"
-          },
-          "label":"BRAND",
-          "count":1
-        },
-        {
-          "active":false,
-          "default":false,
-          "urlParameters":{
-            "locale":"de_DE",
-            "attributes":{
-              "Mug material":[
-                "Holz"
-              ]
+            "tags": [
+            ],
+            "urlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
             },
-            "taxonCode":"CATEGORY"
-          },
-          "label":"CATEGORY",
-          "count":1
-        },
-        {
-          "active":false,
-          "default":false,
-          "urlParameters":{
-            "locale":"de_DE",
-            "attributes":{
-              "Mug material":[
-                "Holz"
-              ]
+            "resetUrlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
             },
-            "taxonCode":"MUG"
-          },
-          "label":"MUG",
-          "count":1
-        }
-      ]
-    },
-    "priceRange":{
-      "state":{
-        "active":false,
-        "urlParameters":[
-
-        ],
-        "name":"priceRange",
-        "options":[
-
-        ]
-      },
-      "tags":[
-
-      ],
-      "urlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "resetUrlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "name":"priceRange",
-      "minBounds":1999,
-      "maxBounds":2999
-    },
-    "locale":{
-      "state":{
-        "active":true,
-        "value":"de_DE",
-        "urlParameters":{
-          "locale":"de_DE"
-        },
-        "name":"locale",
-        "options":[
-
-        ]
-      },
-      "tags":[
-
-      ],
-      "urlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "resetUrlParameters":{
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "name":"locale",
-      "choices":[
-        {
-          "active":true,
-          "default":false,
-          "urlParameters":{
-            "attributes":{
-              "Mug material":[
-                "Holz"
-              ]
-            }
-          },
-          "label":"de_DE",
-          "count":1
-        }
-      ]
-    },
-    "paginator":{
-      "state":{
-        "active":false,
-        "value":1,
-        "urlParameters":[
-
-        ],
-        "name":"paginator",
-        "options":{
-          "limit":10
-        }
-      },
-      "tags":[
-
-      ],
-      "urlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "resetUrlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "name":"paginator",
-      "currentPage":1,
-      "totalItems":1,
-      "maxPages":20,
-      "itemsPerPage":10,
-      "numPages":1,
-      "options":[
-
-      ],
-      "limit":10
-    },
-    "search":{
-      "state":{
-        "active":false,
-        "urlParameters":[
-
-        ],
-        "name":"search",
-        "options":[
-
-        ]
-      },
-      "tags":[
-
-      ],
-      "urlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "resetUrlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "name":"search"
-    },
-    "attributes":{
-      "state":{
-        "active":true,
-        "value":{
-          "Mug material":[
-            "Holz"
-          ]
-        },
-        "urlParameters":{
-          "attributes":{
-            "Mug material":[
-              "Holz"
+            "name": "channel",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "de_DE",
+                        "attributes": {
+                            "Mug material": [
+                                "Holz"
+                            ]
+                        },
+                        "channel": "WEB_GB"
+                    },
+                    "label": "WEB_GB",
+                    "count": 1
+                }
             ]
-          }
         },
-        "name":"attributes",
-        "options":[
-
-        ]
-      },
-      "tags":[
-
-      ],
-      "urlParameters":{
-        "locale":"de_DE",
-        "attributes":{
-          "Mug material":[
-            "Holz"
-          ]
-        }
-      },
-      "resetUrlParameters":{
-        "locale":"de_DE"
-      },
-      "name":"attributes",
-      "items":[
-        {
-          "tags":[
-
-          ],
-          "urlParameters":[
-
-          ],
-          "resetUrlParameters":{
-            "locale":"de_DE"
-          },
-          "name":"Mug collection",
-          "choices":{
-            "FEIERTAGSKOLLEKTION":{
-              "active":false,
-              "default":false,
-              "urlParameters":{
-                "locale":"de_DE",
-                "attributes":{
-                  "Mug material":[
-                    "Holz"
-                  ],
-                  "Mug collection":[
-                    "FEIERTAGSKOLLEKTION"
-                  ]
+        "taxonCode": {
+            "state": {
+                "active": false,
+                "urlParameters": [
+                ],
+                "name": "taxonCode",
+                "options": [
+                ]
+            },
+            "tags": [
+            ],
+            "urlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
                 }
-              },
-              "label":"FEIERTAGSKOLLEKTION",
-              "count":1
-            }
-          }
+            },
+            "resetUrlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "name": "taxonCode",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "de_DE",
+                        "attributes": {
+                            "Mug material": [
+                                "Holz"
+                            ]
+                        },
+                        "taxonCode": "BRAND"
+                    },
+                    "label": "BRAND",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "de_DE",
+                        "attributes": {
+                            "Mug material": [
+                                "Holz"
+                            ]
+                        },
+                        "taxonCode": "CATEGORY"
+                    },
+                    "label": "CATEGORY",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "de_DE",
+                        "attributes": {
+                            "Mug material": [
+                                "Holz"
+                            ]
+                        },
+                        "taxonCode": "MUG"
+                    },
+                    "label": "MUG",
+                    "count": 1
+                }
+            ]
         },
-        {
-          "tags":[
-
-          ],
-          "urlParameters":[
-
-          ],
-          "resetUrlParameters":{
-            "locale":"de_DE"
-          },
-          "name":"Mug material",
-          "choices":{
-            "Holz":{
-              "active":true,
-              "default":false,
-              "urlParameters":{
-                "locale":"de_DE",
-                "attributes":{
-                  "Mug material":[
-
-                  ]
+        "priceRange": {
+            "state": {
+                "active": false,
+                "urlParameters": [
+                ],
+                "name": "priceRange",
+                "options": [
+                ]
+            },
+            "tags": [
+            ],
+            "urlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
                 }
-              },
-              "label":"Holz",
-              "count":1
-            }
-          }
+            },
+            "resetUrlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "name": "priceRange",
+            "minBounds": 1999,
+            "maxBounds": 2999
+        },
+        "locale": {
+            "state": {
+                "active": true,
+                "value": "de_DE",
+                "urlParameters": {
+                    "locale": "de_DE"
+                },
+                "name": "locale",
+                "options": [
+                ]
+            },
+            "tags": [
+            ],
+            "urlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "resetUrlParameters": {
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "name": "locale",
+            "choices": [
+                {
+                    "active": true,
+                    "default": false,
+                    "urlParameters": {
+                        "attributes": {
+                            "Mug material": [
+                                "Holz"
+                            ]
+                        }
+                    },
+                    "label": "de_DE",
+                    "count": 1
+                }
+            ]
+        },
+        "paginator": {
+            "state": {
+                "active": false,
+                "value": 1,
+                "urlParameters": [
+                ],
+                "name": "paginator",
+                "options": {
+                    "limit": 10
+                }
+            },
+            "tags": [
+            ],
+            "urlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "resetUrlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "name": "paginator",
+            "currentPage": 1,
+            "totalItems": 1,
+            "maxPages": 20,
+            "itemsPerPage": 10,
+            "numPages": 1,
+            "options": [
+            ],
+            "limit": 10
+        },
+        "search": {
+            "state": {
+                "active": false,
+                "urlParameters": [
+                ],
+                "name": "search",
+                "options": [
+                ]
+            },
+            "tags": [
+            ],
+            "urlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "resetUrlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "name": "search"
+        },
+        "attributes": {
+            "state": {
+                "active": true,
+                "value": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                },
+                "urlParameters": {
+                    "attributes": {
+                        "Mug material": [
+                            "Holz"
+                        ]
+                    }
+                },
+                "name": "attributes",
+                "options": [
+                ]
+            },
+            "tags": [
+            ],
+            "urlParameters": {
+                "locale": "de_DE",
+                "attributes": {
+                    "Mug material": [
+                        "Holz"
+                    ]
+                }
+            },
+            "resetUrlParameters": {
+                "locale": "de_DE"
+            },
+            "name": "attributes",
+            "items": [
+                {
+                    "tags": [
+                    ],
+                    "urlParameters": [
+                    ],
+                    "resetUrlParameters": {
+                        "locale": "de_DE"
+                    },
+                    "name": "Mug collection",
+                    "choices": {
+                        "FEIERTAGSKOLLEKTION": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "locale": "de_DE",
+                                "attributes": {
+                                    "Mug material": [
+                                        "Holz"
+                                    ],
+                                    "Mug collection": [
+                                        "FEIERTAGSKOLLEKTION"
+                                    ]
+                                }
+                            },
+                            "label": "FEIERTAGSKOLLEKTION",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [
+                    ],
+                    "urlParameters": [
+                    ],
+                    "resetUrlParameters": {
+                        "locale": "de_DE"
+                    },
+                    "name": "Mug material",
+                    "choices": {
+                        "Holz": {
+                            "active": true,
+                            "default": false,
+                            "urlParameters": {
+                                "locale": "de_DE",
+                                "attributes": {
+                                    "Mug material": [
+                                    ]
+                                }
+                            },
+                            "label": "Holz",
+                            "count": 1
+                        }
+                    }
+                }
+            ]
         }
-      ]
     }
-  }
 }
