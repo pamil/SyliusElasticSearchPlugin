@@ -184,7 +184,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('shop.yml');
 
-        $this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Holz']], 'locale' => 'de_DE'], [], ['ACCEPT' => 'application/json']);
+        $this->client->request('GET', '/shop-api/products', ['attributes' => ['Becher Material' => ['Holz']], 'locale' => 'de_DE'], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
 

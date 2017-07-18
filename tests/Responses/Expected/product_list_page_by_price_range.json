@@ -9,8 +9,7 @@
             "name": "Logan Mug",
             "slug": "logan-mug",
             "taxons": {
-                "others": [
-                ]
+                "others": []
             },
             "variants": [
                 {
@@ -20,8 +19,7 @@
                         "current": 1000,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -36,8 +34,7 @@
                     "value": "Wood"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
@@ -46,8 +43,7 @@
             "name": "Logan Hat",
             "slug": "logan-hat",
             "taxons": {
-                "others": [
-                ]
+                "others": []
             },
             "variants": [
                 {
@@ -57,8 +53,7 @@
                         "current": 4999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -68,8 +63,7 @@
                     "value": "HOLIDAY COLLECTION"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -78,14 +72,11 @@
         "channel": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "channel",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "price": "1000;4999"
             },
@@ -109,14 +100,11 @@
         "taxonCode": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "taxonCode",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "price": "1000;4999"
             },
@@ -124,8 +112,7 @@
                 "price": "1000;4999"
             },
             "name": "taxonCode",
-            "choices": [
-            ]
+            "choices": []
         },
         "priceRange": {
             "state": {
@@ -138,16 +125,13 @@
                     "price": "1000;4999"
                 },
                 "name": "priceRange",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "price": "1000;4999"
             },
-            "resetUrlParameters": [
-            ],
+            "resetUrlParameters": [],
             "name": "priceRange",
             "minBounds": 1000,
             "maxBounds": 8900
@@ -155,14 +139,11 @@
         "locale": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "locale",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "price": "1000;4999"
             },
@@ -187,15 +168,13 @@
             "state": {
                 "active": false,
                 "value": 1,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "paginator",
                 "options": {
                     "limit": 10
                 }
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "price": "1000;4999"
             },
@@ -208,21 +187,17 @@
             "maxPages": 20,
             "itemsPerPage": 10,
             "numPages": 1,
-            "options": [
-            ],
+            "options": [],
             "limit": 10
         },
         "search": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "search",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "price": "1000;4999"
             },
@@ -234,14 +209,11 @@
         "attributes": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "attributes",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "price": "1000;4999"
             },
@@ -251,10 +223,8 @@
             "name": "attributes",
             "items": [
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "price": "1000;4999"
                     },
@@ -277,10 +247,8 @@
                     }
                 },
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "price": "1000;4999"
                     },

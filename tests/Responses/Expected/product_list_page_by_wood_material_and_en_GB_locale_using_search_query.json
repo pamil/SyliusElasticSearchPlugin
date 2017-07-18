@@ -24,8 +24,7 @@
                         "current": 1999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -40,8 +39,7 @@
                     "value": "Wood"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -50,14 +48,11 @@
         "channel": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "channel",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "search": "Wood"
@@ -84,14 +79,11 @@
         "taxonCode": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "taxonCode",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "search": "Wood"
@@ -140,14 +132,11 @@
         "priceRange": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "priceRange",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "search": "Wood"
@@ -168,11 +157,9 @@
                     "locale": "en_GB"
                 },
                 "name": "locale",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "search": "Wood"
@@ -197,15 +184,13 @@
             "state": {
                 "active": false,
                 "value": 1,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "paginator",
                 "options": {
                     "limit": 10
                 }
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "search": "Wood"
@@ -220,8 +205,7 @@
             "maxPages": 20,
             "itemsPerPage": 10,
             "numPages": 1,
-            "options": [
-            ],
+            "options": [],
             "limit": 10
         },
         "search": {
@@ -232,11 +216,9 @@
                     "search": "Wood"
                 },
                 "name": "search",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "search": "Wood"
@@ -249,14 +231,11 @@
         "attributes": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "attributes",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "locale": "en_GB",
                 "search": "Wood"
@@ -268,10 +247,8 @@
             "name": "attributes",
             "items": [
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "locale": "en_GB",
                         "search": "Wood"
@@ -296,10 +273,8 @@
                     }
                 },
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "locale": "en_GB",
                         "search": "Wood"

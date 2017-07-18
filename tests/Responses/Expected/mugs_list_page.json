@@ -72,12 +72,12 @@
             "attributes": [
                 {
                     "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
+                    "name": "Becher Sammlung",
                     "value": "FEIERTAGSKOLLEKTION"
                 },
                 {
                     "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material",
+                    "name": "Becher Material",
                     "value": "Holz"
                 }
             ],
@@ -322,7 +322,33 @@
                     "resetUrlParameters": {
                         "taxonCode": "MUG"
                     },
-                    "name": "Mug collection",
+                    "name": "Becher Material",
+                    "choices": {
+                        "Holz": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "taxonCode": "MUG",
+                                "attributes": {
+                                    "Becher Material": [
+                                        "Holz"
+                                    ]
+                                }
+                            },
+                            "label": "Holz",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [
+                    ],
+                    "urlParameters": [
+                    ],
+                    "resetUrlParameters": {
+                        "taxonCode": "MUG"
+                    },
+                    "name": "Becher Sammlung",
                     "choices": {
                         "FEIERTAGSKOLLEKTION": {
                             "active": false,
@@ -330,14 +356,26 @@
                             "urlParameters": {
                                 "taxonCode": "MUG",
                                 "attributes": {
-                                    "Mug collection": [
+                                    "Becher Sammlung": [
                                         "FEIERTAGSKOLLEKTION"
                                     ]
                                 }
                             },
                             "label": "FEIERTAGSKOLLEKTION",
                             "count": 1
-                        },
+                        }
+                    }
+                },
+                {
+                    "tags": [
+                    ],
+                    "urlParameters": [
+                    ],
+                    "resetUrlParameters": {
+                        "taxonCode": "MUG"
+                    },
+                    "name": "Mug collection",
+                    "choices": {
                         "HOLIDAY COLLECTION": {
                             "active": false,
                             "default": false,
@@ -364,20 +402,6 @@
                     },
                     "name": "Mug material",
                     "choices": {
-                        "Holz": {
-                            "active": false,
-                            "default": false,
-                            "urlParameters": {
-                                "taxonCode": "MUG",
-                                "attributes": {
-                                    "Mug material": [
-                                        "Holz"
-                                    ]
-                                }
-                            },
-                            "label": "Holz",
-                            "count": 1
-                        },
                         "Wood": {
                             "active": false,
                             "default": false,

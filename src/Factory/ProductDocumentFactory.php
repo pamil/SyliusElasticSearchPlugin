@@ -10,10 +10,10 @@ use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
+use Sylius\Component\Product\Model\ProductAttributeTranslationInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Sylius\Component\Taxonomy\Model\TaxonTranslationInterface;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
-use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
@@ -163,7 +163,9 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
                 $productAttribute = new $this->attributeDocumentClass();
                 $productAttribute->setCode($syliusProductAttributeValue->getCode());
                 $productAttribute->setValue($syliusProductAttributeValue->getValue());
-                $productAttribute->setName($syliusProductAttributeValue->getAttribute()->getName());
+                /** @var ProductAttributeTranslationInterface $syliusProductAttributeTranslation */
+                $syliusProductAttributeTranslation = $syliusProductAttributeValue->getAttribute()->getTranslation($locale->getCode());
+                $productAttribute->setName($syliusProductAttributeTranslation->getName());
 
                 $productAttributes[] = $productAttribute;
             }
