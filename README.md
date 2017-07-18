@@ -73,8 +73,8 @@ Elastic search for Sylius.
             search_list:
                 filters:
                     - channel
-                    - taxon_code
-                    - price_range
+                    - taxonCode
+                    - priceRange
                     - locale
                     - paginator
                     - search
@@ -85,24 +85,27 @@ Elastic search for Sylius.
                 type: choice
                 request_field: channel
                 document_field: channel_code
-            taxon_code:
+            taxonCode:
                 type: choice
                 request_field: taxonCode
                 document_field: taxons.code
-            price_range:
+            priceRange:
                 type: range
                 request_field: price
                 document_field: price.amount
+                options:
+                    inclusive: true
             locale:
                 type: choice
                 request_field: locale
                 document_field: locale_code
             paginator:
-                type: pager
+                type: sylius_elastic_search.custom_pager
                 document_field: ~
                 request_field: page
                 options:
-                    count_per_page: 10
+                    limit: 10
+                    max_pages: 20
             attributes:
                 type: multi_dynamic_aggregate
                 request_field: attributes
@@ -112,7 +115,7 @@ Elastic search for Sylius.
             search:
                 type: match
                 request_field: search
-                document_field: name,description,attribute_values.value
+                document_field: name,description,attributes>attributes.value
                 options:
                     operator: and
 
