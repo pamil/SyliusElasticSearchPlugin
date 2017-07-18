@@ -23,6 +23,8 @@ ongr_filter_manager:
             type: range
             request_field: price
             document_field: price.amount
+            options:
+                inclusive: true
         locale:
             type: choice
             request_field: locale
@@ -43,6 +45,6 @@ ongr_filter_manager:
         search:
             type: match
             request_field: search
-            document_field: name,description,attribute_values.value
+            document_field: name,description,attributes>attributes.value
             options:
                 operator: and
