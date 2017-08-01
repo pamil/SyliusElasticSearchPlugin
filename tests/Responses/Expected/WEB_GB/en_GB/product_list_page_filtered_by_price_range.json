@@ -1,8 +1,8 @@
 {
     "page": 1,
-    "limit": 1,
-    "total": 6,
-    "pages": 6,
+    "limit": 10,
+    "total": 2,
+    "pages": 1,
     "items": [
         {
             "code": "LOGAN_MUG_CODE",
@@ -21,7 +21,7 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Mug",
                     "price": {
-                        "current": 1999,
+                        "current": 1000,
                         "currency": "GBP"
                     },
                     "images": []
@@ -42,34 +42,76 @@
             "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
+        },
+        {
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hat",
+            "slug": "logan-hat",
+            "taxons": {
+                "others": [
+                    "HAT",
+                    "CATEGORY",
+                    "BRAND"
+                ]
+            },
+            "variants": [
+                {
+                    "code": "LOGAN_HAT_CODE",
+                    "name": "Logan Hat",
+                    "price": {
+                        "current": 1500,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [
+                {
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection",
+                    "value": "HOLIDAY COLLECTION"
+                }
+            ],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
         }
     ],
     "filters": {
         "channel": {
             "state": {
-                "active": false,
-                "urlParameters": [],
+                "active": true,
+                "value": "WEB_GB",
+                "urlParameters": {
+                    "channel": "WEB_GB"
+                },
                 "name": "channel",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "name": "channel",
             "choices": [
                 {
-                    "active": false,
+                    "active": true,
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
-                        "channel": "WEB_GB"
+                        "price": "1000;1500",
+                        "locale": "en_GB"
                     },
                     "label": "WEB_GB",
-                    "count": 6
+                    "count": 2
                 }
             ]
         },
@@ -85,26 +127,40 @@
             },
             "tags": [],
             "urlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
-            "resetUrlParameters": [],
+            "resetUrlParameters": {
+                "channel": "WEB_GB",
+                "price": "1000;1500",
+                "locale": "en_GB"
+            },
             "name": "enabled",
             "choices": [
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
+                        "price": "1000;1500",
+                        "locale": "en_GB",
                         "enabled": 0
                     },
                     "label": 0,
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": true,
                     "default": false,
-                    "urlParameters": [],
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "price": "1000;1500",
+                        "locale": "en_GB"
+                    },
                     "label": 1,
-                    "count": 6
+                    "count": 2
                 }
             ]
         },
@@ -117,10 +173,16 @@
             },
             "tags": [],
             "urlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "name": "taxonCode",
             "choices": [
@@ -128,85 +190,106 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
+                        "price": "1000;1500",
+                        "locale": "en_GB",
                         "taxonCode": "HAT"
                     },
                     "label": "HAT",
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
+                        "price": "1000;1500",
+                        "locale": "en_GB",
                         "taxonCode": "MUG"
                     },
                     "label": "MUG",
-                    "count": 2
+                    "count": 1
                 },
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "taxonCode": "T_SHIRTS"
-                    },
-                    "label": "T_SHIRTS",
-                    "count": 2
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "enabled": true,
+                        "price": "1000;1500",
+                        "locale": "en_GB",
                         "taxonCode": "BRAND"
                     },
                     "label": "BRAND",
-                    "count": 6
+                    "count": 2
                 },
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
+                        "price": "1000;1500",
+                        "locale": "en_GB",
                         "taxonCode": "CATEGORY"
                     },
                     "label": "CATEGORY",
-                    "count": 6
+                    "count": 2
                 }
             ]
         },
         "priceRange": {
             "state": {
-                "active": false,
-                "urlParameters": [],
+                "active": true,
+                "value": {
+                    "gte": "1000",
+                    "lte": "1500"
+                },
+                "urlParameters": {
+                    "price": "1000;1500"
+                },
                 "name": "priceRange",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "locale": "en_GB"
             },
             "name": "priceRange",
-            "minBounds": 1999,
-            "maxBounds": 2999
+            "minBounds": 1000,
+            "maxBounds": 2000
         },
         "locale": {
             "state": {
-                "active": false,
-                "urlParameters": [],
+                "active": true,
+                "value": "en_GB",
+                "urlParameters": {
+                    "locale": "en_GB"
+                },
                 "name": "locale",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500"
             },
             "name": "locale",
             "choices": [
@@ -214,21 +297,24 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
+                        "price": "1000;1500",
                         "locale": "de_DE"
                     },
                     "label": "de_DE",
-                    "count": 3
+                    "count": 2
                 },
                 {
-                    "active": false,
+                    "active": true,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "locale": "en_GB"
+                        "price": "1000;1500"
                     },
                     "label": "en_GB",
-                    "count": 3
+                    "count": 2
                 }
             ]
         },
@@ -239,24 +325,30 @@
                 "urlParameters": [],
                 "name": "paginator",
                 "options": {
-                    "limit": 1
+                    "limit": 10
                 }
             },
             "tags": [],
             "urlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "name": "paginator",
             "currentPage": 1,
-            "totalItems": 6,
+            "totalItems": 2,
             "maxPages": 20,
-            "itemsPerPage": 1,
-            "numPages": 6,
+            "itemsPerPage": 10,
+            "numPages": 1,
             "options": [],
-            "limit": 1
+            "limit": 10
         },
         "search": {
             "state": {
@@ -267,10 +359,16 @@
             },
             "tags": [],
             "urlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "name": "search"
         },
@@ -283,10 +381,16 @@
             },
             "tags": [],
             "urlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "price": "1000;1500",
+                "locale": "en_GB"
             },
             "name": "attributes",
             "items": [
@@ -294,55 +398,10 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "enabled": true
-                    },
-                    "name": "Becher Material",
-                    "choices": {
-                        "Holz": {
-                            "active": false,
-                            "default": false,
-                            "urlParameters": {
-                                "enabled": true,
-                                "attributes": {
-                                    "Becher Material": [
-                                        "Holz"
-                                    ]
-                                }
-                            },
-                            "label": "Holz",
-                            "count": 1
-                        }
-                    }
-                },
-                {
-                    "tags": [],
-                    "urlParameters": [],
-                    "resetUrlParameters": {
-                        "enabled": true
-                    },
-                    "name": "Becher Sammlung",
-                    "choices": {
-                        "FEIERTAGSKOLLEKTION": {
-                            "active": false,
-                            "default": false,
-                            "urlParameters": {
-                                "enabled": true,
-                                "attributes": {
-                                    "Becher Sammlung": [
-                                        "FEIERTAGSKOLLEKTION"
-                                    ]
-                                }
-                            },
-                            "label": "FEIERTAGSKOLLEKTION",
-                            "count": 2
-                        }
-                    }
-                },
-                {
-                    "tags": [],
-                    "urlParameters": [],
-                    "resetUrlParameters": {
-                        "enabled": true
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "price": "1000;1500",
+                        "locale": "en_GB"
                     },
                     "name": "Mug collection",
                     "choices": {
@@ -350,7 +409,10 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
+                                "price": "1000;1500",
+                                "locale": "en_GB",
                                 "attributes": {
                                     "Mug collection": [
                                         "HOLIDAY COLLECTION"
@@ -366,7 +428,10 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "enabled": true
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "price": "1000;1500",
+                        "locale": "en_GB"
                     },
                     "name": "Mug material",
                     "choices": {
@@ -374,7 +439,10 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
+                                "price": "1000;1500",
+                                "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": [
                                         "Wood"

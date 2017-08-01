@@ -1,8 +1,8 @@
 {
     "page": 1,
-    "limit": 10,
-    "total": 1,
-    "pages": 1,
+    "limit": 2,
+    "total": 3,
+    "pages": 2,
     "items": [
         {
             "code": "LOGAN_MUG_CODE",
@@ -21,7 +21,7 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Mug",
                     "price": {
-                        "current": 1999,
+                        "current": 1000,
                         "currency": "GBP"
                     },
                     "images": []
@@ -42,49 +42,73 @@
             "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
+        },
+        {
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hat",
+            "slug": "logan-hat",
+            "taxons": {
+                "others": [
+                    "HAT",
+                    "CATEGORY",
+                    "BRAND"
+                ]
+            },
+            "variants": [
+                {
+                    "code": "LOGAN_HAT_CODE",
+                    "name": "Logan Hat",
+                    "price": {
+                        "current": 1500,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [
+                {
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection",
+                    "value": "HOLIDAY COLLECTION"
+                }
+            ],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
         }
     ],
     "filters": {
         "channel": {
             "state": {
-                "active": false,
-                "urlParameters": [],
+                "active": true,
+                "value": "WEB_GB",
+                "urlParameters": {
+                    "channel": "WEB_GB"
+                },
                 "name": "channel",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "name": "channel",
             "choices": [
                 {
-                    "active": false,
+                    "active": true,
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
-                        "attributes": {
-                            "Mug material": [
-                                "Wood"
-                            ]
-                        },
-                        "channel": "WEB_GB"
+                        "locale": "en_GB"
                     },
                     "label": "WEB_GB",
-                    "count": 1
+                    "count": 3
                 }
             ]
         },
@@ -100,34 +124,36 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "channel": "WEB_GB",
+                "locale": "en_GB"
             },
             "name": "enabled",
             "choices": [
                 {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "locale": "en_GB",
+                        "enabled": 0
+                    },
+                    "label": 0,
+                    "count": 1
+                },
+                {
                     "active": true,
                     "default": false,
                     "urlParameters": {
-                        "attributes": {
-                            "Mug material": [
-                                "Wood"
-                            ]
-                        }
+                        "channel": "WEB_GB",
+                        "locale": "en_GB"
                     },
                     "label": 1,
-                    "count": 1
+                    "count": 3
                 }
             ]
         },
@@ -140,20 +166,14 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "name": "taxonCode",
             "choices": [
@@ -161,46 +181,61 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "attributes": {
-                            "Mug material": [
-                                "Wood"
-                            ]
-                        },
-                        "taxonCode": "BRAND"
+                        "locale": "en_GB",
+                        "taxonCode": "HAT"
                     },
-                    "label": "BRAND",
+                    "label": "HAT",
                     "count": 1
                 },
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "attributes": {
-                            "Mug material": [
-                                "Wood"
-                            ]
-                        },
-                        "taxonCode": "CATEGORY"
-                    },
-                    "label": "CATEGORY",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "enabled": true,
-                        "attributes": {
-                            "Mug material": [
-                                "Wood"
-                            ]
-                        },
+                        "locale": "en_GB",
                         "taxonCode": "MUG"
                     },
                     "label": "MUG",
                     "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "taxonCode": "T_SHIRTS"
+                    },
+                    "label": "T_SHIRTS",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "taxonCode": "BRAND"
+                    },
+                    "label": "BRAND",
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "taxonCode": "CATEGORY"
+                    },
+                    "label": "CATEGORY",
+                    "count": 3
                 }
             ]
         },
@@ -213,48 +248,38 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "name": "priceRange",
-            "minBounds": 1999,
-            "maxBounds": 2999
+            "minBounds": 1000,
+            "maxBounds": 2000
         },
         "locale": {
             "state": {
-                "active": false,
-                "urlParameters": [],
+                "active": true,
+                "value": "en_GB",
+                "urlParameters": {
+                    "locale": "en_GB"
+                },
                 "name": "locale",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "name": "locale",
             "choices": [
@@ -262,54 +287,54 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "attributes": {
-                            "Mug material": [
-                                "Wood"
-                            ]
-                        },
-                        "locale": "en_GB"
+                        "locale": "de_DE"
+                    },
+                    "label": "de_DE",
+                    "count": 3
+                },
+                {
+                    "active": true,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true
                     },
                     "label": "en_GB",
-                    "count": 1
+                    "count": 3
                 }
             ]
         },
         "paginator": {
             "state": {
-                "active": false,
+                "active": true,
                 "value": 1,
                 "urlParameters": [],
                 "name": "paginator",
                 "options": {
-                    "limit": 10
+                    "limit": 2
                 }
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "name": "paginator",
             "currentPage": 1,
-            "totalItems": 1,
+            "totalItems": 3,
             "maxPages": 20,
-            "itemsPerPage": 10,
-            "numPages": 1,
+            "itemsPerPage": 2,
+            "numPages": 2,
             "options": [],
-            "limit": 10
+            "limit": 2
         },
         "search": {
             "state": {
@@ -320,52 +345,34 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "name": "search"
         },
         "attributes": {
             "state": {
-                "active": true,
-                "value": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                },
-                "urlParameters": {
-                    "attributes": {
-                        "Mug material": [
-                            "Wood"
-                        ]
-                    }
-                },
+                "active": false,
+                "urlParameters": [],
                 "name": "attributes",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "attributes": {
-                    "Mug material": [
-                        "Wood"
-                    ]
-                }
+                "locale": "en_GB"
             },
             "resetUrlParameters": {
-                "enabled": true
+                "channel": "WEB_GB",
+                "enabled": true,
+                "locale": "en_GB"
             },
             "name": "attributes",
             "items": [
@@ -373,7 +380,9 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "enabled": true
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB"
                     },
                     "name": "Mug collection",
                     "choices": {
@@ -381,18 +390,17 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
+                                "locale": "en_GB",
                                 "attributes": {
-                                    "Mug material": [
-                                        "Wood"
-                                    ],
                                     "Mug collection": [
                                         "HOLIDAY COLLECTION"
                                     ]
                                 }
                             },
                             "label": "HOLIDAY COLLECTION",
-                            "count": 1
+                            "count": 2
                         }
                     }
                 },
@@ -400,17 +408,23 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "enabled": true
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB"
                     },
                     "name": "Mug material",
                     "choices": {
                         "Wood": {
-                            "active": true,
+                            "active": false,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
+                                "locale": "en_GB",
                                 "attributes": {
-                                    "Mug material": []
+                                    "Mug material": [
+                                        "Wood"
+                                    ]
                                 }
                             },
                             "label": "Wood",

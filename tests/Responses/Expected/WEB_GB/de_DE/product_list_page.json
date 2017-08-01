@@ -1,7 +1,7 @@
 {
     "page": 1,
     "limit": 10,
-    "total": 1,
+    "total": 3,
     "pages": 1,
     "items": [
         {
@@ -21,7 +21,7 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Becher",
                     "price": {
-                        "current": 1999,
+                        "current": 1000,
                         "currency": "GBP"
                     },
                     "images": []
@@ -42,34 +42,86 @@
             "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "de_DE"
+        },
+        {
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hut",
+            "slug": "logan-hut",
+            "taxons": {
+                "others": [
+                    "HAT",
+                    "CATEGORY",
+                    "BRAND"
+                ]
+            },
+            "variants": [
+                {
+                    "code": "LOGAN_HAT_CODE",
+                    "name": "Logan Hut",
+                    "price": {
+                        "current": 1500,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [
+                {
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Becher Sammlung",
+                    "value": "FEIERTAGSKOLLEKTION"
+                }
+            ],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "de_DE"
+        },
+        {
+            "code": "LOGAN_T_SHIRT_CODE",
+            "taxons": {
+                "main": "T_SHIRTS",
+                "others": [
+                    "T_SHIRTS",
+                    "CATEGORY",
+                    "BRAND"
+                ]
+            },
+            "variants": [
+                {
+                    "code": "LOGAN_T_SHIRT_CODE",
+                    "price": {
+                        "current": 2000,
+                        "currency": "GBP"
+                    },
+                    "images": []
+                }
+            ],
+            "attributes": [],
+            "images": [],
+            "channelCode": "WEB_GB",
+            "localeCode": "de_DE"
         }
     ],
     "filters": {
         "channel": {
             "state": {
-                "active": false,
-                "urlParameters": [],
+                "active": true,
+                "value": "WEB_GB",
+                "urlParameters": {
+                    "channel": "WEB_GB"
+                },
                 "name": "channel",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "name": "channel",
             "choices": [
@@ -79,15 +131,20 @@
                     "urlParameters": {
                         "enabled": true,
                         "locale": "de_DE",
-                        "attributes": {
-                            "Becher Material": [
-                                "Holz"
-                            ]
-                        },
-                        "channel": "WEB_GB"
+                        "channel": "WEB_DE"
+                    },
+                    "label": "WEB_DE",
+                    "count": 1
+                },
+                {
+                    "active": true,
+                    "default": false,
+                    "urlParameters": {
+                        "enabled": true,
+                        "locale": "de_DE"
                     },
                     "label": "WEB_GB",
-                    "count": 1
+                    "count": 3
                 }
             ]
         },
@@ -103,37 +160,36 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "channel": "WEB_GB",
+                "locale": "de_DE"
             },
             "name": "enabled",
             "choices": [
                 {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "locale": "de_DE",
+                        "enabled": 0
+                    },
+                    "label": 0,
+                    "count": 1
+                },
+                {
                     "active": true,
                     "default": false,
                     "urlParameters": {
-                        "locale": "de_DE",
-                        "attributes": {
-                            "Becher Material": [
-                                "Holz"
-                            ]
-                        }
+                        "channel": "WEB_GB",
+                        "locale": "de_DE"
                     },
                     "label": 1,
-                    "count": 1
+                    "count": 3
                 }
             ]
         },
@@ -146,22 +202,14 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "name": "taxonCode",
             "choices": [
@@ -169,49 +217,61 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "attributes": {
-                            "Becher Material": [
-                                "Holz"
-                            ]
-                        },
-                        "taxonCode": "BRAND"
+                        "taxonCode": "HAT"
                     },
-                    "label": "BRAND",
+                    "label": "HAT",
                     "count": 1
                 },
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "attributes": {
-                            "Becher Material": [
-                                "Holz"
-                            ]
-                        },
-                        "taxonCode": "CATEGORY"
-                    },
-                    "label": "CATEGORY",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "attributes": {
-                            "Becher Material": [
-                                "Holz"
-                            ]
-                        },
                         "taxonCode": "MUG"
                     },
                     "label": "MUG",
                     "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonCode": "T_SHIRTS"
+                    },
+                    "label": "T_SHIRTS",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonCode": "BRAND"
+                    },
+                    "label": "BRAND",
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonCode": "CATEGORY"
+                    },
+                    "label": "CATEGORY",
+                    "count": 3
                 }
             ]
         },
@@ -224,26 +284,18 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "name": "priceRange",
-            "minBounds": 1999,
-            "maxBounds": 2999
+            "minBounds": 1000,
+            "maxBounds": 2000
         },
         "locale": {
             "state": {
@@ -257,21 +309,13 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "enabled": true,
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "name": "locale",
             "choices": [
@@ -279,15 +323,22 @@
                     "active": true,
                     "default": false,
                     "urlParameters": {
-                        "enabled": true,
-                        "attributes": {
-                            "Becher Material": [
-                                "Holz"
-                            ]
-                        }
+                        "channel": "WEB_GB",
+                        "enabled": true
                     },
                     "label": "de_DE",
-                    "count": 1
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB"
+                    },
+                    "label": "en_GB",
+                    "count": 3
                 }
             ]
         },
@@ -303,26 +354,18 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "name": "paginator",
             "currentPage": 1,
-            "totalItems": 1,
+            "totalItems": 3,
             "maxPages": 20,
             "itemsPerPage": 10,
             "numPages": 1,
@@ -338,54 +381,32 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "name": "search"
         },
         "attributes": {
             "state": {
-                "active": true,
-                "value": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                },
-                "urlParameters": {
-                    "attributes": {
-                        "Becher Material": [
-                            "Holz"
-                        ]
-                    }
-                },
+                "active": false,
+                "urlParameters": [],
                 "name": "attributes",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "de_DE",
-                "attributes": {
-                    "Becher Material": [
-                        "Holz"
-                    ]
-                }
+                "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "de_DE"
             },
@@ -395,19 +416,23 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE"
                     },
                     "name": "Becher Material",
                     "choices": {
                         "Holz": {
-                            "active": true,
+                            "active": false,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
                                 "locale": "de_DE",
                                 "attributes": {
-                                    "Becher Material": []
+                                    "Becher Material": [
+                                        "Holz"
+                                    ]
                                 }
                             },
                             "label": "Holz",
@@ -419,6 +444,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE"
                     },
@@ -428,19 +454,17 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
                                 "locale": "de_DE",
                                 "attributes": {
-                                    "Becher Material": [
-                                        "Holz"
-                                    ],
                                     "Becher Sammlung": [
                                         "FEIERTAGSKOLLEKTION"
                                     ]
                                 }
                             },
                             "label": "FEIERTAGSKOLLEKTION",
-                            "count": 1
+                            "count": 2
                         }
                     }
                 }

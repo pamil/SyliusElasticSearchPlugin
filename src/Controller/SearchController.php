@@ -14,9 +14,11 @@ namespace Sylius\ElasticSearchPlugin\Controller;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
 use ONGR\FilterManagerBundle\Search\FilterManagerInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\ElasticSearchPlugin\Factory\ProductListViewFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.k.e@gmail.com>
@@ -39,18 +41,26 @@ final class SearchController
     private $filterManager;
 
     /**
+     * @var RepositoryInterface
+     */
+    private $channelRepository;
+
+    /**
      * @param ViewHandlerInterface $restViewHandler
      * @param ProductListViewFactoryInterface $productListViewFactory
      * @param FilterManagerInterface $filterManager
+     * @param RepositoryInterface $channelRepository
      */
     public function __construct(
         ViewHandlerInterface $restViewHandler,
         ProductListViewFactoryInterface $productListViewFactory,
-        FilterManagerInterface $filterManager
+        FilterManagerInterface $filterManager,
+        RepositoryInterface $channelRepository
     ) {
         $this->restViewHandler = $restViewHandler;
         $this->productListViewFactory = $productListViewFactory;
         $this->filterManager = $filterManager;
+        $this->channelRepository = $channelRepository;
     }
 
     /**
@@ -60,6 +70,21 @@ final class SearchController
      */
     public function __invoke(Request $request)
     {
+        if (!$request->query->has('channel')) {
+            throw new NotFoundHttpException('Cannot find products without channel provided!');
+        }
+
+        if (!$request->query->has('locale')) {
+            $channelCode = $request->query->get('channel');
+            $channel = $this->channelRepository->findOneBy(['code' => $channelCode]);
+
+            if (null === $channel) {
+                throw new NotFoundHttpException(sprintf('Channel with code "%s" cannot be found!', $channelCode));
+            }
+
+            $request->query->set('locale', $channel->getDefaultLocale()->getCode());
+        }
+
         $request->query->set('enabled', true);
 
         $response = $this->filterManager->handleRequest($request);
