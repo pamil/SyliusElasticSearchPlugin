@@ -56,7 +56,7 @@
             "urlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -64,7 +64,7 @@
             "resetUrlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -77,7 +77,7 @@
                     "urlParameters": {
                         "locale": "de_DE",
                         "attributes": {
-                            "Becher Material": [
+                            "MUG_MATERIAL_CODE": [
                                 "Holz"
                             ]
                         },
@@ -99,7 +99,7 @@
             "urlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -107,7 +107,7 @@
             "resetUrlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -120,7 +120,7 @@
                     "urlParameters": {
                         "locale": "de_DE",
                         "attributes": {
-                            "Becher Material": [
+                            "MUG_MATERIAL_CODE": [
                                 "Holz"
                             ]
                         },
@@ -135,7 +135,7 @@
                     "urlParameters": {
                         "locale": "de_DE",
                         "attributes": {
-                            "Becher Material": [
+                            "MUG_MATERIAL_CODE": [
                                 "Holz"
                             ]
                         },
@@ -150,7 +150,7 @@
                     "urlParameters": {
                         "locale": "de_DE",
                         "attributes": {
-                            "Becher Material": [
+                            "MUG_MATERIAL_CODE": [
                                 "Holz"
                             ]
                         },
@@ -172,7 +172,7 @@
             "urlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -180,7 +180,7 @@
             "resetUrlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -203,14 +203,14 @@
             "urlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
             },
             "resetUrlParameters": {
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -222,7 +222,7 @@
                     "default": false,
                     "urlParameters": {
                         "attributes": {
-                            "Becher Material": [
+                            "MUG_MATERIAL_CODE": [
                                 "Holz"
                             ]
                         }
@@ -246,7 +246,7 @@
             "urlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -254,7 +254,7 @@
             "resetUrlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -279,7 +279,7 @@
             "urlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -287,7 +287,7 @@
             "resetUrlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -298,13 +298,13 @@
             "state": {
                 "active": true,
                 "value": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 },
                 "urlParameters": {
                     "attributes": {
-                        "Becher Material": [
+                        "MUG_MATERIAL_CODE": [
                             "Holz"
                         ]
                     }
@@ -316,7 +316,7 @@
             "urlParameters": {
                 "locale": "de_DE",
                 "attributes": {
-                    "Becher Material": [
+                    "MUG_MATERIAL_CODE": [
                         "Holz"
                     ]
                 }
@@ -332,18 +332,23 @@
                     "resetUrlParameters": {
                         "locale": "de_DE"
                     },
-                    "name": "Becher Material",
+                    "name": "MUG_COLLECTION_CODE",
                     "choices": {
-                        "Holz": {
-                            "active": true,
+                        "FEIERTAGSKOLLEKTION": {
+                            "active": false,
                             "default": false,
                             "urlParameters": {
                                 "locale": "de_DE",
                                 "attributes": {
-                                    "Becher Material": []
+                                    "MUG_MATERIAL_CODE": [
+                                        "Holz"
+                                    ],
+                                    "MUG_COLLECTION_CODE": [
+                                        "FEIERTAGSKOLLEKTION"
+                                    ]
                                 }
                             },
-                            "label": "Holz",
+                            "label": "FEIERTAGSKOLLEKTION",
                             "count": 1
                         }
                     }
@@ -354,23 +359,18 @@
                     "resetUrlParameters": {
                         "locale": "de_DE"
                     },
-                    "name": "Becher Sammlung",
+                    "name": "MUG_MATERIAL_CODE",
                     "choices": {
-                        "FEIERTAGSKOLLEKTION": {
-                            "active": false,
+                        "Holz": {
+                            "active": true,
                             "default": false,
                             "urlParameters": {
                                 "locale": "de_DE",
                                 "attributes": {
-                                    "Becher Material": [
-                                        "Holz"
-                                    ],
-                                    "Becher Sammlung": [
-                                        "FEIERTAGSKOLLEKTION"
-                                    ]
+                                    "MUG_MATERIAL_CODE": []
                                 }
                             },
-                            "label": "FEIERTAGSKOLLEKTION",
+                            "label": "Holz",
                             "count": 1
                         }
                     }

@@ -247,7 +247,7 @@
                         "locale": "en_GB",
                         "search": "hat"
                     },
-                    "name": "Mug collection",
+                    "name": "MUG_COLLECTION_CODE",
                     "choices": {
                         "HOLIDAY COLLECTION": {
                             "active": false,
@@ -256,7 +256,7 @@
                                 "locale": "en_GB",
                                 "search": "hat",
                                 "attributes": {
-                                    "Mug collection": [
+                                    "MUG_COLLECTION_CODE": [
                                         "HOLIDAY COLLECTION"
                                     ]
                                 }

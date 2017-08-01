@@ -24,8 +24,7 @@
                         "current": 1999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -40,8 +39,7 @@
                     "value": "Wood"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
@@ -65,8 +63,7 @@
                         "current": 1999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -81,8 +78,7 @@
                     "value": "Holz"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "de_DE"
         },
@@ -105,8 +101,7 @@
                         "current": 2999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -116,8 +111,7 @@
                     "value": "HOLIDAY COLLECTION"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
@@ -140,8 +134,7 @@
                         "current": 2999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
             "attributes": [
@@ -151,8 +144,7 @@
                     "value": "FEIERTAGSKOLLEKTION"
                 }
             ],
-            "images": [
-            ],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "de_DE"
         },
@@ -176,14 +168,11 @@
                         "current": 1999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
-            "attributes": [
-            ],
-            "images": [
-            ],
+            "attributes": [],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
@@ -204,14 +193,11 @@
                         "current": 1999,
                         "currency": "GBP"
                     },
-                    "images": [
-                    ]
+                    "images": []
                 }
             ],
-            "attributes": [
-            ],
-            "images": [
-            ],
+            "attributes": [],
+            "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "de_DE"
         }
@@ -225,23 +211,19 @@
                     "channel": "WEB_GB"
                 },
                 "name": "channel",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB"
             },
-            "resetUrlParameters": [
-            ],
+            "resetUrlParameters": [],
             "name": "channel",
             "choices": [
                 {
                     "active": true,
                     "default": false,
-                    "urlParameters": [
-                    ],
+                    "urlParameters": [],
                     "label": "WEB_GB",
                     "count": 6
                 }
@@ -250,14 +232,11 @@
         "taxonCode": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "taxonCode",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB"
             },
@@ -321,14 +300,11 @@
         "priceRange": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "priceRange",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB"
             },
@@ -342,14 +318,11 @@
         "locale": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "locale",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB"
             },
@@ -384,15 +357,13 @@
             "state": {
                 "active": false,
                 "value": 1,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "paginator",
                 "options": {
                     "limit": 10
                 }
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB"
             },
@@ -405,21 +376,17 @@
             "maxPages": 20,
             "itemsPerPage": 10,
             "numPages": 1,
-            "options": [
-            ],
+            "options": [],
             "limit": 10
         },
         "search": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "search",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB"
             },
@@ -431,14 +398,11 @@
         "attributes": {
             "state": {
                 "active": false,
-                "urlParameters": [
-                ],
+                "urlParameters": [],
                 "name": "attributes",
-                "options": [
-                ]
+                "options": []
             },
-            "tags": [
-            ],
+            "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB"
             },
@@ -448,14 +412,12 @@
             "name": "attributes",
             "items": [
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "channel": "WEB_GB"
                     },
-                    "name": "Becher Material",
+                    "name": "MUG_MATERIAL_CODE",
                     "choices": {
                         "Holz": {
                             "active": false,
@@ -463,7 +425,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "attributes": {
-                                    "Becher Material": [
+                                    "MUG_MATERIAL_CODE": [
                                         "Holz"
                                     ]
                                 }
@@ -474,14 +436,12 @@
                     }
                 },
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "channel": "WEB_GB"
                     },
-                    "name": "Becher Sammlung",
+                    "name": "MUG_COLLECTION_CODE",
                     "choices": {
                         "FEIERTAGSKOLLEKTION": {
                             "active": false,
@@ -489,7 +449,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "attributes": {
-                                    "Becher Sammlung": [
+                                    "MUG_COLLECTION_CODE": [
                                         "FEIERTAGSKOLLEKTION"
                                     ]
                                 }
@@ -500,14 +460,12 @@
                     }
                 },
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "channel": "WEB_GB"
                     },
-                    "name": "Mug collection",
+                    "name": "MUG_COLLECTION_CODE",
                     "choices": {
                         "HOLIDAY COLLECTION": {
                             "active": false,
@@ -515,7 +473,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "attributes": {
-                                    "Mug collection": [
+                                    "MUG_COLLECTION_CODE": [
                                         "HOLIDAY COLLECTION"
                                     ]
                                 }
@@ -526,14 +484,12 @@
                     }
                 },
                 {
-                    "tags": [
-                    ],
-                    "urlParameters": [
-                    ],
+                    "tags": [],
+                    "urlParameters": [],
                     "resetUrlParameters": {
                         "channel": "WEB_GB"
                     },
-                    "name": "Mug material",
+                    "name": "MUG_MATERIAL_CODE",
                     "choices": {
                         "Wood": {
                             "active": false,
@@ -541,7 +497,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "attributes": {
-                                    "Mug material": [
+                                    "MUG_MATERIAL_CODE": [
                                         "Wood"
                                     ]
                                 }

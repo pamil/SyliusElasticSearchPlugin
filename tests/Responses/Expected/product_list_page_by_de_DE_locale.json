@@ -316,21 +316,21 @@
                     "resetUrlParameters": {
                         "locale": "de_DE"
                     },
-                    "name": "Becher Material",
+                    "name": "MUG_COLLECTION_CODE",
                     "choices": {
-                        "Holz": {
+                        "FEIERTAGSKOLLEKTION": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
                                 "locale": "de_DE",
                                 "attributes": {
-                                    "Becher Material": [
-                                        "Holz"
+                                    "MUG_COLLECTION_CODE": [
+                                        "FEIERTAGSKOLLEKTION"
                                     ]
                                 }
                             },
-                            "label": "Holz",
-                            "count": 1
+                            "label": "FEIERTAGSKOLLEKTION",
+                            "count": 2
                         }
                     }
                 },
@@ -340,21 +340,21 @@
                     "resetUrlParameters": {
                         "locale": "de_DE"
                     },
-                    "name": "Becher Sammlung",
+                    "name": "MUG_MATERIAL_CODE",
                     "choices": {
-                        "FEIERTAGSKOLLEKTION": {
+                        "Holz": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
                                 "locale": "de_DE",
                                 "attributes": {
-                                    "Becher Sammlung": [
-                                        "FEIERTAGSKOLLEKTION"
+                                    "MUG_MATERIAL_CODE": [
+                                        "Holz"
                                     ]
                                 }
                             },
-                            "label": "FEIERTAGSKOLLEKTION",
-                            "count": 2
+                            "label": "Holz",
+                            "count": 1
                         }
                     }
                 }

@@ -270,56 +270,27 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": [],
-                    "name": "Becher Material",
-                    "choices": {
-                        "Holz": {
-                            "active": false,
-                            "default": false,
-                            "urlParameters": {
-                                "attributes": {
-                                    "Becher Material": [
-                                        "Holz"
-                                    ]
-                                }
-                            },
-                            "label": "Holz",
-                            "count": 1
-                        }
-                    }
-                },
-                {
-                    "tags": [],
-                    "urlParameters": [],
-                    "resetUrlParameters": [],
-                    "name": "Becher Sammlung",
+                    "name": "MUG_COLLECTION_CODE",
                     "choices": {
                         "FEIERTAGSKOLLEKTION": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
                                 "attributes": {
-                                    "Becher Sammlung": [
+                                    "MUG_COLLECTION_CODE": [
                                         "FEIERTAGSKOLLEKTION"
                                     ]
                                 }
                             },
                             "label": "FEIERTAGSKOLLEKTION",
                             "count": 2
-                        }
-                    }
-                },
-                {
-                    "tags": [],
-                    "urlParameters": [],
-                    "resetUrlParameters": [],
-                    "name": "Mug collection",
-                    "choices": {
+                        },
                         "HOLIDAY COLLECTION": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
                                 "attributes": {
-                                    "Mug collection": [
+                                    "MUG_COLLECTION_CODE": [
                                         "HOLIDAY COLLECTION"
                                     ]
                                 }
@@ -333,14 +304,27 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": [],
-                    "name": "Mug material",
+                    "name": "MUG_MATERIAL_CODE",
                     "choices": {
+                        "Holz": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "attributes": {
+                                    "MUG_MATERIAL_CODE": [
+                                        "Holz"
+                                    ]
+                                }
+                            },
+                            "label": "Holz",
+                            "count": 1
+                        },
                         "Wood": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
                                 "attributes": {
-                                    "Mug material": [
+                                    "MUG_MATERIAL_CODE": [
                                         "Wood"
                                     ]
                                 }

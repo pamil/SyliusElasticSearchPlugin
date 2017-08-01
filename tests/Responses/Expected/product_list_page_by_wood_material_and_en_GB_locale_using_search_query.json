@@ -253,7 +253,7 @@
                         "locale": "en_GB",
                         "search": "Wood"
                     },
-                    "name": "Mug collection",
+                    "name": "MUG_COLLECTION_CODE",
                     "choices": {
                         "HOLIDAY COLLECTION": {
                             "active": false,
@@ -262,7 +262,7 @@
                                 "locale": "en_GB",
                                 "search": "Wood",
                                 "attributes": {
-                                    "Mug collection": [
+                                    "MUG_COLLECTION_CODE": [
                                         "HOLIDAY COLLECTION"
                                     ]
                                 }
@@ -279,7 +279,7 @@
                         "locale": "en_GB",
                         "search": "Wood"
                     },
-                    "name": "Mug material",
+                    "name": "MUG_MATERIAL_CODE",
                     "choices": {
                         "Wood": {
                             "active": false,
@@ -288,7 +288,7 @@
                                 "locale": "en_GB",
                                 "search": "Wood",
                                 "attributes": {
-                                    "Mug material": [
+                                    "MUG_MATERIAL_CODE": [
                                         "Wood"
                                     ]
                                 }

@@ -58,7 +58,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('shop.yml');
 
-        $this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Wood']]], [], ['ACCEPT' => 'application/json']);
+        $this->client->request('GET', '/shop-api/products', ['locale' => 'en_GB', 'attributes' => ['MUG_MATERIAL_CODE' => ['Wood']]], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
 
@@ -128,7 +128,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('shop.yml');
 
-        $this->client->request('GET', '/shop-api/products', ['attributes' => ['Mug material' => ['Wood']], 'locale' => 'en_GB'], [], ['ACCEPT' => 'application/json']);
+        $this->client->request('GET', '/shop-api/products', ['attributes' => ['MUG_MATERIAL_CODE' => ['Wood']], 'locale' => 'en_GB'], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
 
@@ -184,7 +184,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('shop.yml');
 
-        $this->client->request('GET', '/shop-api/products', ['attributes' => ['Becher Material' => ['Holz']], 'locale' => 'de_DE'], [], ['ACCEPT' => 'application/json']);
+        $this->client->request('GET', '/shop-api/products', ['attributes' => ['MUG_MATERIAL_CODE' => ['Holz']], 'locale' => 'de_DE'], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
 

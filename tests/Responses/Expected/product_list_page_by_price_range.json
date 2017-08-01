@@ -228,7 +228,7 @@
                     "resetUrlParameters": {
                         "price": "1000;4999"
                     },
-                    "name": "Mug collection",
+                    "name": "MUG_COLLECTION_CODE",
                     "choices": {
                         "HOLIDAY COLLECTION": {
                             "active": false,
@@ -236,7 +236,7 @@
                             "urlParameters": {
                                 "price": "1000;4999",
                                 "attributes": {
-                                    "Mug collection": [
+                                    "MUG_COLLECTION_CODE": [
                                         "HOLIDAY COLLECTION"
                                     ]
                                 }
@@ -252,7 +252,7 @@
                     "resetUrlParameters": {
                         "price": "1000;4999"
                     },
-                    "name": "Mug material",
+                    "name": "MUG_MATERIAL_CODE",
                     "choices": {
                         "Wood": {
                             "active": false,
@@ -260,7 +260,7 @@
                             "urlParameters": {
                                 "price": "1000;4999",
                                 "attributes": {
-                                    "Mug material": [
+                                    "MUG_MATERIAL_CODE": [
                                         "Wood"
                                     ]
                                 }
