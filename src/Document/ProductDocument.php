@@ -35,6 +35,13 @@ class ProductDocument
     private $name;
 
     /**
+     * @var boolean
+     *
+     * @ElasticSearch\Property(type="boolean")
+     */
+    private $enabled;
+
+    /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
@@ -146,6 +153,22 @@ class ProductDocument
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * @param bool $enabled
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
     }
 
     /**

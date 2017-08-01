@@ -60,6 +60,8 @@ final class SearchController
      */
     public function __invoke(Request $request)
     {
+        $request->query->set('enabled', true);
+
         $response = $this->filterManager->handleRequest($request);
 
         return $this->restViewHandler->handle(

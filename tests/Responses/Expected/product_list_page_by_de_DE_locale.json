@@ -112,9 +112,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "name": "channel",
@@ -123,10 +125,52 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "de_DE",
                         "channel": "WEB_GB"
                     },
                     "label": "WEB_GB",
+                    "count": 3
+                }
+            ]
+        },
+        "enabled": {
+            "state": {
+                "active": true,
+                "value": true,
+                "urlParameters": {
+                    "enabled": true
+                },
+                "name": "enabled",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "enabled": true,
+                "locale": "de_DE"
+            },
+            "resetUrlParameters": {
+                "locale": "de_DE"
+            },
+            "name": "enabled",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "de_DE",
+                        "enabled": 0
+                    },
+                    "label": 0,
+                    "count": 1
+                },
+                {
+                    "active": true,
+                    "default": false,
+                    "urlParameters": {
+                        "locale": "de_DE"
+                    },
+                    "label": 1,
                     "count": 3
                 }
             ]
@@ -140,9 +184,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "name": "taxonCode",
@@ -151,6 +197,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "de_DE",
                         "taxonCode": "HAT"
                     },
@@ -161,6 +208,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "de_DE",
                         "taxonCode": "MUG"
                     },
@@ -171,6 +219,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "de_DE",
                         "taxonCode": "T_SHIRTS"
                     },
@@ -181,6 +230,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "de_DE",
                         "taxonCode": "BRAND"
                     },
@@ -191,6 +241,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "de_DE",
                         "taxonCode": "CATEGORY"
                     },
@@ -208,9 +259,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "name": "priceRange",
@@ -229,15 +282,20 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
-            "resetUrlParameters": [],
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "locale",
             "choices": [
                 {
                     "active": true,
                     "default": false,
-                    "urlParameters": [],
+                    "urlParameters": {
+                        "enabled": true
+                    },
                     "label": "de_DE",
                     "count": 3
                 },
@@ -245,6 +303,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "en_GB"
                     },
                     "label": "en_GB",
@@ -264,9 +323,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "name": "paginator",
@@ -287,9 +348,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "name": "search"
@@ -303,9 +366,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "locale": "de_DE"
             },
             "name": "attributes",
@@ -314,6 +379,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "enabled": true,
                         "locale": "de_DE"
                     },
                     "name": "Becher Material",
@@ -322,6 +388,7 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "locale": "de_DE",
                                 "attributes": {
                                     "Becher Material": [
@@ -338,6 +405,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "enabled": true,
                         "locale": "de_DE"
                     },
                     "name": "Becher Sammlung",
@@ -346,6 +414,7 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "locale": "de_DE",
                                 "attributes": {
                                     "Becher Sammlung": [

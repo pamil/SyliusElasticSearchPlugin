@@ -78,9 +78,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "name": "channel",
@@ -89,10 +91,42 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "price": "1000;4999",
                         "channel": "WEB_GB"
                     },
                     "label": "WEB_GB",
+                    "count": 2
+                }
+            ]
+        },
+        "enabled": {
+            "state": {
+                "active": true,
+                "value": true,
+                "urlParameters": {
+                    "enabled": true
+                },
+                "name": "enabled",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "enabled": true,
+                "price": "1000;4999"
+            },
+            "resetUrlParameters": {
+                "price": "1000;4999"
+            },
+            "name": "enabled",
+            "choices": [
+                {
+                    "active": true,
+                    "default": false,
+                    "urlParameters": {
+                        "price": "1000;4999"
+                    },
+                    "label": 1,
                     "count": 2
                 }
             ]
@@ -106,9 +140,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "name": "taxonCode",
@@ -129,9 +165,12 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
-            "resetUrlParameters": [],
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "priceRange",
             "minBounds": 1000,
             "maxBounds": 8900
@@ -145,9 +184,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "name": "locale",
@@ -156,6 +197,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "price": "1000;4999",
                         "locale": "en_GB"
                     },
@@ -176,9 +218,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "name": "paginator",
@@ -199,9 +243,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "name": "search"
@@ -215,9 +261,11 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "price": "1000;4999"
             },
             "name": "attributes",
@@ -226,6 +274,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "enabled": true,
                         "price": "1000;4999"
                     },
                     "name": "Mug collection",
@@ -234,6 +283,7 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "price": "1000;4999",
                                 "attributes": {
                                     "Mug collection": [
@@ -250,6 +300,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "enabled": true,
                         "price": "1000;4999"
                     },
                     "name": "Mug material",
@@ -258,6 +309,7 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "price": "1000;4999",
                                 "attributes": {
                                     "Mug material": [

@@ -107,6 +107,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         /** @var ProductDocument $product */
         $product = new $this->productDocumentClass();
+        $product->setEnabled($syliusProduct->isEnabled());
         $product->setLocaleCode($locale->getCode());
         $product->setSlug($productTranslation->getSlug());
         $product->setName($productTranslation->getName());
