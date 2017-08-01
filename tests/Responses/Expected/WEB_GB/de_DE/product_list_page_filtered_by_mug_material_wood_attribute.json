@@ -551,6 +551,40 @@
                     },
                     "label": "price_desc",
                     "count": 0
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "attributes": {
+                            "Becher Material": [
+                                "Holz"
+                            ]
+                        },
+                        "sort": "name_asc"
+                    },
+                    "label": "name_asc",
+                    "count": 0
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "attributes": {
+                            "Becher Material": [
+                                "Holz"
+                            ]
+                        },
+                        "sort": "name_desc"
+                    },
+                    "label": "name_desc",
+                    "count": 0
                 }
             ]
         }

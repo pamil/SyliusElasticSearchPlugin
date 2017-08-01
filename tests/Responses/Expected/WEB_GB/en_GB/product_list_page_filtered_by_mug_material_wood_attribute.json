@@ -535,6 +535,40 @@
                     },
                     "label": "price_desc",
                     "count": 0
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "attributes": {
+                            "Mug material": [
+                                "Wood"
+                            ]
+                        },
+                        "sort": "name_asc"
+                    },
+                    "label": "name_asc",
+                    "count": 0
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "attributes": {
+                            "Mug material": [
+                                "Wood"
+                            ]
+                        },
+                        "sort": "name_desc"
+                    },
+                    "label": "name_desc",
+                    "count": 0
                 }
             ]
         }

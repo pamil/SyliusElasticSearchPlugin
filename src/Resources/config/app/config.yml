@@ -62,3 +62,5 @@ ongr_filter_manager:
                 choices:
                     price_asc: { field: price.amount, default: false, order: asc }
                     price_desc: { field: price.amount, default: false, order: desc }
+                    name_asc: { field: name, default: false, order: asc }
+                    name_desc: { field: name, default: false, order: desc }
