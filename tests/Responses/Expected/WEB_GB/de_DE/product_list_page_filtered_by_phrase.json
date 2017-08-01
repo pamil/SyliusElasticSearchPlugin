@@ -5,23 +5,22 @@
     "pages": 1,
     "items": [
         {
-            "code": "LOGAN_MUG_CODE",
-            "name": "Logan Mug",
-            "slug": "logan-mug",
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hut",
+            "slug": "logan-hut",
             "taxons": {
-                "main": "MUG",
                 "others": [
-                    "MUG",
+                    "HAT",
                     "CATEGORY",
                     "BRAND"
                 ]
             },
             "variants": [
                 {
-                    "code": "LOGAN_MUG_CODE",
-                    "name": "Logan Mug",
+                    "code": "LOGAN_HAT_CODE",
+                    "name": "Logan Hut",
                     "price": {
-                        "current": 1999,
+                        "current": 1500,
                         "currency": "GBP"
                     },
                     "images": []
@@ -30,49 +29,47 @@
             "attributes": [
                 {
                     "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "HOLIDAY COLLECTION"
-                },
-                {
-                    "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material",
-                    "value": "Wood"
+                    "name": "Becher Sammlung",
+                    "value": "FEIERTAGSKOLLEKTION"
                 }
             ],
             "images": [],
             "channelCode": "WEB_GB",
-            "localeCode": "en_GB"
+            "localeCode": "de_DE"
         }
     ],
     "filters": {
         "channel": {
             "state": {
-                "active": false,
-                "urlParameters": [],
+                "active": true,
+                "value": "WEB_GB",
+                "urlParameters": {
+                    "channel": "WEB_GB"
+                },
                 "name": "channel",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "resetUrlParameters": {
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "name": "channel",
             "choices": [
                 {
-                    "active": false,
+                    "active": true,
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
-                        "locale": "en_GB",
-                        "search": "Wood",
-                        "channel": "WEB_GB"
+                        "locale": "de_DE",
+                        "search": "hut"
                     },
                     "label": "WEB_GB",
                     "count": 1
@@ -91,13 +88,15 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "resetUrlParameters": {
-                "locale": "en_GB",
-                "search": "Wood"
+                "channel": "WEB_GB",
+                "locale": "de_DE",
+                "search": "hut"
             },
             "name": "enabled",
             "choices": [
@@ -105,8 +104,9 @@
                     "active": true,
                     "default": false,
                     "urlParameters": {
-                        "locale": "en_GB",
-                        "search": "Wood"
+                        "channel": "WEB_GB",
+                        "locale": "de_DE",
+                        "search": "hut"
                     },
                     "label": 1,
                     "count": 1
@@ -122,14 +122,16 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "name": "taxonCode",
             "choices": [
@@ -137,9 +139,10 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "locale": "en_GB",
-                        "search": "Wood",
+                        "locale": "de_DE",
+                        "search": "hut",
                         "taxonCode": "BRAND"
                     },
                     "label": "BRAND",
@@ -149,9 +152,10 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "locale": "en_GB",
-                        "search": "Wood",
+                        "locale": "de_DE",
+                        "search": "hut",
                         "taxonCode": "CATEGORY"
                     },
                     "label": "CATEGORY",
@@ -161,12 +165,13 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "locale": "en_GB",
-                        "search": "Wood",
-                        "taxonCode": "MUG"
+                        "locale": "de_DE",
+                        "search": "hut",
+                        "taxonCode": "HAT"
                     },
-                    "label": "MUG",
+                    "label": "HAT",
                     "count": 1
                 }
             ]
@@ -180,38 +185,42 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "name": "priceRange",
-            "minBounds": 1999,
-            "maxBounds": 1999
+            "minBounds": 1500,
+            "maxBounds": 1500
         },
         "locale": {
             "state": {
                 "active": true,
-                "value": "en_GB",
+                "value": "de_DE",
                 "urlParameters": {
-                    "locale": "en_GB"
+                    "locale": "de_DE"
                 },
                 "name": "locale",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "search": "Wood"
+                "search": "hut"
             },
             "name": "locale",
             "choices": [
@@ -219,10 +228,11 @@
                     "active": true,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "search": "Wood"
+                        "search": "hut"
                     },
-                    "label": "en_GB",
+                    "label": "de_DE",
                     "count": 1
                 }
             ]
@@ -239,14 +249,16 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "name": "paginator",
             "currentPage": 1,
@@ -260,22 +272,24 @@
         "search": {
             "state": {
                 "active": true,
-                "value": "Wood",
+                "value": "hut",
                 "urlParameters": {
-                    "search": "Wood"
+                    "search": "hut"
                 },
                 "name": "search",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB"
+                "locale": "de_DE"
             },
             "name": "search"
         },
@@ -288,14 +302,16 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
-                "locale": "en_GB",
-                "search": "Wood"
+                "locale": "de_DE",
+                "search": "hut"
             },
             "name": "attributes",
             "items": [
@@ -303,54 +319,28 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
-                        "locale": "en_GB",
-                        "search": "Wood"
+                        "locale": "de_DE",
+                        "search": "hut"
                     },
-                    "name": "Mug collection",
+                    "name": "Becher Sammlung",
                     "choices": {
-                        "HOLIDAY COLLECTION": {
+                        "FEIERTAGSKOLLEKTION": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
-                                "locale": "en_GB",
-                                "search": "Wood",
+                                "locale": "de_DE",
+                                "search": "hut",
                                 "attributes": {
-                                    "Mug collection": [
-                                        "HOLIDAY COLLECTION"
+                                    "Becher Sammlung": [
+                                        "FEIERTAGSKOLLEKTION"
                                     ]
                                 }
                             },
-                            "label": "HOLIDAY COLLECTION",
-                            "count": 1
-                        }
-                    }
-                },
-                {
-                    "tags": [],
-                    "urlParameters": [],
-                    "resetUrlParameters": {
-                        "enabled": true,
-                        "locale": "en_GB",
-                        "search": "Wood"
-                    },
-                    "name": "Mug material",
-                    "choices": {
-                        "Wood": {
-                            "active": false,
-                            "default": false,
-                            "urlParameters": {
-                                "enabled": true,
-                                "locale": "en_GB",
-                                "search": "Wood",
-                                "attributes": {
-                                    "Mug material": [
-                                        "Wood"
-                                    ]
-                                }
-                            },
-                            "label": "Wood",
+                            "label": "FEIERTAGSKOLLEKTION",
                             "count": 1
                         }
                     }

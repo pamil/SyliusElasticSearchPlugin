@@ -177,16 +177,16 @@ Sylius\Component\Product\Model\ProductVariantTranslation:
 Sylius\Component\Core\Model\ChannelPricing:
     gb_mug_web_channel_pricing:
         channelCode: "WEB_GB"
-        price: 1999
+        price: 1000
     gb_hat_web_channel_pricing:
         channelCode: "WEB_GB"
-        price: 2999
+        price: 1500
     gb_small_t_shirt_web_channel_pricing:
         channelCode: "WEB_GB"
-        price: 1999
+        price: 2000
     gb_small_disabled_t_shirt_web_channel_pricing:
         channelCode: "WEB_GB"
-        price: 1999
+        price: 1500
 
 Sylius\Component\Core\Model\Taxon:
     category_taxon:

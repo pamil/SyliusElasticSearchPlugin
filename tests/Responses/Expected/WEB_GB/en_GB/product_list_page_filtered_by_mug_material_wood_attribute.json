@@ -21,7 +21,7 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Mug",
                     "price": {
-                        "current": 1999,
+                        "current": 1000,
                         "currency": "GBP"
                     },
                     "images": []
@@ -47,13 +47,17 @@
     "filters": {
         "channel": {
             "state": {
-                "active": false,
-                "urlParameters": [],
+                "active": true,
+                "value": "WEB_GB",
+                "urlParameters": {
+                    "channel": "WEB_GB"
+                },
                 "name": "channel",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -74,7 +78,7 @@
             "name": "channel",
             "choices": [
                 {
-                    "active": false,
+                    "active": true,
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
@@ -83,8 +87,7 @@
                             "Mug material": [
                                 "Wood"
                             ]
-                        },
-                        "channel": "WEB_GB"
+                        }
                     },
                     "label": "WEB_GB",
                     "count": 1
@@ -103,6 +106,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -112,6 +116,7 @@
                 }
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "locale": "en_GB",
                 "attributes": {
                     "Mug material": [
@@ -125,6 +130,7 @@
                     "active": true,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "locale": "en_GB",
                         "attributes": {
                             "Mug material": [
@@ -146,6 +152,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -155,6 +162,7 @@
                 }
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -169,6 +177,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
                         "attributes": {
@@ -185,6 +194,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
                         "attributes": {
@@ -201,6 +211,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
                         "attributes": {
@@ -224,6 +235,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -233,6 +245,7 @@
                 }
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -242,8 +255,8 @@
                 }
             },
             "name": "priceRange",
-            "minBounds": 1999,
-            "maxBounds": 2999
+            "minBounds": 1000,
+            "maxBounds": 2000
         },
         "locale": {
             "state": {
@@ -257,6 +270,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -266,6 +280,7 @@
                 }
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "attributes": {
                     "Mug material": [
@@ -279,6 +294,7 @@
                     "active": true,
                     "default": false,
                     "urlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "attributes": {
                             "Mug material": [
@@ -303,6 +319,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -312,6 +329,7 @@
                 }
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -338,6 +356,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -347,6 +366,7 @@
                 }
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -377,6 +397,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB",
                 "attributes": {
@@ -386,6 +407,7 @@
                 }
             },
             "resetUrlParameters": {
+                "channel": "WEB_GB",
                 "enabled": true,
                 "locale": "en_GB"
             },
@@ -395,6 +417,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB"
                     },
@@ -404,6 +427,7 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
                                 "locale": "en_GB",
                                 "attributes": {
@@ -424,6 +448,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
+                        "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB"
                     },
@@ -433,6 +458,7 @@
                             "active": true,
                             "default": false,
                             "urlParameters": {
+                                "channel": "WEB_GB",
                                 "enabled": true,
                                 "locale": "en_GB",
                                 "attributes": {
