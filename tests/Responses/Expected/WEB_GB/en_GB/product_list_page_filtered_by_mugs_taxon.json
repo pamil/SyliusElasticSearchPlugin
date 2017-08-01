@@ -59,12 +59,12 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "name": "channel",
@@ -74,7 +74,7 @@
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
-                        "taxonCode": "MUG",
+                        "taxon": "MUG",
                         "locale": "en_GB"
                     },
                     "label": "WEB_GB",
@@ -96,12 +96,12 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "name": "enabled",
@@ -111,7 +111,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "taxonCode": "MUG",
+                        "taxon": "MUG",
                         "locale": "en_GB"
                     },
                     "label": 1,
@@ -119,21 +119,21 @@
                 }
             ]
         },
-        "taxonCode": {
+        "taxon": {
             "state": {
                 "active": true,
                 "value": "MUG",
                 "urlParameters": {
-                    "taxonCode": "MUG"
+                    "taxon": "MUG"
                 },
-                "name": "taxonCode",
+                "name": "taxon",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
@@ -141,7 +141,7 @@
                 "enabled": true,
                 "locale": "en_GB"
             },
-            "name": "taxonCode",
+            "name": "taxon",
             "choices": [
                 {
                     "active": false,
@@ -150,7 +150,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxonCode": "HAT"
+                        "taxon": "HAT"
                     },
                     "label": "HAT",
                     "count": 1
@@ -173,7 +173,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxonCode": "T_SHIRTS"
+                        "taxon": "T_SHIRTS"
                     },
                     "label": "T_SHIRTS",
                     "count": 1
@@ -185,7 +185,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxonCode": "BRAND"
+                        "taxon": "BRAND"
                     },
                     "label": "BRAND",
                     "count": 3
@@ -197,7 +197,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxonCode": "CATEGORY"
+                        "taxon": "CATEGORY"
                     },
                     "label": "CATEGORY",
                     "count": 3
@@ -215,13 +215,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "name": "priceRange",
@@ -242,13 +242,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG"
+                "taxon": "MUG"
             },
             "name": "locale",
             "choices": [
@@ -258,7 +258,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "taxonCode": "MUG",
+                        "taxon": "MUG",
                         "locale": "de_DE"
                     },
                     "label": "de_DE",
@@ -270,7 +270,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "taxonCode": "MUG"
+                        "taxon": "MUG"
                     },
                     "label": "en_GB",
                     "count": 1
@@ -291,13 +291,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "name": "paginator",
@@ -320,13 +320,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "name": "search"
@@ -342,13 +342,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxonCode": "MUG",
+                "taxon": "MUG",
                 "locale": "en_GB"
             },
             "name": "attributes",
@@ -359,7 +359,7 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "taxonCode": "MUG",
+                        "taxon": "MUG",
                         "locale": "en_GB"
                     },
                     "name": "Mug collection",
@@ -370,7 +370,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "taxonCode": "MUG",
+                                "taxon": "MUG",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug collection": [
@@ -389,7 +389,7 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "taxonCode": "MUG",
+                        "taxon": "MUG",
                         "locale": "en_GB"
                     },
                     "name": "Mug material",
@@ -400,7 +400,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "taxonCode": "MUG",
+                                "taxon": "MUG",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": [

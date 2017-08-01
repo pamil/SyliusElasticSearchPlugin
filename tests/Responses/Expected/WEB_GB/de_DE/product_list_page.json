@@ -193,11 +193,11 @@
                 }
             ]
         },
-        "taxonCode": {
+        "taxon": {
             "state": {
                 "active": false,
                 "urlParameters": [],
-                "name": "taxonCode",
+                "name": "taxon",
                 "options": []
             },
             "tags": [],
@@ -211,7 +211,7 @@
                 "enabled": true,
                 "locale": "de_DE"
             },
-            "name": "taxonCode",
+            "name": "taxon",
             "choices": [
                 {
                     "active": false,
@@ -220,7 +220,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxonCode": "HAT"
+                        "taxon": "HAT"
                     },
                     "label": "HAT",
                     "count": 1
@@ -232,7 +232,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxonCode": "MUG"
+                        "taxon": "MUG"
                     },
                     "label": "MUG",
                     "count": 1
@@ -244,7 +244,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxonCode": "T_SHIRTS"
+                        "taxon": "T_SHIRTS"
                     },
                     "label": "T_SHIRTS",
                     "count": 1
@@ -256,7 +256,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxonCode": "BRAND"
+                        "taxon": "BRAND"
                     },
                     "label": "BRAND",
                     "count": 3
@@ -268,7 +268,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxonCode": "CATEGORY"
+                        "taxon": "CATEGORY"
                     },
                     "label": "CATEGORY",
                     "count": 3

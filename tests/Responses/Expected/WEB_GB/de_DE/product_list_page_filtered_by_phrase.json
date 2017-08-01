@@ -113,11 +113,11 @@
                 }
             ]
         },
-        "taxonCode": {
+        "taxon": {
             "state": {
                 "active": false,
                 "urlParameters": [],
-                "name": "taxonCode",
+                "name": "taxon",
                 "options": []
             },
             "tags": [],
@@ -133,7 +133,7 @@
                 "locale": "de_DE",
                 "search": "hut"
             },
-            "name": "taxonCode",
+            "name": "taxon",
             "choices": [
                 {
                     "active": false,
@@ -143,7 +143,7 @@
                         "enabled": true,
                         "locale": "de_DE",
                         "search": "hut",
-                        "taxonCode": "BRAND"
+                        "taxon": "BRAND"
                     },
                     "label": "BRAND",
                     "count": 1
@@ -156,7 +156,7 @@
                         "enabled": true,
                         "locale": "de_DE",
                         "search": "hut",
-                        "taxonCode": "CATEGORY"
+                        "taxon": "CATEGORY"
                     },
                     "label": "CATEGORY",
                     "count": 1
@@ -169,7 +169,7 @@
                         "enabled": true,
                         "locale": "de_DE",
                         "search": "hut",
-                        "taxonCode": "HAT"
+                        "taxon": "HAT"
                     },
                     "label": "HAT",
                     "count": 1

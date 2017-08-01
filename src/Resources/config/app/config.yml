@@ -4,7 +4,7 @@ ongr_filter_manager:
             filters:
                 - channel
                 - enabled
-                - taxonCode
+                - taxon
                 - priceRange
                 - locale
                 - paginator
@@ -20,9 +20,9 @@ ongr_filter_manager:
             type: choice
             request_field: enabled
             document_field: enabled
-        taxonCode:
+        taxon:
             type: choice
-            request_field: taxonCode
+            request_field: taxon
             document_field: taxons.code
         priceRange:
             type: range

@@ -143,11 +143,11 @@
                 }
             ]
         },
-        "taxonCode": {
+        "taxon": {
             "state": {
                 "active": false,
                 "urlParameters": [],
-                "name": "taxonCode",
+                "name": "taxon",
                 "options": []
             },
             "tags": [],
@@ -171,7 +171,7 @@
                     ]
                 }
             },
-            "name": "taxonCode",
+            "name": "taxon",
             "choices": [
                 {
                     "active": false,
@@ -185,7 +185,7 @@
                                 "Wood"
                             ]
                         },
-                        "taxonCode": "BRAND"
+                        "taxon": "BRAND"
                     },
                     "label": "BRAND",
                     "count": 1
@@ -202,7 +202,7 @@
                                 "Wood"
                             ]
                         },
-                        "taxonCode": "CATEGORY"
+                        "taxon": "CATEGORY"
                     },
                     "label": "CATEGORY",
                     "count": 1
@@ -219,7 +219,7 @@
                                 "Wood"
                             ]
                         },
-                        "taxonCode": "MUG"
+                        "taxon": "MUG"
                     },
                     "label": "MUG",
                     "count": 1
