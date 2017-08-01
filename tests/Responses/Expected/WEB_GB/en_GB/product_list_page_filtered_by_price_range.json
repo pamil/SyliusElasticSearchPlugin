@@ -164,11 +164,11 @@
                 }
             ]
         },
-        "taxonCode": {
+        "taxon": {
             "state": {
                 "active": false,
                 "urlParameters": [],
-                "name": "taxonCode",
+                "name": "taxon",
                 "options": []
             },
             "tags": [],
@@ -184,7 +184,7 @@
                 "price": "1000;1500",
                 "locale": "en_GB"
             },
-            "name": "taxonCode",
+            "name": "taxon",
             "choices": [
                 {
                     "active": false,
@@ -194,7 +194,7 @@
                         "enabled": true,
                         "price": "1000;1500",
                         "locale": "en_GB",
-                        "taxonCode": "HAT"
+                        "taxon": "HAT"
                     },
                     "label": "HAT",
                     "count": 1
@@ -207,7 +207,7 @@
                         "enabled": true,
                         "price": "1000;1500",
                         "locale": "en_GB",
-                        "taxonCode": "MUG"
+                        "taxon": "MUG"
                     },
                     "label": "MUG",
                     "count": 1
@@ -220,7 +220,7 @@
                         "enabled": true,
                         "price": "1000;1500",
                         "locale": "en_GB",
-                        "taxonCode": "BRAND"
+                        "taxon": "BRAND"
                     },
                     "label": "BRAND",
                     "count": 2
@@ -233,7 +233,7 @@
                         "enabled": true,
                         "price": "1000;1500",
                         "locale": "en_GB",
-                        "taxonCode": "CATEGORY"
+                        "taxon": "CATEGORY"
                     },
                     "label": "CATEGORY",
                     "count": 2
