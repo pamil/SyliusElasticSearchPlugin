@@ -1,7 +1,7 @@
 {
     "page": 1,
     "limit": 10,
-    "total": 3,
+    "total": 1,
     "pages": 1,
     "items": [
         {
@@ -21,8 +21,8 @@
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Becher",
                     "price": {
-                        "current": 1000,
-                        "currency": "GBP"
+                        "current": 1250,
+                        "currency": "EUR"
                     },
                     "images": []
                 }
@@ -40,65 +40,7 @@
                 }
             ],
             "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "de_DE"
-        },
-        {
-            "code": "LOGAN_HAT_CODE",
-            "name": "Logan Hut",
-            "slug": "logan-hut",
-            "taxons": {
-                "others": [
-                    "HAT",
-                    "CATEGORY",
-                    "BRAND"
-                ]
-            },
-            "variants": [
-                {
-                    "code": "LOGAN_HAT_CODE",
-                    "name": "Logan Hut",
-                    "price": {
-                        "current": 1500,
-                        "currency": "GBP"
-                    },
-                    "images": []
-                }
-            ],
-            "attributes": [
-                {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Becher Sammlung",
-                    "value": "FEIERTAGSKOLLEKTION"
-                }
-            ],
-            "images": [],
-            "channelCode": "WEB_GB",
-            "localeCode": "de_DE"
-        },
-        {
-            "code": "LOGAN_T_SHIRT_CODE",
-            "taxons": {
-                "main": "T_SHIRTS",
-                "others": [
-                    "T_SHIRTS",
-                    "CATEGORY",
-                    "BRAND"
-                ]
-            },
-            "variants": [
-                {
-                    "code": "LOGAN_T_SHIRT_CODE",
-                    "price": {
-                        "current": 2000,
-                        "currency": "GBP"
-                    },
-                    "images": []
-                }
-            ],
-            "attributes": [],
-            "images": [],
-            "channelCode": "WEB_GB",
+            "channelCode": "WEB_DE",
             "localeCode": "de_DE"
         }
     ],
@@ -106,16 +48,16 @@
         "channel": {
             "state": {
                 "active": true,
-                "value": "WEB_GB",
+                "value": "WEB_DE",
                 "urlParameters": {
-                    "channel": "WEB_GB"
+                    "channel": "WEB_DE"
                 },
                 "name": "channel",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
@@ -126,22 +68,22 @@
             "name": "channel",
             "choices": [
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "channel": "WEB_DE"
-                    },
-                    "label": "WEB_DE",
-                    "count": 1
-                },
-                {
                     "active": true,
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
                         "locale": "de_DE"
+                    },
+                    "label": "WEB_DE",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "channel": "WEB_GB"
                     },
                     "label": "WEB_GB",
                     "count": 3
@@ -160,36 +102,25 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "locale": "de_DE"
             },
             "name": "enabled",
             "choices": [
                 {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "locale": "de_DE",
-                        "enabled": 0
-                    },
-                    "label": 0,
-                    "count": 1
-                },
-                {
                     "active": true,
                     "default": false,
                     "urlParameters": {
-                        "channel": "WEB_GB",
+                        "channel": "WEB_DE",
                         "locale": "de_DE"
                     },
                     "label": 1,
-                    "count": 3
+                    "count": 1
                 }
             ]
         },
@@ -202,12 +133,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
@@ -217,61 +148,37 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
-                        "channel": "WEB_GB",
+                        "channel": "WEB_DE",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxonCode": "HAT"
+                        "taxonCode": "BRAND"
                     },
-                    "label": "HAT",
+                    "label": "BRAND",
                     "count": 1
                 },
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
-                        "channel": "WEB_GB",
+                        "channel": "WEB_DE",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonCode": "CATEGORY"
+                    },
+                    "label": "CATEGORY",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_DE",
                         "enabled": true,
                         "locale": "de_DE",
                         "taxonCode": "MUG"
                     },
                     "label": "MUG",
                     "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "T_SHIRTS"
-                    },
-                    "label": "T_SHIRTS",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "BRAND"
-                    },
-                    "label": "BRAND",
-                    "count": 3
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "CATEGORY"
-                    },
-                    "label": "CATEGORY",
-                    "count": 3
                 }
             ]
         },
@@ -284,12 +191,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
@@ -309,12 +216,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true
             },
             "name": "locale",
@@ -323,22 +230,11 @@
                     "active": true,
                     "default": false,
                     "urlParameters": {
-                        "channel": "WEB_GB",
+                        "channel": "WEB_DE",
                         "enabled": true
                     },
                     "label": "de_DE",
-                    "count": 3
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB"
-                    },
-                    "label": "en_GB",
-                    "count": 3
+                    "count": 1
                 }
             ]
         },
@@ -354,18 +250,18 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
             "name": "paginator",
             "currentPage": 1,
-            "totalItems": 3,
+            "totalItems": 1,
             "maxPages": 20,
             "itemsPerPage": 10,
             "numPages": 1,
@@ -381,12 +277,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
@@ -401,12 +297,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB",
+                "channel": "WEB_DE",
                 "enabled": true,
                 "locale": "de_DE"
             },
@@ -416,7 +312,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "channel": "WEB_GB",
+                        "channel": "WEB_DE",
                         "enabled": true,
                         "locale": "de_DE"
                     },
@@ -426,7 +322,7 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
-                                "channel": "WEB_GB",
+                                "channel": "WEB_DE",
                                 "enabled": true,
                                 "locale": "de_DE",
                                 "attributes": {
@@ -444,7 +340,7 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "channel": "WEB_GB",
+                        "channel": "WEB_DE",
                         "enabled": true,
                         "locale": "de_DE"
                     },
@@ -454,7 +350,7 @@
                             "active": false,
                             "default": false,
                             "urlParameters": {
-                                "channel": "WEB_GB",
+                                "channel": "WEB_DE",
                                 "enabled": true,
                                 "locale": "de_DE",
                                 "attributes": {
@@ -464,7 +360,7 @@
                                 }
                             },
                             "label": "FEIERTAGSKOLLEKTION",
-                            "count": 2
+                            "count": 1
                         }
                     }
                 }

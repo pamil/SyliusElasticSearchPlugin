@@ -78,6 +78,22 @@
             "name": "channel",
             "choices": [
                 {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "attributes": {
+                            "Becher Material": [
+                                "Holz"
+                            ]
+                        },
+                        "channel": "WEB_DE"
+                    },
+                    "label": "WEB_DE",
+                    "count": 1
+                },
+                {
                     "active": true,
                     "default": false,
                     "urlParameters": {

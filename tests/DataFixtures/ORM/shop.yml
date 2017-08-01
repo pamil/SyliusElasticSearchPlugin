@@ -37,7 +37,7 @@ Sylius\Component\Locale\Model\Locale:
 Sylius\Component\Core\Model\Product:
     mug:
         code: "LOGAN_MUG_CODE"
-        channels: ["@gb_web_channel"]
+        channels: ["@gb_web_channel", "@de_web_channel"]
         currentLocale: "en_GB"
         currentTranslation: "@en_gb_mug_product_translation"
         translations: ["@en_gb_mug_product_translation", "@de_de_mug_product_translation"]
@@ -116,6 +116,23 @@ Sylius\Component\Core\Model\ProductTranslation:
         description: <paragraph(2)>
         translatable: "@disabled_t_shirt"
 
+Sylius\Component\Core\Model\ChannelPricing:
+    gb_mug_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 1000
+    de_mug_web_channel_pricing:
+        channelCode: "WEB_DE"
+        price: 1250
+    gb_hat_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 1500
+    gb_small_t_shirt_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 2000
+    gb_small_disabled_t_shirt_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 1500
+
 Sylius\Component\Core\Model\ProductVariant:
     mug_variant:
         code: "LOGAN_MUG_CODE"
@@ -124,7 +141,8 @@ Sylius\Component\Core\Model\ProductVariant:
         currentTranslation: "@en_gb_mug_variant_translation"
         translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
         channelPricings:
-            WEB_GB: "@gb_mug_web_channel_pricing"
+            - "@gb_mug_web_channel_pricing"
+            - "@de_mug_web_channel_pricing"
     hat_variant:
         code: "LOGAN_HAT_CODE"
         product: "@hat"
@@ -132,21 +150,21 @@ Sylius\Component\Core\Model\ProductVariant:
         currentTranslation: "@en_gb_hat_variant_translation"
         translations: ["@en_gb_hat_variant_translation", "@de_de_hat_variant_translation"]
         channelPricings:
-            WEB_GB: "@gb_hat_web_channel_pricing"
+            - "@gb_hat_web_channel_pricing"
     t_shirt_small:
         code: "SMALL_LOGAN_T_SHIRT_CODE"
         product: "@t_shirt"
         currentLocale: "en_GB"
         currentTranslation: "@small_t_shirt_translation"
         channelPricings:
-            WEB_GB: "@gb_small_t_shirt_web_channel_pricing"
+            - "@gb_small_t_shirt_web_channel_pricing"
     disabled_t_shirt_small:
         code: "SMALL_DISABLED_T_SHIRT_CODE"
         product: "@disabled_t_shirt"
         currentLocale: "en_GB"
         currentTranslation: "@small_disabled_t_shirt_translation"
         channelPricings:
-            WEB_GB: "@gb_small_disabled_t_shirt_web_channel_pricing"
+            - "@gb_small_disabled_t_shirt_web_channel_pricing"
 
 Sylius\Component\Product\Model\ProductVariantTranslation:
     en_gb_mug_variant_translation:
@@ -173,20 +191,6 @@ Sylius\Component\Product\Model\ProductVariantTranslation:
         locale: "en_GB"
         name: "Small Disabled T-Shirt"
         translatable: "@disabled_t_shirt_small"
-
-Sylius\Component\Core\Model\ChannelPricing:
-    gb_mug_web_channel_pricing:
-        channelCode: "WEB_GB"
-        price: 1000
-    gb_hat_web_channel_pricing:
-        channelCode: "WEB_GB"
-        price: 1500
-    gb_small_t_shirt_web_channel_pricing:
-        channelCode: "WEB_GB"
-        price: 2000
-    gb_small_disabled_t_shirt_web_channel_pricing:
-        channelCode: "WEB_GB"
-        price: 1500
 
 Sylius\Component\Core\Model\Taxon:
     category_taxon:
