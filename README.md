@@ -132,7 +132,9 @@ Elastic search for Sylius.
 
 9. Example Request/Response:
 
+It's required to pass `channel` argument to the search.
 To activate filter you need to pass in parameter (query, request, attribute) ``requested field`` see reference in configuration section.
+
 For e.g:
 
 ```
@@ -144,7 +146,7 @@ It will activate ``taxon_slug``, ``price_range`` and ``channel`` filter.
 Request:
 
 ```
-    /shop-api/taxon-products/mugs
+    /shop-api/taxon-products/mugs?channel=WEB_GB
 ```
 
 Response:
