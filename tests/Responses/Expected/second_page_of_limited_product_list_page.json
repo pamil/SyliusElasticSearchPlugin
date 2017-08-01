@@ -100,17 +100,57 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "enabled": true
+            },
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "channel",
             "choices": [
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "channel": "WEB_GB"
                     },
                     "label": "WEB_GB",
+                    "count": 6
+                }
+            ]
+        },
+        "enabled": {
+            "state": {
+                "active": true,
+                "value": true,
+                "urlParameters": {
+                    "enabled": true
+                },
+                "name": "enabled",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "enabled": true
+            },
+            "resetUrlParameters": [],
+            "name": "enabled",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "enabled": 0
+                    },
+                    "label": 0,
+                    "count": 2
+                },
+                {
+                    "active": true,
+                    "default": false,
+                    "urlParameters": [],
+                    "label": 1,
                     "count": 6
                 }
             ]
@@ -123,14 +163,19 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "enabled": true
+            },
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "taxonCode",
             "choices": [
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "taxonCode": "HAT"
                     },
                     "label": "HAT",
@@ -140,6 +185,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "taxonCode": "MUG"
                     },
                     "label": "MUG",
@@ -149,6 +195,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "taxonCode": "T_SHIRTS"
                     },
                     "label": "T_SHIRTS",
@@ -158,6 +205,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "taxonCode": "BRAND"
                     },
                     "label": "BRAND",
@@ -167,6 +215,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "taxonCode": "CATEGORY"
                     },
                     "label": "CATEGORY",
@@ -182,8 +231,12 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "enabled": true
+            },
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "priceRange",
             "minBounds": 1999,
             "maxBounds": 2999
@@ -196,14 +249,19 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "enabled": true
+            },
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "locale",
             "choices": [
                 {
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "de_DE"
                     },
                     "label": "de_DE",
@@ -213,6 +271,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "locale": "en_GB"
                     },
                     "label": "en_GB",
@@ -231,8 +290,12 @@
                 }
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "enabled": true
+            },
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "paginator",
             "currentPage": 2,
             "totalItems": 6,
@@ -250,8 +313,12 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "enabled": true
+            },
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "search"
         },
         "attributes": {
@@ -262,20 +329,27 @@
                 "options": []
             },
             "tags": [],
-            "urlParameters": [],
-            "resetUrlParameters": [],
+            "urlParameters": {
+                "enabled": true
+            },
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "attributes",
             "items": [
                 {
                     "tags": [],
                     "urlParameters": [],
-                    "resetUrlParameters": [],
+                    "resetUrlParameters": {
+                        "enabled": true
+                    },
                     "name": "Becher Material",
                     "choices": {
                         "Holz": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "attributes": {
                                     "Becher Material": [
                                         "Holz"
@@ -290,13 +364,16 @@
                 {
                     "tags": [],
                     "urlParameters": [],
-                    "resetUrlParameters": [],
+                    "resetUrlParameters": {
+                        "enabled": true
+                    },
                     "name": "Becher Sammlung",
                     "choices": {
                         "FEIERTAGSKOLLEKTION": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "attributes": {
                                     "Becher Sammlung": [
                                         "FEIERTAGSKOLLEKTION"
@@ -311,13 +388,16 @@
                 {
                     "tags": [],
                     "urlParameters": [],
-                    "resetUrlParameters": [],
+                    "resetUrlParameters": {
+                        "enabled": true
+                    },
                     "name": "Mug collection",
                     "choices": {
                         "HOLIDAY COLLECTION": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "attributes": {
                                     "Mug collection": [
                                         "HOLIDAY COLLECTION"
@@ -332,13 +412,16 @@
                 {
                     "tags": [],
                     "urlParameters": [],
-                    "resetUrlParameters": [],
+                    "resetUrlParameters": {
+                        "enabled": true
+                    },
                     "name": "Mug material",
                     "choices": {
                         "Wood": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "attributes": {
                                     "Mug material": [
                                         "Wood"

@@ -54,6 +54,53 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
+                "attributes": {
+                    "Mug material": [
+                        "Wood"
+                    ]
+                }
+            },
+            "resetUrlParameters": {
+                "enabled": true,
+                "attributes": {
+                    "Mug material": [
+                        "Wood"
+                    ]
+                }
+            },
+            "name": "channel",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "enabled": true,
+                        "attributes": {
+                            "Mug material": [
+                                "Wood"
+                            ]
+                        },
+                        "channel": "WEB_GB"
+                    },
+                    "label": "WEB_GB",
+                    "count": 1
+                }
+            ]
+        },
+        "enabled": {
+            "state": {
+                "active": true,
+                "value": true,
+                "urlParameters": {
+                    "enabled": true
+                },
+                "name": "enabled",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -67,20 +114,19 @@
                     ]
                 }
             },
-            "name": "channel",
+            "name": "enabled",
             "choices": [
                 {
-                    "active": false,
+                    "active": true,
                     "default": false,
                     "urlParameters": {
                         "attributes": {
                             "Mug material": [
                                 "Wood"
                             ]
-                        },
-                        "channel": "WEB_GB"
+                        }
                     },
-                    "label": "WEB_GB",
+                    "label": 1,
                     "count": 1
                 }
             ]
@@ -94,6 +140,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -101,6 +148,7 @@
                 }
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -113,6 +161,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "attributes": {
                             "Mug material": [
                                 "Wood"
@@ -127,6 +176,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "attributes": {
                             "Mug material": [
                                 "Wood"
@@ -141,6 +191,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "attributes": {
                             "Mug material": [
                                 "Wood"
@@ -162,6 +213,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -169,6 +221,7 @@
                 }
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -188,6 +241,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -195,6 +249,7 @@
                 }
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -207,6 +262,7 @@
                     "active": false,
                     "default": false,
                     "urlParameters": {
+                        "enabled": true,
                         "attributes": {
                             "Mug material": [
                                 "Wood"
@@ -231,6 +287,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -238,6 +295,7 @@
                 }
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -262,6 +320,7 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -269,6 +328,7 @@
                 }
             },
             "resetUrlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
@@ -297,25 +357,31 @@
             },
             "tags": [],
             "urlParameters": {
+                "enabled": true,
                 "attributes": {
                     "Mug material": [
                         "Wood"
                     ]
                 }
             },
-            "resetUrlParameters": [],
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "attributes",
             "items": [
                 {
                     "tags": [],
                     "urlParameters": [],
-                    "resetUrlParameters": [],
+                    "resetUrlParameters": {
+                        "enabled": true
+                    },
                     "name": "Mug collection",
                     "choices": {
                         "HOLIDAY COLLECTION": {
                             "active": false,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "attributes": {
                                     "Mug material": [
                                         "Wood"
@@ -333,13 +399,16 @@
                 {
                     "tags": [],
                     "urlParameters": [],
-                    "resetUrlParameters": [],
+                    "resetUrlParameters": {
+                        "enabled": true
+                    },
                     "name": "Mug material",
                     "choices": {
                         "Wood": {
                             "active": true,
                             "default": false,
                             "urlParameters": {
+                                "enabled": true,
                                 "attributes": {
                                     "Mug material": []
                                 }

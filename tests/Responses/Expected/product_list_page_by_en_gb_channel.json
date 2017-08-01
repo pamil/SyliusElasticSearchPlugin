@@ -215,16 +215,62 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
-            "resetUrlParameters": [],
+            "resetUrlParameters": {
+                "enabled": true
+            },
             "name": "channel",
             "choices": [
                 {
                     "active": true,
                     "default": false,
-                    "urlParameters": [],
+                    "urlParameters": {
+                        "enabled": true
+                    },
                     "label": "WEB_GB",
+                    "count": 6
+                }
+            ]
+        },
+        "enabled": {
+            "state": {
+                "active": true,
+                "value": true,
+                "urlParameters": {
+                    "enabled": true
+                },
+                "name": "enabled",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB"
+            },
+            "name": "enabled",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": 0
+                    },
+                    "label": 0,
+                    "count": 2
+                },
+                {
+                    "active": true,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB"
+                    },
+                    "label": 1,
                     "count": 6
                 }
             ]
@@ -238,10 +284,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "name": "taxonCode",
             "choices": [
@@ -250,6 +298,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "enabled": true,
                         "taxonCode": "HAT"
                     },
                     "label": "HAT",
@@ -260,6 +309,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "enabled": true,
                         "taxonCode": "MUG"
                     },
                     "label": "MUG",
@@ -270,6 +320,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "enabled": true,
                         "taxonCode": "T_SHIRTS"
                     },
                     "label": "T_SHIRTS",
@@ -280,6 +331,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "enabled": true,
                         "taxonCode": "BRAND"
                     },
                     "label": "BRAND",
@@ -290,6 +342,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "enabled": true,
                         "taxonCode": "CATEGORY"
                     },
                     "label": "CATEGORY",
@@ -306,10 +359,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "name": "priceRange",
             "minBounds": 1999,
@@ -324,10 +379,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "name": "locale",
             "choices": [
@@ -336,6 +393,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "enabled": true,
                         "locale": "de_DE"
                     },
                     "label": "de_DE",
@@ -346,6 +404,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "enabled": true,
                         "locale": "en_GB"
                     },
                     "label": "en_GB",
@@ -365,10 +424,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "name": "paginator",
             "currentPage": 1,
@@ -388,10 +449,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "name": "search"
         },
@@ -404,10 +467,12 @@
             },
             "tags": [],
             "urlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "resetUrlParameters": {
-                "channel": "WEB_GB"
+                "channel": "WEB_GB",
+                "enabled": true
             },
             "name": "attributes",
             "items": [
@@ -415,7 +480,8 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "channel": "WEB_GB"
+                        "channel": "WEB_GB",
+                        "enabled": true
                     },
                     "name": "Becher Material",
                     "choices": {
@@ -424,6 +490,7 @@
                             "default": false,
                             "urlParameters": {
                                 "channel": "WEB_GB",
+                                "enabled": true,
                                 "attributes": {
                                     "Becher Material": [
                                         "Holz"
@@ -439,7 +506,8 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "channel": "WEB_GB"
+                        "channel": "WEB_GB",
+                        "enabled": true
                     },
                     "name": "Becher Sammlung",
                     "choices": {
@@ -448,6 +516,7 @@
                             "default": false,
                             "urlParameters": {
                                 "channel": "WEB_GB",
+                                "enabled": true,
                                 "attributes": {
                                     "Becher Sammlung": [
                                         "FEIERTAGSKOLLEKTION"
@@ -463,7 +532,8 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "channel": "WEB_GB"
+                        "channel": "WEB_GB",
+                        "enabled": true
                     },
                     "name": "Mug collection",
                     "choices": {
@@ -472,6 +542,7 @@
                             "default": false,
                             "urlParameters": {
                                 "channel": "WEB_GB",
+                                "enabled": true,
                                 "attributes": {
                                     "Mug collection": [
                                         "HOLIDAY COLLECTION"
@@ -487,7 +558,8 @@
                     "tags": [],
                     "urlParameters": [],
                     "resetUrlParameters": {
-                        "channel": "WEB_GB"
+                        "channel": "WEB_GB",
+                        "enabled": true
                     },
                     "name": "Mug material",
                     "choices": {
@@ -496,6 +568,7 @@
                             "default": false,
                             "urlParameters": {
                                 "channel": "WEB_GB",
+                                "enabled": true,
                                 "attributes": {
                                     "Mug material": [
                                         "Wood"

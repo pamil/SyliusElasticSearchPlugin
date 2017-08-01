@@ -3,6 +3,7 @@ ongr_filter_manager:
         search_list:
             filters:
                 - channel
+                - enabled
                 - taxonCode
                 - priceRange
                 - locale
@@ -15,6 +16,10 @@ ongr_filter_manager:
             type: choice
             request_field: channel
             document_field: channel_code
+        enabled:
+            type: choice
+            request_field: enabled
+            document_field: enabled
         taxonCode:
             type: choice
             request_field: taxonCode
