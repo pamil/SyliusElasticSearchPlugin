@@ -1,0 +1,75 @@
+{
+    "page": 1,
+    "limit": 10,
+    "total": 3,
+    "pages": 1,
+    "items": [
+        {
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hat",
+            "slug": "@string@",
+            "taxons": "@array@",
+            "variants": "@array@",
+            "attributes": [
+                {
+                    "code": "PRODUCTION_YEAR",
+                    "name": "Production year",
+                    "value": "2010"
+                },
+                {
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection",
+                    "value": "HOLIDAY COLLECTION"
+                }
+            ],
+            "images": "@array@",
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
+        },
+        {
+            "code": "LOGAN_MUG_CODE",
+            "name": "Logan Mug",
+            "slug": "@string@",
+            "taxons": "@array@",
+            "variants": "@array@",
+            "attributes": [
+                {
+                    "code": "PRODUCTION_YEAR",
+                    "name": "Production year",
+                    "value": "2015"
+                },
+                {
+                    "code": "MUG_COLLECTION_CODE",
+                    "name": "Mug collection",
+                    "value": "HOLIDAY COLLECTION"
+                },
+                {
+                    "code": "MUG_MATERIAL_CODE",
+                    "name": "Mug material",
+                    "value": "Wood"
+                }
+            ],
+            "images": "@array@",
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
+        },
+        {
+            "code": "LOGAN_T_SHIRT_CODE",
+            "name": "Logan T-Shirt",
+            "slug": "@string@",
+            "taxons": "@array@",
+            "variants": "@array@",
+            "attributes": [
+                {
+                    "code": "PRODUCTION_YEAR",
+                    "name": "Production year",
+                    "value": "2020"
+                }
+            ],
+            "images": "@array@",
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
+        }
+    ],
+    "filters": "@array@"
+}

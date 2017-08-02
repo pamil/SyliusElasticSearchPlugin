@@ -7,28 +7,11 @@
         {
             "code": "LOGAN_T_SHIRT_CODE",
             "name": "Logan T-Shirt",
-            "slug": "logan-t-shirt",
-            "taxons": {
-                "main": "T_SHIRTS",
-                "others": [
-                    "T_SHIRTS",
-                    "CATEGORY",
-                    "BRAND"
-                ]
-            },
-            "variants": [
-                {
-                    "code": "LOGAN_T_SHIRT_CODE",
-                    "name": "Logan T-Shirt",
-                    "price": {
-                        "current": 2000,
-                        "currency": "GBP"
-                    },
-                    "images": []
-                }
-            ],
-            "attributes": [],
-            "images": [],
+            "slug": "@string@",
+            "taxons": "@array@",
+            "variants": "@array@",
+            "attributes": "@array@",
+            "images": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }

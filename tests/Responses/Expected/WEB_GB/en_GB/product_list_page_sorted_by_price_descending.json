@@ -7,15 +7,8 @@
         {
             "code": "LOGAN_T_SHIRT_CODE",
             "name": "Logan T-Shirt",
-            "slug": "logan-t-shirt",
-            "taxons": {
-                "main": "T_SHIRTS",
-                "others": [
-                    "T_SHIRTS",
-                    "CATEGORY",
-                    "BRAND"
-                ]
-            },
+            "slug": "@string@",
+            "taxons": "@array@",
             "variants": [
                 {
                     "code": "LOGAN_T_SHIRT_CODE",
@@ -24,25 +17,19 @@
                         "current": 2000,
                         "currency": "GBP"
                     },
-                    "images": []
+                    "images": "@array@"
                 }
             ],
-            "attributes": [],
-            "images": [],
+            "attributes": "@array@",
+            "images": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
         {
             "code": "LOGAN_HAT_CODE",
             "name": "Logan Hat",
-            "slug": "logan-hat",
-            "taxons": {
-                "others": [
-                    "HAT",
-                    "CATEGORY",
-                    "BRAND"
-                ]
-            },
+            "slug": "@string@",
+            "taxons": "@array@",
             "variants": [
                 {
                     "code": "LOGAN_HAT_CODE",
@@ -51,32 +38,19 @@
                         "current": 1500,
                         "currency": "GBP"
                     },
-                    "images": []
+                    "images": "@array@"
                 }
             ],
-            "attributes": [
-                {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "HOLIDAY COLLECTION"
-                }
-            ],
-            "images": [],
+            "attributes": "@array@",
+            "images": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
         {
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Mug",
-            "slug": "logan-mug",
-            "taxons": {
-                "main": "MUG",
-                "others": [
-                    "MUG",
-                    "CATEGORY",
-                    "BRAND"
-                ]
-            },
+            "slug": "@string@",
+            "taxons": "@array@",
             "variants": [
                 {
                     "code": "LOGAN_MUG_CODE",
@@ -85,107 +59,14 @@
                         "current": 1000,
                         "currency": "GBP"
                     },
-                    "images": []
+                    "images": "@array@"
                 }
             ],
-            "attributes": [
-                {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "HOLIDAY COLLECTION"
-                },
-                {
-                    "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material",
-                    "value": "Wood"
-                }
-            ],
-            "images": [],
+            "attributes": "@array@",
+            "images": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
     ],
-    "filters": {
-        "channel": "@array@",
-        "enabled": "@array@",
-        "taxon": "@array@",
-        "priceRange": "@array@",
-        "locale": "@array@",
-        "paginator": "@array@",
-        "search": "@array@",
-        "attributes": "@array@",
-        "sort": {
-            "state": {
-                "active": true,
-                "value": "price_desc",
-                "urlParameters": {
-                    "sort": "price_desc"
-                },
-                "name": "sort",
-                "options": []
-            },
-            "tags": [],
-            "urlParameters": {
-                "channel": "WEB_GB",
-                "enabled": true,
-                "locale": "en_GB",
-                "sort": "price_desc"
-            },
-            "resetUrlParameters": {
-                "channel": "WEB_GB",
-                "enabled": true,
-                "locale": "en_GB"
-            },
-            "name": "sort",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB",
-                        "sort": "price_asc"
-                    },
-                    "label": "price_asc",
-                    "count": 0
-                },
-                {
-                    "active": true,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB"
-                    },
-                    "label": "price_desc",
-                    "count": 0
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB",
-                        "sort": "name_asc"
-                    },
-                    "label": "name_asc",
-                    "count": 0
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB",
-                        "sort": "name_desc"
-                    },
-                    "label": "name_desc",
-                    "count": 0
-                }
-            ]
-        }
-    }
+    "filters": "@array@"
 }

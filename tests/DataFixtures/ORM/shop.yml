@@ -44,6 +44,8 @@ Sylius\Component\Core\Model\Product:
         mainTaxon: "@mug_taxon"
         productTaxons: ["@mug_product_taxon", "@mug_brand_taxon"]
         attributes:
+            - "@en_gb_production_year_value_mug"
+            - "@de_de_production_year_value_mug"
             - "@en_gb_mug_holiday_collection_value"
             - "@de_de_mug_holiday_collection_value"
             - "@en_gb_mug_wood_material_value"
@@ -57,6 +59,8 @@ Sylius\Component\Core\Model\Product:
         translations: ["@en_gb_hat_product_translation", "@de_de_hat_product_translation"]
         productTaxons: ["@hat_product_taxon", "@hat_brand_taxon"]
         attributes:
+            - "@en_gb_production_year_value_hat"
+            - "@de_de_production_year_value_hat"
             - "@en_gb_mug_holiday_collection_value"
             - "@de_de_mug_holiday_collection_value"
         variants: ["@hat_variant"]
@@ -67,6 +71,9 @@ Sylius\Component\Core\Model\Product:
         currentTranslation: "@t_shirt_translation"
         mainTaxon: "@t_shirt_taxon"
         productTaxons: ["@t_shirt_product_taxon", "@t_shirt_brand_taxon"]
+        attributes:
+            - "@en_gb_production_year_value_t_shirt"
+            - "@de_de_production_year_value_t_shirt"
         variants: ["@t_shirt_small"]
     disabled_t_shirt:
         code: "DISABLED_T_SHIRT_CODE"
@@ -317,6 +324,10 @@ Sylius\Component\Product\Model\ProductAttributeTranslation:
         locale: "de_DE"
         name: "Becher Material"
         translatable: "@mug_material"
+    production_year_de_de_translation:
+        locale: "de_DE"
+        name: "Produktionsjahr"
+        translatable: "@production_year"
     mug_collection_en_gb_translation:
         locale: "en_GB"
         name: "Mug collection"
@@ -325,6 +336,10 @@ Sylius\Component\Product\Model\ProductAttributeTranslation:
         locale: "en_GB"
         name: "Mug material"
         translatable: "@mug_material"
+    production_year_en_gb_translation:
+        locale: "en_GB"
+        name: "Production year"
+        translatable: "@production_year"
 
 Sylius\Component\Product\Model\ProductAttribute:
     mug_collection:
@@ -345,6 +360,15 @@ Sylius\Component\Product\Model\ProductAttribute:
         translations:
             - "@mug_material_en_gb_translation"
             - "@mug_material_de_de_translation"
+    production_year:
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        code: "PRODUCTION_YEAR"
+        type: "text"
+        storage_type: "text"
+        translations:
+            - "@production_year_en_gb_translation"
+            - "@production_year_de_de_translation"
 
 Sylius\Component\Product\Model\ProductAttributeValue:
     en_gb_mug_holiday_collection_value:
@@ -367,3 +391,33 @@ Sylius\Component\Product\Model\ProductAttributeValue:
         attribute: "@mug_material"
         localeCode: "de_DE"
         text: "Holz"
+    en_gb_production_year_value_mug:
+        subject: "@mug"
+        attribute: "@production_year"
+        localeCode: "en_GB"
+        text: "2015"
+    de_de_production_year_value_mug:
+        subject: "@mug"
+        attribute: "@production_year"
+        localeCode: "de_DE"
+        text: "2015"
+    en_gb_production_year_value_t_shirt:
+        subject: "@t_shirt"
+        attribute: "@production_year"
+        localeCode: "en_GB"
+        text: "2020"
+    de_de_production_year_value_t_shirt:
+        subject: "@t_shirt"
+        attribute: "@production_year"
+        localeCode: "de_DE"
+        text: "2020"
+    en_gb_production_year_value_hat:
+        subject: "@hat"
+        attribute: "@production_year"
+        localeCode: "en_GB"
+        text: "2010"
+    de_de_production_year_value_hat:
+        subject: "@hat"
+        attribute: "@production_year"
+        localeCode: "de_DE"
+        text: "2010"

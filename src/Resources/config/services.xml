@@ -49,5 +49,9 @@
         <service id="sylius_elastic_search.filter.pager" class="Sylius\ElasticSearchPlugin\Filter\Widget\Pager">
             <tag name="ongr_filter_manager.filter" type="sylius_elastic_search.custom_pager" />
         </service>
+
+        <service id="sylius_elastic_search.filter.sort" class="Sylius\ElasticSearchPlugin\Filter\Widget\Sort">
+            <tag name="ongr_filter_manager.filter" type="sylius_elastic_search.sort" />
+        </service>
     </services>
 </container>

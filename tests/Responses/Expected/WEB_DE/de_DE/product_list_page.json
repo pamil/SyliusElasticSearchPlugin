@@ -29,6 +29,11 @@
             ],
             "attributes": [
                 {
+                    "code": "PRODUCTION_YEAR",
+                    "name": "Produktionsjahr",
+                    "value": "2015"
+                },
+                {
                     "code": "MUG_COLLECTION_CODE",
                     "name": "Becher Sammlung",
                     "value": "FEIERTAGSKOLLEKTION"
@@ -363,6 +368,34 @@
                             "count": 1
                         }
                     }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_DE",
+                        "enabled": true,
+                        "locale": "de_DE"
+                    },
+                    "name": "Produktionsjahr",
+                    "choices": {
+                        "2015": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_DE",
+                                "enabled": true,
+                                "locale": "de_DE",
+                                "attributes": {
+                                    "Produktionsjahr": [
+                                        "2015"
+                                    ]
+                                }
+                            },
+                            "label": "2015",
+                            "count": 1
+                        }
+                    }
                 }
             ]
         },
@@ -384,57 +417,7 @@
                 "enabled": true,
                 "locale": "de_DE"
             },
-            "name": "sort",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "sort": "price_asc"
-                    },
-                    "label": "price_asc",
-                    "count": 0
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "sort": "price_desc"
-                    },
-                    "label": "price_desc",
-                    "count": 0
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "sort": "name_asc"
-                    },
-                    "label": "name_asc",
-                    "count": 0
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "sort": "name_desc"
-                    },
-                    "label": "name_desc",
-                    "count": 0
-                }
-            ]
+            "name": "sort"
         }
     }
 }
