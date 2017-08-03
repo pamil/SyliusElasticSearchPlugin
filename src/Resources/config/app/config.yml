@@ -58,3 +58,9 @@ ongr_filter_manager:
             type: sylius_elastic_search.sort
             request_field: sort
             document_field: ~
+            options:
+                aliases:
+                    name: name
+                    slug: slug
+                    code: code
+                    price: price.amount

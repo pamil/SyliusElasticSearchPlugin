@@ -1100,7 +1100,7 @@ Whole response:
 * By price descending:
 
     ```
-        /shop-api/products?channel=WEB_DE&sort[price.amount]=desc
+        /shop-api/products?channel=WEB_DE&sort[price]=desc
     ```
     
 * By attribute `ATTRIBUTE_CODE` ascending:
@@ -1112,5 +1112,5 @@ Whole response:
 * By price ascending, then by name descending:
     
     ```
-        /shop-api/products?channel=WEB_DE&sort[price.amount]=asc&sort[name]=desc
+        /shop-api/products?channel=WEB_DE&sort[price]=asc&sort[name]=desc
     ```
