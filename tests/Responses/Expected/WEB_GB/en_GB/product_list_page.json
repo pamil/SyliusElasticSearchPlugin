@@ -538,6 +538,26 @@
                 }
             ]
         },
+        "attributesByCode": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "attributesByCode",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "locale": "en_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "locale": "en_GB"
+            },
+            "name": "attributesByCode"
+        },
         "sort": {
             "state": {
                 "active": false,

@@ -48,6 +48,7 @@
             "name": "search"
         },
         "attributes": "@array@",
+        "attributesByCode": "@array@",
         "sort": "@array@"
     }
 }

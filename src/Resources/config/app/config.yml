@@ -10,6 +10,7 @@ ongr_filter_manager:
                 - paginator
                 - search
                 - attributes
+                - attributesByCode
                 - sort
             repository: es.manager.default.product
     filters:
@@ -48,6 +49,12 @@ ongr_filter_manager:
             document_field: attributes>attributes.value
             options:
                 name_field: attributes.name
+        attributesByCode:
+            type: sylius_elastic_search.multi_dynamic_aggregate
+            request_field: attributesByCode
+            document_field: attributes>attributes.value
+            options:
+                name_field: attributes.code
         search:
             type: match
             request_field: search

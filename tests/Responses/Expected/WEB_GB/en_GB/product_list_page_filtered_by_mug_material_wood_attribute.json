@@ -150,6 +150,7 @@
                 }
             ]
         },
+        "attributesByCode": "@array@",
         "sort": "@array@"
     }
 }
