@@ -53,5 +53,9 @@
         <service id="sylius_elastic_search.filter.sort" class="Sylius\ElasticSearchPlugin\Filter\Widget\Sort">
             <tag name="ongr_filter_manager.filter" type="sylius_elastic_search.sort" />
         </service>
+
+        <service id="sylius_elastic_search.filter.multi_dynamic_aggregate" class="Sylius\ElasticSearchPlugin\Filter\Widget\MultiDynamicAggregateWithoutView">
+            <tag name="ongr_filter_manager.filter" type="sylius_elastic_search.multi_dynamic_aggregate" />
+        </service>
     </services>
 </container>

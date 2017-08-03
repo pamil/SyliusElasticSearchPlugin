@@ -109,6 +109,7 @@
         "paginator": "@array@",
         "search": "@array@",
         "attributes": "@array@",
+        "attributesByCode": "@array@",
         "sort": "@array@"
     }
 }

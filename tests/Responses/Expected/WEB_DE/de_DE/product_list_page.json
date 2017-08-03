@@ -399,6 +399,26 @@
                 }
             ]
         },
+        "attributesByCode": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "attributesByCode",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "channel": "WEB_DE",
+                "enabled": true,
+                "locale": "de_DE"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_DE",
+                "enabled": true,
+                "locale": "de_DE"
+            },
+            "name": "attributesByCode"
+        },
         "sort": {
             "state": {
                 "active": false,

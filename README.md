@@ -1114,3 +1114,17 @@ Whole response:
     ```
         /shop-api/products?channel=WEB_DE&sort[price]=asc&sort[name]=desc
     ```
+
+12. Filtering by attribute
+
+* By attribute name and value:
+
+    ```
+        /shop-api/products?channel=WEB_DE&attributes[Attribute name]=value
+    ```
+    
+* By attribute code and value:
+    
+    ```
+        /shop-api/products?channel=WEB_DE&attributesByCode[ATTRIBUTE_CODE]=value
+    ```
