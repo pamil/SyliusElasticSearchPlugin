@@ -29,6 +29,11 @@
             ],
             "attributes": [
                 {
+                    "code": "PRODUCTION_YEAR",
+                    "name": "Production year",
+                    "value": "2015"
+                },
+                {
                     "code": "MUG_COLLECTION_CODE",
                     "name": "Mug collection",
                     "value": "HOLIDAY COLLECTION"
@@ -67,6 +72,11 @@
             ],
             "attributes": [
                 {
+                    "code": "PRODUCTION_YEAR",
+                    "name": "Production year",
+                    "value": "2010"
+                },
+                {
                     "code": "MUG_COLLECTION_CODE",
                     "name": "Mug collection",
                     "value": "HOLIDAY COLLECTION"
@@ -99,7 +109,13 @@
                     "images": []
                 }
             ],
-            "attributes": [],
+            "attributes": [
+                {
+                    "code": "PRODUCTION_YEAR",
+                    "name": "Production year",
+                    "value": "2020"
+                }
+            ],
             "images": [],
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
@@ -459,6 +475,66 @@
                             "count": 1
                         }
                     }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB"
+                    },
+                    "name": "Production year",
+                    "choices": {
+                        "2010": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "locale": "en_GB",
+                                "attributes": {
+                                    "Production year": [
+                                        "2010"
+                                    ]
+                                }
+                            },
+                            "label": "2010",
+                            "count": 1
+                        },
+                        "2015": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "locale": "en_GB",
+                                "attributes": {
+                                    "Production year": [
+                                        "2015"
+                                    ]
+                                }
+                            },
+                            "label": "2015",
+                            "count": 1
+                        },
+                        "2020": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "locale": "en_GB",
+                                "attributes": {
+                                    "Production year": [
+                                        "2020"
+                                    ]
+                                }
+                            },
+                            "label": "2020",
+                            "count": 1
+                        }
+                    }
                 }
             ]
         },
@@ -480,57 +556,7 @@
                 "enabled": true,
                 "locale": "en_GB"
             },
-            "name": "sort",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB",
-                        "sort": "price_asc"
-                    },
-                    "label": "price_asc",
-                    "count": 0
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB",
-                        "sort": "price_desc"
-                    },
-                    "label": "price_desc",
-                    "count": 0
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB",
-                        "sort": "name_asc"
-                    },
-                    "label": "name_asc",
-                    "count": 0
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "en_GB",
-                        "sort": "name_desc"
-                    },
-                    "label": "name_desc",
-                    "count": 0
-                }
-            ]
+            "name": "sort"
         }
     }
 }

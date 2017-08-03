@@ -7,39 +7,11 @@
         {
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Mug",
-            "slug": "logan-mug",
-            "taxons": {
-                "main": "MUG",
-                "others": [
-                    "MUG",
-                    "CATEGORY",
-                    "BRAND"
-                ]
-            },
-            "variants": [
-                {
-                    "code": "LOGAN_MUG_CODE",
-                    "name": "Logan Mug",
-                    "price": {
-                        "current": 1000,
-                        "currency": "GBP"
-                    },
-                    "images": []
-                }
-            ],
-            "attributes": [
-                {
-                    "code": "MUG_COLLECTION_CODE",
-                    "name": "Mug collection",
-                    "value": "HOLIDAY COLLECTION"
-                },
-                {
-                    "code": "MUG_MATERIAL_CODE",
-                    "name": "Mug material",
-                    "value": "Wood"
-                }
-            ],
-            "images": [],
+            "slug": "@string@",
+            "taxons": "@array@",
+            "variants": "@array@",
+            "attributes": "@array@",
+            "images": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -141,6 +113,37 @@
                                 }
                             },
                             "label": "Wood",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB"
+                    },
+                    "name": "Production year",
+                    "choices": {
+                        "2015": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "locale": "en_GB",
+                                "attributes": {
+                                    "Mug material": [
+                                        "Wood"
+                                    ],
+                                    "Production year": [
+                                        "2015"
+                                    ]
+                                }
+                            },
+                            "label": "2015",
                             "count": 1
                         }
                     }

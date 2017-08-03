@@ -55,12 +55,6 @@ ongr_filter_manager:
             options:
                 operator: and
         sort:
-            type: sort
+            type: sylius_elastic_search.sort
             request_field: sort
             document_field: ~
-            options:
-                choices:
-                    price_asc: { field: price.amount, default: false, order: asc }
-                    price_desc: { field: price.amount, default: false, order: desc }
-                    name_asc: { field: name, default: false, order: asc }
-                    name_desc: { field: name, default: false, order: desc }
