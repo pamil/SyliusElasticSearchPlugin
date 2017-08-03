@@ -44,15 +44,23 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
         if ($state && $state->isActive()) {
             $stateValue = $state->getValue();
 
-            if (is_array($stateValue)) {
-                foreach ($stateValue as $field => $data) {
-                    if ('attribute' === $field) {
-                        $this->addAttributeFieldToSort($search, $data);
+            if (!is_array($stateValue)) {
+                return;
+            }
 
-                        continue;
-                    }
+            $aliases = $this->getOption('aliases') ?? [];
 
-                    $this->addRegularFieldToSort($search, $field, $data);
+            foreach ($stateValue as $field => $data) {
+                if ('attribute' === $field) {
+                    $this->addAttributeFieldToSort($search, $data);
+
+                    continue;
+                }
+
+                if (array_key_exists($field, $aliases)) {
+                    $this->addRegularFieldToSort($search, $aliases[$field], $data);
+
+                    continue;
                 }
             }
         }
@@ -84,9 +92,9 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
 
     private function addAttributeFieldToSort(Search $search, array $settings): void
     {
-        foreach ($settings as $attributeName => $sortingOrder) {
+        foreach ($settings as $attributeCode => $sortingOrder) {
             $fieldSort = new FieldSort('attributes.value', $sortingOrder, ['nested_path' => 'attributes']);
-            $fieldSort->setNestedFilter(new TermQuery('attributes.code', $attributeName));
+            $fieldSort->setNestedFilter(new TermQuery('attributes.code', $attributeCode));
 
             $search->addSort($fieldSort);
         }

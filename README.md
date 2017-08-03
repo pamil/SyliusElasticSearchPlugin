@@ -67,57 +67,6 @@ Elastic search for Sylius.
                     index_name: sylius
                 mappings:
                     SyliusElasticSearchPlugin: {}
-    
-    ongr_filter_manager:
-        managers:
-            search_list:
-                filters:
-                    - channel
-                    - taxonCode
-                    - priceRange
-                    - locale
-                    - paginator
-                    - search
-                    - attributes
-                repository: es.manager.default.product
-        filters:
-            channel:
-                type: choice
-                request_field: channel
-                document_field: channel_code
-            taxonCode:
-                type: choice
-                request_field: taxonCode
-                document_field: taxons.code
-            priceRange:
-                type: range
-                request_field: price
-                document_field: price.amount
-                options:
-                    inclusive: true
-            locale:
-                type: choice
-                request_field: locale
-                document_field: locale_code
-            paginator:
-                type: sylius_elastic_search.custom_pager
-                document_field: ~
-                request_field: page
-                options:
-                    limit: 10
-                    max_pages: 20
-            attributes:
-                type: multi_dynamic_aggregate
-                request_field: attributes
-                document_field: attributes>attributes.value
-                options:
-                    name_field: attributes.name
-            search:
-                type: match
-                request_field: search
-                document_field: name,description,attributes>attributes.value
-                options:
-                    operator: and
 
     sylius_elastic_search:
         attribute_whitelist: ['MUG_COLLECTION_CODE', 'MUG_MATERIAL_CODE'] #Only attibutes with these codes will be indexed
@@ -1139,3 +1088,29 @@ Whole response:
    }
 }
 ```
+
+11. Sorting
+
+* By name ascending:
+
+    ```
+        /shop-api/products?channel=WEB_DE&sort[name]=asc
+    ```
+    
+* By price descending:
+
+    ```
+        /shop-api/products?channel=WEB_DE&sort[price]=desc
+    ```
+    
+* By attribute `ATTRIBUTE_CODE` ascending:
+
+    ```
+        /shop-api/products?channel=WEB_DE&sort[attributes][ATTRIBUTE_CODE]=asc
+    ```
+    
+* By price ascending, then by name descending:
+    
+    ```
+        /shop-api/products?channel=WEB_DE&sort[price]=asc&sort[name]=desc
+    ```
