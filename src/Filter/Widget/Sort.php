@@ -51,7 +51,7 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
             $aliases = $this->getOption('aliases') ?? [];
 
             foreach ($stateValue as $field => $data) {
-                if ('attribute' === $field) {
+                if ('attributes' === $field) {
                     $this->addAttributeFieldToSort($search, $data);
 
                     continue;
