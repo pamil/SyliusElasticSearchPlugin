@@ -1128,3 +1128,12 @@ Whole response:
     ```
         /shop-api/products?channel=WEB_DE&attributesByCode[ATTRIBUTE_CODE]=value
     ```
+
+13. Reindexing Elasticsearch
+
+The current implementation does not support updating Elasticsearch when an entity is updated.
+In order to stay up-to-date, run the following command:
+
+    ```
+        bin/console sylius:elastic-search:update-simple-product
+    ```
