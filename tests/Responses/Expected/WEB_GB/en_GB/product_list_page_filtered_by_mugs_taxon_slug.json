@@ -19,21 +19,22 @@
     "filters": {
         "channel": "@array@",
         "enabled": "@array@",
-        "taxon": {
+        "taxonCode": "@array@",
+        "taxonSlug": {
             "state": {
                 "active": true,
-                "value": "MUG",
+                "value": "categories/mugs",
                 "urlParameters": {
-                    "taxon": "MUG"
+                    "taxonSlug": "categories/mugs"
                 },
-                "name": "taxon",
+                "name": "taxonSlug",
                 "options": []
             },
             "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "taxon": "MUG",
+                "taxonSlug": "categories/mugs",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
@@ -41,7 +42,7 @@
                 "enabled": true,
                 "locale": "en_GB"
             },
-            "name": "taxon",
+            "name": "taxonSlug",
             "choices": [
                 {
                     "active": false,
@@ -50,9 +51,9 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "HAT"
+                        "taxonSlug": "categories/hats"
                     },
-                    "label": "HAT",
+                    "label": "categories/hats",
                     "count": 1
                 },
                 {
@@ -63,7 +64,7 @@
                         "enabled": true,
                         "locale": "en_GB"
                     },
-                    "label": "MUG",
+                    "label": "categories/mugs",
                     "count": 1
                 },
                 {
@@ -73,9 +74,9 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "T_SHIRTS"
+                        "taxonSlug": "categories/t-shirts"
                     },
-                    "label": "T_SHIRTS",
+                    "label": "categories/t-shirts",
                     "count": 1
                 },
                 {
@@ -85,9 +86,9 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "BRAND"
+                        "taxonSlug": "brands"
                     },
-                    "label": "BRAND",
+                    "label": "brands",
                     "count": 3
                 },
                 {
@@ -97,9 +98,9 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "CATEGORY"
+                        "taxonSlug": "categories"
                     },
-                    "label": "CATEGORY",
+                    "label": "categories",
                     "count": 3
                 }
             ]

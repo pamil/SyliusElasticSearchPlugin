@@ -209,11 +209,11 @@
                 }
             ]
         },
-        "taxon": {
+        "taxonCode": {
             "state": {
                 "active": false,
                 "urlParameters": [],
-                "name": "taxon",
+                "name": "taxonCode",
                 "options": []
             },
             "tags": [],
@@ -227,7 +227,7 @@
                 "enabled": true,
                 "locale": "de_DE"
             },
-            "name": "taxon",
+            "name": "taxonCode",
             "choices": [
                 {
                     "active": false,
@@ -236,7 +236,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxon": "HAT"
+                        "taxonCode": "HAT"
                     },
                     "label": "HAT",
                     "count": 1
@@ -248,7 +248,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxon": "MUG"
+                        "taxonCode": "MUG"
                     },
                     "label": "MUG",
                     "count": 1
@@ -260,7 +260,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxon": "T_SHIRTS"
+                        "taxonCode": "T_SHIRTS"
                     },
                     "label": "T_SHIRTS",
                     "count": 1
@@ -272,7 +272,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxon": "BRAND"
+                        "taxonCode": "BRAND"
                     },
                     "label": "BRAND",
                     "count": 3
@@ -284,9 +284,91 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "de_DE",
-                        "taxon": "CATEGORY"
+                        "taxonCode": "CATEGORY"
                     },
                     "label": "CATEGORY",
+                    "count": 3
+                }
+            ]
+        },
+        "taxonSlug": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "taxonSlug",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "locale": "de_DE"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "locale": "de_DE"
+            },
+            "name": "taxonSlug",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonSlug": "kategorien\/1t-shirts"
+                    },
+                    "label": "kategorien\/1t-shirts",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonSlug": "kategorien\/1tassen"
+                    },
+                    "label": "kategorien\/1tassen",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonSlug": "kategorien\/hut"
+                    },
+                    "label": "kategorien\/hut",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonSlug": "kategorien"
+                    },
+                    "label": "kategorien",
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "de_DE",
+                        "taxonSlug": "marken"
+                    },
+                    "label": "marken",
                     "count": 3
                 }
             ]

@@ -201,11 +201,11 @@
                 }
             ]
         },
-        "taxon": {
+        "taxonCode": {
             "state": {
                 "active": false,
                 "urlParameters": [],
-                "name": "taxon",
+                "name": "taxonCode",
                 "options": []
             },
             "tags": [],
@@ -219,7 +219,7 @@
                 "enabled": true,
                 "locale": "en_GB"
             },
-            "name": "taxon",
+            "name": "taxonCode",
             "choices": [
                 {
                     "active": false,
@@ -228,7 +228,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "HAT"
+                        "taxonCode": "HAT"
                     },
                     "label": "HAT",
                     "count": 1
@@ -240,7 +240,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "MUG"
+                        "taxonCode": "MUG"
                     },
                     "label": "MUG",
                     "count": 1
@@ -252,7 +252,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "T_SHIRTS"
+                        "taxonCode": "T_SHIRTS"
                     },
                     "label": "T_SHIRTS",
                     "count": 1
@@ -264,7 +264,7 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "BRAND"
+                        "taxonCode": "BRAND"
                     },
                     "label": "BRAND",
                     "count": 3
@@ -276,9 +276,91 @@
                         "channel": "WEB_GB",
                         "enabled": true,
                         "locale": "en_GB",
-                        "taxon": "CATEGORY"
+                        "taxonCode": "CATEGORY"
                     },
                     "label": "CATEGORY",
+                    "count": 3
+                }
+            ]
+        },
+        "taxonSlug": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "taxonSlug",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "locale": "en_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "locale": "en_GB"
+            },
+            "name": "taxonSlug",
+            "choices": [
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "taxonSlug": "categories\/hats"
+                    },
+                    "label": "categories\/hats",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "taxonSlug": "categories\/mugs"
+                    },
+                    "label": "categories\/mugs",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "taxonSlug": "categories\/t-shirts"
+                    },
+                    "label": "categories\/t-shirts",
+                    "count": 1
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "taxonSlug": "brands"
+                    },
+                    "label": "brands",
+                    "count": 3
+                },
+                {
+                    "active": false,
+                    "default": false,
+                    "urlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "locale": "en_GB",
+                        "taxonSlug": "categories"
+                    },
+                    "label": "categories",
                     "count": 3
                 }
             ]
