@@ -19,7 +19,8 @@
     "filters": {
         "channel": "@array@",
         "enabled": "@array@",
-        "taxon": "@array@",
+        "taxonCode": "@array@",
+        "taxonSlug": "@array@",
         "priceRange": "@array@",
         "locale": "@array@",
         "paginator": {

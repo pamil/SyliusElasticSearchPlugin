@@ -54,7 +54,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     /**
      * @test
      */
-    public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_taxon_using_default_locale()
+    public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_taxon_code_using_default_locale()
     {
         $this->loadFixturesFromFile('shop.yml');
 
@@ -62,7 +62,21 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_mugs_taxon', Response::HTTP_OK);
+        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_mugs_taxon_code', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_taxon_slug_using_default_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/taxon-products-by-slug/categories/mugs', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_mugs_taxon_slug', Response::HTTP_OK);
     }
 
     /**
