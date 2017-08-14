@@ -110,6 +110,20 @@ final class SearchControllerApiTest extends JsonApiTestCase
     /**
      * @test
      */
+    public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_two_attributes_using_default_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'attributes' => ['Production year' => ['2015', '2020'], 'Mug material' => ['Wood']]], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_production_year_2015_or_2020_and_mug_material_wood_attribute', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
     public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_an_attribute_using_de_DE_locale()
     {
         $this->loadFixturesFromFile('shop.yml');
@@ -147,6 +161,20 @@ final class SearchControllerApiTest extends JsonApiTestCase
         $response = $this->client->getResponse();
 
         $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_production_year_2015_or_2020_attribute', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_two_attributes_referenced_by_code_using_default_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'attributesByCode' => ['PRODUCTION_YEAR' => ['2015', '2020'], 'MUG_MATERIAL_CODE' => ['Wood']]], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_production_year_2015_or_2020_and_mug_material_wood_attribute', Response::HTTP_OK);
     }
 
     /**
