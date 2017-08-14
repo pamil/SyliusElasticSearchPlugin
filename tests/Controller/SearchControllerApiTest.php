@@ -166,6 +166,20 @@ final class SearchControllerApiTest extends JsonApiTestCase
     /**
      * @test
      */
+    public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_partial_phrase_using_default_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'search' => 'holiDAY'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_partial_phrase', Response::HTTP_OK);
+    }
+
+    /**
+     * @test
+     */
     public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_phrase_using_de_DE_locale()
     {
         $this->loadFixturesFromFile('shop.yml');

@@ -1,3 +1,17 @@
+ongr_elasticsearch:
+    analysis:
+        analyzer:
+            keywordAnalyzer:
+                type: custom
+                tokenizer: keyword
+                filter: [lowercase]
+            incrementalAnalyzer:
+                type: custom
+                tokenizer: standard
+                filter:
+                    - lowercase
+                    - asciifolding
+
 ongr_filter_manager:
     managers:
         search_list:
@@ -51,19 +65,19 @@ ongr_filter_manager:
         attributes:
             type: multi_dynamic_aggregate
             request_field: attributes
-            document_field: attributes>attributes.value
+            document_field: attributes>attributes.value.raw
             options:
-                name_field: attributes.name
+                name_field: attributes.name.raw
         attributesByCode:
             type: sylius_elastic_search.multi_dynamic_aggregate
             request_field: attributesByCode
-            document_field: attributes>attributes.value
+            document_field: attributes>attributes.value.raw
             options:
                 name_field: attributes.code
         search:
             type: match
             request_field: search
-            document_field: name,description,attributes>attributes.value
+            document_field: name^3,description,attributes>attributes.name.standard,attributes>attributes.value.standard
             options:
                 operator: and
         sort:

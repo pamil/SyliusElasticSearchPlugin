@@ -1,0 +1,31 @@
+{
+    "page": 1,
+    "limit": 10,
+    "total": 2,
+    "pages": 1,
+    "items": [
+        {
+            "code": "LOGAN_MUG_CODE",
+            "name": "Logan Mug",
+            "slug": "@string@",
+            "taxons": "@array@",
+            "variants": "@array@",
+            "attributes": "@array@",
+            "images": "@array@",
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
+        },
+        {
+            "code": "LOGAN_HAT_CODE",
+            "name": "Logan Hat",
+            "slug": "@string@",
+            "taxons": "@array@",
+            "variants": "@array@",
+            "attributes": "@array@",
+            "images": "@array@",
+            "channelCode": "WEB_GB",
+            "localeCode": "en_GB"
+        }
+    ],
+    "filters": "@array@"
+}

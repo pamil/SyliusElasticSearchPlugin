@@ -19,14 +19,34 @@ class AttributeDocument
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="keyword")
+     * @ElasticSearch\Property(
+     *  type="text",
+     *  name="name",
+     *  options={
+     *    "analyzer"="keywordAnalyzer",
+     *    "fields"={
+     *        "raw"={"type"="keyword"},
+     *        "standard"={"type"="text", "analyzer"="incrementalAnalyzer"}
+     *    }
+     *  }
+     * )
      */
     private $name;
 
     /**
      * @var string
      *
-     * @ElasticSearch\Property(type="keyword")
+     * @ElasticSearch\Property(
+     *  type="text",
+     *  name="value",
+     *  options={
+     *    "analyzer"="keywordAnalyzer",
+     *    "fields"={
+     *        "raw"={"type"="keyword"},
+     *        "standard"={"type"="text", "analyzer"="incrementalAnalyzer"}
+     *    }
+     *  }
+     * )
      */
     private $value;
 
