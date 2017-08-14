@@ -93,7 +93,7 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
     private function addAttributeFieldToSort(Search $search, array $settings): void
     {
         foreach ($settings as $attributeCode => $sortingOrder) {
-            $fieldSort = new FieldSort('attributes.value', $sortingOrder, ['nested_path' => 'attributes']);
+            $fieldSort = new FieldSort('attributes.value.raw', $sortingOrder, ['nested_path' => 'attributes']);
             $fieldSort->setNestedFilter(new TermQuery('attributes.code', $attributeCode));
 
             $search->addSort($fieldSort);

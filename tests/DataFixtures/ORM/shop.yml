@@ -90,37 +90,37 @@ Sylius\Component\Core\Model\ProductTranslation:
         slug: "logan-mug"
         locale: "en_GB"
         name: "Logan Mug"
-        description: <paragraph(2)>
+        description: "Logan Mug"
         translatable: "@mug"
     de_de_mug_product_translation:
         slug: "logan-becher"
         locale: "de_DE"
         name: "Logan Becher"
-        description: <paragraph(2)>
+        description: "Logan Becher"
         translatable: "@mug"
     en_gb_hat_product_translation:
         slug: "logan-hat"
         locale: "en_GB"
         name: "Logan Hat"
-        description: <paragraph(2)>
+        description: "Logan Hat"
         translatable: "@hat"
     de_de_hat_product_translation:
         slug: "logan-hut"
         locale: "de_DE"
         name: "Logan Hut"
-        description: <paragraph(2)>
+        description: "Logan Hut"
         translatable: "@hat"
     t_shirt_translation:
         slug: "logan-t-shirt"
         locale: "en_GB"
         name: "Logan T-Shirt"
-        description: <paragraph(2)>
+        description: "Logan T-Shirt"
         translatable: "@t_shirt"
     disabled_t_shirt_translation:
         slug: "disabled-t-shirt"
         locale: "en_GB"
         name: "Disabled T-Shirt"
-        description: <paragraph(2)>
+        description: "Disabled T-Shirt"
         translatable: "@disabled_t_shirt"
 
 Sylius\Component\Core\Model\ChannelPricing:
