@@ -195,7 +195,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
         $productView->images = $this->getImageViews($product->getImages());
         $productView->taxons = $this->getTaxonView($product->getTaxons(), $product->getMainTaxon());
         $productView->attributes = $this->getAttributeViews($product->getAttributes());
-        $productView->variants = [$this->getVariantView($product)];
+        $productView->variants = [$product->getCode() => $this->getVariantView($product)];
 
         return $productView;
     }

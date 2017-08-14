@@ -16,8 +16,8 @@
                     "BRAND"
                 ]
             },
-            "variants": [
-                {
+            "variants": {
+                "LOGAN_MUG_CODE": {
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Mug",
                     "price": {
@@ -26,7 +26,7 @@
                     },
                     "images": []
                 }
-            ],
+            },
             "attributes": [
                 {
                     "code": "PRODUCTION_YEAR",
@@ -59,8 +59,8 @@
                     "BRAND"
                 ]
             },
-            "variants": [
-                {
+            "variants": {
+                "LOGAN_HAT_CODE": {
                     "code": "LOGAN_HAT_CODE",
                     "name": "Logan Hat",
                     "price": {
@@ -69,7 +69,7 @@
                     },
                     "images": []
                 }
-            ],
+            },
             "attributes": [
                 {
                     "code": "PRODUCTION_YEAR",
@@ -98,8 +98,8 @@
                     "BRAND"
                 ]
             },
-            "variants": [
-                {
+            "variants": {
+                "LOGAN_T_SHIRT_CODE": {
                     "code": "LOGAN_T_SHIRT_CODE",
                     "name": "Logan T-Shirt",
                     "price": {
@@ -108,7 +108,7 @@
                     },
                     "images": []
                 }
-            ],
+            },
             "attributes": [
                 {
                     "code": "PRODUCTION_YEAR",

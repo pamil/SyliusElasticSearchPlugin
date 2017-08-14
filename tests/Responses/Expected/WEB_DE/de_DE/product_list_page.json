@@ -16,8 +16,8 @@
                     "BRAND"
                 ]
             },
-            "variants": [
-                {
+            "variants": {
+                "LOGAN_MUG_CODE": {
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Becher",
                     "price": {
@@ -26,7 +26,7 @@
                     },
                     "images": []
                 }
-            ],
+            },
             "attributes": [
                 {
                     "code": "PRODUCTION_YEAR",
