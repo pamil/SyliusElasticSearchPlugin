@@ -9,8 +9,8 @@
             "name": "Logan Mug",
             "slug": "@string@",
             "taxons": "@array@",
-            "variants": [
-                {
+            "variants": {
+                "LOGAN_MUG_CODE": {
                     "code": "LOGAN_MUG_CODE",
                     "name": "Logan Mug",
                     "price": {
@@ -19,7 +19,7 @@
                     },
                     "images": "@array@"
                 }
-            ],
+            },
             "attributes": "@array@",
             "images": "@array@",
             "channelCode": "WEB_GB",
@@ -30,8 +30,8 @@
             "name": "Logan Hat",
             "slug": "@string@",
             "taxons": "@array@",
-            "variants": [
-                {
+            "variants": {
+                "LOGAN_HAT_CODE": {
                     "code": "LOGAN_HAT_CODE",
                     "name": "Logan Hat",
                     "price": {
@@ -40,7 +40,7 @@
                     },
                     "images": "@array@"
                 }
-            ],
+            },
             "attributes": "@array@",
             "images": "@array@",
             "channelCode": "WEB_GB",
@@ -51,8 +51,8 @@
             "name": "Logan T-Shirt",
             "slug": "@string@",
             "taxons": "@array@",
-            "variants": [
-                {
+            "variants": {
+                "LOGAN_T_SHIRT_CODE": {
                     "code": "LOGAN_T_SHIRT_CODE",
                     "name": "Logan T-Shirt",
                     "price": {
@@ -61,7 +61,7 @@
                     },
                     "images": "@array@"
                 }
-            ],
+            },
             "attributes": "@array@",
             "images": "@array@",
             "channelCode": "WEB_GB",
