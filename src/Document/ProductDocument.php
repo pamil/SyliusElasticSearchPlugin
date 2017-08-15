@@ -122,6 +122,13 @@ class ProductDocument
      */
     private $createdAt;
 
+    /**
+     * @var \DateTime
+     *
+     * @ElasticSearch\Property(type="date")
+     */
+    private $synchronisedAt;
+
     public function __construct()
     {
         $this->attributes = new Collection();
@@ -367,5 +374,21 @@ class ProductDocument
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getSynchronisedAt()
+    {
+        return $this->synchronisedAt;
+    }
+
+    /**
+     * @param \DateTime $synchronisedAt
+     */
+    public function setSynchronisedAt(\DateTime $synchronisedAt)
+    {
+        $this->synchronisedAt = $synchronisedAt;
     }
 }

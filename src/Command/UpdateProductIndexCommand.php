@@ -7,6 +7,7 @@ namespace Sylius\ElasticSearchPlugin\Command;
 use ONGR\ElasticsearchBundle\Result\DocumentIterator;
 use ONGR\ElasticsearchBundle\Service\Manager;
 use ONGR\ElasticsearchBundle\Service\Repository;
+use ONGR\ElasticsearchDSL\Sort\FieldSort;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
@@ -73,7 +74,8 @@ final class UpdateProductIndexCommand extends Command
         $processedProductsCodes = [];
 
         $search = $this->productDocumentRepository->createSearch();
-        $search->setScroll('10m'); // Scroll time
+        $search->setScroll('10m');
+        $search->addSort(new FieldSort('synchronised_at', 'ASC'));
 
         /** @var DocumentIterator|ProductDocument[] $productDocuments */
         $productDocuments = $this->productDocumentRepository->findDocuments($search);
