@@ -11,6 +11,11 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class ProductDocument
 {
     /**
+     * @ElasticSearch\Id()
+     */
+    private $id;
+
+    /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
@@ -122,6 +127,22 @@ class ProductDocument
         $this->attributes = new Collection();
         $this->taxons = new Collection();
         $this->images = new Collection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**

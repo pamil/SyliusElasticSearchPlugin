@@ -2,7 +2,9 @@
 
 namespace Sylius\ElasticSearchPlugin\Factory;
 
+use Doctrine\ORM\Id\UuidGenerator;
 use ONGR\ElasticsearchBundle\Collection\Collection;
+use Ramsey\Uuid\Uuid;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -107,6 +109,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         /** @var ProductDocument $product */
         $product = new $this->productDocumentClass();
+        $product->setId(Uuid::uuid4()->toString());
         $product->setEnabled($syliusProduct->isEnabled());
         $product->setLocaleCode($locale->getCode());
         $product->setSlug($productTranslation->getSlug());

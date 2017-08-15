@@ -1134,6 +1134,7 @@ Whole response:
 The current implementation does not support updating Elasticsearch when an entity is updated.
 In order to stay up-to-date, run the following command:
 
+
     ```
-        bin/console sylius:elastic-search:update-simple-product
+        bin/console sylius:elastic-search:update-product-index
     ```
