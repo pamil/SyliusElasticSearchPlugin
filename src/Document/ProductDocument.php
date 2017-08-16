@@ -11,6 +11,11 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class ProductDocument
 {
     /**
+     * @ElasticSearch\Id()
+     */
+    private $id;
+
+    /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
@@ -117,11 +122,34 @@ class ProductDocument
      */
     private $createdAt;
 
+    /**
+     * @var \DateTime
+     *
+     * @ElasticSearch\Property(type="date")
+     */
+    private $synchronisedAt;
+
     public function __construct()
     {
         $this->attributes = new Collection();
         $this->taxons = new Collection();
         $this->images = new Collection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 
     /**
@@ -346,5 +374,21 @@ class ProductDocument
     public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getSynchronisedAt()
+    {
+        return $this->synchronisedAt;
+    }
+
+    /**
+     * @param \DateTime $synchronisedAt
+     */
+    public function setSynchronisedAt(\DateTime $synchronisedAt)
+    {
+        $this->synchronisedAt = $synchronisedAt;
     }
 }
