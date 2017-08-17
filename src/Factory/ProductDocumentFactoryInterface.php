@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Factory;
 
@@ -20,5 +21,5 @@ interface ProductDocumentFactoryInterface
         ProductInterface $product,
         LocaleInterface $locale,
         ChannelInterface $channel
-    );
+    ): ProductDocument;
 }

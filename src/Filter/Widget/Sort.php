@@ -11,7 +11,6 @@ use ONGR\ElasticsearchDSL\Sort\FieldSort;
 use ONGR\FilterManagerBundle\Filter\FilterState;
 use ONGR\FilterManagerBundle\Filter\Helper\ViewDataFactoryInterface;
 use ONGR\FilterManagerBundle\Filter\ViewData;
-use ONGR\FilterManagerBundle\Filter\ViewData\ChoicesAwareViewData;
 use ONGR\FilterManagerBundle\Filter\Widget\AbstractFilter;
 use ONGR\FilterManagerBundle\Search\SearchRequest;
 use Sylius\ElasticSearchPlugin\Filter\ViewData\EmptyViewData;
@@ -22,7 +21,7 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getState(Request $request)
+    public function getState(Request $request): FilterState
     {
         $state = new FilterState();
         $value = $request->get($this->getRequestField());
@@ -39,7 +38,7 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function modifySearch(Search $search, FilterState $state = null, SearchRequest $request = null)
+    public function modifySearch(Search $search, ?FilterState $state = null, ?SearchRequest $request = null)
     {
         if ($state && $state->isActive()) {
             $stateValue = $state->getValue();
@@ -69,7 +68,7 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function preProcessSearch(Search $search, Search $relatedSearch, FilterState $state = null)
+    public function preProcessSearch(Search $search, Search $relatedSearch, ?FilterState $state = null)
     {
         // Nothing to do here.
     }
@@ -77,7 +76,7 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createViewData()
+    public function createViewData(): EmptyViewData
     {
         return new EmptyViewData();
     }

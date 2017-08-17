@@ -11,7 +11,7 @@ final class EmptyViewData extends ViewData
     /**
      * {@inheritdoc}
      */
-    public function getSerializableData()
+    public function getSerializableData(): array
     {
         return [];
     }

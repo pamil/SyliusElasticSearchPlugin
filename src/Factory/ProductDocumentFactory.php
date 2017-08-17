@@ -1,8 +1,8 @@
 <?php
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Factory;
 
-use Doctrine\ORM\Id\UuidGenerator;
 use ONGR\ElasticsearchBundle\Collection\Collection;
 use Ramsey\Uuid\Uuid;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -51,11 +51,11 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      * @param array $attributeWhitelist
      */
     public function __construct(
-        $productDocumentClass,
-        $attributeDocumentClass,
-        $imageDocumentClass,
-        $priceDocumentClass,
-        $taxonDocumentClass,
+        string $productDocumentClass,
+        string $attributeDocumentClass,
+        string $imageDocumentClass,
+        string $priceDocumentClass,
+        string $taxonDocumentClass,
         array $attributeWhitelist
     ) {
         $this->assertClassExtends($productDocumentClass, ProductDocument::class);
@@ -83,7 +83,11 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return ProductDocument
      */
-    public function createFromSyliusSimpleProductModel(ProductInterface $syliusProduct, LocaleInterface $locale, ChannelInterface $channel)
+    public function createFromSyliusSimpleProductModel(
+        ProductInterface $syliusProduct,
+        LocaleInterface $locale,
+        ChannelInterface $channel
+    ): ProductDocument
     {
         if (!$syliusProduct->isSimple()) {
             throw new UnsupportedFactoryMethodException(
@@ -187,7 +191,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return TaxonDocument
      */
-    private function createTaxonDocumentFromSyliusTaxon(TaxonInterface $taxon, $localeCode = null)
+    private function createTaxonDocumentFromSyliusTaxon(TaxonInterface $taxon, ?string$localeCode = null)
     {
         /** @var TaxonTranslationInterface $taxonTranslation */
         $taxonTranslation = $taxon->getTranslation($localeCode);
@@ -239,7 +243,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     private function getChannelPricingForChannelFromProductVariant(
         ProductVariantInterface $productVariant,
         ChannelInterface $channel
-    ) {
+    ): ?ChannelPricingInterface {
         $channelPricings = $productVariant->getChannelPricings();
 
         foreach ($channelPricings as $channelPricing) {
@@ -257,7 +261,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @throws \InvalidArgumentException
      */
-    private function assertClassExtends($class, $parentClass)
+    private function assertClassExtends(string $class, string $parentClass)
     {
         if ($class !== $parentClass && !in_array($parentClass, class_parents($class), true)) {
             throw new \InvalidArgumentException(sprintf('Class %s MUST extend class %s!', $class, $parentClass));

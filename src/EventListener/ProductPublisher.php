@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sylius\ElasticSearchPlugin\EventListener;
 
 use Doctrine\ORM\Event\OnFlushEventArgs;

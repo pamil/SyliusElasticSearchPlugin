@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Document;
 
@@ -53,7 +54,7 @@ class AttributeDocument
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -61,7 +62,7 @@ class AttributeDocument
     /**
      * @param string $code
      */
-    public function setCode($code)
+    public function setCode(string $code)
     {
         $this->code = $code;
     }
@@ -69,7 +70,7 @@ class AttributeDocument
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -77,7 +78,7 @@ class AttributeDocument
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -85,7 +86,7 @@ class AttributeDocument
     /**
      * @return string
      */
-    public function getValue()
+    public function getValue(): string
     {
         return $this->value;
     }
@@ -93,7 +94,7 @@ class AttributeDocument
     /**
      * @param string $value
      */
-    public function setValue($value)
+    public function setValue(string $value)
     {
         $this->value = $value;
     }

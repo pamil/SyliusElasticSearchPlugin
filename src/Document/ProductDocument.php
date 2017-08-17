@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sylius\ElasticSearchPlugin\Document;
 
 use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
@@ -116,14 +118,14 @@ class ProductDocument
     private $averageReviewRating;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
      */
@@ -155,7 +157,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -163,7 +165,7 @@ class ProductDocument
     /**
      * @param string $code
      */
-    public function setCode($code)
+    public function setCode(string $code)
     {
         $this->code = $code;
     }
@@ -171,7 +173,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -179,7 +181,7 @@ class ProductDocument
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -187,7 +189,7 @@ class ProductDocument
     /**
      * @return bool
      */
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         return $this->enabled;
     }
@@ -195,7 +197,7 @@ class ProductDocument
     /**
      * @param bool $enabled
      */
-    public function setEnabled($enabled)
+    public function setEnabled(bool $enabled)
     {
         $this->enabled = $enabled;
     }
@@ -203,7 +205,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->slug;
     }
@@ -211,7 +213,7 @@ class ProductDocument
     /**
      * @param string $slug
      */
-    public function setSlug($slug)
+    public function setSlug(string $slug)
     {
         $this->slug = $slug;
     }
@@ -219,7 +221,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getChannelCode()
+    public function getChannelCode(): string
     {
         return $this->channelCode;
     }
@@ -227,7 +229,7 @@ class ProductDocument
     /**
      * @param string $channelCode
      */
-    public function setChannelCode($channelCode)
+    public function setChannelCode(string $channelCode)
     {
         $this->channelCode = $channelCode;
     }
@@ -235,7 +237,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getLocaleCode()
+    public function getLocaleCode(): string
     {
         return $this->localeCode;
     }
@@ -243,7 +245,7 @@ class ProductDocument
     /**
      * @param string $localeCode
      */
-    public function setLocaleCode($localeCode)
+    public function setLocaleCode(string $localeCode)
     {
         $this->localeCode = $localeCode;
     }
@@ -251,7 +253,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -259,7 +261,7 @@ class ProductDocument
     /**
      * @param string $description
      */
-    public function setDescription($description)
+    public function setDescription(?string $description)
     {
         $this->description = $description;
     }
@@ -267,7 +269,7 @@ class ProductDocument
     /**
      * @return PriceDocument
      */
-    public function getPrice()
+    public function getPrice(): PriceDocument
     {
         return $this->price;
     }
@@ -283,7 +285,7 @@ class ProductDocument
     /**
      * @return TaxonDocument
      */
-    public function getMainTaxon()
+    public function getMainTaxon(): TaxonDocument
     {
         return $this->mainTaxon;
     }
@@ -299,7 +301,7 @@ class ProductDocument
     /**
      * @return Collection
      */
-    public function getTaxons()
+    public function getTaxons(): Collection
     {
         return $this->taxons;
     }
@@ -315,7 +317,7 @@ class ProductDocument
     /**
      * @return Collection
      */
-    public function getAttributes()
+    public function getAttributes(): Collection
     {
         return $this->attributes;
     }
@@ -331,7 +333,7 @@ class ProductDocument
     /**
      * @return Collection
      */
-    public function getImages()
+    public function getImages(): Collection
     {
         return $this->images;
     }
@@ -347,7 +349,7 @@ class ProductDocument
     /**
      * @return float
      */
-    public function getAverageReviewRating()
+    public function getAverageReviewRating(): float
     {
         return $this->averageReviewRating;
     }
@@ -355,39 +357,39 @@ class ProductDocument
     /**
      * @param float $averageReviewRating
      */
-    public function setAverageReviewRating($averageReviewRating)
+    public function setAverageReviewRating(float $averageReviewRating)
     {
         $this->averageReviewRating = $averageReviewRating;
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt)
     {
         $this->createdAt = $createdAt;
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getSynchronisedAt()
+    public function getSynchronisedAt(): \DateTimeInterface
     {
         return $this->synchronisedAt;
     }
 
     /**
-     * @param \DateTime $synchronisedAt
+     * @param \DateTimeInterface $synchronisedAt
      */
-    public function setSynchronisedAt(\DateTime $synchronisedAt)
+    public function setSynchronisedAt(\DateTimeInterface $synchronisedAt)
     {
         $this->synchronisedAt = $synchronisedAt;
     }

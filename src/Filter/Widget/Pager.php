@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Filter\Widget;
 
@@ -19,7 +20,7 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
      *
      * @return int
      */
-    public function getCountPerPage(FilterState $state)
+    public function getCountPerPage(?FilterState $state): int
     {
         if (null !== $state) {
             return $state->getOption('limit', 10);
@@ -31,7 +32,7 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getState(Request $request)
+    public function getState(Request $request): FilterState
     {
         $state = parent::getState($request);
         // Reset pager with any filter.
@@ -46,7 +47,7 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function modifySearch(Search $search, FilterState $state = null, SearchRequest $request = null)
+    public function modifySearch(Search $search, ?FilterState $state = null, ?SearchRequest $request = null): void
     {
         if ($state && $state->isActive()) {
             $search->setFrom($this->getCountPerPage($state) * ($state->getValue() - 1));
@@ -58,7 +59,7 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function preProcessSearch(Search $search, Search $relatedSearch, FilterState $state = null)
+    public function preProcessSearch(Search $search, Search $relatedSearch, ?FilterState $state = null)
     {
         // Nothing to do here.
     }
@@ -66,7 +67,7 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createViewData()
+    public function createViewData(): PagerAwareViewData
     {
         return new PagerAwareViewData();
     }
@@ -74,7 +75,7 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getViewData(DocumentIterator $result, ViewData $data)
+    public function getViewData(DocumentIterator $result, ViewData $data): ViewData
     {
         /** @var ViewData\PagerAwareViewData $data */
         $data->setData(
@@ -90,7 +91,7 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function isRelated()
+    public function isRelated(): bool
     {
         return false;
     }

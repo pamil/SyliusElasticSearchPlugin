@@ -1,11 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Factory;
 
-use ONGR\ElasticsearchBundle\Result\DocumentIterator;
 use ONGR\FilterManagerBundle\Search\SearchResponse;
 use Sylius\ElasticSearchPlugin\Controller\ProductListView;
-use Sylius\ElasticSearchPlugin\Search\Criteria\Paginating;
 
 interface ProductListViewFactoryInterface
 {
@@ -14,5 +13,5 @@ interface ProductListViewFactoryInterface
      *
      * @return ProductListView
      */
-    public function createFromSearchResponse(SearchResponse $response);
+    public function createFromSearchResponse(SearchResponse $response): ProductListView;
 }

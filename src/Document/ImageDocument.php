@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Document;
 
@@ -26,7 +27,7 @@ class ImageDocument
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -34,7 +35,7 @@ class ImageDocument
     /**
      * @param string $code
      */
-    public function setCode($code)
+    public function setCode(string $code)
     {
         $this->code = $code;
     }
@@ -42,7 +43,7 @@ class ImageDocument
     /**
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
@@ -50,7 +51,7 @@ class ImageDocument
     /**
      * @param string $path
      */
-    public function setPath($path)
+    public function setPath(string $path)
     {
         $this->path = $path;
     }

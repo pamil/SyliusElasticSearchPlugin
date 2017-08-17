@@ -43,13 +43,13 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     private $taxonViewClass;
 
     public function __construct(
-        $productListViewClass,
-        $productViewClass,
-        $productVariantViewClass,
-        $attributeViewClass,
-        $imageViewClass,
-        $priceViewClass,
-        $taxonViewClass
+        string $productListViewClass,
+        string $productViewClass,
+        string $productVariantViewClass,
+        string $attributeViewClass,
+        string $imageViewClass,
+        string $priceViewClass,
+        string $taxonViewClass
     ) {
         $this->productListViewClass = $productListViewClass;
         $this->productViewClass = $productViewClass;
@@ -63,7 +63,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createFromSearchResponse(SearchResponse $response)
+    public function createFromSearchResponse(SearchResponse $response): ProductListView
     {
         $result = $response->getResult();
         $filters = $response->getFilters();
@@ -91,7 +91,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return ImageView[]
      */
-    private function getImageViews(Collection $images)
+    private function getImageViews(Collection $images): array
     {
         $imageViews = [];
         foreach ($images as $image) {
@@ -112,7 +112,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return TaxonView
      */
-    private function getTaxonView(Collection $taxons, ?TaxonDocument $mainTaxonDocument)
+    private function getTaxonView(Collection $taxons, ?TaxonDocument $mainTaxonDocument): TaxonView
     {
         /** @var TaxonView $taxonView */
         $taxonView = new $this->taxonViewClass();
@@ -130,7 +130,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return AttributeView[]
      */
-    private function getAttributeViews(Collection $attributes)
+    private function getAttributeViews(Collection $attributes): array
     {
         $attributeValueViews = [];
         foreach ($attributes as $attribute) {
@@ -151,7 +151,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return PriceView
      */
-    private function getPriceView(PriceDocument $price)
+    private function getPriceView(PriceDocument $price): PriceView
     {
         /** @var PriceView $priceView */
         $priceView = new $this->priceViewClass();
@@ -166,7 +166,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return VariantView
      */
-    private function getVariantView(ProductDocument $product)
+    private function getVariantView(ProductDocument $product): VariantView
     {
         /** @var VariantView $variantView */
         $variantView = new $this->productVariantViewClass();
@@ -183,7 +183,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return ProductView
      */
-    private function getProductView(ProductDocument $product)
+    private function getProductView(ProductDocument $product): ProductView
     {
         /** @var ProductView $productView */
         $productView = new $this->productViewClass();

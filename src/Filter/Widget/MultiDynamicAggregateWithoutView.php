@@ -14,7 +14,7 @@ final class MultiDynamicAggregateWithoutView extends MultiDynamicAggregate
     /**
      * {@inheritdoc}
      */
-    public function createViewData()
+    public function createViewData(): EmptyViewData
     {
         return new EmptyViewData();
     }
