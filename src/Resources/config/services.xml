@@ -11,8 +11,8 @@
         <service id="sylius_elastic_search.form_registry.filters" class="Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistry" />
         <service id="sylius_elastic_search.event_listener" class="Sylius\ElasticSearchPlugin\EventListener\ProductPublisher">
             <argument type="service" id="event_bus" />
-            <tag name="doctrine.event_listener" event="onFlush"/>
-            <tag name="doctrine.event_listener" event="postFlush"/>
+            <tag name="doctrine.event_listener" event="onFlush" priority="-1024" />
+            <tag name="doctrine.event_listener" event="postFlush" priority="-1024" />
         </service>
 
         <service id="sylius_elastic_search.factory.product" class="Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactory">
@@ -20,6 +20,7 @@
             <argument>%sylius_elastic_search.document.attribute.class%</argument>
             <argument>%sylius_elastic_search.document.image.class%</argument>
             <argument>%sylius_elastic_search.document.price.class%</argument>
+            <argument>%sylius_elastic_search.document.product_taxon.class%</argument>
             <argument>%sylius_elastic_search.document.taxon.class%</argument>
             <argument>%sylius_elastic_search.attribute_whitelist%</argument>
         </service>

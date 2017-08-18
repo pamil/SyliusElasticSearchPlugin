@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Sylius\ElasticSearchPlugin\Controller;
 
 use Lakion\ApiTestCase\JsonApiTestCase;
+use PHPUnit\Framework\Assert;
 use Symfony\Component\HttpFoundation\Response;
 
 final class SearchControllerApiTest extends JsonApiTestCase
@@ -62,7 +63,22 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $response = $this->client->getResponse();
 
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_mugs_taxon_code', Response::HTTP_OK);
+        $this->assertProductsCodesInResponse($this->client->getResponse(), ['LOGAN_MUG_CODE']);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_taxon_code_sorted_by_position_using_default_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/taxon-products/BRAND', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
+
+        $this->assertProductsCodesInResponse(
+            $this->client->getResponse(),
+            ['LOGAN_HAT_CODE', 'LOGAN_T_SHIRT_CODE', 'LOGAN_MUG_CODE']
+        );
     }
 
     /**
@@ -74,9 +90,22 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->client->request('GET', '/shop-api/taxon-products-by-slug/categories/mugs', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
 
-        $response = $this->client->getResponse();
+        $this->assertProductsCodesInResponse($this->client->getResponse(), ['LOGAN_MUG_CODE']);
+    }
 
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_filtered_by_mugs_taxon_slug', Response::HTTP_OK);
+    /**
+     * @test
+     */
+    public function it_shows_product_list_page_from_WEB_GB_channel_filtered_by_taxon_slug_sorted_by_position_using_default_locale()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/taxon-products-by-slug/brands', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
+
+        $this->assertProductsCodesInResponse(
+            $this->client->getResponse(),
+            ['LOGAN_HAT_CODE', 'LOGAN_T_SHIRT_CODE', 'LOGAN_MUG_CODE']
+        );
     }
 
     /**
@@ -366,5 +395,19 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $elasticSearchManager = static::$sharedKernel->getContainer()->get('es.manager.default');
         $elasticSearchManager->dropAndCreateIndex();
+    }
+
+    private function assertProductsCodesInResponse(Response $response, array $expectedProductsCodes): void
+    {
+        $responseContent = json_decode($response->getContent(), true);
+
+        Assert::assertArrayHasKey('items', $responseContent);
+
+        Assert::assertSame(
+            $expectedProductsCodes,
+            array_map(function (array $item): string {
+                return $item['code'];
+            }, $responseContent['items'])
+        );
     }
 }

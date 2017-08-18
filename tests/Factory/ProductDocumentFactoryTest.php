@@ -6,10 +6,10 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 use Sylius\Component\Attribute\AttributeType\TextAttributeType;
 use Sylius\Component\Core\Model\Channel;
 use Sylius\Component\Core\Model\ChannelPricing;
-use Sylius\Component\Core\Model\Product as SyliusProduct;
+use Sylius\Component\Core\Model\Product;
 use Sylius\Component\Core\Model\ProductTaxon;
 use Sylius\Component\Core\Model\ProductVariant;
-use Sylius\Component\Core\Model\Taxon as SyliusTaxon;
+use Sylius\Component\Core\Model\Taxon;
 use Sylius\Component\Currency\Model\Currency;
 use Sylius\Component\Locale\Model\Locale;
 use Sylius\Component\Product\Model\ProductAttribute;
@@ -18,6 +18,7 @@ use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
 use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactory;
@@ -41,17 +42,17 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $syliusProductAttributeValue->setAttribute($syliusProductAttribute);
         $syliusProductAttributeValue->setValue('red');
 
-        $syliusTaxon = new SyliusTaxon();
+        $syliusTaxon = new Taxon();
         $syliusTaxon->setCurrentLocale('en_US');
-        $syliusTaxon->setCode('tree');
-        $syliusTaxon->setSlug('/tree');
+        $syliusTaxon->setCode('TREE');
+        $syliusTaxon->setSlug('tree');
         $syliusTaxon->setDescription('Lorem ipsum');
         $syliusProductTaxon = new ProductTaxon();
 
         $syliusLocale = new Locale();
         $syliusLocale->setCode('en_US');
 
-        $syliusProduct = new SyliusProduct();
+        $syliusProduct = new Product();
         $syliusProductVariant = new ProductVariant();
         $channelPrice = new ChannelPricing();
         $syliusChannel = new Channel();
@@ -60,6 +61,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
 
         $syliusProductTaxon->setProduct($syliusProduct);
         $syliusProductTaxon->setTaxon($syliusTaxon);
+        $syliusProductTaxon->setPosition(1);
         $channelPrice->setPrice(1000);
         $channelPrice->setChannelCode('mobile');
 
@@ -87,6 +89,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             AttributeDocument::class,
             ImageDocument::class,
             PriceDocument::class,
+            ProductTaxonDocument::class,
             TaxonDocument::class,
             ['color']
         );
@@ -98,16 +101,15 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         );
 
         $taxon = new TaxonDocument();
-        $taxon->setCode('tree');
+        $taxon->setCode('TREE');
         $taxon->setPosition(0);
-        $taxon->setSlug('/tree');
+        $taxon->setSlug('tree');
         $taxon->setDescription('Lorem ipsum');
 
-        $productTaxon = new TaxonDocument();
-        $productTaxon->setCode('tree');
-        $productTaxon->setSlug('/tree');
-        $productTaxon->setPosition(0);
-        $productTaxon->setDescription('Lorem ipsum');
+        $productTaxon = new ProductTaxonDocument();
+        $productTaxon->setCode('TREE');
+        $productTaxon->setSlug('tree');
+        $productTaxon->setPosition(1);
 
         $productAttribute = new AttributeDocument();
         $productAttribute->setCode('color');
@@ -132,7 +134,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($createdAt, $product->getCreatedAt());
         $this->assertEquals('Lorem ipsum', $product->getDescription());
         $this->assertEquals($taxon, $product->getMainTaxon());
-        $this->assertEquals(new Collection([$productTaxon]), $product->getTaxons());
+        $this->assertEquals(new Collection([$productTaxon]), $product->getProductTaxons());
         $this->assertEquals(0.0, $product->getAverageReviewRating());
     }
 
@@ -147,11 +149,12 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             AttributeDocument::class,
             ImageDocument::class,
             PriceDocument::class,
+            ProductTaxonDocument::class,
             TaxonDocument::class,
             []
         );
 
-        $syliusProduct = new SyliusProduct();
+        $syliusProduct = new Product();
         $syliusProduct->addVariant(new ProductVariant());
         $syliusProduct->addVariant(new ProductVariant());
         $syliusLocale = new Locale();
@@ -188,17 +191,17 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $secondSyliusProductAttributeValue->setAttribute($secondSyliusProductAttribute);
         $secondSyliusProductAttributeValue->setValue('M');
 
-        $syliusTaxon = new SyliusTaxon();
+        $syliusTaxon = new Taxon();
         $syliusTaxon->setCurrentLocale('en_US');
-        $syliusTaxon->setCode('tree');
-        $syliusTaxon->setSlug('/tree');
+        $syliusTaxon->setCode('TREE');
+        $syliusTaxon->setSlug('tree');
         $syliusTaxon->setDescription('Lorem ipsum');
         $syliusProductTaxon = new ProductTaxon();
 
         $syliusLocale = new Locale();
         $syliusLocale->setCode('en_US');
 
-        $syliusProduct = new SyliusProduct();
+        $syliusProduct = new Product();
         $syliusProductVariant = new ProductVariant();
         $channelPrice = new ChannelPricing();
         $syliusChannel = new Channel();
@@ -207,6 +210,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
 
         $syliusProductTaxon->setProduct($syliusProduct);
         $syliusProductTaxon->setTaxon($syliusTaxon);
+        $syliusProductTaxon->setPosition(1);
         $channelPrice->setPrice(1000);
         $channelPrice->setChannelCode('mobile');
 
@@ -235,6 +239,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             AttributeDocument::class,
             ImageDocument::class,
             PriceDocument::class,
+            ProductTaxonDocument::class,
             TaxonDocument::class,
             ['material']
         );
@@ -246,16 +251,15 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         );
 
         $taxon = new TaxonDocument();
-        $taxon->setCode('tree');
+        $taxon->setCode('TREE');
         $taxon->setPosition(0);
-        $taxon->setSlug('/tree');
+        $taxon->setSlug('tree');
         $taxon->setDescription('Lorem ipsum');
 
-        $productTaxon = new TaxonDocument();
-        $productTaxon->setCode('tree');
-        $productTaxon->setSlug('/tree');
-        $productTaxon->setPosition(0);
-        $productTaxon->setDescription('Lorem ipsum');
+        $productTaxon = new ProductTaxonDocument();
+        $productTaxon->setCode('TREE');
+        $productTaxon->setSlug('tree');
+        $productTaxon->setPosition(1);
 
         $firstProductAttribute = new AttributeDocument();
         $firstProductAttribute->setCode('material');
@@ -286,7 +290,8 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($createdAt, $product->getCreatedAt());
         $this->assertEquals('Lorem ipsum', $product->getDescription());
         $this->assertEquals($taxon, $product->getMainTaxon());
-        $this->assertEquals(new Collection([$productTaxon]), $product->getTaxons());
+        $this->assertEquals(new Collection([$taxon]), $product->getTaxons());
+        $this->assertEquals(new Collection([$productTaxon]), $product->getProductTaxons());
         $this->assertEquals(0.0, $product->getAverageReviewRating());
     }
 
@@ -318,32 +323,33 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $secondSyliusProductAttributeValue->setAttribute($secondSyliusProductAttribute);
         $secondSyliusProductAttributeValue->setValue('M');
 
-        $syliusParentTaxon = new SyliusTaxon();
+        $syliusParentTaxon = new Taxon();
         $syliusParentTaxon->setCurrentLocale('en_US');
-        $syliusParentTaxon->setCode('root');
-        $syliusParentTaxon->setSlug('/root');
+        $syliusParentTaxon->setCode('ROOT');
+        $syliusParentTaxon->setSlug('root');
         $syliusParentTaxon->setDescription('Lorem ipsum');
 
-        $syliusTaxon = new SyliusTaxon();
+        $syliusTaxon = new Taxon();
         $syliusTaxon->setCurrentLocale('en_US');
-        $syliusTaxon->setCode('tree');
-        $syliusTaxon->setSlug('/tree');
+        $syliusTaxon->setCode('TREE');
+        $syliusTaxon->setSlug('tree');
         $syliusTaxon->setDescription('Lorem ipsum');
         $syliusTaxon->setParent($syliusParentTaxon);
-        $syliusProductTaxon = new ProductTaxon();
 
         $syliusLocale = new Locale();
         $syliusLocale->setCode('en_US');
 
-        $syliusProduct = new SyliusProduct();
+        $syliusProduct = new Product();
         $syliusProductVariant = new ProductVariant();
         $channelPrice = new ChannelPricing();
         $syliusChannel = new Channel();
         $currency = new Currency();
         $currency->setCode('USD');
 
+        $syliusProductTaxon = new ProductTaxon();
         $syliusProductTaxon->setProduct($syliusProduct);
         $syliusProductTaxon->setTaxon($syliusTaxon);
+        $syliusProductTaxon->setPosition(1);
         $channelPrice->setPrice(1000);
         $channelPrice->setChannelCode('mobile');
 
@@ -372,6 +378,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             AttributeDocument::class,
             ImageDocument::class,
             PriceDocument::class,
+            ProductTaxonDocument::class,
             TaxonDocument::class,
             ['material']
         );
@@ -383,22 +390,21 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         );
 
         $taxon = new TaxonDocument();
-        $taxon->setCode('tree');
+        $taxon->setCode('TREE');
         $taxon->setPosition(0);
-        $taxon->setSlug('/tree');
+        $taxon->setSlug('tree');
         $taxon->setDescription('Lorem ipsum');
 
         $rootTaxon = new TaxonDocument();
-        $rootTaxon->setCode('root');
+        $rootTaxon->setCode('ROOT');
         $rootTaxon->setPosition(0);
-        $rootTaxon->setSlug('/root');
+        $rootTaxon->setSlug('root');
         $rootTaxon->setDescription('Lorem ipsum');
 
-        $productTaxon = new TaxonDocument();
-        $productTaxon->setCode('tree');
-        $productTaxon->setSlug('/tree');
-        $productTaxon->setPosition(0);
-        $productTaxon->setDescription('Lorem ipsum');
+        $productTaxon = new ProductTaxonDocument();
+        $productTaxon->setCode('TREE');
+        $productTaxon->setSlug('tree');
+        $productTaxon->setPosition(1);
 
         $firstProductAttribute = new AttributeDocument();
         $firstProductAttribute->setCode('material');
@@ -429,6 +435,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($createdAt, $product->getCreatedAt());
         $this->assertEquals('Lorem ipsum', $product->getDescription());
         $this->assertEquals($taxon, $product->getMainTaxon());
-        $this->assertEquals(new Collection([$productTaxon, $rootTaxon]), $product->getTaxons());
+        $this->assertEquals(new Collection([$taxon, $rootTaxon]), $product->getTaxons());
+        $this->assertEquals(new Collection([$productTaxon]), $product->getProductTaxons());
     }
 }

@@ -85,6 +85,16 @@ final class SearchController
             $request->query->set('locale', $channel->getDefaultLocale()->getCode());
         }
 
+        if (!$request->query->has('sort')) {
+            if (null !== $request->get('taxonCode')) {
+                $request->query->set('sort', ['taxonPositionByCode' => [$request->get('taxonCode') => 'ASC']]);
+            }
+
+            if (null !== $request->get('taxonSlug')) {
+                $request->query->set('sort', ['taxonPositionBySlug' => [$request->get('taxonSlug') => 'ASC']]);
+            }
+        }
+
         $request->query->set('enabled', true);
 
         $response = $this->filterManager->handleRequest($request);
