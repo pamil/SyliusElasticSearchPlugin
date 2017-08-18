@@ -56,8 +56,16 @@
             <tag name="ongr_filter_manager.filter" type="sylius_elastic_search.sort" />
         </service>
 
-        <service id="sylius_elastic_search.filter.multi_dynamic_aggregate" class="Sylius\ElasticSearchPlugin\Filter\Widget\MultiDynamicAggregateWithoutView">
+        <service id="sylius_elastic_search.filter.multi_dynamic_aggregate" class="Sylius\ElasticSearchPlugin\Filter\Widget\MultiDynamicAggregateOverride">
             <tag name="ongr_filter_manager.filter" type="sylius_elastic_search.multi_dynamic_aggregate" />
+        </service>
+
+        <service id="sylius_elastic_search.filter.multi_dynamic_aggregate_without_view" class="Sylius\ElasticSearchPlugin\Filter\Widget\MultiDynamicAggregateWithoutView">
+            <tag name="ongr_filter_manager.filter" type="sylius_elastic_search.multi_dynamic_aggregate_without_view" />
+        </service>
+
+        <service id="sylius_elastic_search.filter.multi_dynamic_aggregate_options" class="Sylius\ElasticSearchPlugin\Filter\Widget\OptionMultiDynamicAggregate">
+            <tag name="ongr_filter_manager.filter" type="sylius_elastic_search.multi_dynamic_aggregate_options" />
         </service>
     </services>
 </container>
