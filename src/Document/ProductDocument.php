@@ -13,6 +13,8 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class ProductDocument
 {
     /**
+     * @var mixed
+     *
      * @ElasticSearch\Id()
      */
     private $id;
@@ -125,6 +127,13 @@ class ProductDocument
     private $createdAt;
 
     /**
+     * @var Collection
+     *
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\VariantDocument", multiple=true)
+     */
+    private $variants;
+
+    /**
      * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
@@ -136,6 +145,7 @@ class ProductDocument
         $this->attributes = new Collection();
         $this->taxons = new Collection();
         $this->images = new Collection();
+        $this->variants = new Collection();
     }
 
     /**
@@ -253,7 +263,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -285,7 +295,7 @@ class ProductDocument
     /**
      * @return TaxonDocument
      */
-    public function getMainTaxon(): TaxonDocument
+    public function getMainTaxon(): ?TaxonDocument
     {
         return $this->mainTaxon;
     }
@@ -392,5 +402,21 @@ class ProductDocument
     public function setSynchronisedAt(\DateTimeInterface $synchronisedAt)
     {
         $this->synchronisedAt = $synchronisedAt;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getVariants(): Collection
+    {
+        return $this->variants;
+    }
+
+    /**
+     * @param Collection $variants
+     */
+    public function setVariants(Collection $variants)
+    {
+        $this->variants = $variants;
     }
 }

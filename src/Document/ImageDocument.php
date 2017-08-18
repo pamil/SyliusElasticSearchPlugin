@@ -27,7 +27,7 @@ class ImageDocument
     /**
      * @return string
      */
-    public function getCode(): string
+    public function getCode(): ?string
     {
         return $this->code;
     }
@@ -35,7 +35,7 @@ class ImageDocument
     /**
      * @param string $code
      */
-    public function setCode(string $code)
+    public function setCode(?string $code)
     {
         $this->code = $code;
     }

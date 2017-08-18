@@ -30,7 +30,7 @@ class TaxonDocument
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $position;
+    private $position = 0;
 
     /**
      * @var ImageDocument[]|Collection

@@ -49,11 +49,19 @@ class VariantDocument
     private $onHold;
 
     /**
+     * @var Collection
+     *
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\OptionDocument", multiple=true)
+     */
+    private $options;
+
+    /**
      * VariantDocument constructor.
      */
     public function __construct()
     {
         $this->images = new Collection();
+        $this->options = new Collection();
     }
 
     /**
@@ -134,6 +142,22 @@ class VariantDocument
     public function setOnHold(int $onHold)
     {
         $this->onHold = $onHold;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getOptions(): Collection
+    {
+        return $this->options;
+    }
+
+    /**
+     * @param Collection $options
+     */
+    public function setOptions(Collection $options)
+    {
+        $this->options = $options;
     }
 
 }

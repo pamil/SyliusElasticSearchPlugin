@@ -38,7 +38,7 @@ final class ProductPublisher
         $scheduledInsertions = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityInsertions();
 
         foreach ($scheduledInsertions as $entity) {
-            if ($entity instanceof ProductInterface && $entity->isSimple()) {
+            if ($entity instanceof ProductInterface) {
                 $this->scheduledProducts[] = $entity;
             }
         }
