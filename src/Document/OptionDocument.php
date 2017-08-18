@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: psihius
- * Date: 17.08.2017
- * Time: 14:22
- */
+
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Document;
 
