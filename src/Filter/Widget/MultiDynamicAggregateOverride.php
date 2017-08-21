@@ -16,6 +16,15 @@ use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use ONGR\ElasticsearchDSL\Search;
 use ONGR\FilterManagerBundle\Filter\FilterState;
 
+/**
+ * Class MultiDynamicAggregateOverride implements the size option handling in the preProcessSearch method to be able
+ * to set the amount of aggregation buckets returned, otherwise Elastic returns only 10 by default and there is not way
+ * to change that globally - only via the query options for the aggregation object.
+ * All other multi dynamic aggregates are extending from this class in the plugin. Size option is implemented in other
+ * types of filters by the FilterManagerBundle
+ * 
+ * @package Sylius\ElasticSearchPlugin\Filter\Widget
+ */
 class MultiDynamicAggregateOverride extends MultiDynamicAggregate
 {
     /**

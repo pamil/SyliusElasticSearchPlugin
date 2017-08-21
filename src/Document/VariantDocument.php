@@ -12,7 +12,6 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
  */
 class VariantDocument
 {
-
     /**
      * @var Collection
      *
@@ -39,14 +38,14 @@ class VariantDocument
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $onHand;
+    private $stock;
 
     /**
-     * @var int
+     * @var bool
      *
-     * @ElasticSearch\Property(type="integer")
+     * @ElasticSearch\Property(type="boolean")
      */
-    private $onHold;
+    private $isTracked;
 
     /**
      * @var Collection
@@ -55,9 +54,6 @@ class VariantDocument
      */
     private $options;
 
-    /**
-     * VariantDocument constructor.
-     */
     public function __construct()
     {
         $this->images = new Collection();
@@ -75,7 +71,7 @@ class VariantDocument
     /**
      * @param Collection $images
      */
-    public function setImages(Collection $images)
+    public function setImages(Collection $images): void
     {
         $this->images = $images;
     }
@@ -91,7 +87,7 @@ class VariantDocument
     /**
      * @param PriceDocument $price
      */
-    public function setPrice(PriceDocument $price)
+    public function setPrice(PriceDocument $price): void
     {
         $this->price = $price;
     }
@@ -107,7 +103,7 @@ class VariantDocument
     /**
      * @param string $code
      */
-    public function setCode(string $code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -115,33 +111,38 @@ class VariantDocument
     /**
      * @return int
      */
-    public function getOnHand(): int
+    public function getStock(): int
     {
-        return $this->onHand;
+        return $this->stock;
     }
 
     /**
-     * @param int $onHand
+     * @param int $stock
      */
-    public function setOnHand(int $onHand)
+    public function setStock(int $stock): void
     {
-        $this->onHand = $onHand;
+        $this->stock = $stock;
+    }
+
+    public function getIsTracked(): bool
+    {
+        return $this->isTracked;
     }
 
     /**
-     * @return int
+     * @return bool
      */
-    public function getOnHold(): int
+    public function isTracked(): bool
     {
-        return $this->onHold;
+        return $this->getIsTracked();
     }
 
     /**
-     * @param int $onHold
+     * @param bool $isTracked
      */
-    public function setOnHold(int $onHold)
+    public function setIsTracked(bool $isTracked): void
     {
-        $this->onHold = $onHold;
+        $this->isTracked = $isTracked;
     }
 
     /**
@@ -155,7 +156,7 @@ class VariantDocument
     /**
      * @param Collection $options
      */
-    public function setOptions(Collection $options)
+    public function setOptions(Collection $options): void
     {
         $this->options = $options;
     }

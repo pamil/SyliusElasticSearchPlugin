@@ -63,7 +63,7 @@ class TaxonDocument
     /**
      * @param string $code
      */
-    public function setCode(string $code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -79,7 +79,7 @@ class TaxonDocument
     /**
      * @param string $slug
      */
-    public function setSlug(string $slug)
+    public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }
@@ -95,7 +95,7 @@ class TaxonDocument
     /**
      * @param int $position
      */
-    public function setPosition(int $position)
+    public function setPosition(int $position): void
     {
         $this->position = $position;
     }
@@ -111,7 +111,7 @@ class TaxonDocument
     /**
      * @param Collection $images
      */
-    public function setImages(Collection $images)
+    public function setImages(Collection $images): void
     {
         $this->images = $images;
     }
@@ -127,7 +127,7 @@ class TaxonDocument
     /**
      * @param string|null $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }

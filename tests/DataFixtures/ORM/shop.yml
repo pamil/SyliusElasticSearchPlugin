@@ -50,7 +50,7 @@ Sylius\Component\Core\Model\Product:
             - "@de_de_mug_holiday_collection_value"
             - "@en_gb_mug_wood_material_value"
             - "@de_de_mug_wood_material_value"
-        variants: ["@mug_variant"]
+        variants: ["@mug_variant_big", "@mug_variant_small"]
     hat:
         code: "LOGAN_HAT_CODE"
         channels: ["@gb_web_channel"]
@@ -74,7 +74,7 @@ Sylius\Component\Core\Model\Product:
         attributes:
             - "@en_gb_production_year_value_t_shirt"
             - "@de_de_production_year_value_t_shirt"
-        variants: ["@t_shirt_small"]
+        variants: ["@t_shirt_small", "@t_shirt_medium", "@t_shirt_large", "@t_shirt_extra_large"]
     disabled_t_shirt:
         code: "DISABLED_T_SHIRT_CODE"
         enabled: false
@@ -141,12 +141,31 @@ Sylius\Component\Core\Model\ChannelPricing:
         price: 1500
 
 Sylius\Component\Core\Model\ProductVariant:
-    mug_variant:
+    mug_variant_big:
         code: "LOGAN_MUG_CODE"
         product: "@mug"
         currentLocale: "en_GB"
         currentTranslation: "@en_gb_mug_variant_translation"
         translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
+        onHand: 0
+        onHold: 0
+        isTracked: false
+        optionValues:
+            - "@mug_option_big_value"
+        channelPricings:
+            - "@gb_mug_web_channel_pricing"
+            - "@de_mug_web_channel_pricing"
+    mug_variant_small:
+        code: "LOGAN_MUG_CODE"
+        product: "@mug"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_mug_variant_translation"
+        translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
+        onHand: 0
+        onHold: 0
+        isTracked: false
+        optionValues:
+            - "@mug_option_small_value"
         channelPricings:
             - "@gb_mug_web_channel_pricing"
             - "@de_mug_web_channel_pricing"
@@ -156,6 +175,11 @@ Sylius\Component\Core\Model\ProductVariant:
         currentLocale: "en_GB"
         currentTranslation: "@en_gb_hat_variant_translation"
         translations: ["@en_gb_hat_variant_translation", "@de_de_hat_variant_translation"]
+        onHand: 2
+        onHold: 0
+        isTracked: false
+        optionValues:
+            - "@hat_option_value"
         channelPricings:
             - "@gb_hat_web_channel_pricing"
     t_shirt_small:
@@ -163,6 +187,47 @@ Sylius\Component\Core\Model\ProductVariant:
         product: "@t_shirt"
         currentLocale: "en_GB"
         currentTranslation: "@small_t_shirt_translation"
+        onHand: 1
+        onHold: 0
+        isTracked: true
+        optionValues:
+            - "@t_shirt_s_option_value"
+        channelPricings:
+            - "@gb_small_t_shirt_web_channel_pricing"
+    t_shirt_medium:
+        code: "MEDIUM_LOGAN_T_SHIRT_CODE"
+        product: "@t_shirt"
+        currentLocale: "en_GB"
+        currentTranslation: "@medium_t_shirt_translation"
+        onHand: 1
+        onHold: 0
+        isTracked: true
+        optionValues:
+            - "@t_shirt_m_option_value"
+        channelPricings:
+            - "@gb_small_t_shirt_web_channel_pricing"
+    t_shirt_large:
+        code: "LARGE_LOGAN_T_SHIRT_CODE"
+        product: "@t_shirt"
+        currentLocale: "en_GB"
+        currentTranslation: "@large_t_shirt_translation"
+        onHand: 1
+        onHold: 0
+        isTracked: true
+        optionValues:
+            - "@t_shirt_l_option_value"
+        channelPricings:
+            - "@gb_small_t_shirt_web_channel_pricing"
+    t_shirt_extra_large:
+        code: "EXTRA_LARGE_LOGAN_T_SHIRT_CODE"
+        product: "@t_shirt"
+        currentLocale: "en_GB"
+        currentTranslation: "@extra_large_t_shirt_translation"
+        onHand: 1
+        onHold: 0
+        isTracked: true
+        optionValues:
+            - "@t_shirt_xl_option_value"
         channelPricings:
             - "@gb_small_t_shirt_web_channel_pricing"
     disabled_t_shirt_small:
@@ -170,6 +235,11 @@ Sylius\Component\Core\Model\ProductVariant:
         product: "@disabled_t_shirt"
         currentLocale: "en_GB"
         currentTranslation: "@small_disabled_t_shirt_translation"
+        onHand: 2
+        onHold: 1
+        isTracked: true
+        optionValues:
+            - "@t_shirt_s_option_value"
         channelPricings:
             - "@gb_small_disabled_t_shirt_web_channel_pricing"
 
@@ -194,6 +264,18 @@ Sylius\Component\Product\Model\ProductVariantTranslation:
         locale: "en_GB"
         name: "Small Logan T-Shirt"
         translatable: "@t_shirt_small"
+    medium_t_shirt_translation:
+        locale: "en_GB"
+        name: "Medium Logan T-Shirt"
+        translatable: "@t_shirt_medium"
+    large_t_shirt_translation:
+        locale: "en_GB"
+        name: "Large Logan T-Shirt"
+        translatable: "@t_shirt_large"
+    extra_large_t_shirt_translation:
+        locale: "en_GB"
+        name: "Extra Large Logan T-Shirt"
+        translatable: "@t_shirt_extra_large"
     small_disabled_t_shirt_translation:
         locale: "en_GB"
         name: "Small Disabled T-Shirt"
@@ -421,3 +503,116 @@ Sylius\Component\Product\Model\ProductAttributeValue:
         attribute: "@production_year"
         localeCode: "de_DE"
         text: "2010"
+
+Sylius\Component\Core\Model\ProductOption:
+    mug_option:
+        code: "MUG_SIZE"
+        position: 1
+    hat_option:
+        code: "HAT_SIZE"
+        position: 1
+    t_shirt_option:
+        code: "T_SHIRT_SIZE"
+        position: 1
+
+Sylius\Component\Core\Model\ProductOptionValue:
+    mug_option_big_value:
+        option: "@mug_option"
+        code: "BIG_MUG"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_big_mug_product_option_value_translation"
+        translations: ["@en_gb_big_mug_product_option_value_translation", "@de_de_big_mug_product_option_value_translation"]
+    mug_option_small_value:
+        option: "@mug_option"
+        code: "SMALL_MUG"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_small_mug_product_option_value_translation"
+        translations: ["@en_gb_small_mug_product_option_value_translation", "@de_de_small_mug_product_option_value_translation"]
+    hat_option_value:
+        option: "@hat_option"
+        code: "SMALL_HAT"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_small_hat_product_option_value_translation"
+        translations: ["@en_gb_small_hat_product_option_value_translation", "@de_de_small_hat_product_option_value_translation"]
+    t_shirt_s_option_value:
+        option: "@t_shirt_option"
+        code: "T_SHIRT_S"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_s_product_option_value_translation"
+        translations: ["@en_gb_t_shirt_s_product_option_value_translation", "@de_de_t_shirt_s_product_option_value_translation"]
+    t_shirt_m_option_value:
+        option: "@t_shirt_option"
+        code: "T_SHIRT_M"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_m_product_option_value_translation"
+        translations: ["@en_gb_t_shirt_m_product_option_value_translation", "@de_de_t_shirt_m_product_option_value_translation"]
+    t_shirt_l_option_value:
+        option: "@t_shirt_option"
+        code: "T_SHIRT_L"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_l_product_option_value_translation"
+        translations: ["@en_gb_t_shirt_l_product_option_value_translation", "@de_de_t_shirt_l_product_option_value_translation"]
+    t_shirt_xl_option_value:
+        option: "@t_shirt_option"
+        code: "T_SHIRT_XL"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_xl_product_option_value_translation"
+        translations: ["@en_gb_t_shirt_xl_product_option_value_translation", "@de_de_t_shirt_xl_product_option_value_translation"]
+
+Sylius\Component\Core\Model\ProductOptionValueTranslation:
+    en_gb_big_mug_product_option_value_translation:
+        locale: "en_GB"
+        value: "Big mug"
+        translatable: "@mug_option_big_value"
+    de_de_big_mug_product_option_value_translation:
+        locale: "de_DE"
+        value: "Großer Becher"
+        translatable: "@mug_option_big_value"
+    en_gb_small_mug_product_option_value_translation:
+        locale: "en_GB"
+        value: "Small mug"
+        translatable: "@mug_option_small_value"
+    de_de_small_mug_product_option_value_translation:
+        locale: "de_DE"
+        value: "Kleiner Becher"
+        translatable: "@mug_option_small_value"
+    en_gb_small_hat_product_option_value_translation:
+        locale: "en_GB"
+        value: "Small hat"
+        translatable: "@hat_option_value"
+    de_de_small_hat_product_option_value_translation:
+        locale: "de_DE"
+        value: "Kleiner Hut"
+        translatable: "@hat_option_value"
+    en_gb_t_shirt_s_product_option_value_translation:
+        locale: "en_GB"
+        value: "S"
+        translatable: "@t_shirt_s_option_value"
+    de_de_t_shirt_s_product_option_value_translation:
+        locale: "de_DE"
+        value: "S"
+        translatable: "@t_shirt_s_option_value"
+    en_gb_t_shirt_m_product_option_value_translation:
+        locale: "en_GB"
+        value: "M"
+        translatable: "@t_shirt_m_option_value"
+    de_de_t_shirt_m_product_option_value_translation:
+        locale: "de_DE"
+        value: "M"
+        translatable: "@t_shirt_m_option_value"
+    en_gb_t_shirt_l_product_option_value_translation:
+        locale: "en_GB"
+        value: "L"
+        translatable: "@t_shirt_l_option_value"
+    de_de_t_shirt_l_product_option_value_translation:
+        locale: "de_DE"
+        value: "L"
+        translatable: "@t_shirt_l_option_value"
+    en_gb_t_shirt_xl_product_option_value_translation:
+        locale: "en_GB"
+        value: "XL"
+        translatable: "@t_shirt_xl_option_value"
+    de_de_t_shirt_xl_product_option_value_translation:
+        locale: "de_DE"
+        value: "XL"
+        translatable: "@t_shirt_xl_option_value"

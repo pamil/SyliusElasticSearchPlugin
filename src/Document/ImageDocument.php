@@ -36,7 +36,7 @@ class ImageDocument
     /**
      * @param string $code
      */
-    public function setCode(?string $code)
+    public function setCode(?string $code): void
     {
         $this->code = $code;
     }
@@ -52,7 +52,7 @@ class ImageDocument
     /**
      * @param string $path
      */
-    public function setPath(string $path)
+    public function setPath(string $path): void
     {
         $this->path = $path;
     }

@@ -175,7 +175,7 @@ class ProductDocument
     /**
      * @param string $code
      */
-    public function setCode(string $code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -191,7 +191,7 @@ class ProductDocument
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -207,7 +207,7 @@ class ProductDocument
     /**
      * @param bool $enabled
      */
-    public function setEnabled(bool $enabled)
+    public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
     }
@@ -223,7 +223,7 @@ class ProductDocument
     /**
      * @param string $slug
      */
-    public function setSlug(string $slug)
+    public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }
@@ -239,7 +239,7 @@ class ProductDocument
     /**
      * @param string $channelCode
      */
-    public function setChannelCode(string $channelCode)
+    public function setChannelCode(string $channelCode): void
     {
         $this->channelCode = $channelCode;
     }
@@ -255,7 +255,7 @@ class ProductDocument
     /**
      * @param string $localeCode
      */
-    public function setLocaleCode(string $localeCode)
+    public function setLocaleCode(string $localeCode): void
     {
         $this->localeCode = $localeCode;
     }
@@ -271,7 +271,7 @@ class ProductDocument
     /**
      * @param string $description
      */
-    public function setDescription(?string $description)
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -287,7 +287,7 @@ class ProductDocument
     /**
      * @param PriceDocument $price
      */
-    public function setPrice(PriceDocument $price)
+    public function setPrice(PriceDocument $price): void
     {
         $this->price = $price;
     }
@@ -303,7 +303,7 @@ class ProductDocument
     /**
      * @param TaxonDocument $mainTaxon
      */
-    public function setMainTaxon(TaxonDocument $mainTaxon)
+    public function setMainTaxon(TaxonDocument $mainTaxon): void
     {
         $this->mainTaxon = $mainTaxon;
     }
@@ -319,7 +319,7 @@ class ProductDocument
     /**
      * @param Collection $taxons
      */
-    public function setTaxons(Collection $taxons)
+    public function setTaxons(Collection $taxons): void
     {
         $this->taxons = $taxons;
     }
@@ -335,7 +335,7 @@ class ProductDocument
     /**
      * @param Collection $attributes
      */
-    public function setAttributes(Collection $attributes)
+    public function setAttributes(Collection $attributes): void
     {
         $this->attributes = $attributes;
     }
@@ -351,7 +351,7 @@ class ProductDocument
     /**
      * @param Collection $images
      */
-    public function setImages(Collection $images)
+    public function setImages(Collection $images): void
     {
         $this->images = $images;
     }
@@ -367,7 +367,7 @@ class ProductDocument
     /**
      * @param float $averageReviewRating
      */
-    public function setAverageReviewRating(float $averageReviewRating)
+    public function setAverageReviewRating(float $averageReviewRating): void
     {
         $this->averageReviewRating = $averageReviewRating;
     }
@@ -383,7 +383,7 @@ class ProductDocument
     /**
      * @param \DateTimeInterface $createdAt
      */
-    public function setCreatedAt(\DateTimeInterface $createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
@@ -399,7 +399,7 @@ class ProductDocument
     /**
      * @param \DateTimeInterface $synchronisedAt
      */
-    public function setSynchronisedAt(\DateTimeInterface $synchronisedAt)
+    public function setSynchronisedAt(\DateTimeInterface $synchronisedAt): void
     {
         $this->synchronisedAt = $synchronisedAt;
     }
@@ -415,7 +415,7 @@ class ProductDocument
     /**
      * @param Collection $variants
      */
-    public function setVariants(Collection $variants)
+    public function setVariants(Collection $variants): void
     {
         $this->variants = $variants;
     }

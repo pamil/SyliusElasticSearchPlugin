@@ -36,7 +36,7 @@ class PriceDocument
     /**
      * @param int $amount
      */
-    public function setAmount(int $amount)
+    public function setAmount(int $amount): void
     {
         $this->amount = $amount;
     }
@@ -52,7 +52,7 @@ class PriceDocument
     /**
      * @param string $currency
      */
-    public function setCurrency(string $currency)
+    public function setCurrency(string $currency): void
     {
         $this->currency = $currency;
     }

@@ -11,7 +11,6 @@ use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
  */
 class OptionDocument
 {
-
     /**
      * @var string
      *
@@ -64,7 +63,7 @@ class OptionDocument
     /**
      * @param string $code
      */
-    public function setCode(string $code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -80,7 +79,7 @@ class OptionDocument
     /**
      * @param string $name
      */
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -96,7 +95,7 @@ class OptionDocument
     /**
      * @param string $value
      */
-    public function setValue(string $value)
+    public function setValue(string $value): void
     {
         $this->value = $value;
     }

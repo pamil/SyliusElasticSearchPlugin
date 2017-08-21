@@ -87,6 +87,10 @@ final class SearchController
             $request->query->set('locale', $channel->getDefaultLocale()->getCode());
         }
 
+        if (!$request->query->has('stock')) {
+            $request->query->set('stock', '1');
+        }
+
         $request->query->set('enabled', true);
 
         $response = $this->filterManager->handleRequest($request);
