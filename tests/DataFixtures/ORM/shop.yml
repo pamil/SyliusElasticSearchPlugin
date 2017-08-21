@@ -507,7 +507,7 @@ Sylius\Component\Product\Model\ProductAttributeValue:
         localeCode: "de_DE"
         text: "2010"
 
-Sylius\Component\Core\Model\ProductOption:
+Sylius\Component\Product\Model\ProductOption:
     mug_option:
         code: "MUG_SIZE"
         position: 1
@@ -518,7 +518,7 @@ Sylius\Component\Core\Model\ProductOption:
         code: "T_SHIRT_SIZE"
         position: 1
 
-Sylius\Component\Core\Model\ProductOptionValue:
+Sylius\Component\Product\Model\ProductOptionValue:
     mug_option_big_value:
         option: "@mug_option"
         code: "BIG_MUG"
@@ -562,7 +562,7 @@ Sylius\Component\Core\Model\ProductOptionValue:
         currentTranslation: "@en_gb_t_shirt_xl_product_option_value_translation"
         translations: ["@en_gb_t_shirt_xl_product_option_value_translation", "@de_de_t_shirt_xl_product_option_value_translation"]
 
-Sylius\Component\Core\Model\ProductOptionValueTranslation:
+Sylius\Component\Product\Model\ProductOptionValueTranslation:
     en_gb_big_mug_product_option_value_translation:
         locale: "en_GB"
         value: "Big mug"
