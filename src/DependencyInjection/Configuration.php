@@ -23,6 +23,7 @@ use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -63,6 +64,7 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('attribute')->defaultValue(AttributeDocument::class)->end()
                         ->scalarNode('image')->defaultValue(ImageDocument::class)->end()
                         ->scalarNode('price')->defaultValue(PriceDocument::class)->end()
+                        ->scalarNode('product_taxon')->defaultValue(ProductTaxonDocument::class)->end()
                         ->scalarNode('taxon')->defaultValue(TaxonDocument::class)->end()
                     ->end()
                 ->end()

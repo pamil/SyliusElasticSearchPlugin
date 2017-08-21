@@ -17,6 +17,7 @@ use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 final class ProductListViewFactory implements ProductListViewFactoryInterface
@@ -43,13 +44,13 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     private $taxonViewClass;
 
     public function __construct(
-        $productListViewClass,
-        $productViewClass,
-        $productVariantViewClass,
-        $attributeViewClass,
-        $imageViewClass,
-        $priceViewClass,
-        $taxonViewClass
+        string $productListViewClass,
+        string $productViewClass,
+        string $productVariantViewClass,
+        string $attributeViewClass,
+        string $imageViewClass,
+        string $priceViewClass,
+        string $taxonViewClass
     ) {
         $this->productListViewClass = $productListViewClass;
         $this->productViewClass = $productViewClass;

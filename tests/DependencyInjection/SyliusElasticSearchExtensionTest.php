@@ -17,6 +17,7 @@ use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 final class SyliusElasticSearchExtensionTest extends AbstractExtensionTestCase
@@ -40,6 +41,7 @@ final class SyliusElasticSearchExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasParameter('sylius_elastic_search.document.attribute.class', AttributeDocument::class);
         $this->assertContainerBuilderHasParameter('sylius_elastic_search.document.image.class', ImageDocument::class);
         $this->assertContainerBuilderHasParameter('sylius_elastic_search.document.price.class', PriceDocument::class);
+        $this->assertContainerBuilderHasParameter('sylius_elastic_search.document.product_taxon.class', ProductTaxonDocument::class);
         $this->assertContainerBuilderHasParameter('sylius_elastic_search.document.taxon.class', TaxonDocument::class);
     }
 

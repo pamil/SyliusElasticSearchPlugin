@@ -2,12 +2,12 @@
 
 namespace Sylius\ElasticSearchPlugin\Factory;
 
-use Doctrine\ORM\Id\UuidGenerator;
 use ONGR\ElasticsearchBundle\Collection\Collection;
 use Ramsey\Uuid\Uuid;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\ProductTaxonInterface;
 use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Core\Model\TaxonInterface;
@@ -19,6 +19,7 @@ use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
 
@@ -37,25 +38,21 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     private $priceDocumentClass;
 
     /** @var string */
+    private $productTaxonDocumentClass;
+
+    /** @var string */
     private $taxonDocumentClass;
 
     /** @var array */
     private $attributeWhitelist = [];
 
-    /**
-     * @param string $productDocumentClass
-     * @param string $attributeDocumentClass
-     * @param string $imageDocumentClass
-     * @param string $priceDocumentClass
-     * @param string $taxonDocumentClass
-     * @param array $attributeWhitelist
-     */
     public function __construct(
-        $productDocumentClass,
-        $attributeDocumentClass,
-        $imageDocumentClass,
-        $priceDocumentClass,
-        $taxonDocumentClass,
+        string $productDocumentClass,
+        string $attributeDocumentClass,
+        string $imageDocumentClass,
+        string $priceDocumentClass,
+        string $productTaxonDocumentClass,
+        string $taxonDocumentClass,
         array $attributeWhitelist
     ) {
         $this->assertClassExtends($productDocumentClass, ProductDocument::class);
@@ -70,6 +67,9 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $this->assertClassExtends($priceDocumentClass, PriceDocument::class);
         $this->priceDocumentClass = $priceDocumentClass;
 
+        $this->assertClassExtends($productTaxonDocumentClass, ProductTaxonDocument::class);
+        $this->productTaxonDocumentClass = $productTaxonDocumentClass;
+
         $this->assertClassExtends($taxonDocumentClass, TaxonDocument::class);
         $this->taxonDocumentClass = $taxonDocumentClass;
 
@@ -77,108 +77,111 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     }
 
     /**
-     * @param ProductInterface $syliusProduct
+     * @param ProductInterface $product
      * @param LocaleInterface $locale
      * @param ChannelInterface $channel
      *
      * @return ProductDocument
      */
-    public function createFromSyliusSimpleProductModel(ProductInterface $syliusProduct, LocaleInterface $locale, ChannelInterface $channel)
+    public function createFromSyliusSimpleProductModel(ProductInterface $product, LocaleInterface $locale, ChannelInterface $channel)
     {
-        if (!$syliusProduct->isSimple()) {
+        if (!$product->isSimple()) {
             throw new UnsupportedFactoryMethodException(
                 __METHOD__,
                 sprintf(
                     'Cannot create elastic search model from configurable product "%s".',
-                    $syliusProduct->getCode()
+                    $product->getCode()
                 )
             );
         }
 
         /** @var ProductVariantInterface $productVariant */
-        $productVariant = $syliusProduct->getVariants()->first();
+        $productVariant = $product->getVariants()->first();
 
         /** @var ProductTranslationInterface|TranslationInterface $productTranslation */
-        $productTranslation = $syliusProduct->getTranslation($locale->getCode());
+        $productTranslation = $product->getTranslation($locale->getCode());
         $channelPrice = $this->getChannelPricingForChannelFromProductVariant($productVariant, $channel);
-        $syliusProductAttributes = $syliusProduct->getAttributesByLocale(
+        $productAttributes = $product->getAttributesByLocale(
             $locale->getCode(),
             $channel->getDefaultLocale()->getCode()
         );
-        $syliusProductTaxons = $syliusProduct->getProductTaxons();
 
-        /** @var ProductDocument $product */
-        $product = new $this->productDocumentClass();
-        $product->setId(Uuid::uuid4()->toString());
-        $product->setEnabled($syliusProduct->isEnabled());
-        $product->setLocaleCode($locale->getCode());
-        $product->setSlug($productTranslation->getSlug());
-        $product->setName($productTranslation->getName());
-        $product->setDescription($productTranslation->getDescription());
-        $product->setChannelCode($channel->getCode());
-        $product->setCode($syliusProduct->getCode());
-        $product->setCreatedAt($syliusProduct->getCreatedAt());
-        $product->setSynchronisedAt(new \DateTime('now'));
-        $product->setAverageReviewRating($syliusProduct->getAverageRating());
+        /** @var ProductDocument $productDocument */
+        $productDocument = new $this->productDocumentClass();
+        $productDocument->setId(Uuid::uuid4()->toString());
+        $productDocument->setEnabled($product->isEnabled());
+        $productDocument->setLocaleCode($locale->getCode());
+        $productDocument->setSlug($productTranslation->getSlug());
+        $productDocument->setName($productTranslation->getName());
+        $productDocument->setDescription($productTranslation->getDescription());
+        $productDocument->setChannelCode($channel->getCode());
+        $productDocument->setCode($product->getCode());
+        $productDocument->setCreatedAt($product->getCreatedAt());
+        $productDocument->setSynchronisedAt(new \DateTime('now'));
+        $productDocument->setAverageReviewRating($product->getAverageRating());
 
-        if (null !== $syliusProduct->getMainTaxon()) {
+        if (null !== $product->getMainTaxon()) {
             /** @var TaxonDocument $mainTaxonDocument */
             $mainTaxonDocument = new $this->taxonDocumentClass();
-            /** @var TaxonTranslationInterface $mainTaxonTranslation */
-            $mainTaxonTranslation = $syliusProduct->getMainTaxon()->getTranslation($locale->getCode());
+            $mainTaxonDocument->setCode($product->getMainTaxon()->getCode());
 
-            $mainTaxonDocument->setCode($syliusProduct->getMainTaxon()->getCode());
+            /** @var TaxonTranslationInterface $mainTaxonTranslation */
+            $mainTaxonTranslation = $product->getMainTaxon()->getTranslation($locale->getCode());
             $mainTaxonDocument->setSlug($mainTaxonTranslation->getSlug());
             $mainTaxonDocument->setDescription($mainTaxonTranslation->getDescription());
-            $product->setMainTaxon($mainTaxonDocument);
+
+            $productDocument->setMainTaxon($mainTaxonDocument);
         }
 
         /** @var PriceDocument $price */
         $price = new $this->priceDocumentClass();
         $price->setAmount($channelPrice->getPrice());
         $price->setCurrency($channel->getBaseCurrency()->getCode());
-        $product->setPrice($price);
+        $productDocument->setPrice($price);
 
-        $productImages = [];
-        $syliusProductImages = $syliusProduct->getImages();
-        foreach ($syliusProductImages as $syliusProductImage) {
-            /** @var ImageDocument $productImage */
-            $productImage = new $this->imageDocumentClass();
-            $productImage->setPath($syliusProductImage->getPath());
-            $productImage->setCode($syliusProductImage->getType());
-            $productImages[] = $productImage;
+        $imageDocuments = [];
+        $productImages = $product->getImages();
+        foreach ($productImages as $productImage) {
+            /** @var ImageDocument $imageDocument */
+            $imageDocument = new $this->imageDocumentClass();
+            $imageDocument->setPath($productImage->getPath());
+            $imageDocument->setCode($productImage->getType());
+
+            $imageDocuments[] = $imageDocument;
         }
-        $product->setImages(new Collection($productImages));
+        $productDocument->setImages(new Collection($imageDocuments));
 
-        $productTaxons = [];
-        foreach ($syliusProductTaxons as $syliusProductTaxon) {
+        $taxonDocuments = $productTaxonDocuments = [];
+        foreach ($product->getProductTaxons() as $syliusProductTaxon) {
+            $taxonDocuments[] = $this->createTaxonDocument($syliusProductTaxon->getTaxon(), $locale->getCode());
+            $productTaxonDocuments[] = $this->createProductTaxonDocument($syliusProductTaxon, $locale->getCode());
+
             $syliusProductTaxonAncestors = $this->getAncestorsFromTaxon($syliusProductTaxon->getTaxon());
-
-            $productTaxons[] = $this->createTaxonDocumentFromSyliusTaxon($syliusProductTaxon->getTaxon(), $locale->getCode());
-
             foreach ($syliusProductTaxonAncestors as $syliusProductTaxonAncestor) {
-                $productTaxons[] = $this->createTaxonDocumentFromSyliusTaxon($syliusProductTaxonAncestor, $locale->getCode());
+                $taxonDocuments[] = $this->createTaxonDocument($syliusProductTaxonAncestor, $locale->getCode());
             }
         }
-        $product->setTaxons(new Collection($productTaxons));
-        $productAttributes = [];
-        foreach ($syliusProductAttributes as $syliusProductAttributeValue) {
-            if (in_array($syliusProductAttributeValue->getAttribute()->getCode(), $this->attributeWhitelist)) {
-                /** @var AttributeDocument $productAttribute */
-                $productAttribute = new $this->attributeDocumentClass();
-                $productAttribute->setCode($syliusProductAttributeValue->getCode());
-                $productAttribute->setValue($syliusProductAttributeValue->getValue());
-                /** @var ProductAttributeTranslationInterface $syliusProductAttributeTranslation */
-                $syliusProductAttributeTranslation = $syliusProductAttributeValue->getAttribute()->getTranslation($locale->getCode());
-                $productAttribute->setName($syliusProductAttributeTranslation->getName());
+        $productDocument->setTaxons(new Collection($taxonDocuments));
+        $productDocument->setProductTaxons(new Collection($productTaxonDocuments));
 
-                $productAttributes[] = $productAttribute;
+        $productAttributeDocuments = [];
+        foreach ($productAttributes as $syliusProductAttributeValue) {
+            if (in_array($syliusProductAttributeValue->getAttribute()->getCode(), $this->attributeWhitelist, true)) {
+                /** @var AttributeDocument $productAttributeDocument */
+                $productAttributeDocument = new $this->attributeDocumentClass();
+                $productAttributeDocument->setCode($syliusProductAttributeValue->getCode());
+                $productAttributeDocument->setValue($syliusProductAttributeValue->getValue());
+
+                /** @var ProductAttributeTranslationInterface $productAttributeTranslation */
+                $productAttributeTranslation = $syliusProductAttributeValue->getAttribute()->getTranslation($locale->getCode());
+                $productAttributeDocument->setName($productAttributeTranslation->getName());
+
+                $productAttributeDocuments[] = $productAttributeDocument;
             }
         }
-        $productAttributes = new Collection($productAttributes);
-        $product->setAttributes($productAttributes);
+        $productDocument->setAttributes(new Collection($productAttributeDocuments));
 
-        return $product;
+        return $productDocument;
     }
 
     /**
@@ -187,7 +190,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return TaxonDocument
      */
-    private function createTaxonDocumentFromSyliusTaxon(TaxonInterface $taxon, $localeCode = null)
+    private function createTaxonDocument(TaxonInterface $taxon, $localeCode = null): TaxonDocument
     {
         /** @var TaxonTranslationInterface $taxonTranslation */
         $taxonTranslation = $taxon->getTranslation($localeCode);
@@ -216,9 +219,9 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     /**
      * @param TaxonInterface $taxon
      *
-     * @return array
+     * @return TaxonInterface[]
      */
-    private function getAncestorsFromTaxon(TaxonInterface $taxon)
+    private function getAncestorsFromTaxon(TaxonInterface $taxon): array
     {
         $ancestors = [];
         while (null !== $taxon->getParent()) {
@@ -228,6 +231,29 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         }
 
         return $ancestors;
+    }
+
+    /**
+     * @param ProductTaxonInterface $productTaxon
+     * @param string $localeCode
+     *
+     * @return ProductTaxonDocument
+     */
+    private function createProductTaxonDocument(ProductTaxonInterface $productTaxon, $localeCode = null): ProductTaxonDocument
+    {
+        /** @var TaxonInterface $taxon */
+        $taxon = $productTaxon->getTaxon();
+
+        /** @var TaxonTranslationInterface $taxonTranslation */
+        $taxonTranslation = $taxon->getTranslation($localeCode);
+
+        /** @var ProductTaxonDocument $productTaxonDocument */
+        $productTaxonDocument = new $this->productTaxonDocumentClass();
+        $productTaxonDocument->setPosition($productTaxon->getPosition());
+        $productTaxonDocument->setCode($taxon->getCode());
+        $productTaxonDocument->setSlug($taxonTranslation->getSlug());
+
+        return $productTaxonDocument;
     }
 
     /**

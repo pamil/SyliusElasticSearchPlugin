@@ -90,11 +90,18 @@ class ProductDocument
     private $mainTaxon;
 
     /**
-     * @var Collection
+     * @var Collection|TaxonDocument[]
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\TaxonDocument", multiple=true)
      */
     private $taxons;
+
+    /**
+     * @var Collection|ProductTaxonDocument[]
+     *
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument", multiple=true)
+     */
+    private $productTaxons;
 
     /**
      * @var Collection
@@ -133,6 +140,7 @@ class ProductDocument
     {
         $this->attributes = new Collection();
         $this->taxons = new Collection();
+        $this->productTaxons = new Collection();
         $this->images = new Collection();
     }
 
@@ -297,7 +305,7 @@ class ProductDocument
     }
 
     /**
-     * @return Collection
+     * @return Collection|TaxonDocument[]
      */
     public function getTaxons()
     {
@@ -305,11 +313,27 @@ class ProductDocument
     }
 
     /**
-     * @param Collection $taxons
+     * @param Collection|TaxonDocument[] $taxons
      */
-    public function setTaxons(Collection $taxons)
+    public function setTaxons($taxons)
     {
         $this->taxons = $taxons;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getProductTaxons()
+    {
+        return $this->productTaxons;
+    }
+
+    /**
+     * @param Collection $productTaxons
+     */
+    public function setProductTaxons(Collection $productTaxons)
+    {
+        $this->productTaxons = $productTaxons;
     }
 
     /**
