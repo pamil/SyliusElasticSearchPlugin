@@ -149,7 +149,7 @@ Sylius\Component\Core\Model\ProductVariant:
         translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
         onHand: 0
         onHold: 0
-        isTracked: false
+        tracked: false
         optionValues:
             - "@mug_option_big_value"
         channelPricings:
@@ -163,7 +163,7 @@ Sylius\Component\Core\Model\ProductVariant:
         translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
         onHand: 0
         onHold: 0
-        isTracked: false
+        tracked: false
         optionValues:
             - "@mug_option_small_value"
         channelPricings:
@@ -177,7 +177,7 @@ Sylius\Component\Core\Model\ProductVariant:
         translations: ["@en_gb_hat_variant_translation", "@de_de_hat_variant_translation"]
         onHand: 2
         onHold: 0
-        isTracked: false
+        tracked: false
         optionValues:
             - "@hat_option_value"
         channelPricings:
@@ -189,7 +189,7 @@ Sylius\Component\Core\Model\ProductVariant:
         currentTranslation: "@small_t_shirt_translation"
         onHand: 1
         onHold: 0
-        isTracked: true
+        tracked: true
         optionValues:
             - "@t_shirt_s_option_value"
         channelPricings:
@@ -201,7 +201,7 @@ Sylius\Component\Core\Model\ProductVariant:
         currentTranslation: "@medium_t_shirt_translation"
         onHand: 1
         onHold: 0
-        isTracked: true
+        tracked: true
         optionValues:
             - "@t_shirt_m_option_value"
         channelPricings:
@@ -213,7 +213,7 @@ Sylius\Component\Core\Model\ProductVariant:
         currentTranslation: "@large_t_shirt_translation"
         onHand: 1
         onHold: 0
-        isTracked: true
+        tracked: true
         optionValues:
             - "@t_shirt_l_option_value"
         channelPricings:
@@ -225,7 +225,7 @@ Sylius\Component\Core\Model\ProductVariant:
         currentTranslation: "@extra_large_t_shirt_translation"
         onHand: 1
         onHold: 0
-        isTracked: true
+        tracked: true
         optionValues:
             - "@t_shirt_xl_option_value"
         channelPricings:
@@ -237,7 +237,7 @@ Sylius\Component\Core\Model\ProductVariant:
         currentTranslation: "@small_disabled_t_shirt_translation"
         onHand: 2
         onHold: 1
-        isTracked: true
+        tracked: true
         optionValues:
             - "@t_shirt_s_option_value"
         channelPricings:
