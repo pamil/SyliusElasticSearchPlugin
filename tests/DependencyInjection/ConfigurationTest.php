@@ -24,6 +24,7 @@ use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
+use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 /**
@@ -43,6 +44,7 @@ final class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'attribute' => AttributeDocument::class,
             'image' => ImageDocument::class,
             'price' => PriceDocument::class,
+            'product_taxon' => ProductTaxonDocument::class,
             'taxon' => TaxonDocument::class,
         ]], 'document_classes');
     }

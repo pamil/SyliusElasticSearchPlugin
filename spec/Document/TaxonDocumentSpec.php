@@ -27,13 +27,6 @@ final class TaxonDocumentSpec extends ObjectBehavior
         $this->getSlug()->shouldReturn('/mug');
     }
 
-    function it_has_position()
-    {
-        $this->setPosition(1);
-
-        $this->getPosition()->shouldReturn(1);
-    }
-
     function it_has_images()
     {
         $images = new Collection();

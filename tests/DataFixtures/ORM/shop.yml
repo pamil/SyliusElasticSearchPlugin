@@ -387,15 +387,18 @@ Sylius\Component\Core\Model\ProductTaxon:
     t_shirt_product_taxon:
         product: "@t_shirt"
         taxon: "@t_shirt_taxon"
-    mug_brand_taxon:
-        product: "@mug"
-        taxon: "@brand_taxon"
     hat_brand_taxon:
         product: "@hat"
         taxon: "@brand_taxon"
+        position: 1
     t_shirt_brand_taxon:
         product: "@t_shirt"
         taxon: "@brand_taxon"
+        position: 2
+    mug_brand_taxon:
+        product: "@mug"
+        taxon: "@brand_taxon"
+        position: 3
 
 Sylius\Component\Product\Model\ProductAttributeTranslation:
     mug_collection_de_de_translation:

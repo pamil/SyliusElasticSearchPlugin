@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: psihius
- * Date: 18.08.2017
- * Time: 18:50
- */
+
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Filter\Widget;
 

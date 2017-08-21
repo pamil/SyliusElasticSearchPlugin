@@ -69,9 +69,9 @@ final class ProductDocumentSpec extends ObjectBehavior
     function it_has_taxons()
     {
         $taxons = new Collection();
-        $this->setTaxons($taxons);
+        $this->setProductTaxons($taxons);
 
-        $this->getTaxons()->shouldReturn($taxons);
+        $this->getProductTaxons()->shouldReturn($taxons);
     }
 
     function it_has_attributes()
