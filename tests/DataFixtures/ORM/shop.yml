@@ -145,8 +145,8 @@ Sylius\Component\Core\Model\ProductVariant:
         code: "LOGAN_MUG_CODE"
         product: "@mug"
         currentLocale: "en_GB"
-        currentTranslation: "@en_gb_mug_variant_translation"
-        translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
+        currentTranslation: "@en_gb_mug_variant_big_translation"
+        translations: ["@en_gb_mug_variant_big_translation", "@de_de_mug_variant_big_translation"]
         onHand: 0
         onHold: 0
         tracked: false
@@ -159,8 +159,8 @@ Sylius\Component\Core\Model\ProductVariant:
         code: "LOGAN_MUG_CODE"
         product: "@mug"
         currentLocale: "en_GB"
-        currentTranslation: "@en_gb_mug_variant_translation"
-        translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
+        currentTranslation: "@en_gb_mug_variant_small_translation"
+        translations: ["@en_gb_mug_variant_small_translation", "@de_de_mug_variant_small_translation"]
         onHand: 0
         onHold: 0
         tracked: false
@@ -244,14 +244,22 @@ Sylius\Component\Core\Model\ProductVariant:
             - "@gb_small_disabled_t_shirt_web_channel_pricing"
 
 Sylius\Component\Product\Model\ProductVariantTranslation:
-    en_gb_mug_variant_translation:
+    en_gb_mug_variant_big_translation:
         locale: "en_GB"
         name: "Logan Mug"
-        translatable: "@mug_variant"
-    de_de_mug_variant_translation:
+        translatable: "@mug_variant_big"
+    de_de_mug_variant_big_translation:
         locale: "de_DE"
         name: "Logan Becher"
-        translatable: "@mug_variant"
+        translatable: "@mug_variant_big"
+    en_gb_mug_variant_small_translation:
+        locale: "en_GB"
+        name: "Gnome Mug"
+        translatable: "@mug_variant_small"
+    de_de_mug_variant_small_translation:
+        locale: "de_DE"
+        name: "Gnome Becher"
+        translatable: "@mug_variant_small"
     en_gb_hat_variant_translation:
         locale: "en_GB"
         name: "Logan Hat"
