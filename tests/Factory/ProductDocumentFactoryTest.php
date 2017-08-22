@@ -16,10 +16,12 @@ use Sylius\Component\Product\Model\ProductAttribute;
 use Sylius\Component\Product\Model\ProductAttributeValue;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
+use Sylius\ElasticSearchPlugin\Document\OptionDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
+use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 use Sylius\ElasticSearchPlugin\Exception\UnsupportedFactoryMethodException;
 use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactory;
 
@@ -47,13 +49,19 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $syliusTaxon->setCode('TREE');
         $syliusTaxon->setSlug('tree');
         $syliusTaxon->setDescription('Lorem ipsum');
+        $syliusTaxon->setPosition(0);
+
         $syliusProductTaxon = new ProductTaxon();
+        $syliusProductTaxon->setPosition(1);
 
         $syliusLocale = new Locale();
         $syliusLocale->setCode('en_US');
 
-        $syliusProduct = new Product();
         $syliusProductVariant = new ProductVariant();
+        $syliusProductVariant->setCode('red_banana');
+        $syliusProductVariant->setPosition(1);
+
+        $syliusProduct = new Product();
         $channelPrice = new ChannelPricing();
         $syliusChannel = new Channel();
         $currency = new Currency();
@@ -91,6 +99,8 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             PriceDocument::class,
             ProductTaxonDocument::class,
             TaxonDocument::class,
+            VariantDocument::class,
+            OptionDocument::class,
             ['color']
         );
         /** @var ProductDocument $product */
@@ -141,31 +151,6 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function it_cannot_create_product_document_from_configurable_product()
-    {
-        $this->expectException(UnsupportedFactoryMethodException::class);
-        $factory = new ProductDocumentFactory(
-            ProductDocument::class,
-            AttributeDocument::class,
-            ImageDocument::class,
-            PriceDocument::class,
-            ProductTaxonDocument::class,
-            TaxonDocument::class,
-            []
-        );
-
-        $syliusProduct = new Product();
-        $syliusProduct->addVariant(new ProductVariant());
-        $syliusProduct->addVariant(new ProductVariant());
-        $syliusLocale = new Locale();
-        $syliusChannel = new Channel();
-
-        $factory->createFromSyliusSimpleProductModel($syliusProduct, $syliusLocale, $syliusChannel);
-    }
-
-    /**
-     * @test
-     */
     public function it_creates_product_document_only_with_whitelisted_attributes()
     {
         $createdAt = \DateTime::createFromFormat(\DateTime::W3C, '2017-04-18T16:12:55+02:00');
@@ -196,13 +181,19 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $syliusTaxon->setCode('TREE');
         $syliusTaxon->setSlug('tree');
         $syliusTaxon->setDescription('Lorem ipsum');
+        $syliusTaxon->setPosition(0);
+
         $syliusProductTaxon = new ProductTaxon();
+        $syliusProductTaxon->setPosition(1);
 
         $syliusLocale = new Locale();
         $syliusLocale->setCode('en_US');
 
-        $syliusProduct = new Product();
         $syliusProductVariant = new ProductVariant();
+        $syliusProductVariant->setCode('red_banana');
+        $syliusProductVariant->setPosition(1);
+
+        $syliusProduct = new Product();
         $channelPrice = new ChannelPricing();
         $syliusChannel = new Channel();
         $currency = new Currency();
@@ -241,6 +232,8 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             PriceDocument::class,
             ProductTaxonDocument::class,
             TaxonDocument::class,
+            VariantDocument::class,
+            OptionDocument::class,
             ['material']
         );
         /** @var ProductDocument $product */
@@ -328,6 +321,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $syliusParentTaxon->setCode('ROOT');
         $syliusParentTaxon->setSlug('root');
         $syliusParentTaxon->setDescription('Lorem ipsum');
+        $syliusParentTaxon->setPosition(0);
 
         $syliusTaxon = new Taxon();
         $syliusTaxon->setCurrentLocale('en_US');
@@ -335,12 +329,16 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
         $syliusTaxon->setSlug('tree');
         $syliusTaxon->setDescription('Lorem ipsum');
         $syliusTaxon->setParent($syliusParentTaxon);
+        $syliusTaxon->setPosition(0);
 
         $syliusLocale = new Locale();
         $syliusLocale->setCode('en_US');
 
-        $syliusProduct = new Product();
         $syliusProductVariant = new ProductVariant();
+        $syliusProductVariant->setCode('red_banana');
+        $syliusProductVariant->setPosition(1);
+
+        $syliusProduct = new Product();
         $channelPrice = new ChannelPricing();
         $syliusChannel = new Channel();
         $currency = new Currency();
@@ -380,6 +378,8 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             PriceDocument::class,
             ProductTaxonDocument::class,
             TaxonDocument::class,
+            VariantDocument::class,
+            OptionDocument::class,
             ['material']
         );
         /** @var ProductDocument $product */
