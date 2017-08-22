@@ -23,6 +23,7 @@
         "taxonSlug": "@array@",
         "priceRange": "@array@",
         "locale": "@array@",
+        "inStock": "@array@",
         "paginator": {
             "state": {
                 "active": true,
@@ -37,11 +38,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "paginator",
@@ -56,6 +59,7 @@
         "search": "@array@",
         "attributes": "@array@",
         "attributesByCode": "@array@",
+        "options": "@array@",
         "sort": "@array@"
     }
 }

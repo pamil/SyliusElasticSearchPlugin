@@ -22,10 +22,12 @@ use Sylius\ElasticSearchPlugin\DependencyInjection\Configuration;
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
+use Sylius\ElasticSearchPlugin\Document\OptionDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
+use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
@@ -46,6 +48,8 @@ final class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'price' => PriceDocument::class,
             'product_taxon' => ProductTaxonDocument::class,
             'taxon' => TaxonDocument::class,
+            'variant' => VariantDocument::class,
+            'option' => OptionDocument::class,
         ]], 'document_classes');
     }
 

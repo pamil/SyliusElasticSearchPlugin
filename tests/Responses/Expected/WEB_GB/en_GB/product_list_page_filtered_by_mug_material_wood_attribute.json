@@ -23,6 +23,7 @@
         "taxonSlug": "@array@",
         "priceRange": "@array@",
         "locale": "@array@",
+        "inStock": "@array@",
         "paginator": "@array@",
         "search": "@array@",
         "attributes": {
@@ -47,6 +48,7 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB",
                 "attributes": {
                     "Mug material": [
@@ -57,6 +59,7 @@
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "attributes",
@@ -67,6 +70,7 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug collection",
@@ -77,6 +81,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
+                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": [
@@ -98,6 +103,7 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug material",
@@ -108,6 +114,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
+                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": []
@@ -124,6 +131,7 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Production year",
@@ -134,6 +142,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
+                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": [
@@ -152,6 +161,7 @@
             ]
         },
         "attributesByCode": "@array@",
+        "options": "@array@",
         "sort": "@array@"
     }
 }

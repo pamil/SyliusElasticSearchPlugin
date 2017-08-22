@@ -23,6 +23,7 @@
         "taxonSlug": "@array@",
         "priceRange": "@array@",
         "locale": "@array@",
+        "inStock": "@array@",
         "paginator": "@array@",
         "search": {
             "state": {
@@ -38,18 +39,21 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "de_DE",
                 "search": "hut"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "search"
         },
         "attributes": "@array@",
         "attributesByCode": "@array@",
+        "options": "@array@",
         "sort": "@array@"
     }
 }
