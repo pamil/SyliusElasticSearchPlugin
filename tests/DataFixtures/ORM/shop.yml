@@ -235,16 +235,31 @@ Sylius\Component\Core\Model\Product:
         variants: ["@disabled_t_shirt_small"]
 
 Sylius\Component\Core\Model\ChannelPricing:
-    gb_mug_web_channel_pricing:
+    gb_mug_big_web_channel_pricing:
         channelCode: "WEB_GB"
         price: 1000
-    de_mug_web_channel_pricing:
+    de_mug_big_web_channel_pricing:
+        channelCode: "WEB_DE"
+        price: 1250
+    gb_mug_small_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 1000
+    de_mug_small_web_channel_pricing:
         channelCode: "WEB_DE"
         price: 1250
     gb_hat_web_channel_pricing:
         channelCode: "WEB_GB"
         price: 1500
     gb_small_t_shirt_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 2000
+    gb_medium_t_shirt_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 2000
+    gb_large_t_shirt_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 2000
+    gb_extra_large_t_shirt_web_channel_pricing:
         channelCode: "WEB_GB"
         price: 2000
     gb_small_disabled_t_shirt_web_channel_pricing:
@@ -265,8 +280,8 @@ Sylius\Component\Core\Model\ProductVariant:
         optionValues:
             - "@mug_option_big_value"
         channelPricings:
-            - "@gb_mug_web_channel_pricing"
-            - "@de_mug_web_channel_pricing"
+            - "@gb_mug_big_web_channel_pricing"
+            - "@de_mug_big_web_channel_pricing"
     mug_variant_small:
         code: "LOGAN_MUG_SMALL_CODE"
         product: "@mug"
@@ -280,8 +295,8 @@ Sylius\Component\Core\Model\ProductVariant:
         optionValues:
             - "@mug_option_small_value"
         channelPricings:
-            - "@gb_mug_web_channel_pricing"
-            - "@de_mug_web_channel_pricing"
+            - "@gb_mug_small_web_channel_pricing"
+            - "@de_mug_small_web_channel_pricing"
     hat_variant:
         code: "LOGAN_HAT_CODE"
         product: "@hat"
@@ -321,7 +336,7 @@ Sylius\Component\Core\Model\ProductVariant:
         optionValues:
             - "@t_shirt_m_option_value"
         channelPricings:
-            - "@gb_small_t_shirt_web_channel_pricing"
+            - "@gb_medium_t_shirt_web_channel_pricing"
     t_shirt_large:
         code: "LARGE_LOGAN_T_SHIRT_CODE"
         product: "@t_shirt"
@@ -334,7 +349,7 @@ Sylius\Component\Core\Model\ProductVariant:
         optionValues:
             - "@t_shirt_l_option_value"
         channelPricings:
-            - "@gb_small_t_shirt_web_channel_pricing"
+            - "@gb_large_t_shirt_web_channel_pricing"
     t_shirt_extra_large:
         code: "EXTRA_LARGE_LOGAN_T_SHIRT_CODE"
         product: "@t_shirt"
@@ -347,7 +362,7 @@ Sylius\Component\Core\Model\ProductVariant:
         optionValues:
             - "@t_shirt_xl_option_value"
         channelPricings:
-            - "@gb_small_t_shirt_web_channel_pricing"
+            - "@gb_extra_large_t_shirt_web_channel_pricing"
     disabled_t_shirt_small:
         code: "SMALL_DISABLED_T_SHIRT_CODE"
         product: "@disabled_t_shirt"
