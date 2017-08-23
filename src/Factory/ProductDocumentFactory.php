@@ -150,6 +150,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         /** @var ProductDocument $productDocument */
         $productDocument = new $this->productDocumentClass();
         $productDocument->setId(Uuid::uuid4()->toString());
+        $productDocument->setProductId($product->getId());
         $productDocument->setEnabled($product->isEnabled());
         $productDocument->setLocaleCode($locale->getCode());
         $productDocument->setSlug($productTranslation->getSlug());

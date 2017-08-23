@@ -20,6 +20,13 @@ class ProductDocument
     private $id;
 
     /**
+     * @var int
+     *
+     * @ElasticSearch\Property(type="integer")
+     */
+    private $productId;
+
+    /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
@@ -170,6 +177,22 @@ class ProductDocument
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getProductId(): int
+    {
+        return $this->productId;
+    }
+
+    /**
+     * @param int $productId
+     */
+    public function setProductId(int $productId)
+    {
+        $this->productId = $productId;
     }
 
     /**
@@ -383,7 +406,7 @@ class ProductDocument
     /**
      * @return float
      */
-    public function getAverageReviewRating(): float
+    public function getAverageReviewRating(): ?float
     {
         return $this->averageReviewRating;
     }

@@ -110,3 +110,4 @@ ongr_filter_manager:
                     slug: slug
                     code: code
                     price: price.amount
+                    date: created_at

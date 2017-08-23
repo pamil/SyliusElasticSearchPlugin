@@ -141,7 +141,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
             $attributeView->value = $attribute->getValue();
             $attributeView->name = $attribute->getName();
 
-            $attributeValueViews[] = $attributeView;
+            $attributeValueViews[$attribute->getCode()] = $attributeView;
         }
 
         return $attributeValueViews;
@@ -167,7 +167,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return VariantView
      */
-    private function getVariantView(ProductDocument $product): VariantView
+    private function getVariantViews(ProductDocument $product): VariantView
     {
         /** @var VariantView $variantView */
         $variantView = new $this->productVariantViewClass();
@@ -188,15 +188,17 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
     {
         /** @var ProductView $productView */
         $productView = new $this->productViewClass();
+        $productView->productId = $product->getProductId();
         $productView->slug = $product->getSlug();
         $productView->name = $product->getName();
         $productView->code = $product->getCode();
+        $productView->rating = $product->getAverageReviewRating();
         $productView->localeCode = $product->getLocaleCode();
         $productView->channelCode = $product->getChannelCode();
         $productView->images = $this->getImageViews($product->getImages());
         $productView->taxons = $this->getTaxonView($product->getTaxons(), $product->getMainTaxon());
         $productView->attributes = $this->getAttributeViews($product->getAttributes());
-        $productView->variants = [$product->getCode() => $this->getVariantView($product)];
+        $productView->variants = $this->getVariantViews($product);
 
         return $productView;
     }
