@@ -15,4 +15,9 @@ class PriceView
      * @var string
      */
     public $currency;
+
+    /**
+     * @var int
+     */
+    public $original;
 }

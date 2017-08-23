@@ -9,7 +9,7 @@ class ProductView
     /**
      * @var int
      */
-    public $productId;
+    public $id;
 
     /**
      * @var string
@@ -45,6 +45,16 @@ class ProductView
      * @var array
      */
     public $images = [];
+
+    /**
+     * @var PriceView
+     */
+    public $price;
+
+    /**
+     * @var int
+     */
+    public $priceVariantId;
 
     /**
      * @var string

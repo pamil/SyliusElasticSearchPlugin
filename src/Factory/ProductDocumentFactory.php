@@ -17,6 +17,7 @@ use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Product\Model\ProductAttributeTranslationInterface;
 use Sylius\Component\Product\Model\ProductAttributeValueInterface;
 use Sylius\Component\Product\Model\ProductOptionValueInterface;
+use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Sylius\Component\Taxonomy\Model\TaxonTranslationInterface;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
@@ -115,7 +116,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return ProductDocument
      */
-    public function createFromSyliusSimpleProductModel(
+    public function createFromSyliusProductModel(
         ProductInterface $product,
         LocaleInterface $locale,
         ChannelInterface $channel
@@ -149,8 +150,8 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         /** @var ProductDocument $productDocument */
         $productDocument = new $this->productDocumentClass();
-        $productDocument->setId(Uuid::uuid4()->toString());
-        $productDocument->setProductId($product->getId());
+        $productDocument->setUuid(Uuid::uuid4()->toString());
+        $productDocument->setId($product->getId());
         $productDocument->setEnabled($product->isEnabled());
         $productDocument->setLocaleCode($locale->getCode());
         $productDocument->setSlug($productTranslation->getSlug());
@@ -181,7 +182,9 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $price = new $this->priceDocumentClass();
         $price->setAmount($minProductChannelPrice->getPrice());
         $price->setCurrency($channel->getBaseCurrency()->getCode());
+        $price->setOriginal($minProductChannelPrice->getOriginalPrice() ?: 0);
         $productDocument->setPrice($price);
+        $productDocument->setPriceVariantId($minProductChannelPrice->getProductVariant()->getId());
 
         $imageDocuments = [];
         foreach ($product->getImages() as $productImage) {
@@ -280,9 +283,12 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     ): VariantDocument {
         /** @var PriceDocument $price */
         $price = new $this->priceDocumentClass();
+        /** @var ChannelPricingInterface $channelPricing */
         $channelPricing = $this->getChannelPricingForChannelFromProductVariant($productVariant, $channel);
+
         $price->setAmount($channelPricing->getPrice());
         $price->setCurrency($channel->getBaseCurrency()->getCode());
+        $price->setOriginal($channelPricing->getOriginalPrice() ?: 0);
 
         $images = [];
         foreach ($productVariant->getImages() as $image) {
@@ -298,9 +304,14 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
             $options[] = $this->createOptionDocumentFromSyliusOptionValue($optionValue, $locale);
         }
 
+        /** @var ProductVariantTranslationInterface $productVariantTranslation */
+        $productVariantTranslation = $productVariant->getTranslation($locale->getCode());
+
         /** @var VariantDocument $variant */
         $variant = new $this->variantDocumentClass();
+        $variant->setId($productVariant->getId());
         $variant->setCode($productVariant->getCode());
+        $variant->setName($productVariantTranslation->getName());
         $variant->setPrice($price);
         $variant->setStock($productVariant->getOnHand() - $productVariant->getOnHold());
         $variant->setIsTracked($productVariant->isTracked());

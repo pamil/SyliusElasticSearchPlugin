@@ -115,7 +115,7 @@ final class UpdateProductIndexCommand extends Command
             $locales = $channel->getLocales();
 
             foreach ($locales as $locale) {
-                $this->elasticsearchManager->persist($this->productDocumentFactory->createFromSyliusSimpleProductModel(
+                $this->elasticsearchManager->persist($this->productDocumentFactory->createFromSyliusProductModel(
                     $product,
                     $locale,
                     $channel

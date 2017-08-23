@@ -43,7 +43,7 @@ final class ProductProjector
         foreach ($channels as $channel) {
             $locales = $channel->getLocales();
             foreach ($locales as $locale) {
-                $productDocument = $this->productDocumentFactory->createFromSyliusSimpleProductModel(
+                $productDocument = $this->productDocumentFactory->createFromSyliusProductModel(
                     $product,
                     $locale,
                     $channel

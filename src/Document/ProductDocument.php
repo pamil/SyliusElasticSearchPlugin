@@ -13,18 +13,18 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class ProductDocument
 {
     /**
-     * @var mixed
+     * @var string
      *
      * @ElasticSearch\Id()
      */
-    private $id;
+    private $uuid;
 
     /**
      * @var int
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $productId;
+    private $id;
 
     /**
      * @var string
@@ -92,6 +92,13 @@ class ProductDocument
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\PriceDocument")
      */
     private $price;
+
+    /**
+     * @var integer
+     *
+     * @ElasticSearch\Property(type="integer")
+     */
+    private $priceVariantId;
 
     /**
      * @var TaxonDocument
@@ -164,35 +171,35 @@ class ProductDocument
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getId()
+    public function getUuid(): string
     {
-        return $this->id;
+        return $this->uuid;
     }
 
     /**
-     * @param mixed $id
+     * @param string $uuid
      */
-    public function setId($id)
+    public function setUuid(string $uuid): void
     {
-        $this->id = $id;
+        $this->uuid = $uuid;
     }
 
     /**
      * @return int
      */
-    public function getProductId(): int
+    public function getId(): int
     {
-        return $this->productId;
+        return $this->id;
     }
 
     /**
-     * @param int $productId
+     * @param int $id
      */
-    public function setProductId(int $productId)
+    public function setId(int $id): void
     {
-        $this->productId = $productId;
+        $this->id = $id;
     }
 
     /**
@@ -322,6 +329,23 @@ class ProductDocument
     {
         $this->price = $price;
     }
+
+    /**
+     * @return int
+     */
+    public function getPriceVariantId(): int
+    {
+        return $this->priceVariantId;
+    }
+
+    /**
+     * @param int $priceVariantId
+     */
+    public function setPriceVariantId(int $priceVariantId): void
+    {
+        $this->priceVariantId = $priceVariantId;
+    }
+
 
     /**
      * @return TaxonDocument
