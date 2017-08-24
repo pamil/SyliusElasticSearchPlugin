@@ -94,13 +94,6 @@ class ProductDocument
     private $price;
 
     /**
-     * @var integer
-     *
-     * @ElasticSearch\Property(type="integer")
-     */
-    private $priceVariantId;
-
-    /**
      * @var TaxonDocument
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\TaxonDocument")
@@ -329,23 +322,6 @@ class ProductDocument
     {
         $this->price = $price;
     }
-
-    /**
-     * @return int
-     */
-    public function getPriceVariantId(): int
-    {
-        return $this->priceVariantId;
-    }
-
-    /**
-     * @param int $priceVariantId
-     */
-    public function setPriceVariantId(int $priceVariantId): void
-    {
-        $this->priceVariantId = $priceVariantId;
-    }
-
 
     /**
      * @return TaxonDocument

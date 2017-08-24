@@ -21,7 +21,7 @@ use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 
-final class ProductListViewFactory implements ProductListViewFactoryInterface
+class ProductListViewFactory implements ProductListViewFactoryInterface
 {
     /** @var string */
     private $productListViewClass;
@@ -93,7 +93,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return ImageView[]
      */
-    private function getImageViews(Collection $images): array
+    protected function getImageViews(Collection $images): array
     {
         $imageViews = [];
         foreach ($images as $image) {
@@ -114,7 +114,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return TaxonView
      */
-    private function getTaxonView(Collection $taxons, ?TaxonDocument $mainTaxonDocument): TaxonView
+    protected function getTaxonView(Collection $taxons, ?TaxonDocument $mainTaxonDocument): TaxonView
     {
         /** @var TaxonView $taxonView */
         $taxonView = new $this->taxonViewClass();
@@ -132,7 +132,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return AttributeView[]
      */
-    private function getAttributeViews(Collection $attributes): array
+    protected function getAttributeViews(Collection $attributes): array
     {
         $attributeValueViews = [];
         foreach ($attributes as $attribute) {
@@ -153,7 +153,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return PriceView
      */
-    private function getPriceView(PriceDocument $price): PriceView
+    protected function getPriceView(PriceDocument $price): PriceView
     {
         /** @var PriceView $priceView */
         $priceView = new $this->priceViewClass();
@@ -169,7 +169,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return array
      */
-    private function getVariantViews(Collection $variants): array
+    protected function getVariantViews(Collection $variants): array
     {
         $variantViews = [];
         foreach ($variants as $variant) {
@@ -194,7 +194,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return ProductView
      */
-    private function getProductView(ProductDocument $product): ProductView
+    protected function getProductView(ProductDocument $product): ProductView
     {
         /** @var ProductView $productView */
         $productView = new $this->productViewClass();

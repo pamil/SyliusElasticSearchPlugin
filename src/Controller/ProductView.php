@@ -52,11 +52,6 @@ class ProductView
     public $price;
 
     /**
-     * @var int
-     */
-    public $priceVariantId;
-
-    /**
      * @var string
      */
     public $channelCode;
