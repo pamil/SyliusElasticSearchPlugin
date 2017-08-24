@@ -210,7 +210,6 @@ class ProductListViewFactory implements ProductListViewFactoryInterface
         $productView->attributes = $this->getAttributeViews($product->getAttributes());
         $productView->variants = $this->getVariantViews($product->getVariants());
         $productView->price = $this->getPriceView($product->getPrice());
-        $productView->priceVariantId = $product->getPriceVariantId();
 
         return $productView;
     }

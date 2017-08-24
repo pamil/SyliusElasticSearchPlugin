@@ -68,7 +68,7 @@ ongr_filter_manager:
             document_field: ~
             request_field: page
             options:
-                limit: 10
+                limit: 9
                 max_pages: 20
         attributes:
             type: sylius_elastic_search.multi_dynamic_aggregate

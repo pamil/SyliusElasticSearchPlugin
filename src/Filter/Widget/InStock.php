@@ -35,7 +35,14 @@ class InStock extends AbstractRange
      */
     public function getState(Request $request)
     {
-        $state = parent::getState($request);
+        $state = new FilterState();
+        $value = $request->get($this->getRequestField());
+
+        if (isset($value) && $value !== '') {
+            $value = is_array($value) ? array_values($value) : $value;
+            $state->setActive(true);
+            $state->setValue($value);
+        }
         
         if (!$state->isActive()) {
             return $state;

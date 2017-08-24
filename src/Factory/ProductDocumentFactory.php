@@ -108,7 +108,7 @@ class ProductDocumentFactory implements ProductDocumentFactoryInterface
     }
 
     /**
-     * @param ProductVariantInterface[] $variants
+     * @param ProductVariantInterface[]|\Doctrine\Common\Collections\Collection $variants
      * @param ChannelInterface $channel
      *
      * @return ChannelPricingInterface
