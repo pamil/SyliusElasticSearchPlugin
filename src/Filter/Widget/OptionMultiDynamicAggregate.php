@@ -16,6 +16,7 @@ use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use ONGR\ElasticsearchDSL\Search;
 use ONGR\FilterManagerBundle\Filter\FilterState;
 use ONGR\FilterManagerBundle\Filter\ViewData;
+use ONGR\FilterManagerBundle\Search\SearchRequest;
 
 class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
 {
@@ -42,6 +43,36 @@ class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
         $data['all-selected'] = $aggregation->find(sprintf('all-selected.%s.%s.name', $filterName, $filterName));
 
         return $data;
+    }
+
+    /**
+     * Forms $unsortedChoices array with all possible choices.
+     * 0 is assigned to the document count of the choices.
+     *
+     * @param DocumentIterator $result
+     * @param ViewData         $data
+     *
+     * @return array
+     */
+    protected function formInitialUnsortedChoices($result, $data)
+    {
+        $unsortedChoices = [];
+        $urlParameters = array_merge(
+            $data->getResetUrlParameters(),
+            $data->getState()->getUrlParameters()
+        );
+
+        foreach ($result->getAggregation($data->getName())->getAggregation($data->getName())->getAggregation('name') as $nameBucket) {
+            $groupName = $nameBucket['key'];
+
+            foreach ($nameBucket->getAggregation('value') as $bucket) {
+                $bucketArray = ['key' => $bucket['key'], 'doc_count' => 0];
+                $choice = $this->createChoice($data, $bucket['key'], '', $bucketArray, $urlParameters);
+                $unsortedChoices[$groupName][$bucket['key']] = $choice;
+            }
+        }
+
+        return $unsortedChoices;
     }
 
     /**
@@ -74,12 +105,6 @@ class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
 
                 $this->addViewDataItem($data, $name, $unsortedChoices[$name]);
                 unset($unsortedChoices[$name]);
-            }
-        }
-
-        if ($this->getShowZeroChoices() && !empty($unsortedChoices)) {
-            foreach ($unsortedChoices as $name => $choices) {
-                $this->addViewDataItem($data, $name, $unsortedChoices[$name]);
             }
         }
 
@@ -151,7 +176,6 @@ class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
     {
         list($parent, $child, $field) = explode('>', $this->getDocumentField());
         $boolQuery = new BoolQuery();
-
         foreach ($terms as $groupName => $values) {
             $innerBoolQuery = new BoolQuery();
 
