@@ -46,6 +46,16 @@ class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function modifySearch(Search $search, FilterState $state = null, SearchRequest $request = null)
+    {
+        if ($state && $state->isActive()) {
+            $search->addPostFilter($this->getFilterQuery($state->getValue()));
+        }
+    }
+
+    /**
      * Forms $unsortedChoices array with all possible choices.
      * 0 is assigned to the document count of the choices.
      *
