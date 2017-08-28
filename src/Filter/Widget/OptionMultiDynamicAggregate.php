@@ -12,6 +12,7 @@ use ONGR\ElasticsearchDSL\Aggregation\Bucketing\TermsAggregation;
 use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
 use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
+use ONGR\ElasticsearchDSL\Query\TermLevel\RangeQuery;
 use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use ONGR\ElasticsearchDSL\Search;
 use ONGR\FilterManagerBundle\Filter\FilterState;
@@ -193,15 +194,20 @@ class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
                 $nestedBoolQuery = new BoolQuery();
                 $nestedBoolQuery->add(new TermQuery($field, $value));
                 $nestedBoolQuery->add(new TermQuery($this->getNameField(), $groupName));
-                $innerBoolQuery->add(
-                    new NestedQuery(
-                        $parent,
 
-                        new NestedQuery(
-                            $child,
-                            $nestedBoolQuery
-                        )
-                    ),
+                $inStockBoolQuery = new BoolQuery();
+
+                $inStockBoolQuery->add(new RangeQuery('variants.stock', ['gte' => 1]), BoolQuery::SHOULD);
+                $inStockBoolQuery->add(new TermQuery('variants.is_tracked', false), BoolQuery::SHOULD);
+
+                $childBoolQuery = new BoolQuery();
+                $childBoolQuery->add($inStockBoolQuery, BoolQuery::MUST);
+                $childBoolQuery->add(new NestedQuery($child, $nestedBoolQuery), BoolQuery::MUST);
+
+                $nestedQuery = new NestedQuery($parent, $childBoolQuery);
+
+                $innerBoolQuery->add(
+                    $nestedQuery,
 
                     BoolQuery::SHOULD
                 );
