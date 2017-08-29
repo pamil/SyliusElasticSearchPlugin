@@ -155,8 +155,13 @@ class ProductDocumentFactory implements ProductDocumentFactoryInterface
         /**
          * Select minimal product price out of all variants
          */
+        $iterator = $product->getVariants()->getIterator();
+        $iterator->uasort(function (ProductVariantInterface $a, ProductVariantInterface $b) {
+            return ($a->getName() < $b->getName()) ? -1 : 1;
+        });
+
         $variants = [];
-        foreach ($product->getVariants() as $variant) {
+        foreach ($iterator as $variant) {
             $variants[] = $this->createVariantDocumentFromSyliusVariant($variant, $channel, $locale);
         }
 

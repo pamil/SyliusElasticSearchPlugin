@@ -61,8 +61,8 @@ final class ProductPublisher
 
         foreach ($scheduledInsertions as $entity) {
             $entity = $this->getProductFromEntity($entity);
-            if ($entity instanceof ProductInterface) {
-                $this->scheduledProducts[] = $entity;
+            if ($entity instanceof ProductInterface && !isset($this->scheduledProducts[$entity->getId()])) {
+                $this->scheduledProducts[$entity->getId()] = $entity;
             }
         }
 
@@ -70,8 +70,8 @@ final class ProductPublisher
 
         foreach ($scheduledUpdates as $entity) {
             $entity = $this->getProductFromEntity($entity);
-            if ($entity instanceof ProductInterface) {
-                $this->scheduledUpdates[] = $entity;
+            if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getId()])) {
+                $this->scheduledUpdates[$entity->getId()] = $entity;
             }
         }
 
@@ -79,8 +79,8 @@ final class ProductPublisher
 
         foreach ($scheduledDeletions as $entity) {
             /** We delete only if the product itself was removed */
-            if ($entity instanceof ProductInterface) {
-                $this->scheduledDeletions[] = $entity;
+            if ($entity instanceof ProductInterface && !isset($this->scheduledDeletions[$entity->getId()])) {
+                $this->scheduledDeletions[$entity->getId()] = $entity;
             }
         }
     }
