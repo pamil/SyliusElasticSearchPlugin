@@ -17,6 +17,7 @@ use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Product\Model\ProductAttributeTranslationInterface;
 use Sylius\Component\Product\Model\ProductAttributeValueInterface;
 use Sylius\Component\Product\Model\ProductOptionValueInterface;
+use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
 use Sylius\Component\Taxonomy\Model\TaxonTranslationInterface;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
@@ -28,7 +29,7 @@ use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 
-final class ProductDocumentFactory implements ProductDocumentFactoryInterface
+class ProductDocumentFactory implements ProductDocumentFactoryInterface
 {
     /** @var string */
     private $productDocumentClass;
@@ -107,6 +108,30 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     }
 
     /**
+     * @param ProductVariantInterface[]|\Doctrine\Common\Collections\Collection $variants
+     * @param ChannelInterface $channel
+     *
+     * @return ChannelPricingInterface
+     */
+    protected function getMinimalPriceFromVariants($variants, ChannelInterface $channel): ChannelPricingInterface
+    {
+        $minProductChannelPrice = $this->getChannelPricingForChannelFromProductVariant($variants[0], $channel);
+
+        foreach ($variants as $variant) {
+            $channelPrice = $this->getChannelPricingForChannelFromProductVariant($variant, $channel);
+            if (
+                ($variant->isTracked() && $variant->getOnHold() - $variant->getOnHold(
+                    ) > 0 && $minProductChannelPrice->getPrice() < $channelPrice->getPrice())
+                || (!$variant->isTracked() && $minProductChannelPrice->getPrice() < $channelPrice->getPrice())
+            ) {
+                $minProductChannelPrice = $channelPrice;
+            }
+        }
+
+        return $minProductChannelPrice;
+    }
+
+    /**
      * Create a product document from the product object with all it's related documents
      *
      * @param ProductInterface $product
@@ -115,28 +140,28 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return ProductDocument
      */
-    public function createFromSyliusSimpleProductModel(
+    public function createFromSyliusProductModel(
         ProductInterface $product,
         LocaleInterface $locale,
         ChannelInterface $channel
     ): ProductDocument {
 
-        $minProductChannelPrice = $this->getChannelPricingForChannelFromProductVariant(
-            $product->getVariants()->first(),
-            $channel
-        );
         /** @var ProductVariantInterface[] $syliusProductVariants */
         $syliusProductVariants = $product->getVariants();
+
+        /** @var ChannelPricingInterface $minProductChannelPrice */
+        $minProductChannelPrice = $this->getMinimalPriceFromVariants($syliusProductVariants, $channel);
 
         /**
          * Select minimal product price out of all variants
          */
+        $iterator = $product->getVariants()->getIterator();
+        $iterator->uasort(function (ProductVariantInterface $a, ProductVariantInterface $b) {
+            return ($a->getName() < $b->getName()) ? -1 : 1;
+        });
+
         $variants = [];
-        foreach ($syliusProductVariants as $variant) {
-            $channelPrice = $this->getChannelPricingForChannelFromProductVariant($variant, $channel);
-            if ($minProductChannelPrice->getPrice() < $channelPrice->getPrice()) {
-                $minProductChannelPrice = $channelPrice;
-            }
+        foreach ($iterator as $variant) {
             $variants[] = $this->createVariantDocumentFromSyliusVariant($variant, $channel, $locale);
         }
 
@@ -149,7 +174,8 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         /** @var ProductDocument $productDocument */
         $productDocument = new $this->productDocumentClass();
-        $productDocument->setId(Uuid::uuid4()->toString());
+        $productDocument->setUuid(Uuid::uuid4()->toString());
+        $productDocument->setId($product->getId());
         $productDocument->setEnabled($product->isEnabled());
         $productDocument->setLocaleCode($locale->getCode());
         $productDocument->setSlug($productTranslation->getSlug());
@@ -180,6 +206,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $price = new $this->priceDocumentClass();
         $price->setAmount($minProductChannelPrice->getPrice());
         $price->setCurrency($channel->getBaseCurrency()->getCode());
+        $price->setOriginal($minProductChannelPrice->getOriginalPrice() ?: 0);
         $productDocument->setPrice($price);
 
         $imageDocuments = [];
@@ -237,7 +264,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return TaxonDocument
      */
-    private function createTaxonDocument(TaxonInterface $taxon, ?string $localeCode = null): TaxonDocument
+    protected function createTaxonDocument(TaxonInterface $taxon, ?string $localeCode = null): TaxonDocument
     {
         /** @var TaxonTranslationInterface $taxonTranslation */
         $taxonTranslation = $taxon->getTranslation($localeCode);
@@ -272,16 +299,19 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return VariantDocument
      */
-    private function createVariantDocumentFromSyliusVariant(
+    protected function createVariantDocumentFromSyliusVariant(
         ProductVariantInterface $productVariant,
         ChannelInterface $channel,
         LocaleInterface $locale
     ): VariantDocument {
         /** @var PriceDocument $price */
         $price = new $this->priceDocumentClass();
+        /** @var ChannelPricingInterface $channelPricing */
         $channelPricing = $this->getChannelPricingForChannelFromProductVariant($productVariant, $channel);
+
         $price->setAmount($channelPricing->getPrice());
         $price->setCurrency($channel->getBaseCurrency()->getCode());
+        $price->setOriginal($channelPricing->getOriginalPrice() ?: 0);
 
         $images = [];
         foreach ($productVariant->getImages() as $image) {
@@ -297,9 +327,14 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
             $options[] = $this->createOptionDocumentFromSyliusOptionValue($optionValue, $locale);
         }
 
+        /** @var ProductVariantTranslationInterface $productVariantTranslation */
+        $productVariantTranslation = $productVariant->getTranslation($locale->getCode());
+
         /** @var VariantDocument $variant */
         $variant = new $this->variantDocumentClass();
+        $variant->setId($productVariant->getId());
         $variant->setCode($productVariant->getCode());
+        $variant->setName($productVariantTranslation->getName());
         $variant->setPrice($price);
         $variant->setStock($productVariant->getOnHand() - $productVariant->getOnHold());
         $variant->setIsTracked($productVariant->isTracked());
@@ -314,7 +349,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return array
      */
-    private function getAncestorsFromTaxon(TaxonInterface $taxon): array
+    protected function getAncestorsFromTaxon(TaxonInterface $taxon): array
     {
         $ancestors = [];
         while (null !== $taxon->getParent()) {
@@ -332,7 +367,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return ProductTaxonDocument
      */
-    private function createProductTaxonDocument(
+    protected function createProductTaxonDocument(
         ProductTaxonInterface $productTaxon,
         $localeCode = null
     ): ProductTaxonDocument {
@@ -359,7 +394,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return ChannelPricingInterface|null
      */
-    private function getChannelPricingForChannelFromProductVariant(
+    protected function getChannelPricingForChannelFromProductVariant(
         ProductVariantInterface $productVariant,
         ChannelInterface $channel
     ): ?ChannelPricingInterface
@@ -381,7 +416,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @throws \InvalidArgumentException
      */
-    private function assertClassExtends(string $class, string $parentClass)
+    protected function assertClassExtends(string $class, string $parentClass)
     {
         if ($class !== $parentClass && !in_array($parentClass, class_parents($class), true)) {
             throw new \InvalidArgumentException(sprintf('Class %s MUST extend class %s!', $class, $parentClass));
@@ -396,7 +431,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return OptionDocument
      */
-    private function createOptionDocumentFromSyliusOptionValue(
+    protected function createOptionDocumentFromSyliusOptionValue(
         ProductOptionValueInterface $optionValue,
         LocaleInterface $locale
     ): OptionDocument {
@@ -417,7 +452,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return AttributeDocument[]
      */
-    private function createAttributeDocumentFromSyliusProductAttributeValue(
+    protected function createAttributeDocumentFromSyliusProductAttributeValue(
         LocaleInterface $locale,
         ProductAttributeValueInterface $syliusProductAttributeValue
     ): array {

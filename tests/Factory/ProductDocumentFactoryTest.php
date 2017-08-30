@@ -104,7 +104,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             ['color']
         );
         /** @var ProductDocument $product */
-        $product = $factory->createFromSyliusSimpleProductModel(
+        $product = $factory->createFromSyliusProductModel(
             $syliusProduct,
             $syliusLocale,
             $syliusChannel
@@ -237,7 +237,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             ['material']
         );
         /** @var ProductDocument $product */
-        $product = $factory->createFromSyliusSimpleProductModel(
+        $product = $factory->createFromSyliusProductModel(
             $syliusProduct,
             $syliusLocale,
             $syliusChannel
@@ -383,7 +383,7 @@ final class ProductDocumentFactoryTest extends \PHPUnit_Framework_TestCase
             ['material']
         );
         /** @var ProductDocument $product */
-        $product = $factory->createFromSyliusSimpleProductModel(
+        $product = $factory->createFromSyliusProductModel(
             $syliusProduct,
             $syliusLocale,
             $syliusChannel

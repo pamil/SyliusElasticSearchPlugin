@@ -13,9 +13,16 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class ProductDocument
 {
     /**
-     * @var mixed
+     * @var string
      *
      * @ElasticSearch\Id()
+     */
+    private $uuid;
+
+    /**
+     * @var int
+     *
+     * @ElasticSearch\Property(type="integer")
      */
     private $id;
 
@@ -157,17 +164,33 @@ class ProductDocument
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getId()
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @param string $uuid
+     */
+    public function setUuid(string $uuid): void
+    {
+        $this->uuid = $uuid;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      */
-    public function setId($id)
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
@@ -383,7 +406,7 @@ class ProductDocument
     /**
      * @return float
      */
-    public function getAverageReviewRating(): float
+    public function getAverageReviewRating(): ?float
     {
         return $this->averageReviewRating;
     }

@@ -7,6 +7,11 @@ namespace Sylius\ElasticSearchPlugin\Controller;
 class VariantView
 {
     /**
+     * @var integer
+     */
+    public $id;
+
+    /**
      * @var string
      */
     public $code;
@@ -20,6 +25,16 @@ class VariantView
      * @var PriceView
      */
     public $price;
+
+    /**
+     * @var int
+     */
+    public $stock;
+
+    /**
+     * @var int
+     */
+    public $isTracked;
 
     /**
      * @var ImageView[]

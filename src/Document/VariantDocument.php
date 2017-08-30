@@ -13,6 +13,13 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class VariantDocument
 {
     /**
+     * @var int
+     *
+     * @ElasticSearch\Property(type="integer")
+     */
+    private $id;
+
+    /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ImageDocument", multiple=true)
@@ -32,6 +39,13 @@ class VariantDocument
      * @ElasticSearch\Property(type="keyword")
      */
     private $code;
+
+    /**
+     * @var string
+     *
+     * @ElasticSearch\Property(type="text")
+     */
+    private $name;
 
     /**
      * @var int
@@ -58,6 +72,22 @@ class VariantDocument
     {
         $this->images = new Collection();
         $this->options = new Collection();
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     /**
@@ -106,6 +136,22 @@ class VariantDocument
     public function setCode(string $code): void
     {
         $this->code = $code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 
     /**
