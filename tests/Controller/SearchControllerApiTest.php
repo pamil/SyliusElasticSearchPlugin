@@ -389,6 +389,48 @@ final class SearchControllerApiTest extends JsonApiTestCase
     }
 
     /**
+     * @test
+     */
+    public function it_shows_product_list_page_from_WEB_GB_channel_being_in_stock()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'stock' => '1'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertProductsCodesInResponse($response, ['LOGAN_MUG_CODE', 'LOGAN_HAT_CODE', 'LOGAN_T_SHIRT_CODE']);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_product_list_page_from_WEB_GB_channel_having_more_than_two_in_stock()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'stock' => '2'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertProductsCodesInResponse($response, ['LOGAN_MUG_CODE', 'LOGAN_HAT_CODE']);
+    }
+
+    /**
+     * @test
+     */
+    public function it_shows_product_list_page_from_WEB_GB_channel_having_stock_in_given_range()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'stock' => '1;1'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertProductsCodesInResponse($response, ['LOGAN_MUG_CODE', 'LOGAN_T_SHIRT_CODE']);
+    }
+
+    /**
      * @before
      */
     protected function purgeElasticSearch()

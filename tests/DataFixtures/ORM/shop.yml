@@ -291,7 +291,7 @@ Sylius\Component\Core\Model\ProductVariant:
         translations: ["@en_gb_mug_variant_small_translation", "@de_de_mug_variant_small_translation"]
         onHand: 0
         onHold: 0
-        tracked: false
+        tracked: true
         optionValues:
             - "@mug_option_small_value"
         channelPricings:
@@ -306,7 +306,7 @@ Sylius\Component\Core\Model\ProductVariant:
         translations: ["@en_gb_hat_variant_translation", "@de_de_hat_variant_translation"]
         onHand: 2
         onHold: 0
-        tracked: false
+        tracked: true
         optionValues:
             - "@hat_option_value"
         channelPricings:
