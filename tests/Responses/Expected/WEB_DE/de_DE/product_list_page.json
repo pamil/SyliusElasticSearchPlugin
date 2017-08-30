@@ -537,7 +537,99 @@
                 "stock": "1",
                 "locale": "de_DE"
             },
-            "name": "attributesByCode"
+            "name": "attributesByCode",
+            "items": [
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_DE",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "de_DE"
+                    },
+                    "name": "MUG_COLLECTION_CODE",
+                    "choices": {
+                        "FEIERTAGSKOLLEKTION": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_DE",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "de_DE",
+                                "attributesByCode": {
+                                    "MUG_COLLECTION_CODE": [
+                                        "FEIERTAGSKOLLEKTION"
+                                    ]
+                                }
+                            },
+                            "label": "FEIERTAGSKOLLEKTION",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_DE",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "de_DE"
+                    },
+                    "name": "MUG_MATERIAL_CODE",
+                    "choices": {
+                        "Holz": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_DE",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "de_DE",
+                                "attributesByCode": {
+                                    "MUG_MATERIAL_CODE": [
+                                        "Holz"
+                                    ]
+                                }
+                            },
+                            "label": "Holz",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_DE",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "de_DE"
+                    },
+                    "name": "PRODUCTION_YEAR",
+                    "choices": {
+                        "2015": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_DE",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "de_DE",
+                                "attributesByCode": {
+                                    "PRODUCTION_YEAR": [
+                                        "2015"
+                                    ]
+                                }
+                            },
+                            "label": "2015",
+                            "count": 1
+                        }
+                    }
+                }
+            ]
         },
         "options": {
             "state": {

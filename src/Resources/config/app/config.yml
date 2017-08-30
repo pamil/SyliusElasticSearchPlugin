@@ -80,11 +80,14 @@ ongr_filter_manager:
                 sort_order: asc
                 size: 100
         attributesByCode:
-            type: sylius_elastic_search.multi_dynamic_aggregate_without_view
+            type: sylius_elastic_search.multi_dynamic_aggregate
             request_field: attributesByCode
             document_field: attributes>attributes.value.raw
             options:
                 name_field: attributes.code
+                sort_type: _term
+                sort_order: asc
+                size: 100
         options:
             type: sylius_elastic_search.multi_dynamic_aggregate_options
             request_field: options

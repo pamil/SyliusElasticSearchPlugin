@@ -707,7 +707,133 @@
                 "stock": "1",
                 "locale": "en_GB"
             },
-            "name": "attributesByCode"
+            "name": "attributesByCode",
+            "items": [
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "en_GB"
+                    },
+                    "name": "MUG_COLLECTION_CODE",
+                    "choices": {
+                        "HOLIDAY COLLECTION": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "attributesByCode": {
+                                    "MUG_COLLECTION_CODE": [
+                                        "HOLIDAY COLLECTION"
+                                    ]
+                                }
+                            },
+                            "label": "HOLIDAY COLLECTION",
+                            "count": 2
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "en_GB"
+                    },
+                    "name": "MUG_MATERIAL_CODE",
+                    "choices": {
+                        "Wood": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "attributesByCode": {
+                                    "MUG_MATERIAL_CODE": [
+                                        "Wood"
+                                    ]
+                                }
+                            },
+                            "label": "Wood",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "en_GB"
+                    },
+                    "name": "PRODUCTION_YEAR",
+                    "choices": {
+                        "2010": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "attributesByCode": {
+                                    "PRODUCTION_YEAR": [
+                                        "2010"
+                                    ]
+                                }
+                            },
+                            "label": "2010",
+                            "count": 1
+                        },
+                        "2015": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "attributesByCode": {
+                                    "PRODUCTION_YEAR": [
+                                        "2015"
+                                    ]
+                                }
+                            },
+                            "label": "2015",
+                            "count": 1
+                        },
+                        "2020": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "attributesByCode": {
+                                    "PRODUCTION_YEAR": [
+                                        "2020"
+                                    ]
+                                }
+                            },
+                            "label": "2020",
+                            "count": 1
+                        }
+                    }
+                }
+            ]
         },
         "options": {
             "state": {
