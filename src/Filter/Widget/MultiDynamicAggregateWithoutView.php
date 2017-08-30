@@ -6,15 +6,14 @@ namespace Sylius\ElasticSearchPlugin\Filter\Widget;
 
 use ONGR\ElasticsearchBundle\Result\DocumentIterator;
 use ONGR\FilterManagerBundle\Filter\ViewData;
-use ONGR\FilterManagerBundle\Filter\Widget\Dynamic\MultiDynamicAggregate;
 use Sylius\ElasticSearchPlugin\Filter\ViewData\EmptyViewData;
 
-final class MultiDynamicAggregateWithoutView extends MultiDynamicAggregate
+final class MultiDynamicAggregateWithoutView extends MultiDynamicAggregateOverride
 {
     /**
      * {@inheritdoc}
      */
-    public function createViewData()
+    public function createViewData(): EmptyViewData
     {
         return new EmptyViewData();
     }
@@ -26,4 +25,6 @@ final class MultiDynamicAggregateWithoutView extends MultiDynamicAggregate
     {
         return $data;
     }
+
+
 }

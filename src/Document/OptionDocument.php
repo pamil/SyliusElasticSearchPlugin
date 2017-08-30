@@ -9,7 +9,7 @@ use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
 /**
  * @ElasticSearch\Nested
  */
-class AttributeDocument
+class OptionDocument
 {
     /**
      * @var string
@@ -99,4 +99,5 @@ class AttributeDocument
     {
         $this->value = $value;
     }
+
 }

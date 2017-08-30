@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sylius\ElasticSearchPlugin\Document;
 
 use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
@@ -11,6 +13,8 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class ProductDocument
 {
     /**
+     * @var mixed
+     *
      * @ElasticSearch\Id()
      */
     private $id;
@@ -123,14 +127,21 @@ class ProductDocument
     private $averageReviewRating;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var Collection
+     *
+     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\VariantDocument", multiple=true)
+     */
+    private $variants;
+
+    /**
+     * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
      */
@@ -142,6 +153,7 @@ class ProductDocument
         $this->taxons = new Collection();
         $this->productTaxons = new Collection();
         $this->images = new Collection();
+        $this->variants = new Collection();
     }
 
     /**
@@ -163,7 +175,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -171,7 +183,7 @@ class ProductDocument
     /**
      * @param string $code
      */
-    public function setCode($code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -179,7 +191,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -187,7 +199,7 @@ class ProductDocument
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -195,7 +207,7 @@ class ProductDocument
     /**
      * @return bool
      */
-    public function isEnabled()
+    public function isEnabled(): bool
     {
         return $this->enabled;
     }
@@ -203,7 +215,7 @@ class ProductDocument
     /**
      * @param bool $enabled
      */
-    public function setEnabled($enabled)
+    public function setEnabled(bool $enabled): void
     {
         $this->enabled = $enabled;
     }
@@ -211,7 +223,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->slug;
     }
@@ -219,7 +231,7 @@ class ProductDocument
     /**
      * @param string $slug
      */
-    public function setSlug($slug)
+    public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }
@@ -227,7 +239,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getChannelCode()
+    public function getChannelCode(): string
     {
         return $this->channelCode;
     }
@@ -235,7 +247,7 @@ class ProductDocument
     /**
      * @param string $channelCode
      */
-    public function setChannelCode($channelCode)
+    public function setChannelCode(string $channelCode): void
     {
         $this->channelCode = $channelCode;
     }
@@ -243,7 +255,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getLocaleCode()
+    public function getLocaleCode(): string
     {
         return $this->localeCode;
     }
@@ -251,7 +263,7 @@ class ProductDocument
     /**
      * @param string $localeCode
      */
-    public function setLocaleCode($localeCode)
+    public function setLocaleCode(string $localeCode): void
     {
         $this->localeCode = $localeCode;
     }
@@ -259,7 +271,7 @@ class ProductDocument
     /**
      * @return string
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -267,7 +279,7 @@ class ProductDocument
     /**
      * @param string $description
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }
@@ -275,7 +287,7 @@ class ProductDocument
     /**
      * @return PriceDocument
      */
-    public function getPrice()
+    public function getPrice(): PriceDocument
     {
         return $this->price;
     }
@@ -283,7 +295,7 @@ class ProductDocument
     /**
      * @param PriceDocument $price
      */
-    public function setPrice(PriceDocument $price)
+    public function setPrice(PriceDocument $price): void
     {
         $this->price = $price;
     }
@@ -291,7 +303,7 @@ class ProductDocument
     /**
      * @return TaxonDocument
      */
-    public function getMainTaxon()
+    public function getMainTaxon(): ?TaxonDocument
     {
         return $this->mainTaxon;
     }
@@ -299,7 +311,7 @@ class ProductDocument
     /**
      * @param TaxonDocument $mainTaxon
      */
-    public function setMainTaxon(TaxonDocument $mainTaxon)
+    public function setMainTaxon(TaxonDocument $mainTaxon): void
     {
         $this->mainTaxon = $mainTaxon;
     }
@@ -307,7 +319,7 @@ class ProductDocument
     /**
      * @return Collection|TaxonDocument[]
      */
-    public function getTaxons()
+    public function getTaxons(): Collection
     {
         return $this->taxons;
     }
@@ -315,7 +327,7 @@ class ProductDocument
     /**
      * @param Collection|TaxonDocument[] $taxons
      */
-    public function setTaxons($taxons)
+    public function setTaxons($taxons): void
     {
         $this->taxons = $taxons;
     }
@@ -339,7 +351,7 @@ class ProductDocument
     /**
      * @return Collection
      */
-    public function getAttributes()
+    public function getAttributes(): Collection
     {
         return $this->attributes;
     }
@@ -347,7 +359,7 @@ class ProductDocument
     /**
      * @param Collection $attributes
      */
-    public function setAttributes(Collection $attributes)
+    public function setAttributes(Collection $attributes): void
     {
         $this->attributes = $attributes;
     }
@@ -355,7 +367,7 @@ class ProductDocument
     /**
      * @return Collection
      */
-    public function getImages()
+    public function getImages(): Collection
     {
         return $this->images;
     }
@@ -363,7 +375,7 @@ class ProductDocument
     /**
      * @param Collection $images
      */
-    public function setImages(Collection $images)
+    public function setImages(Collection $images): void
     {
         $this->images = $images;
     }
@@ -371,7 +383,7 @@ class ProductDocument
     /**
      * @return float
      */
-    public function getAverageReviewRating()
+    public function getAverageReviewRating(): float
     {
         return $this->averageReviewRating;
     }
@@ -379,40 +391,56 @@ class ProductDocument
     /**
      * @param float $averageReviewRating
      */
-    public function setAverageReviewRating($averageReviewRating)
+    public function setAverageReviewRating(float $averageReviewRating): void
     {
         $this->averageReviewRating = $averageReviewRating;
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getCreatedAt()
+    public function getCreatedAt(): \DateTimeInterface
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTimeInterface $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt)
+    public function setCreatedAt(\DateTimeInterface $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface
      */
-    public function getSynchronisedAt()
+    public function getSynchronisedAt(): \DateTimeInterface
     {
         return $this->synchronisedAt;
     }
 
     /**
-     * @param \DateTime $synchronisedAt
+     * @param \DateTimeInterface $synchronisedAt
      */
-    public function setSynchronisedAt(\DateTime $synchronisedAt)
+    public function setSynchronisedAt(\DateTimeInterface $synchronisedAt): void
     {
         $this->synchronisedAt = $synchronisedAt;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getVariants(): Collection
+    {
+        return $this->variants;
+    }
+
+    /**
+     * @param Collection $variants
+     */
+    public function setVariants(Collection $variants): void
+    {
+        $this->variants = $variants;
     }
 }

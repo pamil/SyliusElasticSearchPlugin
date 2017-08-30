@@ -38,7 +38,6 @@ final class ProductPublisherSpec extends ObjectBehavior
 
         $entityManager->getUnitOfWork()->willReturn($unitOfWork);
         $unitOfWork->getScheduledEntityInsertions()->willReturn([$product]);
-        $product->isSimple()->willReturn(true);
 
         $eventBus->handle(ProductCreated::occur($product->getWrappedObject()))->shouldBeCalled();
 
@@ -58,27 +57,6 @@ final class ProductPublisherSpec extends ObjectBehavior
 
         $entityManager->getUnitOfWork()->willReturn($unitOfWork);
         $unitOfWork->getScheduledEntityInsertions()->willReturn([new \stdClass()]);
-
-        $eventBus->handle(Argument::any())->shouldNotBeCalled();
-
-        $this->onFlush($onFlushEvent);
-        $this->postFlush($postFlushEvent);
-    }
-
-    function it_does_not_publish_product_event_if_entity_is_not_a_simple_product(
-        MessageBus $eventBus,
-        OnFlushEventArgs $onFlushEvent,
-        PostFlushEventArgs $postFlushEvent,
-        EntityManager $entityManager,
-        UnitOfWork $unitOfWork,
-        ProductInterface $product
-    ) {
-        $onFlushEvent->getEntityManager()->willReturn($entityManager);
-        $postFlushEvent->getEntityManager()->willReturn($entityManager);
-
-        $entityManager->getUnitOfWork()->willReturn($unitOfWork);
-        $unitOfWork->getScheduledEntityInsertions()->willReturn([$product]);
-        $product->isSimple()->willReturn(false);
 
         $eventBus->handle(Argument::any())->shouldNotBeCalled();
 

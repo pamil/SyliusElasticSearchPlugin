@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the Sylius package.
  *
@@ -19,12 +21,13 @@ use Sylius\ElasticSearchPlugin\Controller\ProductView;
 use Sylius\ElasticSearchPlugin\Controller\TaxonView;
 use Sylius\ElasticSearchPlugin\Controller\VariantView;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
-use Sylius\ElasticSearchPlugin\Document\AttributeValueDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
+use Sylius\ElasticSearchPlugin\Document\OptionDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
+use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -66,6 +69,8 @@ final class Configuration implements ConfigurationInterface
                         ->scalarNode('price')->defaultValue(PriceDocument::class)->end()
                         ->scalarNode('product_taxon')->defaultValue(ProductTaxonDocument::class)->end()
                         ->scalarNode('taxon')->defaultValue(TaxonDocument::class)->end()
+                        ->scalarNode('variant')->defaultValue(VariantDocument::class)->end()
+                        ->scalarNode('option')->defaultValue(OptionDocument::class)->end()
                     ->end()
                 ->end()
             ->end()

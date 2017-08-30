@@ -63,7 +63,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $response = $this->client->getResponse();
 
-        $this->assertProductsCodesInResponse($this->client->getResponse(), ['LOGAN_MUG_CODE']);
+        $this->assertProductsCodesInResponse($response, ['LOGAN_MUG_CODE']);
     }
 
     /**

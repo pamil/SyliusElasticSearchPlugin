@@ -21,11 +21,13 @@ ongr_filter_manager:
                 - taxonCode
                 - taxonSlug
                 - priceRange
+                - inStock
                 - locale
                 - paginator
                 - search
                 - attributes
                 - attributesByCode
+                - options
                 - sort
             repository: es.manager.default.product
     filters:
@@ -51,6 +53,12 @@ ongr_filter_manager:
             document_field: price.amount
             options:
                 inclusive: true
+        inStock:
+            type: sylius_elastic_search.in_stock
+            request_field: stock
+            document_field: variants.stock
+            options:
+                inclusive: true
         locale:
             type: choice
             request_field: locale
@@ -63,17 +71,29 @@ ongr_filter_manager:
                 limit: 10
                 max_pages: 20
         attributes:
-            type: multi_dynamic_aggregate
+            type: sylius_elastic_search.multi_dynamic_aggregate
             request_field: attributes
             document_field: attributes>attributes.value.raw
             options:
                 name_field: attributes.name.raw
+                sort_type: _term
+                sort_order: asc
+                size: 100
         attributesByCode:
-            type: sylius_elastic_search.multi_dynamic_aggregate
+            type: sylius_elastic_search.multi_dynamic_aggregate_without_view
             request_field: attributesByCode
             document_field: attributes>attributes.value.raw
             options:
                 name_field: attributes.code
+        options:
+            type: sylius_elastic_search.multi_dynamic_aggregate_options
+            request_field: options
+            document_field: variants>variants.options>variants.options.value.raw
+            options:
+                name_field: variants.options.name.raw
+                sort_type: _term
+                sort_order: asc
+                size: 100
         search:
             type: match
             request_field: search

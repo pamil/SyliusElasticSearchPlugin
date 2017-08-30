@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sylius\ElasticSearchPlugin\Document;
 
 use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
@@ -29,7 +31,7 @@ class TaxonDocument
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $position;
+    private $position = 0;
 
     /**
      * @var ImageDocument[]|Collection
@@ -47,14 +49,13 @@ class TaxonDocument
 
     public function __construct()
     {
-        $this->children = new Collection();
         $this->images = new Collection();
     }
 
     /**
      * @return string
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -62,7 +63,7 @@ class TaxonDocument
     /**
      * @param string $code
      */
-    public function setCode($code)
+    public function setCode(string $code): void
     {
         $this->code = $code;
     }
@@ -70,7 +71,7 @@ class TaxonDocument
     /**
      * @return string
      */
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->slug;
     }
@@ -78,7 +79,7 @@ class TaxonDocument
     /**
      * @param string $slug
      */
-    public function setSlug($slug)
+    public function setSlug(string $slug): void
     {
         $this->slug = $slug;
     }
@@ -86,7 +87,7 @@ class TaxonDocument
     /**
      * @return int
      */
-    public function getPosition()
+    public function getPosition(): int
     {
         return $this->position;
     }
@@ -94,7 +95,7 @@ class TaxonDocument
     /**
      * @param int $position
      */
-    public function setPosition($position)
+    public function setPosition(int $position): void
     {
         $this->position = $position;
     }
@@ -102,7 +103,7 @@ class TaxonDocument
     /**
      * @return Collection
      */
-    public function getImages()
+    public function getImages(): Collection
     {
         return $this->images;
     }
@@ -110,23 +111,23 @@ class TaxonDocument
     /**
      * @param Collection $images
      */
-    public function setImages(Collection $images)
+    public function setImages(Collection $images): void
     {
         $this->images = $images;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): void
     {
         $this->description = $description;
     }

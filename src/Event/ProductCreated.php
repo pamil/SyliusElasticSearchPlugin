@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sylius\ElasticSearchPlugin\Event;
 
 use Sylius\Component\Core\Model\ProductInterface;
@@ -32,7 +34,7 @@ final class ProductCreated
     /**
      * @return ProductInterface
      */
-    public function product()
+    public function product(): ProductInterface
     {
         return $this->product;
     }

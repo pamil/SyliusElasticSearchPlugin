@@ -136,10 +136,12 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "channel",
@@ -149,6 +151,7 @@
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "label": "WEB_GB",
@@ -170,10 +173,12 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "enabled",
@@ -183,6 +188,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "stock": "1",
                         "locale": "en_GB",
                         "enabled": 0
                     },
@@ -194,6 +200,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
+                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "label": 1,
@@ -212,11 +219,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "taxonCode",
@@ -227,6 +236,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "HAT"
                     },
@@ -239,6 +249,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "MUG"
                     },
@@ -251,6 +262,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "T_SHIRTS"
                     },
@@ -263,6 +275,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "BRAND"
                     },
@@ -275,6 +288,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "CATEGORY"
                     },
@@ -294,11 +308,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "taxonSlug",
@@ -309,6 +325,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "categories\/hats"
                     },
@@ -321,6 +338,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "categories\/mugs"
                     },
@@ -333,6 +351,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "categories\/t-shirts"
                     },
@@ -345,6 +364,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "brands"
                     },
@@ -357,6 +377,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "categories"
                     },
@@ -376,6 +397,36 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
+                "locale": "en_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "stock": "1",
+                "locale": "en_GB"
+            },
+            "name": "priceRange",
+            "minBounds": 1000,
+            "maxBounds": 2000
+        },
+        "inStock": {
+            "state": {
+                "active": true,
+                "value": {
+                    "gte": "1"
+                },
+                "urlParameters": {
+                    "stock": "1"
+                },
+                "name": "inStock",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
@@ -383,9 +434,7 @@
                 "enabled": true,
                 "locale": "en_GB"
             },
-            "name": "priceRange",
-            "minBounds": 1000,
-            "maxBounds": 2000
+            "name": "inStock"
         },
         "locale": {
             "state": {
@@ -401,11 +450,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
-                "enabled": true
+                "enabled": true,
+                "stock": "1"
             },
             "name": "locale",
             "choices": [
@@ -415,6 +466,7 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "label": "de_DE",
@@ -425,7 +477,8 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "enabled": true
+                        "enabled": true,
+                        "stock": "1"
                     },
                     "label": "en_GB",
                     "count": 3
@@ -446,11 +499,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "paginator",
@@ -473,11 +528,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "search"
@@ -493,11 +550,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "attributes",
@@ -508,6 +567,7 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug collection",
@@ -518,6 +578,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
+                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug collection": [
@@ -536,6 +597,7 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug material",
@@ -546,6 +608,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
+                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": [
@@ -564,6 +627,7 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
+                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Production year",
@@ -574,6 +638,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
+                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Production year": [
@@ -590,6 +655,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
+                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Production year": [
@@ -606,6 +672,7 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
+                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Production year": [
@@ -631,14 +698,198 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "attributesByCode"
+        },
+        "options": {
+            "state": {
+                "active": false,
+                "urlParameters": [],
+                "name": "options",
+                "options": []
+            },
+            "tags": [],
+            "urlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "stock": "1",
+                "locale": "en_GB"
+            },
+            "resetUrlParameters": {
+                "channel": "WEB_GB",
+                "enabled": true,
+                "stock": "1",
+                "locale": "en_GB"
+            },
+            "name": "options",
+            "items": [
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "en_GB"
+                    },
+                    "name": "Hat size",
+                    "choices": {
+                        "Small hat": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "options": {
+                                    "Hat size": [
+                                        "Small hat"
+                                    ]
+                                }
+                            },
+                            "label": "Small hat",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "en_GB"
+                    },
+                    "name": "Mug size",
+                    "choices": {
+                        "Big mug": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "options": {
+                                    "Mug size": [
+                                        "Big mug"
+                                    ]
+                                }
+                            },
+                            "label": "Big mug",
+                            "count": 1
+                        },
+                        "Small mug": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "options": {
+                                    "Mug size": [
+                                        "Small mug"
+                                    ]
+                                }
+                            },
+                            "label": "Small mug",
+                            "count": 1
+                        }
+                    }
+                },
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "en_GB"
+                    },
+                    "name": "T-Shirt size",
+                    "choices": {
+                        "L": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "options": {
+                                    "T-Shirt size": [
+                                        "L"
+                                    ]
+                                }
+                            },
+                            "label": "L",
+                            "count": 1
+                        },
+                        "M": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "options": {
+                                    "T-Shirt size": [
+                                        "M"
+                                    ]
+                                }
+                            },
+                            "label": "M",
+                            "count": 1
+                        },
+                        "S": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "options": {
+                                    "T-Shirt size": [
+                                        "S"
+                                    ]
+                                }
+                            },
+                            "label": "S",
+                            "count": 1
+                        },
+                        "XL": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "options": {
+                                    "T-Shirt size": [
+                                        "XL"
+                                    ]
+                                }
+                            },
+                            "label": "XL",
+                            "count": 1
+                        }
+                    }
+                }
+            ]
         },
         "sort": {
             "state": {
@@ -651,11 +902,13 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
+                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "sort"

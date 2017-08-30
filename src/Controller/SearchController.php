@@ -85,6 +85,10 @@ final class SearchController
             $request->query->set('locale', $channel->getDefaultLocale()->getCode());
         }
 
+        if (!$request->query->has('stock')) {
+            $request->query->set('stock', '1');
+        }
+
         if (!$request->query->has('sort')) {
             if (null !== $request->get('taxonCode')) {
                 $request->query->set('sort', ['taxonPositionByCode' => [$request->get('taxonCode') => 'ASC']]);

@@ -34,57 +34,6 @@ Sylius\Component\Locale\Model\Locale:
     locale_de_de:
         code: de_DE
 
-Sylius\Component\Core\Model\Product:
-    mug:
-        code: "LOGAN_MUG_CODE"
-        channels: ["@gb_web_channel", "@de_web_channel"]
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_mug_product_translation"
-        translations: ["@en_gb_mug_product_translation", "@de_de_mug_product_translation"]
-        mainTaxon: "@mug_taxon"
-        productTaxons: ["@mug_product_taxon", "@mug_brand_taxon"]
-        attributes:
-            - "@en_gb_production_year_value_mug"
-            - "@de_de_production_year_value_mug"
-            - "@en_gb_mug_holiday_collection_value"
-            - "@de_de_mug_holiday_collection_value"
-            - "@en_gb_mug_wood_material_value"
-            - "@de_de_mug_wood_material_value"
-        variants: ["@mug_variant"]
-    hat:
-        code: "LOGAN_HAT_CODE"
-        channels: ["@gb_web_channel"]
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_hat_product_translation"
-        translations: ["@en_gb_hat_product_translation", "@de_de_hat_product_translation"]
-        productTaxons: ["@hat_product_taxon", "@hat_brand_taxon"]
-        attributes:
-            - "@en_gb_production_year_value_hat"
-            - "@de_de_production_year_value_hat"
-            - "@en_gb_mug_holiday_collection_value"
-            - "@de_de_mug_holiday_collection_value"
-        variants: ["@hat_variant"]
-    t_shirt:
-        code: "LOGAN_T_SHIRT_CODE"
-        channels: ["@gb_web_channel"]
-        currentLocale: "en_GB"
-        currentTranslation: "@t_shirt_translation"
-        mainTaxon: "@t_shirt_taxon"
-        productTaxons: ["@t_shirt_product_taxon", "@t_shirt_brand_taxon"]
-        attributes:
-            - "@en_gb_production_year_value_t_shirt"
-            - "@de_de_production_year_value_t_shirt"
-        variants: ["@t_shirt_small"]
-    disabled_t_shirt:
-        code: "DISABLED_T_SHIRT_CODE"
-        enabled: false
-        channels: ["@gb_web_channel"]
-        currentLocale: "en_GB"
-        currentTranslation: "@disabled_t_shirt_translation"
-        mainTaxon: "@t_shirt_taxon"
-        productTaxons: ["@t_shirt_product_taxon", "@t_shirt_brand_taxon"]
-        variants: ["@disabled_t_shirt_small"]
-
 Sylius\Component\Core\Model\ProductTranslation:
     en_gb_mug_product_translation:
         slug: "logan-mug"
@@ -123,11 +72,179 @@ Sylius\Component\Core\Model\ProductTranslation:
         description: "Disabled T-Shirt"
         translatable: "@disabled_t_shirt"
 
+Sylius\Component\Product\Model\ProductAttributeTranslation:
+    mug_collection_de_de_translation:
+        locale: "de_DE"
+        name: "Becher Sammlung"
+        translatable: "@mug_collection"
+    mug_material_de_de_translation:
+        locale: "de_DE"
+        name: "Becher Material"
+        translatable: "@mug_material"
+    production_year_de_de_translation:
+        locale: "de_DE"
+        name: "Produktionsjahr"
+        translatable: "@production_year"
+    mug_collection_en_gb_translation:
+        locale: "en_GB"
+        name: "Mug collection"
+        translatable: "@mug_collection"
+    mug_material_en_gb_translation:
+        locale: "en_GB"
+        name: "Mug material"
+        translatable: "@mug_material"
+    production_year_en_gb_translation:
+        locale: "en_GB"
+        name: "Production year"
+        translatable: "@production_year"
+
+Sylius\Component\Product\Model\ProductAttributeValue:
+    en_gb_mug_holiday_collection_value:
+        subject: "@mug"
+        attribute: "@mug_collection"
+        localeCode: "en_GB"
+        text: "HOLIDAY COLLECTION"
+    de_de_mug_holiday_collection_value:
+        subject: "@mug"
+        attribute: "@mug_collection"
+        localeCode: "de_DE"
+        text: "FEIERTAGSKOLLEKTION"
+    en_gb_mug_wood_material_value:
+        subject: "@mug"
+        attribute: "@mug_material"
+        localeCode: "en_GB"
+        text: "Wood"
+    de_de_mug_wood_material_value:
+        subject: "@mug"
+        attribute: "@mug_material"
+        localeCode: "de_DE"
+        text: "Holz"
+    en_gb_production_year_value_mug:
+        subject: "@mug"
+        attribute: "@production_year"
+        localeCode: "en_GB"
+        text: "2015"
+    de_de_production_year_value_mug:
+        subject: "@mug"
+        attribute: "@production_year"
+        localeCode: "de_DE"
+        text: "2015"
+    en_gb_production_year_value_t_shirt:
+        subject: "@t_shirt"
+        attribute: "@production_year"
+        localeCode: "en_GB"
+        text: "2020"
+    de_de_production_year_value_t_shirt:
+        subject: "@t_shirt"
+        attribute: "@production_year"
+        localeCode: "de_DE"
+        text: "2020"
+    en_gb_production_year_value_hat:
+        subject: "@hat"
+        attribute: "@production_year"
+        localeCode: "en_GB"
+        text: "2010"
+    de_de_production_year_value_hat:
+        subject: "@hat"
+        attribute: "@production_year"
+        localeCode: "de_DE"
+        text: "2010"
+
+Sylius\Component\Product\Model\ProductAttribute:
+    mug_collection:
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        code: "MUG_COLLECTION_CODE"
+        type: "text"
+        storage_type: "text"
+        translations:
+            - "@mug_collection_en_gb_translation"
+            - "@mug_collection_de_de_translation"
+    mug_material:
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        code: "MUG_MATERIAL_CODE"
+        type: "text"
+        storage_type: "text"
+        translations:
+            - "@mug_material_en_gb_translation"
+            - "@mug_material_de_de_translation"
+    production_year:
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        code: "PRODUCTION_YEAR"
+        type: "text"
+        storage_type: "text"
+        translations:
+            - "@production_year_en_gb_translation"
+            - "@production_year_de_de_translation"
+
+Sylius\Component\Core\Model\Product:
+    mug:
+        code: "LOGAN_MUG_CODE"
+        channels: ["@gb_web_channel", "@de_web_channel"]
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_mug_product_translation"
+        translations: ["@en_gb_mug_product_translation", "@de_de_mug_product_translation"]
+        mainTaxon: "@mug_taxon"
+        productTaxons: ["@mug_product_taxon", "@mug_brand_taxon"]
+        attributes:
+            - "@en_gb_production_year_value_mug"
+            - "@de_de_production_year_value_mug"
+            - "@en_gb_mug_holiday_collection_value"
+            - "@de_de_mug_holiday_collection_value"
+            - "@en_gb_mug_wood_material_value"
+            - "@de_de_mug_wood_material_value"
+        variants: ["@mug_variant_big", "@mug_variant_small"]
+    hat:
+        code: "LOGAN_HAT_CODE"
+        channels: ["@gb_web_channel"]
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_hat_product_translation"
+        translations: ["@en_gb_hat_product_translation", "@de_de_hat_product_translation"]
+        productTaxons: ["@hat_product_taxon", "@hat_brand_taxon"]
+        attributes:
+            - "@en_gb_production_year_value_hat"
+            - "@de_de_production_year_value_hat"
+            - "@en_gb_mug_holiday_collection_value"
+            - "@de_de_mug_holiday_collection_value"
+        variants: ["@hat_variant"]
+    t_shirt:
+        code: "LOGAN_T_SHIRT_CODE"
+        channels: ["@gb_web_channel"]
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@t_shirt_translation"
+        mainTaxon: "@t_shirt_taxon"
+        productTaxons: ["@t_shirt_product_taxon", "@t_shirt_brand_taxon"]
+        attributes:
+            - "@en_gb_production_year_value_t_shirt"
+            - "@de_de_production_year_value_t_shirt"
+        variants: ["@t_shirt_small", "@t_shirt_medium", "@t_shirt_large", "@t_shirt_extra_large"]
+    disabled_t_shirt:
+        code: "DISABLED_T_SHIRT_CODE"
+        enabled: false
+        channels: ["@gb_web_channel"]
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@disabled_t_shirt_translation"
+        mainTaxon: "@t_shirt_taxon"
+        productTaxons: ["@t_shirt_product_taxon", "@t_shirt_brand_taxon"]
+        variants: ["@disabled_t_shirt_small"]
+
 Sylius\Component\Core\Model\ChannelPricing:
-    gb_mug_web_channel_pricing:
+    gb_mug_big_web_channel_pricing:
         channelCode: "WEB_GB"
         price: 1000
-    de_mug_web_channel_pricing:
+    de_mug_big_web_channel_pricing:
+        channelCode: "WEB_DE"
+        price: 1250
+    gb_mug_small_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 1000
+    de_mug_small_web_channel_pricing:
         channelCode: "WEB_DE"
         price: 1250
     gb_hat_web_channel_pricing:
@@ -136,52 +253,147 @@ Sylius\Component\Core\Model\ChannelPricing:
     gb_small_t_shirt_web_channel_pricing:
         channelCode: "WEB_GB"
         price: 2000
+    gb_medium_t_shirt_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 2000
+    gb_large_t_shirt_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 2000
+    gb_extra_large_t_shirt_web_channel_pricing:
+        channelCode: "WEB_GB"
+        price: 2000
     gb_small_disabled_t_shirt_web_channel_pricing:
         channelCode: "WEB_GB"
         price: 1500
 
 Sylius\Component\Core\Model\ProductVariant:
-    mug_variant:
-        code: "LOGAN_MUG_CODE"
+    mug_variant_big:
+        code: "LOGAN_MUG_BIG_CODE"
         product: "@mug"
+        fallbackLocale: "en_GB"
         currentLocale: "en_GB"
-        currentTranslation: "@en_gb_mug_variant_translation"
-        translations: ["@en_gb_mug_variant_translation", "@de_de_mug_variant_translation"]
+        currentTranslation: "@en_gb_mug_variant_big_translation"
+        translations: ["@en_gb_mug_variant_big_translation", "@de_de_mug_variant_big_translation"]
+        onHand: 0
+        onHold: 0
+        tracked: false
+        optionValues:
+            - "@mug_option_big_value"
         channelPricings:
-            - "@gb_mug_web_channel_pricing"
-            - "@de_mug_web_channel_pricing"
+            - "@gb_mug_big_web_channel_pricing"
+            - "@de_mug_big_web_channel_pricing"
+    mug_variant_small:
+        code: "LOGAN_MUG_SMALL_CODE"
+        product: "@mug"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_mug_variant_small_translation"
+        translations: ["@en_gb_mug_variant_small_translation", "@de_de_mug_variant_small_translation"]
+        onHand: 0
+        onHold: 0
+        tracked: false
+        optionValues:
+            - "@mug_option_small_value"
+        channelPricings:
+            - "@gb_mug_small_web_channel_pricing"
+            - "@de_mug_small_web_channel_pricing"
     hat_variant:
         code: "LOGAN_HAT_CODE"
         product: "@hat"
+        fallbackLocale: "en_GB"
         currentLocale: "en_GB"
         currentTranslation: "@en_gb_hat_variant_translation"
         translations: ["@en_gb_hat_variant_translation", "@de_de_hat_variant_translation"]
+        onHand: 2
+        onHold: 0
+        tracked: false
+        optionValues:
+            - "@hat_option_value"
         channelPricings:
             - "@gb_hat_web_channel_pricing"
     t_shirt_small:
         code: "SMALL_LOGAN_T_SHIRT_CODE"
         product: "@t_shirt"
+        fallbackLocale: "en_GB"
         currentLocale: "en_GB"
         currentTranslation: "@small_t_shirt_translation"
+        onHand: 1
+        onHold: 0
+        tracked: true
+        optionValues:
+            - "@t_shirt_s_option_value"
         channelPricings:
             - "@gb_small_t_shirt_web_channel_pricing"
+    t_shirt_medium:
+        code: "MEDIUM_LOGAN_T_SHIRT_CODE"
+        product: "@t_shirt"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@medium_t_shirt_translation"
+        onHand: 1
+        onHold: 0
+        tracked: true
+        optionValues:
+            - "@t_shirt_m_option_value"
+        channelPricings:
+            - "@gb_medium_t_shirt_web_channel_pricing"
+    t_shirt_large:
+        code: "LARGE_LOGAN_T_SHIRT_CODE"
+        product: "@t_shirt"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@large_t_shirt_translation"
+        onHand: 1
+        onHold: 0
+        tracked: true
+        optionValues:
+            - "@t_shirt_l_option_value"
+        channelPricings:
+            - "@gb_large_t_shirt_web_channel_pricing"
+    t_shirt_extra_large:
+        code: "EXTRA_LARGE_LOGAN_T_SHIRT_CODE"
+        product: "@t_shirt"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@extra_large_t_shirt_translation"
+        onHand: 1
+        onHold: 0
+        tracked: true
+        optionValues:
+            - "@t_shirt_xl_option_value"
+        channelPricings:
+            - "@gb_extra_large_t_shirt_web_channel_pricing"
     disabled_t_shirt_small:
         code: "SMALL_DISABLED_T_SHIRT_CODE"
         product: "@disabled_t_shirt"
+        fallbackLocale: "en_GB"
         currentLocale: "en_GB"
         currentTranslation: "@small_disabled_t_shirt_translation"
+        onHand: 2
+        onHold: 1
+        tracked: true
+        optionValues:
+            - "@t_shirt_s_option_value"
         channelPricings:
             - "@gb_small_disabled_t_shirt_web_channel_pricing"
 
 Sylius\Component\Product\Model\ProductVariantTranslation:
-    en_gb_mug_variant_translation:
+    en_gb_mug_variant_big_translation:
         locale: "en_GB"
         name: "Logan Mug"
-        translatable: "@mug_variant"
-    de_de_mug_variant_translation:
+        translatable: "@mug_variant_big"
+    de_de_mug_variant_big_translation:
         locale: "de_DE"
         name: "Logan Becher"
-        translatable: "@mug_variant"
+        translatable: "@mug_variant_big"
+    en_gb_mug_variant_small_translation:
+        locale: "en_GB"
+        name: "Gnome Mug"
+        translatable: "@mug_variant_small"
+    de_de_mug_variant_small_translation:
+        locale: "de_DE"
+        name: "Gnome Becher"
+        translatable: "@mug_variant_small"
     en_gb_hat_variant_translation:
         locale: "en_GB"
         name: "Logan Hat"
@@ -194,44 +406,22 @@ Sylius\Component\Product\Model\ProductVariantTranslation:
         locale: "en_GB"
         name: "Small Logan T-Shirt"
         translatable: "@t_shirt_small"
+    medium_t_shirt_translation:
+        locale: "en_GB"
+        name: "Medium Logan T-Shirt"
+        translatable: "@t_shirt_medium"
+    large_t_shirt_translation:
+        locale: "en_GB"
+        name: "Large Logan T-Shirt"
+        translatable: "@t_shirt_large"
+    extra_large_t_shirt_translation:
+        locale: "en_GB"
+        name: "Extra Large Logan T-Shirt"
+        translatable: "@t_shirt_extra_large"
     small_disabled_t_shirt_translation:
         locale: "en_GB"
         name: "Small Disabled T-Shirt"
         translatable: "@disabled_t_shirt_small"
-
-Sylius\Component\Core\Model\Taxon:
-    category_taxon:
-        code: "CATEGORY"
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_category_translation"
-        translations: ["@en_gb_category_translation", "@de_de_category_translation"]
-        children: ["@mug_taxon", "@t_shirt_taxon"]
-    mug_taxon:
-        code: "MUG"
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_mug_taxon_translation"
-        translations: ["@en_gb_mug_taxon_translation", "@de_de_mug_taxon_translation"]
-        parent: "@category_taxon"
-        root: "@category_taxon"
-    hat_taxon:
-        code: "HAT"
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_hat_taxon_translation"
-        translations: ["@en_gb_hat_taxon_translation", "@de_de_hat_taxon_translation"]
-        parent: "@category_taxon"
-        root: "@category_taxon"
-    t_shirt_taxon:
-        code: "T_SHIRTS"
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_t_shirt_taxon_translation"
-        translations: ["@en_gb_t_shirt_taxon_translation", "@de_de_t_shirt_taxon_translation"]
-        parent: "@category_taxon"
-        root: "@category_taxon"
-    brand_taxon:
-        code: "BRAND"
-        currentLocale: "en_GB"
-        currentTranslation: "@en_gb_brand_translation"
-        translations: ["@en_gb_brand_translation", "@de_de_brand_translation"]
 
 Sylius\Component\Taxonomy\Model\TaxonTranslation:
     en_gb_category_translation:
@@ -295,6 +485,45 @@ Sylius\Component\Taxonomy\Model\TaxonTranslation:
         description: <paragraph(2)>
         translatable: "@hat_taxon"
 
+Sylius\Component\Core\Model\Taxon:
+    category_taxon:
+        code: "CATEGORY"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_category_translation"
+        translations: ["@en_gb_category_translation", "@de_de_category_translation"]
+        children: ["@mug_taxon", "@t_shirt_taxon"]
+    mug_taxon:
+        code: "MUG"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_mug_taxon_translation"
+        translations: ["@en_gb_mug_taxon_translation", "@de_de_mug_taxon_translation"]
+        parent: "@category_taxon"
+        root: "@category_taxon"
+    hat_taxon:
+        code: "HAT"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_hat_taxon_translation"
+        translations: ["@en_gb_hat_taxon_translation", "@de_de_hat_taxon_translation"]
+        parent: "@category_taxon"
+        root: "@category_taxon"
+    t_shirt_taxon:
+        code: "T_SHIRTS"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_taxon_translation"
+        translations: ["@en_gb_t_shirt_taxon_translation", "@de_de_t_shirt_taxon_translation"]
+        parent: "@category_taxon"
+        root: "@category_taxon"
+    brand_taxon:
+        code: "BRAND"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_brand_translation"
+        translations: ["@en_gb_brand_translation", "@de_de_brand_translation"]
+
 Sylius\Component\Core\Model\ProductTaxon:
     mug_product_taxon:
         product: "@mug"
@@ -318,109 +547,161 @@ Sylius\Component\Core\Model\ProductTaxon:
         taxon: "@brand_taxon"
         position: 3
 
-Sylius\Component\Product\Model\ProductAttributeTranslation:
-    mug_collection_de_de_translation:
+Sylius\Component\Product\Model\ProductOptionTranslation:
+    de_de_mug_size_product_option_translation:
         locale: "de_DE"
-        name: "Becher Sammlung"
-        translatable: "@mug_collection"
-    mug_material_de_de_translation:
+        name: "Bechergröße"
+        translatable: "@mug_option"
+    de_de_hat_size_product_option_translation:
         locale: "de_DE"
-        name: "Becher Material"
-        translatable: "@mug_material"
-    production_year_de_de_translation:
+        name: "Hutgröße"
+        translatable: "@hat_option"
+    de_de_t_shirt_size_product_option_translation:
         locale: "de_DE"
-        name: "Produktionsjahr"
-        translatable: "@production_year"
-    mug_collection_en_gb_translation:
+        name: "T-Shirt Größe"
+        translatable: "@t_shirt_option"
+    en_gb_mug_size_product_option_translation:
         locale: "en_GB"
-        name: "Mug collection"
-        translatable: "@mug_collection"
-    mug_material_en_gb_translation:
+        name: "Mug size"
+        translatable: "@mug_option"
+    en_gb_hat_size_product_option_translation:
         locale: "en_GB"
-        name: "Mug material"
-        translatable: "@mug_material"
-    production_year_en_gb_translation:
+        name: "Hat size"
+        translatable: "@hat_option"
+    en_gb_t_shirt_size_product_option_translation:
         locale: "en_GB"
-        name: "Production year"
-        translatable: "@production_year"
+        name: "T-Shirt size"
+        translatable: "@t_shirt_option"
 
-Sylius\Component\Product\Model\ProductAttribute:
-    mug_collection:
+Sylius\Component\Product\Model\ProductOption:
+    mug_option:
+        code: "MUG_SIZE"
+        position: 1
         fallbackLocale: "en_GB"
         currentLocale: "en_GB"
-        code: "MUG_COLLECTION_CODE"
-        type: "text"
-        storage_type: "text"
-        translations:
-            - "@mug_collection_en_gb_translation"
-            - "@mug_collection_de_de_translation"
-    mug_material:
+        currentTranslation: "@en_gb_mug_size_product_option_translation"
+        translations: ["@en_gb_mug_size_product_option_translation", "@de_de_mug_size_product_option_translation"]
+    hat_option:
+        code: "HAT_SIZE"
+        position: 1
         fallbackLocale: "en_GB"
         currentLocale: "en_GB"
-        code: "MUG_MATERIAL_CODE"
-        type: "text"
-        storage_type: "text"
-        translations:
-            - "@mug_material_en_gb_translation"
-            - "@mug_material_de_de_translation"
-    production_year:
+        currentTranslation: "@en_gb_hat_size_product_option_translation"
+        translations: ["@en_gb_hat_size_product_option_translation", "@de_de_hat_size_product_option_translation"]
+    t_shirt_option:
+        code: "T_SHIRT_SIZE"
+        position: 1
         fallbackLocale: "en_GB"
         currentLocale: "en_GB"
-        code: "PRODUCTION_YEAR"
-        type: "text"
-        storage_type: "text"
-        translations:
-            - "@production_year_en_gb_translation"
-            - "@production_year_de_de_translation"
+        currentTranslation: "@en_gb_t_shirt_size_product_option_translation"
+        translations: ["@en_gb_t_shirt_size_product_option_translation", "@de_de_t_shirt_size_product_option_translation"]
 
-Sylius\Component\Product\Model\ProductAttributeValue:
-    en_gb_mug_holiday_collection_value:
-        subject: "@mug"
-        attribute: "@mug_collection"
-        localeCode: "en_GB"
-        text: "HOLIDAY COLLECTION"
-    de_de_mug_holiday_collection_value:
-        subject: "@mug"
-        attribute: "@mug_collection"
-        localeCode: "de_DE"
-        text: "FEIERTAGSKOLLEKTION"
-    en_gb_mug_wood_material_value:
-        subject: "@mug"
-        attribute: "@mug_material"
-        localeCode: "en_GB"
-        text: "Wood"
-    de_de_mug_wood_material_value:
-        subject: "@mug"
-        attribute: "@mug_material"
-        localeCode: "de_DE"
-        text: "Holz"
-    en_gb_production_year_value_mug:
-        subject: "@mug"
-        attribute: "@production_year"
-        localeCode: "en_GB"
-        text: "2015"
-    de_de_production_year_value_mug:
-        subject: "@mug"
-        attribute: "@production_year"
-        localeCode: "de_DE"
-        text: "2015"
-    en_gb_production_year_value_t_shirt:
-        subject: "@t_shirt"
-        attribute: "@production_year"
-        localeCode: "en_GB"
-        text: "2020"
-    de_de_production_year_value_t_shirt:
-        subject: "@t_shirt"
-        attribute: "@production_year"
-        localeCode: "de_DE"
-        text: "2020"
-    en_gb_production_year_value_hat:
-        subject: "@hat"
-        attribute: "@production_year"
-        localeCode: "en_GB"
-        text: "2010"
-    de_de_production_year_value_hat:
-        subject: "@hat"
-        attribute: "@production_year"
-        localeCode: "de_DE"
-        text: "2010"
+
+Sylius\Component\Product\Model\ProductOptionValueTranslation:
+    en_gb_big_mug_product_option_value_translation:
+        locale: "en_GB"
+        value: "Big mug"
+        translatable: "@mug_option_big_value"
+    de_de_big_mug_product_option_value_translation:
+        locale: "de_DE"
+        value: "Großer Becher"
+        translatable: "@mug_option_big_value"
+    en_gb_small_mug_product_option_value_translation:
+        locale: "en_GB"
+        value: "Small mug"
+        translatable: "@mug_option_small_value"
+    de_de_small_mug_product_option_value_translation:
+        locale: "de_DE"
+        value: "Kleiner Becher"
+        translatable: "@mug_option_small_value"
+    en_gb_small_hat_product_option_value_translation:
+        locale: "en_GB"
+        value: "Small hat"
+        translatable: "@hat_option_value"
+    de_de_small_hat_product_option_value_translation:
+        locale: "de_DE"
+        value: "Kleiner Hut"
+        translatable: "@hat_option_value"
+    en_gb_t_shirt_s_product_option_value_translation:
+        locale: "en_GB"
+        value: "S"
+        translatable: "@t_shirt_s_option_value"
+    de_de_t_shirt_s_product_option_value_translation:
+        locale: "de_DE"
+        value: "S"
+        translatable: "@t_shirt_s_option_value"
+    en_gb_t_shirt_m_product_option_value_translation:
+        locale: "en_GB"
+        value: "M"
+        translatable: "@t_shirt_m_option_value"
+    de_de_t_shirt_m_product_option_value_translation:
+        locale: "de_DE"
+        value: "M"
+        translatable: "@t_shirt_m_option_value"
+    en_gb_t_shirt_l_product_option_value_translation:
+        locale: "en_GB"
+        value: "L"
+        translatable: "@t_shirt_l_option_value"
+    de_de_t_shirt_l_product_option_value_translation:
+        locale: "de_DE"
+        value: "L"
+        translatable: "@t_shirt_l_option_value"
+    en_gb_t_shirt_xl_product_option_value_translation:
+        locale: "en_GB"
+        value: "XL"
+        translatable: "@t_shirt_xl_option_value"
+    de_de_t_shirt_xl_product_option_value_translation:
+        locale: "de_DE"
+        value: "XL"
+        translatable: "@t_shirt_xl_option_value"
+
+Sylius\Component\Product\Model\ProductOptionValue:
+    mug_option_big_value:
+        option: "@mug_option"
+        code: "BIG_MUG"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_big_mug_product_option_value_translation"
+        translations: ["@en_gb_big_mug_product_option_value_translation", "@de_de_big_mug_product_option_value_translation"]
+    mug_option_small_value:
+        option: "@mug_option"
+        code: "SMALL_MUG"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_small_mug_product_option_value_translation"
+        translations: ["@en_gb_small_mug_product_option_value_translation", "@de_de_small_mug_product_option_value_translation"]
+    hat_option_value:
+        option: "@hat_option"
+        code: "SMALL_HAT"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_small_hat_product_option_value_translation"
+        translations: ["@en_gb_small_hat_product_option_value_translation", "@de_de_small_hat_product_option_value_translation"]
+    t_shirt_s_option_value:
+        option: "@t_shirt_option"
+        code: "T_SHIRT_S"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_s_product_option_value_translation"
+        translations: ["@en_gb_t_shirt_s_product_option_value_translation", "@de_de_t_shirt_s_product_option_value_translation"]
+    t_shirt_m_option_value:
+        option: "@t_shirt_option"
+        code: "T_SHIRT_M"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_m_product_option_value_translation"
+        translations: ["@en_gb_t_shirt_m_product_option_value_translation", "@de_de_t_shirt_m_product_option_value_translation"]
+    t_shirt_l_option_value:
+        option: "@t_shirt_option"
+        code: "T_SHIRT_L"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_l_product_option_value_translation"
+        translations: ["@en_gb_t_shirt_l_product_option_value_translation", "@de_de_t_shirt_l_product_option_value_translation"]
+    t_shirt_xl_option_value:
+        option: "@t_shirt_option"
+        code: "T_SHIRT_XL"
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        currentTranslation: "@en_gb_t_shirt_xl_product_option_value_translation"
+        translations: ["@en_gb_t_shirt_xl_product_option_value_translation", "@de_de_t_shirt_xl_product_option_value_translation"]

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sylius\ElasticSearchPlugin\Filter\ViewData;
 
 use ONGR\FilterManagerBundle\Filter\ViewData\PagerAwareViewData as DefaultPagerAwareViewData;

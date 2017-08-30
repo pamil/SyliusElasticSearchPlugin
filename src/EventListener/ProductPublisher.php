@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Sylius\ElasticSearchPlugin\EventListener;
 
 use Doctrine\ORM\Event\OnFlushEventArgs;
@@ -36,7 +38,7 @@ final class ProductPublisher
         $scheduledInsertions = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityInsertions();
 
         foreach ($scheduledInsertions as $entity) {
-            if ($entity instanceof ProductInterface && $entity->isSimple()) {
+            if ($entity instanceof ProductInterface) {
                 $this->scheduledProducts[] = $entity;
             }
         }
