@@ -313,9 +313,10 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'sort' => ['price' => 'asc']], [], ['ACCEPT' => 'application/json']);
 
-        $response = $this->client->getResponse();
-
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_sorted_by_price_ascending', Response::HTTP_OK);
+        $this->assertProductsCodesInResponse(
+            $this->client->getResponse(),
+            ['LOGAN_MUG_CODE', 'LOGAN_HAT_CODE', 'LOGAN_T_SHIRT_CODE']
+        );
     }
 
     /**
@@ -327,9 +328,10 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'sort' => ['price' => 'desc']], [], ['ACCEPT' => 'application/json']);
 
-        $response = $this->client->getResponse();
-
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_sorted_by_price_descending', Response::HTTP_OK);
+        $this->assertProductsCodesInResponse(
+            $this->client->getResponse(),
+            ['LOGAN_T_SHIRT_CODE', 'LOGAN_HAT_CODE', 'LOGAN_MUG_CODE']
+        );
     }
 
     /**
@@ -341,9 +343,10 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'sort' => ['name' => 'asc']], [], ['ACCEPT' => 'application/json']);
 
-        $response = $this->client->getResponse();
-
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_sorted_by_name_ascending', Response::HTTP_OK);
+        $this->assertProductsCodesInResponse(
+            $this->client->getResponse(),
+            ['LOGAN_HAT_CODE', 'LOGAN_MUG_CODE', 'LOGAN_T_SHIRT_CODE']
+        );
     }
 
     /**
@@ -355,9 +358,10 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'sort' => ['name' => 'desc']], [], ['ACCEPT' => 'application/json']);
 
-        $response = $this->client->getResponse();
-
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_sorted_by_name_descending', Response::HTTP_OK);
+        $this->assertProductsCodesInResponse(
+            $this->client->getResponse(),
+            ['LOGAN_T_SHIRT_CODE', 'LOGAN_MUG_CODE', 'LOGAN_HAT_CODE']
+        );
     }
 
     /**
@@ -369,9 +373,10 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'sort' => ['attributes' => ['PRODUCTION_YEAR' => 'asc']]], [], ['ACCEPT' => 'application/json']);
 
-        $response = $this->client->getResponse();
-
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_sorted_by_production_year_attribute_ascending', Response::HTTP_OK);
+        $this->assertProductsCodesInResponse(
+            $this->client->getResponse(),
+            ['LOGAN_HAT_CODE', 'LOGAN_MUG_CODE', 'LOGAN_T_SHIRT_CODE']
+        );
     }
 
     /**
@@ -383,9 +388,10 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'sort' => ['attributes' => ['PRODUCTION_YEAR' => 'desc']]], [], ['ACCEPT' => 'application/json']);
 
-        $response = $this->client->getResponse();
-
-        $this->assertResponse($response, 'WEB_GB/en_GB/product_list_page_sorted_by_production_year_attribute_descending', Response::HTTP_OK);
+        $this->assertProductsCodesInResponse(
+            $this->client->getResponse(),
+            ['LOGAN_T_SHIRT_CODE', 'LOGAN_MUG_CODE', 'LOGAN_HAT_CODE']
+        );
     }
 
     /**

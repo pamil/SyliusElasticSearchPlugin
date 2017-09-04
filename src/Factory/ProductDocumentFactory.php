@@ -120,29 +120,21 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         LocaleInterface $locale,
         ChannelInterface $channel
     ): ProductDocument {
+        /** @var ProductVariantInterface[] $productVariants */
+        $productVariants = $product->getVariants();
 
-        $minProductChannelPrice = $this->getChannelPricingForChannelFromProductVariant(
-            $product->getVariants()->first(),
-            $channel
-        );
-        /** @var ProductVariantInterface[] $syliusProductVariants */
-        $syliusProductVariants = $product->getVariants();
-
-        /**
-         * Select minimal product price out of all variants
-         */
-        $variants = [];
-        foreach ($syliusProductVariants as $variant) {
-            $channelPrice = $this->getChannelPricingForChannelFromProductVariant($variant, $channel);
-            if ($minProductChannelPrice->getPrice() < $channelPrice->getPrice()) {
-                $minProductChannelPrice = $channelPrice;
-            }
-            $variants[] = $this->createVariantDocumentFromSyliusVariant($variant, $channel, $locale);
+        $productVariantDocuments = [];
+        foreach ($productVariants as $productVariant) {
+            $productVariantDocuments[] = $this->createVariantDocumentFromSyliusVariant($productVariant, $channel, $locale);
         }
+
+        $minProductChannelPrice = min(array_map(function (VariantDocument $document): int {
+            return $document->getPrice()->getAmount();
+        }, $productVariantDocuments));
 
         /** @var ProductTranslationInterface|TranslationInterface $productTranslation */
         $productTranslation = $product->getTranslation($locale->getCode());
-        $syliusProductAttributes = $product->getAttributesByLocale(
+        $productAttributesValues = $product->getAttributesByLocale(
             $locale->getCode(),
             $channel->getDefaultLocale()->getCode()
         );
@@ -160,7 +152,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $productDocument->setCreatedAt($product->getCreatedAt());
         $productDocument->setSynchronisedAt(new \DateTime('now'));
         $productDocument->setAverageReviewRating($product->getAverageRating());
-        $productDocument->setVariants(new Collection($variants));
+        $productDocument->setVariants(new Collection($productVariantDocuments));
 
         if (null !== $product->getMainTaxon()) {
             /** @var TaxonDocument $mainTaxonDocument */
@@ -176,16 +168,16 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
             $productDocument->setMainTaxon($mainTaxonDocument);
         }
 
-        /** @var PriceDocument $price */
-        $price = new $this->priceDocumentClass();
-        $price->setAmount($minProductChannelPrice->getPrice());
-        $price->setCurrency($channel->getBaseCurrency()->getCode());
-        $productDocument->setPrice($price);
+        /** @var PriceDocument $priceDocument */
+        $priceDocument = new $this->priceDocumentClass();
+        $priceDocument->setAmount($minProductChannelPrice);
+        $priceDocument->setCurrency($channel->getBaseCurrency()->getCode());
+        $productDocument->setPrice($priceDocument);
 
         $imageDocuments = [];
         foreach ($product->getImages() as $productImage) {
-            foreach ($syliusProductVariants as $variant) {
-                if ($variant->hasImage($productImage)) {
+            foreach ($productVariants as $productVariant) {
+                if ($productVariant->hasImage($productImage)) {
                     continue 2;
                 }
             }
@@ -200,26 +192,27 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $productDocument->setImages(new Collection($imageDocuments));
 
         $taxonDocuments = $productTaxonDocuments = [];
-        foreach ($product->getProductTaxons() as $syliusProductTaxon) {
-            $taxonDocuments[] = $this->createTaxonDocument($syliusProductTaxon->getTaxon(), $locale->getCode());
-            $productTaxonDocuments[] = $this->createProductTaxonDocument($syliusProductTaxon, $locale->getCode());
+        foreach ($product->getProductTaxons() as $productTaxon) {
+            $taxonDocuments[$productTaxon->getTaxon()->getCode()] = $this->createTaxonDocument($productTaxon->getTaxon(), $locale->getCode());
+            $productTaxonDocuments[$productTaxon->getTaxon()->getCode()] = $this->createProductTaxonDocument($productTaxon, $locale->getCode());
 
-            $syliusProductTaxonAncestors = $this->getAncestorsFromTaxon($syliusProductTaxon->getTaxon());
-            foreach ($syliusProductTaxonAncestors as $syliusProductTaxonAncestor) {
-                $taxonDocuments[] = $this->createTaxonDocument($syliusProductTaxonAncestor, $locale->getCode());
+            /** @var TaxonInterface[] $productTaxonAncestors */
+            $productTaxonAncestors = $productTaxon->getTaxon()->getParents();
+            foreach ($productTaxonAncestors as $productTaxonAncestor) {
+                $taxonDocuments[$productTaxonAncestor->getCode()] = $this->createTaxonDocument($productTaxonAncestor, $locale->getCode());
             }
         }
-        $productDocument->setTaxons(new Collection($taxonDocuments));
-        $productDocument->setProductTaxons(new Collection($productTaxonDocuments));
+        $productDocument->setTaxons(new Collection(array_values($taxonDocuments)));
+        $productDocument->setProductTaxons(new Collection(array_values($productTaxonDocuments)));
 
         $productAttributeDocuments = [];
-        foreach ($syliusProductAttributes as $syliusProductAttributeValue) {
-            if (in_array($syliusProductAttributeValue->getCode(), $this->attributeWhitelist, true)) {
+        foreach ($productAttributesValues as $productAttributeValue) {
+            if (in_array($productAttributeValue->getCode(), $this->attributeWhitelist, true)) {
                 $productAttributeDocuments = array_merge(
                     $productAttributeDocuments,
                     $this->createAttributeDocumentFromSyliusProductAttributeValue(
                         $locale,
-                        $syliusProductAttributeValue
+                        $productAttributeValue
                     )
                 );
             }
@@ -310,23 +303,6 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     }
 
     /**
-     * @param TaxonInterface $taxon
-     *
-     * @return array
-     */
-    private function getAncestorsFromTaxon(TaxonInterface $taxon): array
-    {
-        $ancestors = [];
-        while (null !== $taxon->getParent()) {
-            $taxon = $taxon->getParent();
-
-            $ancestors[] = $taxon;
-        }
-
-        return $ancestors;
-    }
-
-    /**
      * @param ProductTaxonInterface $productTaxon
      * @param string $localeCode
      *
@@ -413,28 +389,28 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      * Creates an array of attribute document objects, handles the cases when attribute value is an array
      *
      * @param LocaleInterface $locale
-     * @param ProductAttributeValueInterface $syliusProductAttributeValue
+     * @param ProductAttributeValueInterface $productAttributeValue
      *
      * @return AttributeDocument[]
      */
     private function createAttributeDocumentFromSyliusProductAttributeValue(
         LocaleInterface $locale,
-        ProductAttributeValueInterface $syliusProductAttributeValue
+        ProductAttributeValueInterface $productAttributeValue
     ): array {
         $productAttributes = [];
 
-        if (is_array($syliusProductAttributeValue->getValue())) {
-            foreach ($syliusProductAttributeValue->getValue() as $value) {
+        if (is_array($productAttributeValue->getValue())) {
+            foreach ($productAttributeValue->getValue() as $value) {
                 $productAttributes[] = $this->createSingleAttributeDocumentFromSyliusProductAttributeValue(
                     $value,
-                    $syliusProductAttributeValue,
+                    $productAttributeValue,
                     $locale
                 );
             }
         } else {
             $productAttributes[] = $this->createSingleAttributeDocumentFromSyliusProductAttributeValue(
-                $syliusProductAttributeValue->getValue(),
-                $syliusProductAttributeValue,
+                $productAttributeValue->getValue(),
+                $productAttributeValue,
                 $locale
             );
         }
@@ -445,27 +421,25 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     /**
      * Creates a single attribute document from product attribute value object
      *
-     * @param string $value
-     * @param ProductAttributeValueInterface $syliusProductAttributeValue
+     * @param mixed $value
+     * @param ProductAttributeValueInterface $productAttributeValue
      * @param LocaleInterface $locale
      *
      * @return AttributeDocument
      */
     public function createSingleAttributeDocumentFromSyliusProductAttributeValue(
-        string $value,
-        ProductAttributeValueInterface $syliusProductAttributeValue,
+        $value,
+        ProductAttributeValueInterface $productAttributeValue,
         LocaleInterface $locale
     ) {
+        /** @var ProductAttributeTranslationInterface $productAttributeValueTranslation */
+        $productAttributeValueTranslation = $productAttributeValue->getAttribute()->getTranslation($locale->getCode());
+
         /** @var AttributeDocument $productAttribute */
         $productAttribute = new $this->attributeDocumentClass();
-        $productAttribute->setCode($syliusProductAttributeValue->getCode());
+        $productAttribute->setCode($productAttributeValue->getCode());
         $productAttribute->setValue($value);
-        /** @var ProductAttributeTranslationInterface $syliusProductAttributeTranslation */
-        $syliusProductAttributeTranslation = $syliusProductAttributeValue->getAttribute()->getTranslation(
-            $locale->getCode()
-        )
-        ;
-        $productAttribute->setName($syliusProductAttributeTranslation->getName());
+        $productAttribute->setName($productAttributeValueTranslation->getName());
 
         return $productAttribute;
     }

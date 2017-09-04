@@ -36,7 +36,7 @@ class AttributeDocument
     private $name;
 
     /**
-     * @var string
+     * @var mixed
      *
      * @ElasticSearch\Property(
      *  type="text",
@@ -85,17 +85,17 @@ class AttributeDocument
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getValue(): string
+    public function getValue()
     {
         return $this->value;
     }
 
     /**
-     * @param string $value
+     * @param mixed $value
      */
-    public function setValue(string $value): void
+    public function setValue($value): void
     {
         $this->value = $value;
     }

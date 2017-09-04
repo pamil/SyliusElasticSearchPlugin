@@ -80,6 +80,11 @@
                     "code": "MUG_COLLECTION_CODE",
                     "name": "Mug collection",
                     "value": "HOLIDAY COLLECTION"
+                },
+                {
+                    "code": "AVAILABLE_FROM",
+                    "name": "Available from",
+                    "value": "2010-01-01T00:00:00+0000"
                 }
             ],
             "images": [],
@@ -561,6 +566,36 @@
             },
             "name": "attributes",
             "items": [
+                {
+                    "tags": [],
+                    "urlParameters": [],
+                    "resetUrlParameters": {
+                        "channel": "WEB_GB",
+                        "enabled": true,
+                        "stock": "1",
+                        "locale": "en_GB"
+                    },
+                    "name": "Available from",
+                    "choices": {
+                        "2010-01-01T00:00:00+0000": {
+                            "active": false,
+                            "default": false,
+                            "urlParameters": {
+                                "channel": "WEB_GB",
+                                "enabled": true,
+                                "stock": "1",
+                                "locale": "en_GB",
+                                "attributes": {
+                                    "Available from": [
+                                        "2010-01-01T00:00:00+0000"
+                                    ]
+                                }
+                            },
+                            "label": "2010-01-01T00:00:00+0000",
+                            "count": 1
+                        }
+                    }
+                },
                 {
                     "tags": [],
                     "urlParameters": [],
