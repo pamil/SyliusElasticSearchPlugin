@@ -85,6 +85,10 @@ Sylius\Component\Product\Model\ProductAttributeTranslation:
         locale: "de_DE"
         name: "Produktionsjahr"
         translatable: "@production_year"
+    available_from_de_de_translation:
+        locale: "de_DE"
+        name: "Verfügbar ab"
+        translatable: "@available_from"
     mug_collection_en_gb_translation:
         locale: "en_GB"
         name: "Mug collection"
@@ -97,6 +101,10 @@ Sylius\Component\Product\Model\ProductAttributeTranslation:
         locale: "en_GB"
         name: "Production year"
         translatable: "@production_year"
+    available_from_en_gb_translation:
+        locale: "en_GB"
+        name: "Available from"
+        translatable: "@available_from"
 
 Sylius\Component\Product\Model\ProductAttributeValue:
     en_gb_mug_holiday_collection_value:
@@ -149,6 +157,16 @@ Sylius\Component\Product\Model\ProductAttributeValue:
         attribute: "@production_year"
         localeCode: "de_DE"
         text: "2010"
+    en_gb_available_from_value_hat:
+        subject: "@hat"
+        attribute: "@available_from"
+        localeCode: "en_GB"
+        date: "<(new \\DateTime('2010-01-01 00:00:00', new \\DateTimeZone('UTC')))>"
+    de_de_available_from_value_hat:
+        subject: "@hat"
+        attribute: "@available_from"
+        localeCode: "de_DE"
+        date: "<(new \\DateTime('2010-01-01 00:00:00', new \\DateTimeZone('UTC')))>"
 
 Sylius\Component\Product\Model\ProductAttribute:
     mug_collection:
@@ -178,6 +196,15 @@ Sylius\Component\Product\Model\ProductAttribute:
         translations:
             - "@production_year_en_gb_translation"
             - "@production_year_de_de_translation"
+    available_from:
+        fallbackLocale: "en_GB"
+        currentLocale: "en_GB"
+        code: "AVAILABLE_FROM"
+        type: "date"
+        storage_type: "date"
+        translations:
+            - "@available_from_en_gb_translation"
+            - "@available_from_de_de_translation"
 
 Sylius\Component\Core\Model\Product:
     mug:
@@ -210,6 +237,8 @@ Sylius\Component\Core\Model\Product:
             - "@de_de_production_year_value_hat"
             - "@en_gb_mug_holiday_collection_value"
             - "@de_de_mug_holiday_collection_value"
+            - "@en_gb_available_from_value_hat"
+            - "@de_de_available_from_value_hat"
         variants: ["@hat_variant"]
     t_shirt:
         code: "LOGAN_T_SHIRT_CODE"
