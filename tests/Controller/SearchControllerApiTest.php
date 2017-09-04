@@ -283,7 +283,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('shop.yml');
 
-        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'limit' => 2, 'page' => 1], [], ['ACCEPT' => 'application/json']);
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'limit' => '2', 'page' => '1'], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
 
@@ -297,7 +297,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
     {
         $this->loadFixturesFromFile('shop.yml');
 
-        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'limit' => 2, 'page' => 2], [], ['ACCEPT' => 'application/json']);
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB', 'limit' => '2', 'page' => '2'], [], ['ACCEPT' => 'application/json']);
 
         $response = $this->client->getResponse();
 

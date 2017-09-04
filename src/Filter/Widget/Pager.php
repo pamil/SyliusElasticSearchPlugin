@@ -24,10 +24,10 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
     public function getCountPerPage(?FilterState $state): int
     {
         if (null !== $state) {
-            return $state->getOption('limit', 10);
+            return (int) $state->getOption('limit', 10);
         }
 
-        return $this->getOption('limit', 10);
+        return (int) $this->getOption('limit', 10);
     }
 
     /**
@@ -38,9 +38,9 @@ final class Pager extends AbstractFilter implements ViewDataFactoryInterface
         $state = parent::getState($request);
         // Reset pager with any filter.
         $state->setUrlParameters([]);
-        $page = (integer)$state->getValue();
+        $page = (int) $state->getValue();
         $state->setValue($page < 1 ? 1 : $page);
-        $state->addOption('limit', $request->get('limit', 10));
+        $state->addOption('limit', (int) $request->get('limit', 10));
 
         return $state;
     }
