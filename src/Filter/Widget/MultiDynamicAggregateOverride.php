@@ -18,7 +18,7 @@ use ONGR\FilterManagerBundle\Filter\FilterState;
  * to change that globally - only via the query options for the aggregation object.
  * All other multi dynamic aggregates are extending from this class in the plugin. Size option is implemented in other
  * types of filters by the FilterManagerBundle
- * 
+ *
  * @package Sylius\ElasticSearchPlugin\Filter\Widget
  */
 class MultiDynamicAggregateOverride extends MultiDynamicAggregate
@@ -38,12 +38,20 @@ class MultiDynamicAggregateOverride extends MultiDynamicAggregate
         $aggregation->addAggregation($nameAggregation);
         $filterAggregation->setFilter($filter);
 
-        if ($this->getSortType()) {
-            $valueAggregation->addParameter('order', [$this->getSortType() => $this->getSortOrder()]);
+        if ($this->hasOption('names_sort_type')) {
+            $valueAggregation->addParameter('order', [$this->getOption('names_sort_type') => $this->getOption('names_sort_order')]);
         }
 
-        if ($this->getOption('size')) {
-            $valueAggregation->addParameter('size',$this->getOption('size'));
+        if ($this->hasOption('names_size')) {
+            $nameAggregation->addParameter('size', $this->getOption('names_size'));
+        }
+
+        if ($this->hasOption('values_sort_type')) {
+            $valueAggregation->addParameter('order', [$this->getOption('values_sort_type') => $this->getOption('values_sort_order')]);
+        }
+
+        if ($this->getOption('values_size')) {
+            $valueAggregation->addParameter('size', $this->getOption('values_size'));
         }
 
         if ($state->isActive()) {
