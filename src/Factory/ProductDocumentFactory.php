@@ -276,15 +276,6 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $price->setAmount($channelPricing->getPrice());
         $price->setCurrency($channel->getBaseCurrency()->getCode());
 
-        $images = [];
-        foreach ($productVariant->getImages() as $image) {
-            /** @var ImageDocument $productImage */
-            $productImage = new $this->imageDocumentClass();
-            $productImage->setPath($image->getPath());
-            $productImage->setCode($image->getType());
-            $images[] = $productImage;
-        }
-
         $options = [];
         foreach ($productVariant->getOptionValues() as $optionValue) {
             $options[] = $this->createOptionDocumentFromSyliusOptionValue($optionValue, $locale);
@@ -296,7 +287,6 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         $variant->setPrice($price);
         $variant->setStock($productVariant->getOnHand() - $productVariant->getOnHold());
         $variant->setIsTracked($productVariant->isTracked());
-        $variant->setImages(new Collection($images));
         $variant->setOptions(new Collection($options));
 
         return $variant;
