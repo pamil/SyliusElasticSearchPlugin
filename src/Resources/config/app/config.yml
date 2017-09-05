@@ -76,9 +76,12 @@ ongr_filter_manager:
             document_field: attributes>attributes.value.raw
             options:
                 name_field: attributes.name.raw
-                sort_type: _term
-                sort_order: asc
-                size: 100
+                names_sort_type: _term
+                names_sort_order: asc
+                names_size: 100
+                values_sort_type: _count
+                values_sort_order: desc
+                values_size: 100
         attributesByCode:
             type: sylius_elastic_search.multi_dynamic_aggregate_without_view
             request_field: attributesByCode
