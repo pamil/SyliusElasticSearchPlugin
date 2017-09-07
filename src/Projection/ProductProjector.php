@@ -4,8 +4,13 @@ declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Projection;
 
+use ONGR\ElasticsearchBundle\Result\DocumentIterator;
 use ONGR\ElasticsearchBundle\Service\Manager;
+use ONGR\ElasticsearchBundle\Service\Repository;
 use Sylius\Component\Core\Model\ChannelInterface;
+use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Locale\Model\LocaleInterface;
+use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
 
@@ -14,7 +19,12 @@ final class ProductProjector
     /**
      * @var Manager
      */
-    private $manager;
+    private $elasticsearchManager;
+
+    /**
+     * @var Repository
+     */
+    private $productDocumentRepository;
 
     /**
      * @var ProductDocumentFactoryInterface
@@ -22,37 +32,53 @@ final class ProductProjector
     private $productDocumentFactory;
 
     /**
-     * @param Manager $manager
+     * @param Manager $elasticsearchManager
      * @param ProductDocumentFactoryInterface $productDocumentFactory
      */
-    public function __construct(Manager $manager, ProductDocumentFactoryInterface $productDocumentFactory)
-    {
-        $this->manager = $manager;
+    public function __construct(
+        Manager $elasticsearchManager,
+        ProductDocumentFactoryInterface $productDocumentFactory
+    ) {
+        $this->elasticsearchManager = $elasticsearchManager;
+        $this->productDocumentRepository = $elasticsearchManager->getRepository(ProductDocument::class);
         $this->productDocumentFactory = $productDocumentFactory;
     }
 
     /**
      * @param ProductCreated $event
      */
-    public function handleProductCreated(ProductCreated $event)
+    public function handleProductCreated(ProductCreated $event): void
     {
-        $product = $event->product();
-        $channels = $product->getChannels();
+        $this->scheduleCreatingNewProductDocuments($event->product());
+        $this->scheduleRemovingOldProductDocuments($event->product());
 
-        /** @var ChannelInterface $channel */
+        $this->elasticsearchManager->commit();
+    }
+
+    private function scheduleCreatingNewProductDocuments(ProductInterface $product): void
+    {
+        /** @var ChannelInterface[] $channels */
+        $channels = $product->getChannels();
         foreach ($channels as $channel) {
+            /** @var LocaleInterface[] $locales */
             $locales = $channel->getLocales();
             foreach ($locales as $locale) {
-                $productDocument = $this->productDocumentFactory->createFromSyliusSimpleProductModel(
+                $this->elasticsearchManager->persist($this->productDocumentFactory->createFromSyliusSimpleProductModel(
                     $product,
                     $locale,
                     $channel
-                );
-
-                $this->manager->persist($productDocument);
+                ));
             }
         }
+    }
 
-        $this->manager->commit();
+    private function scheduleRemovingOldProductDocuments(ProductInterface $product): void
+    {
+        /** @var DocumentIterator|ProductDocument[] $currentProductDocuments */
+        $currentProductDocuments = $this->productDocumentRepository->findBy(['code' => $product->getCode()]);
+
+        foreach ($currentProductDocuments as $sameCodeProductDocument) {
+            $this->elasticsearchManager->remove($sameCodeProductDocument);
+        }
     }
 }
