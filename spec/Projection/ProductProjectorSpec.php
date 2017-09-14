@@ -37,7 +37,7 @@ final class ProductProjectorSpec extends ObjectBehavior
         $product->getChannels()->willReturn(new ArrayCollection([$channel->getWrappedObject()]));
 
         $productDocument = new ProductDocument();
-        $factory->createFromSyliusProductModel($product, $locale, $channel)->willReturn($productDocument);
+        $factory->create($product, $locale, $channel)->willReturn($productDocument);
 
         $manager->persist($productDocument)->shouldBeCalled();
         $manager->commit()->shouldBeCalled();
@@ -51,7 +51,7 @@ final class ProductProjectorSpec extends ObjectBehavior
         ProductInterface $product
     ) {
         $product->getChannels()->willReturn(new ArrayCollection([]));
-        $factory->createFromSyliusProductModel(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
+        $factory->create(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
 
         $manager->persist(Argument::any())->shouldNotBeCalled();
         $manager->commit()->shouldBeCalled();
@@ -68,7 +68,7 @@ final class ProductProjectorSpec extends ObjectBehavior
         $channel->getLocales()->willReturn(new ArrayCollection([]));
         $product->getChannels()->willReturn(new ArrayCollection([$channel->getWrappedObject()]));
 
-        $factory->createFromSyliusProductModel(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
+        $factory->create(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
 
         $manager->persist(Argument::any())->shouldNotBeCalled();
         $manager->commit()->shouldBeCalled();

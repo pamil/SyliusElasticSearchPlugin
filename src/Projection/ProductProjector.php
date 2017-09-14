@@ -56,7 +56,7 @@ final class ProductProjector
         foreach ($channels as $channel) {
             $locales = $channel->getLocales();
             foreach ($locales as $locale) {
-                $productDocument = $this->productDocumentFactory->createFromSyliusProductModel(
+                $productDocument = $this->productDocumentFactory->create(
                     $product,
                     $locale,
                     $channel
@@ -108,7 +108,7 @@ final class ProductProjector
             $locales = $channel->getLocales();
 
             foreach ($locales as $locale) {
-                $this->manager->persist($this->productDocumentFactory->createFromSyliusProductModel(
+                $this->manager->persist($this->productDocumentFactory->create(
                     $product,
                     $locale,
                     $channel

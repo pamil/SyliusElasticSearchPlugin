@@ -18,7 +18,7 @@ interface ProductDocumentFactoryInterface
      *
      * @return ProductDocument
      */
-    public function createFromSyliusProductModel(
+    public function create(
         ProductInterface $product,
         LocaleInterface $locale,
         ChannelInterface $channel

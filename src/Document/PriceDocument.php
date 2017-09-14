@@ -23,7 +23,7 @@ class PriceDocument
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $original = 0;
+    private $originalAmount = 0;
 
     /**
      * @var string
@@ -51,17 +51,17 @@ class PriceDocument
     /**
      * @return int
      */
-    public function getOriginal(): int
+    public function getOriginalAmount(): int
     {
-        return $this->original;
+        return $this->originalAmount;
     }
 
     /**
-     * @param int $original
+     * @param int $originalAmount
      */
-    public function setOriginal(int $original = 0): void
+    public function setOriginalAmount(int $originalAmount = 0): void
     {
-        $this->original = $original;
+        $this->originalAmount = $originalAmount;
     }
 
     /**

@@ -108,13 +108,6 @@ class ProductDocument
     private $taxons;
 
     /**
-     * @var Collection|ProductTaxonDocument[]
-     *
-     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument", multiple=true)
-     */
-    private $productTaxons;
-
-    /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\AttributeDocument", multiple=true)
@@ -353,22 +346,6 @@ class ProductDocument
     public function setTaxons($taxons): void
     {
         $this->taxons = $taxons;
-    }
-
-    /**
-     * @return Collection
-     */
-    public function getProductTaxons()
-    {
-        return $this->productTaxons;
-    }
-
-    /**
-     * @param Collection $productTaxons
-     */
-    public function setProductTaxons(Collection $productTaxons)
-    {
-        $this->productTaxons = $productTaxons;
     }
 
     /**
