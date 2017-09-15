@@ -428,61 +428,61 @@ Sylius\Component\Taxonomy\Model\TaxonTranslation:
         slug: "categories"
         locale: "en_GB"
         name: "Categories"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@category_taxon"
     en_gb_mug_taxon_translation:
         slug: "categories/mugs"
         locale: "en_GB"
         name: "Mugs"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@mug_taxon"
     en_gb_t_shirt_taxon_translation:
         slug: "categories/t-shirts"
         locale: "en_GB"
         name: "T-Shirts"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@t_shirt_taxon"
     en_gb_brand_translation:
         slug: "brands"
         locale: "en_GB"
         name: "Brands"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@brand_taxon"
     en_gb_hat_taxon_translation:
         slug: "categories/hats"
         locale: "en_GB"
         name: "Hats"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@hat_taxon"
     de_de_category_translation:
         slug: "kategorien"
         locale: "de_DE"
         name: "Kategorien"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@category_taxon"
     de_de_mug_taxon_translation:
         slug: "kategorien/1tassen"
         locale: "de_DE"
         name: "Tassen"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@mug_taxon"
     de_de_t_shirt_taxon_translation:
         slug: "kategorien/1t-shirts"
         locale: "de_DE"
         name: "T-Shirts"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@t_shirt_taxon"
     de_de_brand_translation:
         slug: "marken"
         locale: "de_DE"
         name: "Marken"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@brand_taxon"
     de_de_hat_taxon_translation:
         slug: "kategorien/hut"
         locale: "de_DE"
         name: "Hut"
-        description: <paragraph(2)>
+        description: 'Lorem ipsum'
         translatable: "@hat_taxon"
 
 Sylius\Component\Core\Model\Taxon:
