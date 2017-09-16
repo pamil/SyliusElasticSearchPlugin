@@ -28,23 +28,6 @@ use Sylius\ElasticSearchPlugin\Factory\Document\TaxonDocumentFactory;
 use Sylius\ElasticSearchPlugin\Factory\Document\VariantDocumentFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-
-
-use Symfony\Component\VarDumper\VarDumper;
-
-if (!function_exists('dump')) {
-    /**
-     * @author Nicolas Grekas <p@tchwork.com>
-     */
-    function dump()
-    {
-        foreach (func_get_args() as $var) {
-            VarDumper::dump($var);
-        }
-    }
-}
-
-
 final class ProductDocumentFactoryTest extends KernelTestCase
 {
     /** @var  ProductRepository */

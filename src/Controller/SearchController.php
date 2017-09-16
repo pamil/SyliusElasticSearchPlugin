@@ -1,13 +1,6 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
@@ -102,13 +95,6 @@ final class SearchController
         $request->query->set('enabled', true);
 
         $response = $this->filterManager->handleRequest($request);
-
-        error_log($this->restViewHandler->handle(
-            View::create(
-                $this->productListViewFactory->createFromSearchResponse($response),
-                Response::HTTP_OK
-            )
-        ));
 
         return $this->restViewHandler->handle(
             View::create(
