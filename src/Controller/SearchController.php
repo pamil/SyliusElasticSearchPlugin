@@ -103,6 +103,13 @@ final class SearchController
 
         $response = $this->filterManager->handleRequest($request);
 
+        error_log($this->restViewHandler->handle(
+            View::create(
+                $this->productListViewFactory->createFromSearchResponse($response),
+                Response::HTTP_OK
+            )
+        ));
+
         return $this->restViewHandler->handle(
             View::create(
                 $this->productListViewFactory->createFromSearchResponse($response),

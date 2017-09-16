@@ -38,6 +38,8 @@ final class ProductPublisherSpec extends ObjectBehavior
 
         $entityManager->getUnitOfWork()->willReturn($unitOfWork);
         $unitOfWork->getScheduledEntityInsertions()->willReturn([$product]);
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([]);
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([]);
 
         $eventBus->handle(ProductCreated::occur($product->getWrappedObject()))->shouldBeCalled();
 
@@ -57,6 +59,8 @@ final class ProductPublisherSpec extends ObjectBehavior
 
         $entityManager->getUnitOfWork()->willReturn($unitOfWork);
         $unitOfWork->getScheduledEntityInsertions()->willReturn([new \stdClass()]);
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([]);
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([]);
 
         $eventBus->handle(Argument::any())->shouldNotBeCalled();
 

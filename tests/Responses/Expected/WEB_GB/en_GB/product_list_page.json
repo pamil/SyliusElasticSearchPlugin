@@ -27,7 +27,7 @@
                         "original": 0
                     },
                     "stock": 0,
-                    "isTracked": false,
+                    "isTracked": true,
                     "images": []
                 },
                 {
@@ -92,7 +92,7 @@
                         "original": 0
                     },
                     "stock": 2,
-                    "isTracked": false,
+                    "isTracked": true,
                     "images": []
                 }
             ],
@@ -107,7 +107,7 @@
                     "name": "Mug collection",
                     "value": "HOLIDAY COLLECTION"
                 },
-                {
+                "AVAILABLE_FROM": {
                     "code": "AVAILABLE_FROM",
                     "name": "Available from",
                     "value": "2010-01-01T00:00:00+0000"
@@ -601,7 +601,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Available from": [
@@ -620,7 +619,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug collection",

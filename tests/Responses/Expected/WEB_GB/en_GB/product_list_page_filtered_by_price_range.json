@@ -21,7 +21,7 @@
                         "original": 0
                     },
                     "stock": 0,
-                    "isTracked": false,
+                    "isTracked": true,
                     "images": []
                 },
                 {
@@ -65,7 +65,7 @@
                         "original": 0
                     },
                     "stock": 2,
-                    "isTracked": false,
+                    "isTracked": true,
                     "images": []
                 }
             ],

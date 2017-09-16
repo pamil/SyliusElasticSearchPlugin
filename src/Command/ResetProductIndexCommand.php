@@ -8,7 +8,7 @@ use ONGR\ElasticsearchBundle\Service\Manager;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -81,7 +81,7 @@ final class ResetProductIndexCommand extends Command
             foreach ($channels as $channel) {
                 $locales = $channel->getLocales();
                 foreach ($locales as $locale) {
-                    $productDocument = $this->productDocumentFactory->createFromSyliusSimpleProductModel(
+                    $productDocument = $this->productDocumentFactory->create(
                         $product,
                         $locale,
                         $channel

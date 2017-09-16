@@ -27,7 +27,7 @@
                         "original": 0
                     },
                     "stock": 0,
-                    "isTracked": false,
+                    "isTracked": true,
                     "images": []
                 },
                 {
@@ -92,7 +92,7 @@
                         "original": 0
                     },
                     "stock": 2,
-                    "isTracked": false,
+                    "isTracked": true,
                     "images": []
                 }
             ],
@@ -107,7 +107,7 @@
                     "name": "Becher Sammlung",
                     "value": "FEIERTAGSKOLLEKTION"
                 },
-                {
+                "AVAILABLE_FROM": {
                     "code": "AVAILABLE_FROM",
                     "name": "Verf\u00fcgbar ab",
                     "value": "2010-01-01T00:00:00+0000"
@@ -718,7 +718,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "name": "Verf\u00fcgbar ab",
@@ -729,7 +728,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "de_DE",
                                 "attributes": {
                                     "Verf\u00fcgbar ab": [
