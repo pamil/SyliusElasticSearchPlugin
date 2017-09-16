@@ -4,6 +4,7 @@ namespace spec\Sylius\ElasticSearchPlugin\Projection;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use ONGR\ElasticsearchBundle\Service\Manager;
+use ONGR\ElasticsearchBundle\Service\Repository;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
@@ -16,9 +17,14 @@ use Prophecy\Argument;
 
 final class ProductProjectorSpec extends ObjectBehavior
 {
-    function let(Manager $manager, ProductDocumentFactoryInterface $factory)
-    {
-        $this->beConstructedWith($manager, $factory);
+    function let(
+        Manager $elasticsearchManager,
+        ProductDocumentFactoryInterface $productDocumentFactory,
+        Repository $productDocumentRepository
+    ) {
+        $elasticsearchManager->getRepository(ProductDocument::class)->willReturn($productDocumentRepository);
+
+        $this->beConstructedWith($elasticsearchManager, $productDocumentFactory);
     }
 
     function it_is_initializable()
@@ -26,52 +32,67 @@ final class ProductProjectorSpec extends ObjectBehavior
         $this->shouldHaveType(ProductProjector::class);
     }
 
-    function it_saves_product_document_if_product_has_channel_defined(
-        Manager $manager,
-        ProductDocumentFactoryInterface $factory,
+    function it_saves_product_documents_and_removes_the_current_ones(
+        Manager $elasticsearchManager,
+        ProductDocumentFactoryInterface $productDocumentFactory,
+        Repository $productDocumentRepository,
         ProductInterface $product,
         LocaleInterface $locale,
         ChannelInterface $channel
     ) {
-        $channel->getLocales()->willReturn(new ArrayCollection([$locale->getWrappedObject()]));
+        $product->getCode()->willReturn('FOO');
         $product->getChannels()->willReturn(new ArrayCollection([$channel->getWrappedObject()]));
+        $channel->getLocales()->willReturn(new ArrayCollection([$locale->getWrappedObject()]));
 
-        $productDocument = new ProductDocument();
-        $factory->create($product, $locale, $channel)->willReturn($productDocument);
+        $existingProductDocument = new ProductDocument();
+        $productDocumentRepository->findBy(['code' => 'FOO'])->willReturn(new \ArrayIterator([$existingProductDocument]));
 
-        $manager->persist($productDocument)->shouldBeCalled();
-        $manager->commit()->shouldBeCalled();
+        $newProductDocument = new ProductDocument();
+        $productDocumentFactory->create($product, $locale, $channel)->willReturn($newProductDocument);
+
+        $elasticsearchManager->persist($newProductDocument)->shouldBeCalled();
+        $elasticsearchManager->remove($existingProductDocument)->shouldBeCalled();
+        $elasticsearchManager->commit()->shouldBeCalled();
 
         $this->handleProductCreated(ProductCreated::occur($product->getWrappedObject()));
     }
 
-    function it_does_not_save_product_document_if_product_has_not_channel_defined(
-        Manager $manager,
-        ProductDocumentFactoryInterface $factory,
+    function it_does_not_save_product_document_if_product_does_not_have_channel_defined(
+        Manager $elasticsearchManager,
+        ProductDocumentFactoryInterface $productDocumentFactory,
+        Repository $productDocumentRepository,
         ProductInterface $product
     ) {
+        $product->getCode()->willReturn('FOO');
         $product->getChannels()->willReturn(new ArrayCollection([]));
-        $factory->create(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
 
-        $manager->persist(Argument::any())->shouldNotBeCalled();
-        $manager->commit()->shouldBeCalled();
+        $productDocumentRepository->findBy(['code' => 'FOO'])->willReturn(new \ArrayIterator([]));
+
+        $productDocumentFactory->create(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
+
+        $elasticsearchManager->persist(Argument::any())->shouldNotBeCalled();
+        $elasticsearchManager->commit()->shouldBeCalled();
 
         $this->handleProductCreated(ProductCreated::occur($product->getWrappedObject()));
     }
 
     function it_does_not_save_product_document_if_channel_has_not_locales_defined(
-        Manager $manager,
-        ProductDocumentFactoryInterface $factory,
+        Manager $elasticsearchManager,
+        ProductDocumentFactoryInterface $productDocumentFactory,
+        Repository $productDocumentRepository,
         ProductInterface $product,
         ChannelInterface $channel
     ) {
+        $product->getCode()->willReturn('FOO');
         $channel->getLocales()->willReturn(new ArrayCollection([]));
         $product->getChannels()->willReturn(new ArrayCollection([$channel->getWrappedObject()]));
 
-        $factory->create(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
+        $productDocumentRepository->findBy(['code' => 'FOO'])->willReturn(new \ArrayIterator([]));
 
-        $manager->persist(Argument::any())->shouldNotBeCalled();
-        $manager->commit()->shouldBeCalled();
+        $productDocumentFactory->create(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
+
+        $elasticsearchManager->persist(Argument::any())->shouldNotBeCalled();
+        $elasticsearchManager->commit()->shouldBeCalled();
 
         $this->handleProductCreated(ProductCreated::occur($product->getWrappedObject()));
     }

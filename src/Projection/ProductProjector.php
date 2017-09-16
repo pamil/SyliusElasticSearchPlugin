@@ -21,12 +21,7 @@ final class ProductProjector
     /**
      * @var Manager
      */
-    private $manager;
-
-    /**
-     * @var ProductDocumentFactoryInterface
-     */
-    private $productDocumentFactory;
+    private $elasticsearchManager;
 
     /**
      * @var Repository
@@ -34,14 +29,21 @@ final class ProductProjector
     private $productDocumentRepository;
 
     /**
-     * @param Manager $manager
+     * @var ProductDocumentFactoryInterface
+     */
+    private $productDocumentFactory;
+
+    /**
+     * @param Manager $elasticsearchManager
      * @param ProductDocumentFactoryInterface $productDocumentFactory
      */
-    public function __construct(Manager $manager, ProductDocumentFactoryInterface $productDocumentFactory)
-    {
-        $this->manager = $manager;
+    public function __construct(
+        Manager $elasticsearchManager,
+        ProductDocumentFactoryInterface $productDocumentFactory
+    ) {
+        $this->elasticsearchManager = $elasticsearchManager;
+        $this->productDocumentRepository = $elasticsearchManager->getRepository(ProductDocument::class);
         $this->productDocumentFactory = $productDocumentFactory;
-        $this->productDocumentRepository = $this->manager->getRepository(ProductDocument::class);;
     }
 
     /**
@@ -49,25 +51,12 @@ final class ProductProjector
      */
     public function handleProductCreated(ProductCreated $event): void
     {
-        $product = $event->product();
-        $channels = $product->getChannels();
+        $this->scheduleCreatingNewProductDocuments($event->product());
+        $this->scheduleRemovingOldProductDocuments($event->product());
 
-        /** @var ChannelInterface $channel */
-        foreach ($channels as $channel) {
-            $locales = $channel->getLocales();
-            foreach ($locales as $locale) {
-                $productDocument = $this->productDocumentFactory->create(
-                    $product,
-                    $locale,
-                    $channel
-                );
-
-                $this->manager->persist($productDocument);
-            }
-        }
-
-        $this->manager->commit();
+        $this->elasticsearchManager->commit();
     }
+
 
     /**
      * We create a new product documents with updated data and remove old once
@@ -78,10 +67,10 @@ final class ProductProjector
     {
         $product = $event->product();
 
-        $this->scheduleCreatingNewProductDocument($product);
+        $this->scheduleCreatingNewProductDocuments($product);
         $this->scheduleRemovingOldProductDocuments($product);
 
-        $this->manager->commit();
+        $this->elasticsearchManager->commit();
     }
 
     /**
@@ -95,35 +84,35 @@ final class ProductProjector
 
         $this->scheduleRemovingOldProductDocuments($product);
 
-        $this->manager->commit();
+        $this->elasticsearchManager->commit();
     }
 
-    protected function scheduleCreatingNewProductDocument(ProductInterface $product): void
+    private function scheduleCreatingNewProductDocuments(ProductInterface $product): void
     {
         /** @var ChannelInterface[] $channels */
         $channels = $product->getChannels();
-
         foreach ($channels as $channel) {
             /** @var LocaleInterface[] $locales */
             $locales = $channel->getLocales();
-
             foreach ($locales as $locale) {
-                $this->manager->persist($this->productDocumentFactory->create(
-                    $product,
-                    $locale,
-                    $channel
-                ));
+                $this->elasticsearchManager->persist(
+                    $this->productDocumentFactory->create(
+                        $product,
+                        $locale,
+                        $channel
+                    )
+                );
             }
         }
     }
 
-    protected function scheduleRemovingOldProductDocuments(ProductInterface $product): void
+    private function scheduleRemovingOldProductDocuments(ProductInterface $product): void
     {
         /** @var DocumentIterator|ProductDocument[] $currentProductDocuments */
-        $currentProductDocuments = $this->productDocumentRepository->findBy(['id' => $product->getId()]);
+        $currentProductDocuments = $this->productDocumentRepository->findBy(['code' => $product->getCode()]);
 
         foreach ($currentProductDocuments as $sameCodeProductDocument) {
-            $this->manager->remove($sameCodeProductDocument);
+            $this->elasticsearchManager->remove($sameCodeProductDocument);
         }
     }
 }

@@ -63,4 +63,4 @@ ongr_elasticsearch:
                 SyliusElasticSearchPlugin: {}
 
 sylius_elastic_search:
-    attribute_whitelist: ['MUG_COLLECTION_CODE', 'MUG_MATERIAL_CODE', 'PRODUCTION_YEAR']
+    attribute_whitelist: ['MUG_COLLECTION_CODE', 'MUG_MATERIAL_CODE', 'PRODUCTION_YEAR', 'AVAILABLE_FROM']

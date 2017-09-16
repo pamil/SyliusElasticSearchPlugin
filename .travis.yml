@@ -37,4 +37,5 @@ script:
     - bin/phpspec run --no-interaction
     - bin/phpunit
     - tests/Application/bin/console sylius:elastic-search:update-product-index --env=test -vvv && tests/Application/bin/console sylius:elastic-search:update-product-index --env=test -vvv
+    - tests/Application/bin/console sylius:elastic-search:reset-product-index --env=test --force -vvv && tests/Application/bin/console sylius:elastic-search:reset-product-index --env=test --force -vvv
     #- bin/behat --strict -vvv --no-interaction
