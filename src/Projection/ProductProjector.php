@@ -14,7 +14,7 @@ use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
 use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
-use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface;
 
 final class ProductProjector
 {

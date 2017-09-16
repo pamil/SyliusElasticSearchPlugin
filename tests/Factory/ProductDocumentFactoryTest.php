@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Sylius\ElasticSearchPlugin\Factory;
 
 use ONGR\ElasticsearchBundle\Collection\Collection;
@@ -17,14 +19,31 @@ use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\VariantDocument;
-use Sylius\ElasticSearchPlugin\Factory\AttributeDocumentFactory;
-use Sylius\ElasticSearchPlugin\Factory\ImageDocumentFactory;
-use Sylius\ElasticSearchPlugin\Factory\OptionDocumentFactory;
-use Sylius\ElasticSearchPlugin\Factory\PriceDocumentFactory;
-use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactory;
-use Sylius\ElasticSearchPlugin\Factory\TaxonDocumentFactory;
-use Sylius\ElasticSearchPlugin\Factory\VariantDocumentFactory;
+use Sylius\ElasticSearchPlugin\Factory\Document\AttributeDocumentFactory;
+use Sylius\ElasticSearchPlugin\Factory\Document\ImageDocumentFactory;
+use Sylius\ElasticSearchPlugin\Factory\Document\OptionDocumentFactory;
+use Sylius\ElasticSearchPlugin\Factory\Document\PriceDocumentFactory;
+use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactory;
+use Sylius\ElasticSearchPlugin\Factory\Document\TaxonDocumentFactory;
+use Sylius\ElasticSearchPlugin\Factory\Document\VariantDocumentFactory;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+
+
+
+use Symfony\Component\VarDumper\VarDumper;
+
+if (!function_exists('dump')) {
+    /**
+     * @author Nicolas Grekas <p@tchwork.com>
+     */
+    function dump()
+    {
+        foreach (func_get_args() as $var) {
+            VarDumper::dump($var);
+        }
+    }
+}
+
 
 final class ProductDocumentFactoryTest extends KernelTestCase
 {
@@ -59,6 +78,69 @@ final class ProductDocumentFactoryTest extends KernelTestCase
      * @test
      */
     public function it_creates_product_document_from_sylius_product_model()
+    {
+        /** @var ChannelInterface $syliusChannel */
+        $syliusChannel = $this->channelRepository->findOneByCode('WEB_GB');
+        /** @var Locale $syliusLocale */
+        $syliusLocale = $this->localeRepository->findOneBy(['code' => 'en_GB']);
+        $createdAt = \DateTime::createFromFormat(\DateTime::W3C, '2017-04-18T16:12:55+02:00');
+
+        /** @var Product $syliusProduct */
+        $syliusProduct = $this->productRepository->findOneByChannelAndSlug(
+            $syliusChannel,
+            $syliusLocale->getCode(),
+            'logan-mug'
+        );
+        $syliusProduct->setCreatedAt($createdAt);
+
+        $factory = new ProductDocumentFactory(
+            ProductDocument::class,
+            new AttributeDocumentFactory(AttributeDocument::class),
+            new ImageDocumentFactory(ImageDocument::class),
+            new PriceDocumentFactory(PriceDocument::class),
+            new TaxonDocumentFactory(TaxonDocument::class, new ImageDocumentFactory(ImageDocument::class)),
+            new VariantDocumentFactory(
+                VariantDocument::class,
+                new PriceDocumentFactory(PriceDocument::class),
+                new ImageDocumentFactory(ImageDocument::class),
+                new OptionDocumentFactory(OptionDocument::class)
+            ),
+            ['MUG_COLLECTION_CODE', 'MUG_MATERIAL_CODE', 'PRODUCTION_YEAR']
+        );
+        /** @var ProductDocument $product */
+        $product = $factory->create(
+            $syliusProduct,
+            $syliusLocale,
+            $syliusChannel
+        );
+
+        $taxon = $this->makeMainTaxon();
+
+        $productTaxons = $this->makeProductTaxons();
+
+        $productAttributes = $this->makeProductAttributes();
+
+        $this->assertEquals($product->getCode(), $product->getCode());
+        $this->assertEquals($product->getName(), $product->getName());
+        $this->assertEquals('en_GB', $product->getLocaleCode());
+        $this->assertEquals(new Collection($productAttributes), $product->getAttributes());
+        $this->assertEquals(1000, $product->getPrice()->getAmount());
+        $this->assertEquals('GBP', $product->getPrice()->getCurrency());
+        $this->assertEquals('en_GB', $product->getLocaleCode());
+        $this->assertEquals('WEB_GB', $product->getChannelCode());
+        $this->assertEquals('logan-mug', $product->getSlug());
+        $this->assertEquals('Logan Mug', $product->getName());
+        $this->assertEquals($createdAt, $product->getCreatedAt());
+        $this->assertEquals('Logan Mug', $product->getDescription());
+        $this->assertEquals($taxon, $product->getMainTaxon());
+        $this->assertEquals(new Collection($productTaxons), $product->getTaxons());
+        $this->assertEquals(0.0, $product->getAverageReviewRating());
+    }
+
+    /**
+     * @test
+     */
+    public function it_creates_product_document_only_with_whitelisted_attributes()
     {
         /** @var ChannelInterface $syliusChannel */
         $syliusChannel = $this->channelRepository->findOneByCode('WEB_GB');
@@ -168,5 +250,26 @@ final class ProductDocumentFactoryTest extends KernelTestCase
         $productAttribute->setValue('2015');
 
         return $productAttribute;
+    }
+
+    private function makeProductAttributes(): array
+    {
+        $productAttributes = [];
+
+        $productAttribute = new AttributeDocument();
+        $productAttribute->setCode('MUG_COLLECTION_CODE');
+        $productAttribute->setName('Mug collection');
+        $productAttribute->setValue('HOLIDAY COLLECTION');
+        $productAttributes[] = $productAttribute;
+
+        $productAttribute = new AttributeDocument();
+        $productAttribute->setCode('MUG_MATERIAL_CODE');
+        $productAttribute->setName('Mug material');
+        $productAttribute->setValue('Wood');
+        $productAttributes[] = $productAttribute;
+
+        $productAttributes[] = $this->makeProductionYearAttribute();
+
+        return $productAttributes;
     }
 }

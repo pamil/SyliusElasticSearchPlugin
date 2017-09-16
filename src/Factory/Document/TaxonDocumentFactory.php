@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ElasticSearchPlugin\Factory;
+namespace Sylius\ElasticSearchPlugin\Factory\Document;
 
 use ONGR\ElasticsearchBundle\Collection\Collection;
 use Sylius\Component\Core\Model\TaxonInterface;

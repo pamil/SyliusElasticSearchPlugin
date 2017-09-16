@@ -1,10 +1,11 @@
 {
     "page": 1,
-    "limit": 10,
+    "limit": 9,
     "total": 3,
     "pages": 1,
     "items": [
         {
+            "id": 1,
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Mug",
             "slug": "logan-mug",
@@ -12,81 +13,112 @@
                 "main": "MUG",
                 "others": [
                     "MUG",
-                    "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": {
-                "LOGAN_MUG_CODE": {
-                    "code": "LOGAN_MUG_CODE",
+            "variants": [
+                {
+                    "id": 2,
+                    "code": "LOGAN_MUG_SMALL_CODE",
+                    "name": "Gnome Mug",
+                    "price": {
+                        "current": 1000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 0,
+                    "isTracked": false,
+                    "images": []
+                },
+                {
+                    "id": 1,
+                    "code": "LOGAN_MUG_BIG_CODE",
                     "name": "Logan Mug",
                     "price": {
                         "current": 1000,
-                        "currency": "GBP"
+                        "currency": "GBP",
+                        "original": 0
                     },
+                    "stock": 0,
+                    "isTracked": false,
                     "images": []
                 }
-            },
-            "attributes": [
-                {
+            ],
+            "attributes": {
+                "PRODUCTION_YEAR": {
                     "code": "PRODUCTION_YEAR",
                     "name": "Production year",
                     "value": "2015"
                 },
-                {
+                "MUG_COLLECTION_CODE": {
                     "code": "MUG_COLLECTION_CODE",
                     "name": "Mug collection",
                     "value": "HOLIDAY COLLECTION"
                 },
-                {
+                "MUG_MATERIAL_CODE": {
                     "code": "MUG_MATERIAL_CODE",
                     "name": "Mug material",
                     "value": "Wood"
                 }
-            ],
+            },
             "images": [],
+            "price": {
+                "current": 1000,
+                "currency": "GBP",
+                "original": 0
+            },
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
         {
+            "id": 2,
             "code": "LOGAN_HAT_CODE",
             "name": "Logan Hat",
             "slug": "logan-hat",
             "taxons": {
                 "others": [
                     "HAT",
-                    "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": {
-                "LOGAN_HAT_CODE": {
+            "variants": [
+                {
+                    "id": 3,
                     "code": "LOGAN_HAT_CODE",
                     "name": "Logan Hat",
                     "price": {
                         "current": 1500,
-                        "currency": "GBP"
+                        "currency": "GBP",
+                        "original": 0
                     },
+                    "stock": 2,
+                    "isTracked": false,
                     "images": []
                 }
-            },
-            "attributes": [
-                {
+            ],
+            "attributes": {
+                "PRODUCTION_YEAR": {
                     "code": "PRODUCTION_YEAR",
                     "name": "Production year",
                     "value": "2010"
                 },
-                {
+                "MUG_COLLECTION_CODE": {
                     "code": "MUG_COLLECTION_CODE",
                     "name": "Mug collection",
                     "value": "HOLIDAY COLLECTION"
                 }
-            ],
+            },
             "images": [],
+            "price": {
+                "current": 1500,
+                "currency": "GBP",
+                "original": 0
+            },
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
         {
+            "id": 3,
             "code": "LOGAN_T_SHIRT_CODE",
             "name": "Logan T-Shirt",
             "slug": "logan-t-shirt",
@@ -94,29 +126,76 @@
                 "main": "T_SHIRTS",
                 "others": [
                     "T_SHIRTS",
-                    "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": {
-                "LOGAN_T_SHIRT_CODE": {
-                    "code": "LOGAN_T_SHIRT_CODE",
-                    "name": "Logan T-Shirt",
+            "variants": [
+                {
+                    "id": 7,
+                    "code": "EXTRA_LARGE_LOGAN_T_SHIRT_CODE",
+                    "name": "Extra Large Logan T-Shirt",
                     "price": {
                         "current": 2000,
-                        "currency": "GBP"
+                        "currency": "GBP",
+                        "original": 0
                     },
+                    "stock": 1,
+                    "isTracked": true,
+                    "images": []
+                },
+                {
+                    "id": 6,
+                    "code": "LARGE_LOGAN_T_SHIRT_CODE",
+                    "name": "Large Logan T-Shirt",
+                    "price": {
+                        "current": 2000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 1,
+                    "isTracked": true,
+                    "images": []
+                },
+                {
+                    "id": 5,
+                    "code": "MEDIUM_LOGAN_T_SHIRT_CODE",
+                    "name": "Medium Logan T-Shirt",
+                    "price": {
+                        "current": 2000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 1,
+                    "isTracked": true,
+                    "images": []
+                },
+                {
+                    "id": 4,
+                    "code": "SMALL_LOGAN_T_SHIRT_CODE",
+                    "name": "Small Logan T-Shirt",
+                    "price": {
+                        "current": 2000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 1,
+                    "isTracked": true,
                     "images": []
                 }
-            },
-            "attributes": [
-                {
+            ],
+            "attributes": {
+                "PRODUCTION_YEAR": {
                     "code": "PRODUCTION_YEAR",
                     "name": "Production year",
                     "value": "2020"
                 }
-            ],
+            },
             "images": [],
+            "price": {
+                "current": 2000,
+                "currency": "GBP",
+                "original": 0
+            },
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -136,12 +215,10 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "channel",
@@ -151,7 +228,6 @@
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "label": "WEB_GB",
@@ -173,12 +249,10 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "enabled",
@@ -188,7 +262,6 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "stock": "1",
                         "locale": "en_GB",
                         "enabled": 0
                     },
@@ -200,7 +273,6 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "label": 1,
@@ -219,13 +291,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "taxonCode",
@@ -236,7 +306,6 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "HAT"
                     },
@@ -249,7 +318,6 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "MUG"
                     },
@@ -262,7 +330,6 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "T_SHIRTS"
                     },
@@ -275,24 +342,10 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB",
                         "taxonCode": "BRAND"
                     },
                     "label": "BRAND",
-                    "count": 3
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "stock": "1",
-                        "locale": "en_GB",
-                        "taxonCode": "CATEGORY"
-                    },
-                    "label": "CATEGORY",
                     "count": 3
                 }
             ]
@@ -308,13 +361,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "taxonSlug",
@@ -325,7 +376,6 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "categories\/hats"
                     },
@@ -338,7 +388,6 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "categories\/mugs"
                     },
@@ -351,7 +400,6 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "categories\/t-shirts"
                     },
@@ -364,24 +412,10 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB",
                         "taxonSlug": "brands"
                     },
                     "label": "brands",
-                    "count": 3
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "stock": "1",
-                        "locale": "en_GB",
-                        "taxonSlug": "categories"
-                    },
-                    "label": "categories",
                     "count": 3
                 }
             ]
@@ -397,13 +431,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "priceRange",
@@ -416,9 +448,7 @@
                 "value": {
                     "gte": "1"
                 },
-                "urlParameters": {
-                    "stock": "1"
-                },
+                "urlParameters": [],
                 "name": "inStock",
                 "options": []
             },
@@ -426,7 +456,6 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
@@ -450,13 +479,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
-                "enabled": true,
-                "stock": "1"
+                "enabled": true
             },
             "name": "locale",
             "choices": [
@@ -466,7 +493,6 @@
                     "urlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "label": "de_DE",
@@ -477,8 +503,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_GB",
-                        "enabled": true,
-                        "stock": "1"
+                        "enabled": true
                     },
                     "label": "en_GB",
                     "count": 3
@@ -492,30 +517,28 @@
                 "urlParameters": [],
                 "name": "paginator",
                 "options": {
-                    "limit": 10
+                    "limit": 9
                 }
             },
             "tags": [],
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "paginator",
             "currentPage": 1,
             "totalItems": 3,
             "maxPages": 20,
-            "itemsPerPage": 10,
+            "itemsPerPage": 9,
             "numPages": 1,
             "options": [],
-            "limit": 10
+            "limit": 9
         },
         "search": {
             "state": {
@@ -528,13 +551,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "search"
@@ -550,13 +571,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "attributes",
@@ -567,7 +586,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug collection",
@@ -578,7 +596,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug collection": [
@@ -597,7 +614,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug material",
@@ -608,7 +624,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": [
@@ -627,7 +642,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Production year",
@@ -638,7 +652,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Production year": [
@@ -655,7 +668,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Production year": [
@@ -672,7 +684,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Production year": [
@@ -698,13 +709,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "attributesByCode"
@@ -720,13 +729,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "options",
@@ -737,7 +744,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Hat size",
@@ -748,7 +754,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "options": {
                                     "Hat size": [
@@ -767,7 +772,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug size",
@@ -778,7 +782,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "options": {
                                     "Mug size": [
@@ -795,7 +798,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "options": {
                                     "Mug size": [
@@ -814,7 +816,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "T-Shirt size",
@@ -825,7 +826,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "options": {
                                     "T-Shirt size": [
@@ -842,7 +842,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "options": {
                                     "T-Shirt size": [
@@ -859,7 +858,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "options": {
                                     "T-Shirt size": [
@@ -876,7 +874,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "options": {
                                     "T-Shirt size": [
@@ -902,13 +899,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "sort"

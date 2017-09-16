@@ -30,7 +30,7 @@ final class ProductPublisher
     /**
      * @var ProductInterface[]
      */
-    private $scheduledProducts = [];
+    private $scheduledInserts = [];
 
 
     /**
@@ -61,26 +61,24 @@ final class ProductPublisher
 
         foreach ($scheduledInsertions as $entity) {
             $entity = $this->getProductFromEntity($entity);
-            if ($entity instanceof ProductInterface && !isset($this->scheduledProducts[$entity->getId()])) {
-                $this->scheduledProducts[$entity->getId()] = $entity;
+            if ($entity instanceof ProductInterface && !isset($this->scheduledInserts[$entity->getCode()])) {
+                $this->scheduledInserts[$entity->getCode()] = $entity;
             }
         }
 
         $scheduledUpdates = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityUpdates();
-
         foreach ($scheduledUpdates as $entity) {
             $entity = $this->getProductFromEntity($entity);
-            if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getId()])) {
-                $this->scheduledUpdates[$entity->getId()] = $entity;
+            if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getCode()])) {
+                $this->scheduledUpdates[$entity->getCode()] = $entity;
             }
         }
 
         $scheduledDeletions = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityDeletions();
-
         foreach ($scheduledDeletions as $entity) {
             /** We delete only if the product itself was removed */
-            if ($entity instanceof ProductInterface && !isset($this->scheduledDeletions[$entity->getId()])) {
-                $this->scheduledDeletions[$entity->getId()] = $entity;
+            if ($entity instanceof ProductInterface && !isset($this->scheduledDeletions[$entity->getCode()])) {
+                $this->scheduledDeletions[$entity->getCode()] = $entity;
             }
         }
     }
@@ -90,11 +88,11 @@ final class ProductPublisher
      */
     public function postFlush(PostFlushEventArgs $event)
     {
-        foreach ($this->scheduledProducts as $product) {
+        foreach ($this->scheduledInserts as $product) {
             $this->eventBus->handle(ProductCreated::occur($product));
         }
 
-        $this->scheduledProducts = [];
+        $this->scheduledInserts = [];
 
         foreach ($this->scheduledUpdates as $product) {
             $this->eventBus->handle(ProductUpdated::occur($product));
@@ -122,8 +120,6 @@ final class ProductPublisher
             $entity = $entity->getTranslatable()->getProduct();
         } elseif ($entity instanceof ProductTranslation) {
             $entity = $entity->getTranslatable();
-        } elseif ($entity instanceof ChannelPricingInterface) {
-            $entity = $entity->getProductVariant()->getProduct();
         } elseif ($entity instanceof ChannelPricingInterface) {
             $entity = $entity->getProductVariant()->getProduct();
         } elseif ($entity instanceof ProductTaxon) {

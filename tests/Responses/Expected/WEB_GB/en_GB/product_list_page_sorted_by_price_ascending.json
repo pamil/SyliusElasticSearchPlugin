@@ -1,69 +1,139 @@
 {
     "page": 1,
-    "limit": 10,
+    "limit": 9,
     "total": 3,
     "pages": 1,
     "items": [
         {
+            "id": 1,
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Mug",
             "slug": "@string@",
             "taxons": "@array@",
-            "variants": {
-                "LOGAN_MUG_CODE": {
-                    "code": "LOGAN_MUG_CODE",
+            "variants": [
+                {
+                    "id": 2,
+                    "code": "LOGAN_MUG_SMALL_CODE",
+                    "name": "Gnome Mug",
+                    "price": {
+                        "current": 1000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 0,
+                    "isTracked": false,
+                    "images": "@array@"
+                },
+                {
+                    "id": 1,
+                    "code": "LOGAN_MUG_BIG_CODE",
                     "name": "Logan Mug",
                     "price": {
                         "current": 1000,
-                        "currency": "GBP"
+                        "currency": "GBP",
+                        "original": 0
                     },
+                    "stock": 0,
+                    "isTracked": false,
                     "images": "@array@"
                 }
-            },
+            ],
             "attributes": "@array@",
             "images": "@array@",
+            "price": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
         {
+            "id": 2,
             "code": "LOGAN_HAT_CODE",
             "name": "Logan Hat",
             "slug": "@string@",
             "taxons": "@array@",
-            "variants": {
-                "LOGAN_HAT_CODE": {
+            "variants": [
+                {
+                    "id": 3,
                     "code": "LOGAN_HAT_CODE",
                     "name": "Logan Hat",
                     "price": {
                         "current": 1500,
-                        "currency": "GBP"
+                        "currency": "GBP",
+                        "original": 0
                     },
+                    "stock": 2,
+                    "isTracked": false,
                     "images": "@array@"
                 }
-            },
+            ],
             "attributes": "@array@",
             "images": "@array@",
+            "price": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
         {
+            "id": 3,
             "code": "LOGAN_T_SHIRT_CODE",
             "name": "Logan T-Shirt",
             "slug": "@string@",
             "taxons": "@array@",
-            "variants": {
-                "LOGAN_T_SHIRT_CODE": {
-                    "code": "LOGAN_T_SHIRT_CODE",
-                    "name": "Logan T-Shirt",
+            "variants": [
+                {
+                    "id": 7,
+                    "code": "EXTRA_LARGE_LOGAN_T_SHIRT_CODE",
+                    "name": "Extra Large Logan T-Shirt",
                     "price": {
                         "current": 2000,
-                        "currency": "GBP"
+                        "currency": "GBP",
+                        "original": 0
                     },
+                    "stock": 1,
+                    "isTracked": true,
+                    "images": "@array@"
+                },
+                {
+                    "id": 6,
+                    "code": "LARGE_LOGAN_T_SHIRT_CODE",
+                    "name": "Large Logan T-Shirt",
+                    "price": {
+                        "current": 2000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 1,
+                    "isTracked": true,
+                    "images": "@array@"
+                },
+                {
+                    "id": 5,
+                    "code": "MEDIUM_LOGAN_T_SHIRT_CODE",
+                    "name": "Medium Logan T-Shirt",
+                    "price": {
+                        "current": 2000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 1,
+                    "isTracked": true,
+                    "images": "@array@"
+                },
+                {
+                    "id": 4,
+                    "code": "SMALL_LOGAN_T_SHIRT_CODE",
+                    "name": "Small Logan T-Shirt",
+                    "price": {
+                        "current": 2000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 1,
+                    "isTracked": true,
                     "images": "@array@"
                 }
-            },
+            ],
             "attributes": "@array@",
             "images": "@array@",
+            "price": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }

@@ -15,7 +15,7 @@ use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
 use ONGR\FilterManagerBundle\Search\FilterManagerInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Sylius\ElasticSearchPlugin\Factory\ProductListViewFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\View\ProductListViewFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -31,7 +31,7 @@ final class SearchController
     private $restViewHandler;
 
     /**
-     * @var ProductListViewFactoryInterface
+     * @var \Sylius\ElasticSearchPlugin\Factory\View\ProductListViewFactoryInterface
      */
     private $productListViewFactory;
 
@@ -47,7 +47,7 @@ final class SearchController
 
     /**
      * @param ViewHandlerInterface $restViewHandler
-     * @param ProductListViewFactoryInterface $productListViewFactory
+     * @param \Sylius\ElasticSearchPlugin\Factory\View\ProductListViewFactoryInterface $productListViewFactory
      * @param FilterManagerInterface $filterManager
      * @param RepositoryInterface $channelRepository
      */

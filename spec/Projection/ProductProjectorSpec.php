@@ -9,7 +9,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
-use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface;
 use Sylius\ElasticSearchPlugin\Projection\ProductProjector;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

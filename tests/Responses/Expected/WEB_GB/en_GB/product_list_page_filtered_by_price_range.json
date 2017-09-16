@@ -1,48 +1,81 @@
 {
     "page": 1,
-    "limit": 10,
+    "limit": 9,
     "total": 2,
     "pages": 1,
     "items": [
         {
+            "id": 1,
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Mug",
             "slug": "@string@",
             "taxons": "@array@",
-            "variants": {
-                "LOGAN_MUG_CODE": {
-                    "code": "LOGAN_MUG_CODE",
+            "variants": [
+                {
+                    "id": 2,
+                    "code": "LOGAN_MUG_SMALL_CODE",
+                    "name": "Gnome Mug",
+                    "price": {
+                        "current": 1000,
+                        "currency": "GBP",
+                        "original": 0
+                    },
+                    "stock": 0,
+                    "isTracked": false,
+                    "images": []
+                },
+                {
+                    "id": 1,
+                    "code": "LOGAN_MUG_BIG_CODE",
                     "name": "Logan Mug",
                     "price": {
                         "current": 1000,
-                        "currency": "GBP"
+                        "currency": "GBP",
+                        "original": 0
                     },
-                    "images": "@array@"
+                    "stock": 0,
+                    "isTracked": false,
+                    "images": []
                 }
-            },
+            ],
             "attributes": "@array@",
             "images": "@array@",
+            "price": {
+                "current": 1000,
+                "currency": "GBP",
+                "original": 0
+            },
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         },
         {
+            "id": 2,
             "code": "LOGAN_HAT_CODE",
             "name": "Logan Hat",
             "slug": "@string@",
             "taxons": "@array@",
-            "variants": {
-                "LOGAN_HAT_CODE": {
+            "variants": [
+                {
+                    "id": 3,
                     "code": "LOGAN_HAT_CODE",
                     "name": "Logan Hat",
                     "price": {
                         "current": 1500,
-                        "currency": "GBP"
+                        "currency": "GBP",
+                        "original": 0
                     },
-                    "images": "@array@"
+                    "stock": 2,
+                    "isTracked": false,
+                    "images": []
                 }
-            },
+            ],
             "attributes": "@array@",
             "images": "@array@",
+            "price": {
+                "current": 1500,
+                "currency": "GBP",
+                "original": 0
+            },
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -69,14 +102,12 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "price": "1000;1500",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "priceRange",

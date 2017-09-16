@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ElasticSearchPlugin\Factory;
+namespace Sylius\ElasticSearchPlugin\Factory\Document;
 
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Product\Model\ProductOptionTranslationInterface;

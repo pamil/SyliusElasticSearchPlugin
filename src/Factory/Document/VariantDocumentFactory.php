@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ElasticSearchPlugin\Factory;
+namespace Sylius\ElasticSearchPlugin\Factory\Document;
 
 use ONGR\ElasticsearchBundle\Collection\Collection;
 use Sylius\Component\Core\Model\ChannelInterface;
@@ -45,15 +45,10 @@ class VariantDocumentFactory implements VariantDocumentFactoryInterface
         ChannelInterface $channel,
         LocaleInterface $locale
     ): VariantDocument {
-        /** @var ImageDocument[] $images */
-        $images = [];
-        foreach ($productVariant->getImages() as $image) {
-            $images[] = $this->imageDocumentFactory->create($image);
-        }
 
         $options = [];
         foreach ($productVariant->getOptionValues() as $optionValue) {
-            $options[] = $this->createOptionDocumentFromSyliusOptionValue($optionValue, $locale);
+            $options[] = $this->optionDocumentFactory->create($optionValue, $locale);
         }
 
         /** @var ChannelPricingInterface $channelPricing */
@@ -63,6 +58,7 @@ class VariantDocumentFactory implements VariantDocumentFactoryInterface
             $channelPricing,
             $channel->getBaseCurrency()
         );
+
 
         /** @var ProductVariantTranslationInterface $productVariantTranslation */
         $productVariantTranslation = $productVariant->getTranslation($locale->getCode());
@@ -75,8 +71,15 @@ class VariantDocumentFactory implements VariantDocumentFactoryInterface
         $variant->setPrice($price);
         $variant->setStock($productVariant->getOnHand() - $productVariant->getOnHold());
         $variant->setIsTracked($productVariant->isTracked());
-        $variant->setImages(new Collection($images));
         $variant->setOptions(new Collection($options));
+        if ($productVariant->getImages()->count() > 0) {
+            /** @var ImageDocument[] $images */
+            $images = [];
+            foreach ($productVariant->getImages() as $image) {
+                $images[] = $this->imageDocumentFactory->create($image);
+            }
+            $variant->setImages(new Collection($images));
+        }
 
         return $variant;
     }

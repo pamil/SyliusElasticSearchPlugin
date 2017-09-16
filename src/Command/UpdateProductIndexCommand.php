@@ -13,7 +13,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
-use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -43,7 +43,7 @@ final class UpdateProductIndexCommand extends Command
     /**
      * @param ProductRepositoryInterface $productRepository
      * @param Manager $elasticsearchManager
-     * @param ProductDocumentFactoryInterface $productDocumentFactory
+     * @param \Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface $productDocumentFactory
      */
     public function __construct(
         ProductRepositoryInterface $productRepository,

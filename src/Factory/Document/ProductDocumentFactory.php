@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ElasticSearchPlugin\Factory;
+namespace Sylius\ElasticSearchPlugin\Factory\Document;
 
 use ONGR\ElasticsearchBundle\Collection\Collection;
 use Ramsey\Uuid\Uuid;
@@ -97,7 +97,6 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
                 return $a->getName() <=> $b->getName();
             }
         );
-
         $variantDocuments = [];
         foreach ($iterator as $variant) {
             $variantDocuments[] = $this->variantDocumentFactory->create($variant, $channel, $locale);
@@ -170,7 +169,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return ChannelPricingInterface
      */
-    protected function getMinimalPriceFromVariants($variants, ChannelInterface $channel): ChannelPricingInterface
+    public function getMinimalPriceFromVariants($variants, ChannelInterface $channel): ChannelPricingInterface
     {
         /** @var ChannelPricingInterface $minProductChannelPrice */
         $minProductChannelPrice = $variants->first()->getChannelPricingForChannel($channel);
