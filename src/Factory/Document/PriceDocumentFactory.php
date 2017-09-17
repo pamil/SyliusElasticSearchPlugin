@@ -27,10 +27,11 @@ class PriceDocumentFactory implements PriceDocumentFactoryInterface
     ): PriceDocument {
         /** @var PriceDocument $price */
         $price = new $this->priceDocumentClass();
+        $originalAmount = $channelPricing->getOriginalPrice();
 
         $price->setAmount($channelPricing->getPrice());
         $price->setCurrency($currency->getCode());
-        $price->setOriginalAmount($channelPricing->getOriginalPrice() > 0 ?: 0);
+        $price->setOriginalAmount(!is_null($originalAmount) && $originalAmount > 0 ? $originalAmount : 0);
 
         return $price;
     }

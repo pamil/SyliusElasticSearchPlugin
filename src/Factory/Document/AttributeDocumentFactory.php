@@ -28,10 +28,13 @@ class AttributeDocumentFactory implements AttributeDocumentFactoryInterface
 
         if (is_array($data)) {
             foreach ($data as $value) {
-                $productAttributes[] = $this->create(
-                    $value,
-                    $locale,
-                    $productAttributeValue
+                $productAttributes = array_merge(
+                    $productAttributes,
+                    $this->create(
+                        $value,
+                        $locale,
+                        $productAttributeValue
+                    )
                 );
             }
         } else {
@@ -44,7 +47,7 @@ class AttributeDocumentFactory implements AttributeDocumentFactoryInterface
                 $locale->getCode()
             );
             $productAttribute->setName($productAttributeTranslation->getName());
-            $productAttributes[] = $productAttribute;
+            $productAttributes = [$productAttribute];
         }
 
         return $productAttributes;

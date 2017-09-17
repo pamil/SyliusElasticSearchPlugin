@@ -151,7 +151,6 @@ class ProductDocument
     {
         $this->attributes = new Collection();
         $this->taxons = new Collection();
-        $this->productTaxons = new Collection();
         $this->images = new Collection();
         $this->variants = new Collection();
     }

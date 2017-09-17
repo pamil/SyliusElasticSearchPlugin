@@ -52,7 +52,7 @@ class VariantDocumentFactory implements VariantDocumentFactoryInterface
         }
 
         /** @var ChannelPricingInterface $channelPricing */
-        $channelPricing = $this->getChannelPricing($productVariant, $channel);
+        $channelPricing = $productVariant->getChannelPricingForChannel($channel);
 
         $price = $this->priceDocumentFactory->create(
             $channelPricing,
@@ -82,29 +82,5 @@ class VariantDocumentFactory implements VariantDocumentFactoryInterface
         }
 
         return $variant;
-    }
-
-    /**
-     * Get price for the pricing document
-     *
-     * @param ProductVariantInterface $productVariant
-     * @param ChannelInterface $channel
-     *
-     * @return ChannelPricingInterface|null
-     */
-    protected function getChannelPricing(
-        ProductVariantInterface $productVariant,
-        ChannelInterface $channel
-    ): ?ChannelPricingInterface
-    {
-        $channelPricings = $productVariant->getChannelPricings();
-
-        foreach ($channelPricings as $channelPricing) {
-            if ($channelPricing->getChannelCode() === $channel->getCode()) {
-                return $channelPricing;
-            }
-        }
-
-        return null;
     }
 }
