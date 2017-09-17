@@ -169,7 +169,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @return ChannelPricingInterface
      */
-    public function getMinimalPriceFromVariants($variants, ChannelInterface $channel): ChannelPricingInterface
+    private function getMinimalPriceFromVariants($variants, ChannelInterface $channel): ChannelPricingInterface
     {
         /** @var ChannelPricingInterface $minProductChannelPrice */
         $minProductChannelPrice = $variants->first()->getChannelPricingForChannel($channel);
@@ -194,7 +194,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
      *
      * @throws \InvalidArgumentException
      */
-    protected function assertClassExtends(string $class, string $parentClass)
+    private function assertClassExtends(string $class, string $parentClass)
     {
         if ($class !== $parentClass && !in_array($parentClass, class_parents($class), true)) {
             throw new \InvalidArgumentException(sprintf('Class %s MUST extend class %s!', $class, $parentClass));
