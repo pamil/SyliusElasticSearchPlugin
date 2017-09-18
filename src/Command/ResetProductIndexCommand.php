@@ -68,12 +68,16 @@ final class ResetProductIndexCommand extends Command
             return;
         }
 
+        $output->writeln(sprintf('Dropping and creating "%s" ElasticSearch index', $this->manager->getIndexName()));
         $this->manager->dropAndCreateIndex();
 
         $productDocumentsCreated = 0;
 
         /** @var ProductInterface[] $products */
         $products = $this->productRepository->findAll();
+
+        $output->writeln(sprintf('Loading %d products into ElasticSearch', count($products)));
+
         foreach ($products as $product) {
             $channels = $product->getChannels();
 
@@ -91,6 +95,7 @@ final class ResetProductIndexCommand extends Command
 
                     ++$productDocumentsCreated;
                     if (($productDocumentsCreated % 100) === 0) {
+                        $output->writeln(sprintf('%d products flushed to Elastic', $productDocumentsCreated));
                         $this->manager->commit();
                     }
                 }
@@ -99,6 +104,6 @@ final class ResetProductIndexCommand extends Command
 
         $this->manager->commit();
 
-        $output->writeln('Product index was reset!');
+        $output->writeln('Product index was rebuilt!');
     }
 }
