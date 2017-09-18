@@ -95,7 +95,6 @@ final class ResetProductIndexCommand extends Command
 
                     ++$productDocumentsCreated;
                     if (($productDocumentsCreated % 100) === 0) {
-                        $output->writeln(sprintf('%d products flushed to Elastic', $productDocumentsCreated));
                         $this->manager->commit();
                     }
                 }
