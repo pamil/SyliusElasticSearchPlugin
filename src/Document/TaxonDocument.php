@@ -17,35 +17,35 @@ class TaxonDocument
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $code;
+    protected $code;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var int
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $position = 0;
+    protected $position = 0;
 
     /**
      * @var ImageDocument[]|Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ImageDocument", multiple=true)
      */
-    private $images;
+    protected $images;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="text")
      */
-    private $description;
+    protected $description;
 
     public function __construct()
     {

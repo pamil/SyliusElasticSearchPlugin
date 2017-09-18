@@ -17,21 +17,21 @@ class ProductDocument
      *
      * @ElasticSearch\Id()
      */
-    private $uuid;
+    protected $uuid;
 
     /**
      * @var int
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $code;
+    protected $code;
 
     /**
      * @var string
@@ -49,103 +49,103 @@ class ProductDocument
      *    }
      * )
      */
-    private $name;
+    protected $name;
 
     /**
      * @var boolean
      *
      * @ElasticSearch\Property(type="boolean")
      */
-    private $enabled;
+    protected $enabled;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $channelCode;
+    protected $channelCode;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $localeCode;
+    protected $localeCode;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="text")
      */
-    private $description;
+    protected $description;
 
     /**
      * @var PriceDocument
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\PriceDocument")
      */
-    private $price;
+    protected $price;
 
     /**
      * @var TaxonDocument
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\TaxonDocument")
      */
-    private $mainTaxon;
+    protected $mainTaxon;
 
     /**
      * @var Collection|TaxonDocument[]
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\TaxonDocument", multiple=true)
      */
-    private $taxons;
+    protected $taxons;
 
     /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\AttributeDocument", multiple=true)
      */
-    private $attributes;
+    protected $attributes;
 
     /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ImageDocument", multiple=true)
      */
-    private $images;
+    protected $images;
 
     /**
      * @var float
      */
-    private $averageReviewRating;
+    protected $averageReviewRating;
 
     /**
      * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\VariantDocument", multiple=true)
      */
-    private $variants;
+    protected $variants;
 
     /**
      * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
      */
-    private $synchronisedAt;
+    protected $synchronisedAt;
 
     public function __construct()
     {

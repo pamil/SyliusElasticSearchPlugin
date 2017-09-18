@@ -16,21 +16,21 @@ class PriceDocument
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $amount;
+    protected $amount;
 
     /**
      * @var int
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $originalAmount = 0;
+    protected $originalAmount = 0;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $currency;
+    protected $currency;
 
     /**
      * @return int
