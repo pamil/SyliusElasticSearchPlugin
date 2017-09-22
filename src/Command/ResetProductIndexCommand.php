@@ -12,6 +12,7 @@ use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\LockHandler;
 
 final class ResetProductIndexCommand extends Command
 {
@@ -62,47 +63,54 @@ final class ResetProductIndexCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (!$input->getOption('force')) {
-            $output->writeln('WARNING! This command will drop the existing index and rebuild it from scratch. To proceed, run with "--force" option.');
+        $lockHandler = new LockHandler('sylius-elastic-index-update');
+        if ($lockHandler->lock()) {
 
-            return;
-        }
+            if (!$input->getOption('force')) {
+                $output->writeln('WARNING! This command will drop the existing index and rebuild it from scratch. To proceed, run with "--force" option.');
 
-        $output->writeln(sprintf('Dropping and creating "%s" ElasticSearch index', $this->manager->getIndexName()));
-        $this->manager->dropAndCreateIndex();
+                return;
+            }
 
-        $productDocumentsCreated = 0;
+            $output->writeln(sprintf('Dropping and creating "%s" ElasticSearch index', $this->manager->getIndexName()));
+            $this->manager->dropAndCreateIndex();
 
-        /** @var ProductInterface[] $products */
-        $products = $this->productRepository->findAll();
+            $productDocumentsCreated = 0;
 
-        $output->writeln(sprintf('Loading %d products into ElasticSearch', count($products)));
+            /** @var ProductInterface[] $products */
+            $products = $this->productRepository->findAll();
 
-        foreach ($products as $product) {
-            $channels = $product->getChannels();
+            $output->writeln(sprintf('Loading %d products into ElasticSearch', count($products)));
 
-            /** @var ChannelInterface $channel */
-            foreach ($channels as $channel) {
-                $locales = $channel->getLocales();
-                foreach ($locales as $locale) {
-                    $productDocument = $this->productDocumentFactory->create(
-                        $product,
-                        $locale,
-                        $channel
-                    );
+            foreach ($products as $product) {
+                $channels = $product->getChannels();
 
-                    $this->manager->persist($productDocument);
+                /** @var ChannelInterface $channel */
+                foreach ($channels as $channel) {
+                    $locales = $channel->getLocales();
+                    foreach ($locales as $locale) {
+                        $productDocument = $this->productDocumentFactory->create(
+                            $product,
+                            $locale,
+                            $channel
+                        );
 
-                    ++$productDocumentsCreated;
-                    if (($productDocumentsCreated % 100) === 0) {
-                        $this->manager->commit();
+                        $this->manager->persist($productDocument);
+
+                        ++$productDocumentsCreated;
+                        if (($productDocumentsCreated % 100) === 0) {
+                            $this->manager->commit();
+                        }
                     }
                 }
             }
+
+            $this->manager->commit();
+
+            $output->writeln('Product index was rebuilt!');
+        } else {
+            $output->writeln(sprintf('<info>Command is already running</info>'));
         }
-
-        $this->manager->commit();
-
-        $output->writeln('Product index was rebuilt!');
+        $lockHandler->release();
     }
 }
