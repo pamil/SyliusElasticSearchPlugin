@@ -220,7 +220,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 
         $attributeDocuments = [];
         foreach ($productAttributes as $syliusProductAttributeValue) {
-            if (in_array($syliusProductAttributeValue->getCode(), $this->attributeWhitelist, true)) {
+            if (in_array($syliusProductAttributeValue->getCode(), $this->attributeWhitelist, true) || empty($this->attributeWhitelist)) {
                 $attributeDocuments = array_merge(
                     $attributeDocuments,
                     $this->attributeDocumentFactory->create(
