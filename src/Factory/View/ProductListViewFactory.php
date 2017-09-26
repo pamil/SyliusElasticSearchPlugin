@@ -20,7 +20,7 @@ use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 
-class ProductListViewFactory implements ProductListViewFactoryInterface
+final class ProductListViewFactory implements ProductListViewFactoryInterface
 {
     /** @var string */
     private $productListViewClass;

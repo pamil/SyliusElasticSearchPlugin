@@ -8,7 +8,7 @@ use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Currency\Model\CurrencyInterface;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 
-class PriceDocumentFactory implements PriceDocumentFactoryInterface
+final class PriceDocumentFactory implements PriceDocumentFactoryInterface
 {
 
     /**

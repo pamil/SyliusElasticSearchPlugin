@@ -9,7 +9,7 @@ use Sylius\Component\Product\Model\ProductAttributeTranslationInterface;
 use Sylius\Component\Product\Model\ProductAttributeValueInterface;
 use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 
-class AttributeDocumentFactory implements AttributeDocumentFactoryInterface
+final class AttributeDocumentFactory implements AttributeDocumentFactoryInterface
 {
     /** @var string */
     private $attributeDocumentClass;

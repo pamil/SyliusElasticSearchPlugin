@@ -17,6 +17,7 @@ use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 use Zend\Stdlib\ArrayObject;
+use Doctrine\Common\Collections\Collection as DoctrineCollection;
 
 final class ProductDocumentFactory implements ProductDocumentFactoryInterface
 {
@@ -164,7 +165,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
     }
 
     /**
-     * @param ProductVariantInterface[]|\Doctrine\Common\Collections\Collection $variants
+     * @param ProductVariantInterface[]|DoctrineCollection $variants
      * @param ChannelInterface $channel
      *
      * @return ChannelPricingInterface

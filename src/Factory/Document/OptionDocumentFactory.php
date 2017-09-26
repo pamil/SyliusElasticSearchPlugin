@@ -10,7 +10,7 @@ use Sylius\Component\Product\Model\ProductOptionValueInterface;
 use Sylius\Component\Product\Model\ProductOptionValueTranslationInterface;
 use Sylius\ElasticSearchPlugin\Document\OptionDocument;
 
-class OptionDocumentFactory implements OptionDocumentFactoryInterface
+final class OptionDocumentFactory implements OptionDocumentFactoryInterface
 {
     /** @var string */
     private $optionDocumentClass;

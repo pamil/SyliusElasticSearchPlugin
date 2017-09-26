@@ -13,7 +13,7 @@ use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 
-class VariantDocumentFactory implements VariantDocumentFactoryInterface
+final class VariantDocumentFactory implements VariantDocumentFactoryInterface
 {
 
     /** @var string */

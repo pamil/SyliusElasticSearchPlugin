@@ -11,7 +11,7 @@ use Sylius\Component\Taxonomy\Model\TaxonTranslationInterface;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
-class TaxonDocumentFactory implements TaxonDocumentFactoryInterface
+final class TaxonDocumentFactory implements TaxonDocumentFactoryInterface
 {
     /** @var  string */
     private $taxonDocumentClass;

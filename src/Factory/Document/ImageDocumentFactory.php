@@ -7,7 +7,7 @@ namespace Sylius\ElasticSearchPlugin\Factory\Document;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 
-class ImageDocumentFactory implements ImageDocumentFactoryInterface
+final class ImageDocumentFactory implements ImageDocumentFactoryInterface
 {
     /** @var string */
     private $imageDocumentClass;

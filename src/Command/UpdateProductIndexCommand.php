@@ -44,7 +44,7 @@ final class UpdateProductIndexCommand extends Command
     /**
      * @param ProductRepositoryInterface $productRepository
      * @param Manager $elasticsearchManager
-     * @param \Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface $productDocumentFactory
+     * @param ProductDocumentFactoryInterface $productDocumentFactory
      */
     public function __construct(
         ProductRepositoryInterface $productRepository,
