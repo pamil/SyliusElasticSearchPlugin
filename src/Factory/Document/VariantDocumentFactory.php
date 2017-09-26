@@ -67,7 +67,13 @@ class VariantDocumentFactory implements VariantDocumentFactoryInterface
         $variant = new $this->variantDocumentClass();
         $variant->setId($productVariant->getId());
         $variant->setCode($productVariant->getCode());
-        $variant->setName($productVariantTranslation->getName());
+        
+        if (!$productVariantTranslation->getName()) {
+            $variant->setName($productVariant->getProduct()->getTranslation($locale->getCode())->getName());
+        } else {
+            $variant->setName($productVariantTranslation->getName());    
+        }
+
         $variant->setPrice($price);
         $variant->setStock($productVariant->getOnHand() - $productVariant->getOnHold());
         $variant->setIsTracked($productVariant->isTracked());
