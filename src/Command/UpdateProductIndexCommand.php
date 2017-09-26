@@ -75,6 +75,7 @@ final class UpdateProductIndexCommand extends Command
         $lockHandler = new LockHandler('sylius-elastic-index-update');
         if ($lockHandler->lock()) {
             $processedProductsCodes = [];
+            $productDocumentsUpdated = 0;
 
             $search = $this->productDocumentRepository->createSearch();
             $search->setScroll('10m');
@@ -86,7 +87,7 @@ final class UpdateProductIndexCommand extends Command
             foreach ($productDocuments as $productDocument) {
                 $productCode = $productDocument->getCode();
 
-                if (in_array($productCode, $processedProductsCodes, true)) {
+                if (isset($processedProductsCodes[$productCode])) {
                     continue;
                 }
 
@@ -95,15 +96,18 @@ final class UpdateProductIndexCommand extends Command
                 $this->scheduleCreatingNewProductDocuments($productCode);
                 $this->scheduleRemovingOldProductDocuments($productCode);
 
-                $this->elasticsearchManager->commit();
+                ++$productDocumentsUpdated;
+                if (($productDocumentsUpdated % 100) === 0) {
+                    $this->elasticsearchManager->commit();
+                }
 
-                $processedProductsCodes[] = $productCode;
+                $processedProductsCodes[$productCode] = 1;
             }
+            $lockHandler->release();
             $output->writeln('Updates done');
         } else {
             $output->writeln(sprintf('<info>Command is already running</info>'));
         }
-        $lockHandler->release();
     }
 
     private function scheduleCreatingNewProductDocuments(string $productCode): void

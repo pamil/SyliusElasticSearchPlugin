@@ -24,7 +24,7 @@ final class ResetProductIndexCommand extends Command
     /**
      * @var Manager
      */
-    private $manager;
+    private $elasticsearchManager;
 
     /**
      * @var ProductDocumentFactoryInterface
@@ -42,7 +42,7 @@ final class ResetProductIndexCommand extends Command
         ProductDocumentFactoryInterface $productDocumentFactory
     ) {
         $this->productRepository = $productRepository;
-        $this->manager = $manager;
+        $this->elasticsearchManager = $manager;
         $this->productDocumentFactory = $productDocumentFactory;
 
         parent::__construct('sylius:elastic-search:reset-product-index');
@@ -72,8 +72,8 @@ final class ResetProductIndexCommand extends Command
                 return;
             }
 
-            $output->writeln(sprintf('Dropping and creating "%s" ElasticSearch index', $this->manager->getIndexName()));
-            $this->manager->dropAndCreateIndex();
+            $output->writeln(sprintf('Dropping and creating "%s" ElasticSearch index', $this->elasticsearchManager->getIndexName()));
+            $this->elasticsearchManager->dropAndCreateIndex();
 
             $productDocumentsCreated = 0;
 
@@ -95,22 +95,21 @@ final class ResetProductIndexCommand extends Command
                             $channel
                         );
 
-                        $this->manager->persist($productDocument);
+                        $this->elasticsearchManager->persist($productDocument);
 
                         ++$productDocumentsCreated;
                         if (($productDocumentsCreated % 100) === 0) {
-                            $this->manager->commit();
+                            $this->elasticsearchManager->commit();
                         }
                     }
                 }
             }
 
-            $this->manager->commit();
-
+            $this->elasticsearchManager->commit();
+            $lockHandler->release();
             $output->writeln('Product index was rebuilt!');
         } else {
             $output->writeln(sprintf('<info>Command is already running</info>'));
         }
-        $lockHandler->release();
     }
 }
