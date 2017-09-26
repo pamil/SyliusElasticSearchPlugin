@@ -197,7 +197,7 @@ class ProductListViewFactory implements ProductListViewFactoryInterface
      */
     protected function getProductView(ProductDocument $product): ProductView
     {
-        /** @var \AppBundle\ElasticSearch\ProductView $productView */
+        /** @var ProductView $productView */
         $productView = new $this->productViewClass();
         $productView->id = $product->getId();
         $productView->slug = $product->getSlug();
@@ -213,10 +213,6 @@ class ProductListViewFactory implements ProductListViewFactoryInterface
         $productView->attributes = $this->getAttributeViews($product->getAttributes());
         $productView->variants = $this->getVariantViews($product->getVariants());
         $productView->price = $this->getPriceView($product->getPrice());
-        /** @var \AppBundle\ElasticSearch\ProductDocument $product */
-        if ($product->getOriginalPrice() instanceof PriceDocument) {
-            $productView->originalPrice = $product->getOriginalPrice();
-        }
 
         return $productView;
     }
