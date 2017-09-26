@@ -6,7 +6,7 @@ namespace Sylius\ElasticSearchPlugin\Event;
 
 use Sylius\Component\Core\Model\ProductInterface;
 
-final class ProductCreated
+final class ProductDeleted
 {
     /**
      * @var ProductInterface

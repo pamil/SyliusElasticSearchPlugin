@@ -12,6 +12,8 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
+use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
+use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
 use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
 
 final class ProductProjector
@@ -51,6 +53,31 @@ final class ProductProjector
     {
         $this->scheduleCreatingNewProductDocuments($event->product());
         $this->scheduleRemovingOldProductDocuments($event->product());
+
+        $this->elasticsearchManager->commit();
+    }
+
+    /**
+     * @param ProductUpdated $event
+     */
+    public function handleProductUpdated(ProductUpdated $event): void
+    {
+        $product = $event->product();
+
+        $this->scheduleCreatingNewProductDocuments($product);
+        $this->scheduleRemovingOldProductDocuments($product);
+
+        $this->elasticsearchManager->commit();
+    }
+
+    /**
+     * @param ProductDeleted $event
+     */
+    public function handleProductDeleted(ProductDeleted $event): void
+    {
+        $product = $event->product();
+
+        $this->scheduleRemovingOldProductDocuments($product);
 
         $this->elasticsearchManager->commit();
     }

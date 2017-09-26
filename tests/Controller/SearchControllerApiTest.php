@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Tests\Sylius\ElasticSearchPlugin\Controller;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Lakion\ApiTestCase\JsonApiTestCase;
 use PHPUnit\Framework\Assert;
+use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\ProductTranslationInterface;
+use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 final class SearchControllerApiTest extends JsonApiTestCase
@@ -437,6 +441,41 @@ final class SearchControllerApiTest extends JsonApiTestCase
     }
 
     /**
+     * @test
+     */
+    public function it_recreates_projection_if_product_translation_has_changed()
+    {
+        $this->loadFixturesFromFile('shop.yml');
+
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertProductsNamesInResponse($response, ['Logan Mug', 'Logan Hat', 'Logan T-Shirt']);
+
+        /** @var ProductRepositoryInterface $productRepository */
+        $productRepository = static::$kernel->getContainer()->get('sylius.repository.product');
+
+        /** @var ProductInterface $product */
+        $product = $productRepository->findOneByCode('LOGAN_MUG_CODE');
+
+        /** @var ProductTranslationInterface $productTranslation */
+        $productTranslation = $product->getTranslation('en_GB');
+        $productTranslation->setName('Logan Mug (updated)');
+
+        /** @var ObjectManager $productManager */
+        $productManager = static::$kernel->getContainer()->get('sylius.manager.product');
+        $productManager->persist($productTranslation);
+        $productManager->flush();
+
+        $this->client->request('GET', '/shop-api/products', ['channel' => 'WEB_GB'], [], ['ACCEPT' => 'application/json']);
+
+        $response = $this->client->getResponse();
+
+        $this->assertProductsNamesInResponse($response, ['Logan Hat', 'Logan T-Shirt', 'Logan Mug (updated)']);
+    }
+
+    /**
      * @before
      */
     protected function purgeElasticSearch()
@@ -455,6 +494,20 @@ final class SearchControllerApiTest extends JsonApiTestCase
             $expectedProductsCodes,
             array_map(function (array $item): string {
                 return $item['code'];
+            }, $responseContent['items'])
+        );
+    }
+
+    private function assertProductsNamesInResponse(Response $response, array $expectedProductsCodes): void
+    {
+        $responseContent = json_decode($response->getContent(), true);
+
+        Assert::assertArrayHasKey('items', $responseContent);
+
+        Assert::assertSame(
+            $expectedProductsCodes,
+            array_map(function (array $item): string {
+                return $item['name'];
             }, $responseContent['items'])
         );
     }
