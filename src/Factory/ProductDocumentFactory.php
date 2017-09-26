@@ -197,7 +197,7 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
             $productTaxonDocuments[$productTaxon->getTaxon()->getCode()] = $this->createProductTaxonDocument($productTaxon, $locale->getCode());
 
             /** @var TaxonInterface[] $productTaxonAncestors */
-            $productTaxonAncestors = $productTaxon->getTaxon()->getParents();
+            $productTaxonAncestors = $productTaxon->getTaxon()->getAncestors();
             foreach ($productTaxonAncestors as $productTaxonAncestor) {
                 $taxonDocuments[$productTaxonAncestor->getCode()] = $this->createTaxonDocument($productTaxonAncestor, $locale->getCode());
             }

@@ -13,11 +13,11 @@
     "require": {
         "php": "^7.1",
 
-        "sylius/sylius": "1.0.0-beta.3",
+        "sylius/sylius": "^1.0",
         "ongr/elasticsearch-dsl": "^5.0",
         "ongr/elasticsearch-bundle": "^5.0",
         "simple-bus/symfony-bridge": "^4.1",
-        "ongr/filter-manager-bundle": "^2.0",
+        "ongr/filter-manager-bundle": "2.1.x-dev as v2.1.1",
         "ramsey/uuid": "^3.7"
     },
     "require-dev": {
