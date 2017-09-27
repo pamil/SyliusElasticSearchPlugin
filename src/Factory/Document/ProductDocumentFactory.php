@@ -118,7 +118,11 @@ final class ProductDocumentFactory implements ProductDocumentFactoryInterface
         /** @var TaxonDocument[] $taxonDocuments */
         $taxonDocuments = [];
         foreach ($product->getProductTaxons() as $syliusProductTaxon) {
-            $taxonDocuments[] = $this->taxonDocumentFactory->create($syliusProductTaxon->getTaxon(), $locale);
+            $taxonDocuments[] = $this->taxonDocumentFactory->create(
+                $syliusProductTaxon->getTaxon(),
+                $locale,
+                $syliusProductTaxon->getPosition()
+            );
         }
 
         /** @var ProductTranslationInterface|TranslationInterface $productTranslation */

@@ -10,5 +10,5 @@ use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 interface TaxonDocumentFactoryInterface
 {
-    public function create(TaxonInterface $taxon, LocaleInterface $localeCode): TaxonDocument;
+    public function create(TaxonInterface $taxon, LocaleInterface $localeCode, ?int $position = null): TaxonDocument;
 }

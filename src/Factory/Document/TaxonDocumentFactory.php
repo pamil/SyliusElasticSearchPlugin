@@ -26,7 +26,14 @@ final class TaxonDocumentFactory implements TaxonDocumentFactoryInterface
 
     }
 
-    public function create(TaxonInterface $taxon, LocaleInterface $localeCode): TaxonDocument
+    /**
+     * @param TaxonInterface $taxon Sylius taxon model
+     * @param LocaleInterface $localeCode
+     * @param int|null $position Override the position in the Taxon model by passing your own
+     *
+     * @return TaxonDocument
+     */
+    public function create(TaxonInterface $taxon, LocaleInterface $localeCode, ?int $position = null): TaxonDocument
     {
         /** @var TaxonTranslationInterface $taxonTranslation */
         $taxonTranslation = $taxon->getTranslation($localeCode->getCode());
@@ -35,7 +42,12 @@ final class TaxonDocumentFactory implements TaxonDocumentFactoryInterface
         $taxonDocument = new $this->taxonDocumentClass();
         $taxonDocument->setCode($taxon->getCode());
         $taxonDocument->setSlug($taxonTranslation->getSlug());
-        $taxonDocument->setPosition($taxon->getPosition());
+        if (is_int($position)) {
+            $taxonDocument->setPosition($position);
+        } else {
+            $taxonDocument->setPosition($taxon->getPosition());
+        }
+
         $taxonDocument->setDescription($taxonTranslation->getDescription());
 
         /** @var ImageDocument[] $images */

@@ -20,9 +20,9 @@ class ProductDocument
     protected $uuid;
 
     /**
-     * @var int
+     * @var mixed
      *
-     * @ElasticSearch\Property(type="integer")
+     * @ElasticSearch\Property(type="keyword")
      */
     protected $id;
 
@@ -172,17 +172,17 @@ class ProductDocument
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
 
     /**
-     * @param int $id
+     * @param mixed $id
      */
-    public function setId(int $id): void
+    public function setId($id): void
     {
         $this->id = $id;
     }

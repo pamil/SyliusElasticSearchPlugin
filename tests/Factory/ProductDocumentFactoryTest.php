@@ -215,7 +215,7 @@ final class ProductDocumentFactoryTest extends KernelTestCase
         $productTaxon = new TaxonDocument();
         $productTaxon->setCode('BRAND');
         $productTaxon->setSlug('brands');
-        $productTaxon->setPosition(1);
+        $productTaxon->setPosition(3);
         $productTaxon->setDescription('Lorem ipsum');
         $productTaxons[] = $productTaxon;
 
