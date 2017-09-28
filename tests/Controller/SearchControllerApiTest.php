@@ -77,7 +77,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->assertProductsCodesInResponse(
             $this->client->getResponse(),
-            ['LOGAN_MUG_CODE', 'LOGAN_HAT_CODE', 'LOGAN_T_SHIRT_CODE']
+            ['LOGAN_HAT_CODE', 'LOGAN_T_SHIRT_CODE', 'LOGAN_MUG_CODE']
         );
     }
 
@@ -104,7 +104,7 @@ final class SearchControllerApiTest extends JsonApiTestCase
 
         $this->assertProductsCodesInResponse(
             $this->client->getResponse(),
-            ['LOGAN_MUG_CODE', 'LOGAN_HAT_CODE', 'LOGAN_T_SHIRT_CODE']
+            ['LOGAN_HAT_CODE', 'LOGAN_T_SHIRT_CODE', 'LOGAN_MUG_CODE']
         );
     }
 

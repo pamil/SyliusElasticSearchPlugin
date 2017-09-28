@@ -115,7 +115,7 @@ final class Sort extends AbstractFilter implements ViewDataFactoryInterface
     private function addPositionFieldToSort(Search $search, string $identifier, array $settings): void
     {
         foreach ($settings as $taxonIdentifier => $sortingOrder) {
-            $fieldSort = new FieldSort('taxons.position', $sortingOrder);
+            $fieldSort = new FieldSort('taxons.position', $sortingOrder, ['nested_path' => 'taxons']);
             $fieldSort->setNestedFilter(new TermQuery(sprintf('taxons.%s', $identifier), $taxonIdentifier));
 
             $search->addSort($fieldSort);

@@ -8,7 +8,7 @@ use ONGR\ElasticsearchBundle\Annotation as ElasticSearch;
 use ONGR\ElasticsearchBundle\Collection\Collection;
 
 /**
- * @ElasticSearch\Object
+ * @ElasticSearch\Nested()
  */
 class TaxonDocument
 {

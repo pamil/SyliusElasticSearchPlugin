@@ -315,56 +315,7 @@
                 "locale": "de_DE"
             },
             "name": "taxonCode",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "HAT"
-                    },
-                    "label": "HAT",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "MUG"
-                    },
-                    "label": "MUG",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "T_SHIRTS"
-                    },
-                    "label": "T_SHIRTS",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "BRAND"
-                    },
-                    "label": "BRAND",
-                    "count": 3
-                }
-            ]
+            "choices": []
         },
         "taxonSlug": {
             "state": {
@@ -385,56 +336,7 @@
                 "locale": "de_DE"
             },
             "name": "taxonSlug",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonSlug": "kategorien\/1t-shirts"
-                    },
-                    "label": "kategorien\/1t-shirts",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonSlug": "kategorien\/1tassen"
-                    },
-                    "label": "kategorien\/1tassen",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonSlug": "kategorien\/hut"
-                    },
-                    "label": "kategorien\/hut",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_GB",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonSlug": "marken"
-                    },
-                    "label": "marken",
-                    "count": 3
-                }
-            ]
+            "choices": []
         },
         "priceRange": {
             "state": {

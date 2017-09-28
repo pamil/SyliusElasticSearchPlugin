@@ -170,32 +170,7 @@
                 "locale": "de_DE"
             },
             "name": "taxonCode",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "BRAND"
-                    },
-                    "label": "BRAND",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonCode": "MUG"
-                    },
-                    "label": "MUG",
-                    "count": 1
-                }
-            ]
+            "choices": []
         },
         "taxonSlug": {
             "state": {
@@ -216,32 +191,7 @@
                 "locale": "de_DE"
             },
             "name": "taxonSlug",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonSlug": "kategorien\/1tassen"
-                    },
-                    "label": "kategorien\/1tassen",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "locale": "de_DE",
-                        "taxonSlug": "marken"
-                    },
-                    "label": "marken",
-                    "count": 1
-                }
-            ]
+            "choices": []
         },
         "priceRange": {
             "state": {
