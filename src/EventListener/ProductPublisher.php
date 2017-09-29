@@ -102,18 +102,16 @@ final class ProductPublisher
             $this->eventBus->handle(ProductCreated::occur($product));
         }
 
-        $this->scheduledInsertions = [];
-
-        foreach ($this->scheduledUpdates as $product) {
+        foreach (array_diff_key($this->scheduledUpdates, $this->scheduledInsertions) as $product) {
             $this->eventBus->handle(ProductUpdated::occur($product));
         }
-
-        $this->scheduledUpdates = [];
 
         foreach ($this->scheduledDeletions as $product) {
             $this->eventBus->handle(ProductDeleted::occur($product));
         }
 
+        $this->scheduledInsertions = [];
+        $this->scheduledUpdates = [];
         $this->scheduledDeletions = [];
     }
 

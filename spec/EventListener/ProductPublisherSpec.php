@@ -213,6 +213,25 @@ final class ProductPublisherSpec extends ObjectBehavior
         $this->postFlush($postFlushEvent);
     }
 
+    function it_publishes_only_product_created_event_if_there_is_also_product_updated_event_for_the_same_product(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductVariantInterface $productVariant,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityInsertions()->willReturn([$product, $productVariant]);
+
+        $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductCreated::occur($product->getWrappedObject()))->shouldBeCalledTimes(1);
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldNotBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
     function it_publishes_product_updated_event_when_product_is_updated(
         MessageBus $eventBus,
         OnFlushEventArgs $onFlushEvent,
