@@ -52,7 +52,7 @@ final class ProductPublisher
     /**
      * @param OnFlushEventArgs $event
      */
-    public function onFlush(OnFlushEventArgs $event)
+    public function onFlush(OnFlushEventArgs $event): void
     {
         $scheduledInsertions = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityInsertions();
 
@@ -83,7 +83,7 @@ final class ProductPublisher
     /**
      * @param PostFlushEventArgs $event
      */
-    public function postFlush(PostFlushEventArgs $event)
+    public function postFlush(PostFlushEventArgs $event): void
     {
         foreach ($this->scheduledInsertions as $product) {
             $this->eventBus->handle(ProductCreated::occur($product));
