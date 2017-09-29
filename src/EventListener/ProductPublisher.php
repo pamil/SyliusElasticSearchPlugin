@@ -73,7 +73,6 @@ final class ProductPublisher
         $scheduledUpdates = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityUpdates();
         foreach ($scheduledUpdates as $entity) {
             $entity = $this->getProductFromEntity($entity);
-
             if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getCode()])) {
                 $this->scheduledUpdates[$entity->getCode()] = $entity;
             }
@@ -81,9 +80,15 @@ final class ProductPublisher
 
         $scheduledDeletions = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityDeletions();
         foreach ($scheduledDeletions as $entity) {
-            /** We delete only if the product itself was removed */
             if ($entity instanceof ProductInterface && !isset($this->scheduledDeletions[$entity->getCode()])) {
                 $this->scheduledDeletions[$entity->getCode()] = $entity;
+
+                continue;
+            }
+
+            $entity = $this->getProductFromEntity($entity);
+            if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getCode()])) {
+                $this->scheduledUpdates[$entity->getCode()] = $entity;
             }
         }
     }

@@ -425,4 +425,154 @@ final class ProductPublisherSpec extends ObjectBehavior
         $this->onFlush($onFlushEvent);
         $this->postFlush($postFlushEvent);
     }
+
+    function it_publishes_product_updated_event_when_product_translation_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductTranslationInterface $productTranslation,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$productTranslation]);
+
+        $productTranslation->getTranslatable()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_variant_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductVariantInterface $productVariant,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$productVariant]);
+
+        $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_variant_translation_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductVariantTranslationInterface $productVariantTranslation,
+        ProductVariantInterface $productVariant,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$productVariantTranslation]);
+
+        $productVariantTranslation->getTranslatable()->willReturn($productVariant);
+        $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_variant_channel_pricing_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ChannelPricingInterface $productVariantChannelPricing,
+        ProductVariantInterface $productVariant,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$productVariantChannelPricing]);
+
+        $productVariantChannelPricing->getProductVariant()->willReturn($productVariant);
+        $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_taxon_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductTaxonInterface $productTaxon,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$productTaxon]);
+
+        $productTaxon->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_attribute_value_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductAttributeValueInterface $productAttributeValue,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$productAttributeValue]);
+
+        $productAttributeValue->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_image_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductImageInterface $productImage,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$productImage]);
+
+        $productImage->getOwner()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_variant_image_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductImageInterface $productImage,
+        ProductVariantInterface $productVariant,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$productImage]);
+
+        $productImage->getOwner()->willReturn($productVariant);
+        $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
 }
