@@ -11,6 +11,7 @@ use Doctrine\ORM\UnitOfWork;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use SimpleBus\Message\Bus\MessageBus;
+use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
@@ -122,6 +123,26 @@ final class ProductPublisherSpec extends ObjectBehavior
         $unitOfWork->getScheduledEntityUpdates()->willReturn([$productVariantTranslation]);
 
         $productVariantTranslation->getTranslatable()->willReturn($productVariant);
+        $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_variant_channel_pricing_is_updated(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ChannelPricingInterface $productVariantChannelPricing,
+        ProductVariantInterface $productVariant,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([$productVariantChannelPricing]);
+
+        $productVariantChannelPricing->getProductVariant()->willReturn($productVariant);
         $productVariant->getProduct()->willReturn($product);
 
         $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
