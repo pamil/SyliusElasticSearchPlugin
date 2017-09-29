@@ -12,6 +12,7 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use SimpleBus\Message\Bus\MessageBus;
 use Sylius\Component\Core\Model\ChannelPricingInterface;
+use Sylius\Component\Core\Model\ProductImageInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductTaxonInterface;
 use Sylius\Component\Core\Model\ProductTranslationInterface;
@@ -182,6 +183,24 @@ final class ProductPublisherSpec extends ObjectBehavior
         $unitOfWork->getScheduledEntityUpdates()->willReturn([$productAttributeValue]);
 
         $productAttributeValue->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_image_is_updated(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductImageInterface $productImage,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([$productImage]);
+
+        $productImage->getOwner()->willReturn($product);
 
         $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
 
