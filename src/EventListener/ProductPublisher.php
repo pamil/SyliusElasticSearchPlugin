@@ -7,7 +7,9 @@ namespace Sylius\ElasticSearchPlugin\EventListener;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use SimpleBus\Message\Bus\MessageBus;
+use Sylius\Component\Core\Model\ProductImageInterface;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\ProductTaxonInterface;
 use Sylius\Component\Core\Model\ProductTranslation;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Core\Model\ChannelPricingInterface;
@@ -115,23 +117,29 @@ final class ProductPublisher
     protected function getProductFromEntity($entity): ?ProductInterface
     {
         if ($entity instanceof ProductVariantInterface) {
-            $entity = $entity->getProduct();
+            return $entity->getProduct();
         } elseif ($entity instanceof ProductVariantTranslation) {
-            $entity = $entity->getTranslatable()->getProduct();
+            return $entity->getTranslatable()->getProduct();
         } elseif ($entity instanceof ProductTranslation) {
-            $entity = $entity->getTranslatable();
+            return $entity->getTranslatable();
         } elseif ($entity instanceof ChannelPricingInterface) {
-            $entity = $entity->getProductVariant()->getProduct();
-        } elseif ($entity instanceof ProductTaxon) {
-            $entity = $entity->getProduct();
+            return $entity->getProductVariant()->getProduct();
+        } elseif ($entity instanceof ProductTaxonInterface) {
+            return $entity->getProduct();
         } elseif ($entity instanceof ProductAttributeValueInterface) {
-            $entity = $entity->getProduct();
+            return $entity->getProduct();
+        } elseif ($entity instanceof ProductImageInterface) {
+            if ($entity->getOwner() instanceof ProductInterface) {
+                return $entity->getOwner();
+            } elseif ($entity->getOwner() instanceof ProductVariantInterface) {
+                return $entity->getOwner()->getProduct();
+            } else {
+                return null;
+            }
         } elseif ($entity instanceof ProductInterface) {
             return $entity;
         } else {
-            $entity = null;
+            return null;
         }
-
-        return $entity;
     }
 }
