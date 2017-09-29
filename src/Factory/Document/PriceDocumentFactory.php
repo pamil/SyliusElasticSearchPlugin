@@ -10,11 +10,10 @@ use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 
 final class PriceDocumentFactory implements PriceDocumentFactoryInterface
 {
-
     /**
      * @var string
      */
-    protected $priceDocumentClass;
+    private $priceDocumentClass;
 
     public function __construct(string $priceDocumentClass)
     {
@@ -31,9 +30,8 @@ final class PriceDocumentFactory implements PriceDocumentFactoryInterface
 
         $price->setAmount($channelPricing->getPrice());
         $price->setCurrency($currency->getCode());
-        $price->setOriginalAmount(!is_null($originalAmount) && $originalAmount > 0 ? $originalAmount : 0);
+        $price->setOriginalAmount(null !== $originalAmount && $originalAmount > 0 ? $originalAmount : 0);
 
         return $price;
     }
-
 }

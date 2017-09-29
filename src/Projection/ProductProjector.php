@@ -57,7 +57,6 @@ final class ProductProjector
         $this->elasticsearchManager->commit();
     }
 
-
     /**
      * We create a new product documents with updated data and remove old once
      *

@@ -99,5 +99,4 @@ class OptionDocument
     {
         $this->value = $value;
     }
-
 }

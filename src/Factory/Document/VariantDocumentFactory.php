@@ -15,7 +15,6 @@ use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 
 final class VariantDocumentFactory implements VariantDocumentFactoryInterface
 {
-
     /** @var string */
     private $variantDocumentClass;
 
@@ -45,7 +44,6 @@ final class VariantDocumentFactory implements VariantDocumentFactoryInterface
         ChannelInterface $channel,
         LocaleInterface $locale
     ): VariantDocument {
-
         $options = [];
         foreach ($productVariant->getOptionValues() as $optionValue) {
             $options[] = $this->optionDocumentFactory->create($optionValue, $locale);
@@ -59,7 +57,6 @@ final class VariantDocumentFactory implements VariantDocumentFactoryInterface
             $channel->getBaseCurrency()
         );
 
-
         /** @var ProductVariantTranslationInterface $productVariantTranslation */
         $productVariantTranslation = $productVariant->getTranslation($locale->getCode());
 
@@ -67,11 +64,11 @@ final class VariantDocumentFactory implements VariantDocumentFactoryInterface
         $variant = new $this->variantDocumentClass();
         $variant->setId($productVariant->getId());
         $variant->setCode($productVariant->getCode());
-        
+
         if (!$productVariantTranslation->getName()) {
             $variant->setName($productVariant->getProduct()->getTranslation($locale->getCode())->getName());
         } else {
-            $variant->setName($productVariantTranslation->getName());    
+            $variant->setName($productVariantTranslation->getName());
         }
 
         $variant->setPrice($price);

@@ -7,17 +7,14 @@ namespace Sylius\ElasticSearchPlugin\EventListener;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use SimpleBus\Message\Bus\MessageBus;
+use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductImageInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductTaxonInterface;
 use Sylius\Component\Core\Model\ProductTranslation;
 use Sylius\Component\Core\Model\ProductVariantInterface;
-use Sylius\Component\Core\Model\ChannelPricingInterface;
-use Sylius\Component\Core\Model\ProductTaxon;
-use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Product\Model\ProductAttributeValueInterface;
 use Sylius\Component\Product\Model\ProductVariantTranslation;
-use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
 use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
@@ -34,12 +31,10 @@ final class ProductPublisher
      */
     private $scheduledInserts = [];
 
-
     /**
      * @var ProductInterface[]
      */
     private $scheduledUpdates = [];
-
 
     /**
      * @var ProductInterface[]
@@ -114,32 +109,41 @@ final class ProductPublisher
      *
      * @return ProductInterface|\Sylius\Component\Product\Model\ProductInterface|\Sylius\Component\Resource\Model\TranslatableInterface
      */
-    protected function getProductFromEntity($entity): ?ProductInterface
+    private function getProductFromEntity($entity): ?ProductInterface
     {
         if ($entity instanceof ProductVariantInterface) {
             return $entity->getProduct();
-        } elseif ($entity instanceof ProductVariantTranslation) {
+        }
+        if ($entity instanceof ProductVariantTranslation) {
             return $entity->getTranslatable()->getProduct();
-        } elseif ($entity instanceof ProductTranslation) {
+        }
+        if ($entity instanceof ProductTranslation) {
             return $entity->getTranslatable();
-        } elseif ($entity instanceof ChannelPricingInterface) {
+        }
+        if ($entity instanceof ChannelPricingInterface) {
             return $entity->getProductVariant()->getProduct();
-        } elseif ($entity instanceof ProductTaxonInterface) {
+        }
+        if ($entity instanceof ProductTaxonInterface) {
             return $entity->getProduct();
-        } elseif ($entity instanceof ProductAttributeValueInterface) {
+        }
+        if ($entity instanceof ProductAttributeValueInterface) {
             return $entity->getProduct();
-        } elseif ($entity instanceof ProductImageInterface) {
+        }
+        if ($entity instanceof ProductImageInterface) {
             if ($entity->getOwner() instanceof ProductInterface) {
                 return $entity->getOwner();
-            } elseif ($entity->getOwner() instanceof ProductVariantInterface) {
-                return $entity->getOwner()->getProduct();
-            } else {
-                return null;
             }
-        } elseif ($entity instanceof ProductInterface) {
-            return $entity;
-        } else {
+            if ($entity->getOwner() instanceof ProductVariantInterface) {
+                return $entity->getOwner()->getProduct();
+            }
+
             return null;
         }
+
+        if ($entity instanceof ProductInterface) {
+            return $entity;
+        }
+
+        return null;
     }
 }

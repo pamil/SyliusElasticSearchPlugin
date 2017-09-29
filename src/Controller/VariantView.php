@@ -7,7 +7,7 @@ namespace Sylius\ElasticSearchPlugin\Controller;
 class VariantView
 {
     /**
-     * @var integer
+     * @var int
      */
     public $id;
 

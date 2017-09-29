@@ -30,13 +30,13 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 final class ProductDocumentFactoryTest extends KernelTestCase
 {
-    /** @var  ProductRepository */
+    /** @var ProductRepository */
     protected $productRepository;
 
-    /** @var  RepositoryInterface */
+    /** @var RepositoryInterface */
     protected $localeRepository;
 
-    /** @var  ChannelRepository */
+    /** @var ChannelRepository */
     protected $channelRepository;
 
     public function setUp()

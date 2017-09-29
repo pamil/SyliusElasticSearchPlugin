@@ -24,7 +24,6 @@ final class OptionDocumentFactory implements OptionDocumentFactoryInterface
         ProductOptionValueInterface $optionValue,
         LocaleInterface $locale
     ): OptionDocument {
-
         /** @var ProductOptionValueTranslationInterface $optionValueTranslation */
         $optionValueTranslation = $optionValue->getTranslation($locale->getCode());
 
@@ -39,5 +38,4 @@ final class OptionDocumentFactory implements OptionDocumentFactoryInterface
 
         return $option;
     }
-
 }

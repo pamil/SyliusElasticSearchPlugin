@@ -1,10 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\Sylius\ElasticSearchPlugin\Projection;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use ONGR\ElasticsearchBundle\Service\Manager;
 use ONGR\ElasticsearchBundle\Service\Repository;
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
@@ -12,8 +16,6 @@ use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface;
 use Sylius\ElasticSearchPlugin\Projection\ProductProjector;
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 final class ProductProjectorSpec extends ObjectBehavior
 {

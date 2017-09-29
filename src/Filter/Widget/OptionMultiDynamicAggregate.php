@@ -10,8 +10,8 @@ use ONGR\ElasticsearchDSL\Aggregation\Bucketing\FilterAggregation;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\NestedAggregation;
 use ONGR\ElasticsearchDSL\Aggregation\Bucketing\TermsAggregation;
 use ONGR\ElasticsearchDSL\Query\Compound\BoolQuery;
-use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
+use ONGR\ElasticsearchDSL\Query\MatchAllQuery;
 use ONGR\ElasticsearchDSL\Query\TermLevel\RangeQuery;
 use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use ONGR\ElasticsearchDSL\Search;
@@ -21,7 +21,6 @@ use ONGR\FilterManagerBundle\Search\SearchRequest;
 
 class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
 {
-
     /**
      * Fetches buckets from search results.
      *
@@ -130,7 +129,7 @@ class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
      */
     public function preProcessSearch(Search $search, Search $relatedSearch, FilterState $state = null)
     {
-        list($parent, $child, $field) = explode('>', $this->getDocumentField());
+        [$parent, $child, $field] = explode('>', $this->getDocumentField());
         $filter = !empty($filter = $relatedSearch->getPostFilters()) ? $filter : new MatchAllQuery();
         $parentAggregation = new NestedAggregation($state->getName(), $parent);
         $childAggregation = new NestedAggregation($state->getName(), $child);
@@ -147,7 +146,7 @@ class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
         }
 
         if ($this->getOption('size')) {
-            $valueAggregation->addParameter('size',$this->getOption('size'));
+            $valueAggregation->addParameter('size', $this->getOption('size'));
         }
 
         if ($state->isActive()) {
@@ -185,7 +184,7 @@ class OptionMultiDynamicAggregate extends MultiDynamicAggregateOverride
      */
     private function getFilterQuery($terms)
     {
-        list($parent, $child, $field) = explode('>', $this->getDocumentField());
+        [$parent, $child, $field] = explode('>', $this->getDocumentField());
         $boolQuery = new BoolQuery();
         foreach ($terms as $groupName => $values) {
             $innerBoolQuery = new BoolQuery();

@@ -52,7 +52,7 @@ class ProductDocument
     protected $name;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ElasticSearch\Property(type="boolean")
      */

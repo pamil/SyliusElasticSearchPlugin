@@ -25,6 +25,4 @@ final class MultiDynamicAggregateWithoutView extends MultiDynamicAggregateOverri
     {
         return $data;
     }
-
-
 }
