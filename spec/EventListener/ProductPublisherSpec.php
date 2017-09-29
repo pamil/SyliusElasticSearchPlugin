@@ -92,6 +92,24 @@ final class ProductPublisherSpec extends ObjectBehavior
         $this->postFlush($postFlushEvent);
     }
 
+    function it_publishes_product_updated_event_when_product_variant_is_updated(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductVariantInterface $productVariant,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([$productVariant]);
+
+        $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
     function it_publishes_product_deleted_event_when_product_is_deleted(
         MessageBus $eventBus,
         OnFlushEventArgs $onFlushEvent,
