@@ -1,10 +1,11 @@
 {
     "page": 1,
-    "limit": 10,
+    "limit": 9,
     "total": 1,
     "pages": 1,
     "items": [
         {
+            "id": 1,
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Becher",
             "slug": "logan-becher",
@@ -12,39 +13,60 @@
                 "main": "MUG",
                 "others": [
                     "MUG",
-                    "CATEGORY",
                     "BRAND"
                 ]
             },
-            "variants": {
-                "LOGAN_MUG_CODE": {
-                    "code": "LOGAN_MUG_CODE",
+            "variants": [
+                {
+                    "id": 2,
+                    "code": "LOGAN_MUG_SMALL_CODE",
+                    "name": "Gnome Becher",
+                    "price": {
+                        "current": 1250,
+                        "currency": "EUR",
+                        "original": 0
+                    },
+                    "stock": 0,
+                    "isTracked": true,
+                    "images": []
+                },
+                {
+                    "id": 1,
+                    "code": "LOGAN_MUG_BIG_CODE",
                     "name": "Logan Becher",
                     "price": {
                         "current": 1250,
-                        "currency": "EUR"
+                        "currency": "EUR",
+                        "original": 0
                     },
+                    "stock": 0,
+                    "isTracked": false,
                     "images": []
                 }
-            },
-            "attributes": [
-                {
+            ],
+            "attributes": {
+                "PRODUCTION_YEAR": {
                     "code": "PRODUCTION_YEAR",
                     "name": "Produktionsjahr",
                     "value": "2015"
                 },
-                {
+                "MUG_COLLECTION_CODE": {
                     "code": "MUG_COLLECTION_CODE",
                     "name": "Becher Sammlung",
                     "value": "FEIERTAGSKOLLEKTION"
                 },
-                {
+                "MUG_MATERIAL_CODE": {
                     "code": "MUG_MATERIAL_CODE",
                     "name": "Becher Material",
                     "value": "Holz"
                 }
-            ],
+            },
             "images": [],
+            "price": {
+                "current": 1250,
+                "currency": "EUR",
+                "original": 0
+            },
             "channelCode": "WEB_DE",
             "localeCode": "de_DE"
         }
@@ -64,12 +86,10 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "channel",
@@ -79,7 +99,6 @@
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
-                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "label": "WEB_DE",
@@ -90,7 +109,6 @@
                     "default": false,
                     "urlParameters": {
                         "enabled": true,
-                        "stock": "1",
                         "locale": "de_DE",
                         "channel": "WEB_GB"
                     },
@@ -113,12 +131,10 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "enabled",
@@ -128,7 +144,6 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_DE",
-                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "label": 1,
@@ -147,57 +162,15 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "taxonCode",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "stock": "1",
-                        "locale": "de_DE",
-                        "taxonCode": "BRAND"
-                    },
-                    "label": "BRAND",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "stock": "1",
-                        "locale": "de_DE",
-                        "taxonCode": "CATEGORY"
-                    },
-                    "label": "CATEGORY",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "stock": "1",
-                        "locale": "de_DE",
-                        "taxonCode": "MUG"
-                    },
-                    "label": "MUG",
-                    "count": 1
-                }
-            ]
+            "choices": []
         },
         "taxonSlug": {
             "state": {
@@ -210,57 +183,15 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "taxonSlug",
-            "choices": [
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "stock": "1",
-                        "locale": "de_DE",
-                        "taxonSlug": "kategorien"
-                    },
-                    "label": "kategorien",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "stock": "1",
-                        "locale": "de_DE",
-                        "taxonSlug": "kategorien\/1tassen"
-                    },
-                    "label": "kategorien\/1tassen",
-                    "count": 1
-                },
-                {
-                    "active": false,
-                    "default": false,
-                    "urlParameters": {
-                        "channel": "WEB_DE",
-                        "enabled": true,
-                        "stock": "1",
-                        "locale": "de_DE",
-                        "taxonSlug": "marken"
-                    },
-                    "label": "marken",
-                    "count": 1
-                }
-            ]
+            "choices": []
         },
         "priceRange": {
             "state": {
@@ -273,13 +204,11 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "priceRange",
@@ -292,9 +221,7 @@
                 "value": {
                     "gte": "1"
                 },
-                "urlParameters": {
-                    "stock": "1"
-                },
+                "urlParameters": [],
                 "name": "inStock",
                 "options": []
             },
@@ -302,7 +229,6 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
@@ -326,13 +252,11 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
-                "enabled": true,
-                "stock": "1"
+                "enabled": true
             },
             "name": "locale",
             "choices": [
@@ -341,8 +265,7 @@
                     "default": false,
                     "urlParameters": {
                         "channel": "WEB_DE",
-                        "enabled": true,
-                        "stock": "1"
+                        "enabled": true
                     },
                     "label": "de_DE",
                     "count": 1
@@ -356,30 +279,28 @@
                 "urlParameters": [],
                 "name": "paginator",
                 "options": {
-                    "limit": 10
+                    "limit": 9
                 }
             },
             "tags": [],
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "paginator",
             "currentPage": 1,
             "totalItems": 1,
             "maxPages": 20,
-            "itemsPerPage": 10,
+            "itemsPerPage": 9,
             "numPages": 1,
             "options": [],
-            "limit": 10
+            "limit": 9
         },
         "search": {
             "state": {
@@ -392,13 +313,11 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "search"
@@ -414,13 +333,11 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "attributes",
@@ -431,7 +348,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_DE",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "name": "Becher Material",
@@ -442,7 +358,6 @@
                             "urlParameters": {
                                 "channel": "WEB_DE",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "de_DE",
                                 "attributes": {
                                     "Becher Material": [
@@ -461,7 +376,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_DE",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "name": "Becher Sammlung",
@@ -472,7 +386,6 @@
                             "urlParameters": {
                                 "channel": "WEB_DE",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "de_DE",
                                 "attributes": {
                                     "Becher Sammlung": [
@@ -491,7 +404,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_DE",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "name": "Produktionsjahr",
@@ -502,7 +414,6 @@
                             "urlParameters": {
                                 "channel": "WEB_DE",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "de_DE",
                                 "attributes": {
                                     "Produktionsjahr": [
@@ -528,13 +439,11 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "attributesByCode"
@@ -550,13 +459,11 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "options",
@@ -567,7 +474,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_DE",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "de_DE"
                     },
                     "name": "Bechergr\u00f6\u00dfe",
@@ -578,7 +484,6 @@
                             "urlParameters": {
                                 "channel": "WEB_DE",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "de_DE",
                                 "options": {
                                     "Bechergr\u00f6\u00dfe": [
@@ -595,7 +500,6 @@
                             "urlParameters": {
                                 "channel": "WEB_DE",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "de_DE",
                                 "options": {
                                     "Bechergr\u00f6\u00dfe": [
@@ -621,13 +525,11 @@
             "urlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "resetUrlParameters": {
                 "channel": "WEB_DE",
                 "enabled": true,
-                "stock": "1",
                 "locale": "de_DE"
             },
             "name": "sort"

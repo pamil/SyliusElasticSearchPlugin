@@ -5,6 +5,7 @@
     "pages": 2,
     "items": [
         {
+            "id": 3,
             "code": "LOGAN_T_SHIRT_CODE",
             "name": "Logan T-Shirt",
             "slug": "@string@",
@@ -12,6 +13,7 @@
             "variants": "@array@",
             "attributes": "@array@",
             "images": "@array@",
+            "price": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -38,13 +40,11 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "paginator",

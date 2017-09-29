@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ElasticSearchPlugin\Factory;
+namespace Sylius\ElasticSearchPlugin\Factory\Document;
 
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
@@ -18,7 +18,7 @@ interface ProductDocumentFactoryInterface
      *
      * @return ProductDocument
      */
-    public function createFromSyliusSimpleProductModel(
+    public function create(
         ProductInterface $product,
         LocaleInterface $locale,
         ChannelInterface $channel

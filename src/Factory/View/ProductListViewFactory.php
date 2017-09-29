@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\ElasticSearchPlugin\Factory;
+namespace Sylius\ElasticSearchPlugin\Factory\View;
 
 use ONGR\ElasticsearchBundle\Collection\Collection;
 use ONGR\FilterManagerBundle\Search\SearchResponse;
@@ -17,8 +17,8 @@ use Sylius\ElasticSearchPlugin\Document\AttributeDocument;
 use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use Sylius\ElasticSearchPlugin\Document\PriceDocument;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
-use Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument;
 use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
+use Sylius\ElasticSearchPlugin\Document\VariantDocument;
 
 final class ProductListViewFactory implements ProductListViewFactoryInterface
 {
@@ -92,7 +92,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return ImageView[]
      */
-    private function getImageViews(Collection $images): array
+    protected function getImageViews(Collection $images): array
     {
         $imageViews = [];
         foreach ($images as $image) {
@@ -113,7 +113,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return TaxonView
      */
-    private function getTaxonView(Collection $taxons, ?TaxonDocument $mainTaxonDocument): TaxonView
+    protected function getTaxonView(Collection $taxons, ?TaxonDocument $mainTaxonDocument): TaxonView
     {
         /** @var TaxonView $taxonView */
         $taxonView = new $this->taxonViewClass();
@@ -131,7 +131,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return AttributeView[]
      */
-    private function getAttributeViews(Collection $attributes): array
+    protected function getAttributeViews(Collection $attributes): array
     {
         $attributeValueViews = [];
         foreach ($attributes as $attribute) {
@@ -141,7 +141,7 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
             $attributeView->value = $attribute->getValue();
             $attributeView->name = $attribute->getName();
 
-            $attributeValueViews[] = $attributeView;
+            $attributeValueViews[$attribute->getCode()] = $attributeView;
         }
 
         return $attributeValueViews;
@@ -152,31 +152,42 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return PriceView
      */
-    private function getPriceView(PriceDocument $price): PriceView
+    protected function getPriceView(PriceDocument $price): PriceView
     {
         /** @var PriceView $priceView */
         $priceView = new $this->priceViewClass();
         $priceView->current = $price->getAmount();
         $priceView->currency = $price->getCurrency();
+        $priceView->original = $price->getOriginalAmount();
 
         return $priceView;
     }
 
     /**
-     * @param ProductDocument $product
+     * @param VariantDocument[]|Collection $variants
      *
-     * @return VariantView
+     * @return array
      */
-    private function getVariantView(ProductDocument $product): VariantView
+    protected function getVariantViews(Collection $variants): array
     {
-        /** @var VariantView $variantView */
-        $variantView = new $this->productVariantViewClass();
-        $variantView->price = $this->getPriceView($product->getPrice());
-        $variantView->code = $product->getCode();
-        $variantView->name = $product->getName();
-        $variantView->images = $this->getImageViews($product->getImages());
+        $variantViews = [];
+        foreach ($variants as $variant) {
+            /** @var VariantView $variantView */
+            $variantView = new $this->productVariantViewClass();
+            $variantView->id = $variant->getId();
+            $variantView->price = $this->getPriceView($variant->getPrice());
+            $variantView->code = $variant->getCode();
+            $variantView->name = $variant->getName();
+            $variantView->stock = $variant->getStock();
+            $variantView->isTracked = $variant->getIsTracked();
 
-        return $variantView;
+            if ($variant->getImages()->count() > 0) {
+                $variantView->images = $this->getImageViews($variant->getImages());
+            }
+            $variantViews[] = $variantView;
+        }
+
+        return $variantViews;
     }
 
     /**
@@ -184,19 +195,24 @@ final class ProductListViewFactory implements ProductListViewFactoryInterface
      *
      * @return ProductView
      */
-    private function getProductView(ProductDocument $product): ProductView
+    protected function getProductView(ProductDocument $product): ProductView
     {
         /** @var ProductView $productView */
         $productView = new $this->productViewClass();
+        $productView->id = $product->getId();
         $productView->slug = $product->getSlug();
         $productView->name = $product->getName();
         $productView->code = $product->getCode();
+        $productView->rating = $product->getAverageReviewRating();
         $productView->localeCode = $product->getLocaleCode();
         $productView->channelCode = $product->getChannelCode();
-        $productView->images = $this->getImageViews($product->getImages());
+        if ($product->getImages()->count() > 0) {
+            $productView->images = $this->getImageViews($product->getImages());
+        }
         $productView->taxons = $this->getTaxonView($product->getTaxons(), $product->getMainTaxon());
         $productView->attributes = $this->getAttributeViews($product->getAttributes());
-        $productView->variants = [$product->getCode() => $this->getVariantView($product)];
+        $productView->variants = $this->getVariantViews($product->getVariants());
+        $productView->price = $this->getPriceView($product->getPrice());
 
         return $productView;
     }

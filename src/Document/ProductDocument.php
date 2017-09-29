@@ -13,18 +13,25 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class ProductDocument
 {
     /**
-     * @var mixed
+     * @var string
      *
      * @ElasticSearch\Id()
      */
-    private $id;
+    protected $uuid;
+
+    /**
+     * @var mixed
+     *
+     * @ElasticSearch\Property(type="keyword")
+     */
+    protected $id;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $code;
+    protected $code;
 
     /**
      * @var string
@@ -42,118 +49,126 @@ class ProductDocument
      *    }
      * )
      */
-    private $name;
+    protected $name;
 
     /**
      * @var boolean
      *
      * @ElasticSearch\Property(type="boolean")
      */
-    private $enabled;
+    protected $enabled;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $channelCode;
+    protected $channelCode;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $localeCode;
+    protected $localeCode;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="text")
      */
-    private $description;
+    protected $description;
 
     /**
      * @var PriceDocument
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\PriceDocument")
      */
-    private $price;
+    protected $price;
 
     /**
      * @var TaxonDocument
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\TaxonDocument")
      */
-    private $mainTaxon;
+    protected $mainTaxon;
 
     /**
      * @var Collection|TaxonDocument[]
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\TaxonDocument", multiple=true)
      */
-    private $taxons;
-
-    /**
-     * @var Collection|ProductTaxonDocument[]
-     *
-     * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ProductTaxonDocument", multiple=true)
-     */
-    private $productTaxons;
+    protected $taxons;
 
     /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\AttributeDocument", multiple=true)
      */
-    private $attributes;
+    protected $attributes;
 
     /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ImageDocument", multiple=true)
      */
-    private $images;
+    protected $images;
 
     /**
      * @var float
      */
-    private $averageReviewRating;
+    protected $averageReviewRating;
 
     /**
      * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\VariantDocument", multiple=true)
      */
-    private $variants;
+    protected $variants;
 
     /**
      * @var \DateTimeInterface
      *
      * @ElasticSearch\Property(type="date")
      */
-    private $synchronisedAt;
+    protected $synchronisedAt;
 
     public function __construct()
     {
         $this->attributes = new Collection();
         $this->taxons = new Collection();
-        $this->productTaxons = new Collection();
         $this->images = new Collection();
         $this->variants = new Collection();
+    }
+
+    /**
+     * @return string
+     */
+    public function getUuid(): string
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @param string $uuid
+     */
+    public function setUuid(string $uuid): void
+    {
+        $this->uuid = $uuid;
     }
 
     /**
@@ -167,7 +182,7 @@ class ProductDocument
     /**
      * @param mixed $id
      */
-    public function setId($id)
+    public function setId($id): void
     {
         $this->id = $id;
     }
@@ -335,22 +350,6 @@ class ProductDocument
     /**
      * @return Collection
      */
-    public function getProductTaxons()
-    {
-        return $this->productTaxons;
-    }
-
-    /**
-     * @param Collection $productTaxons
-     */
-    public function setProductTaxons(Collection $productTaxons)
-    {
-        $this->productTaxons = $productTaxons;
-    }
-
-    /**
-     * @return Collection
-     */
     public function getAttributes(): Collection
     {
         return $this->attributes;
@@ -383,7 +382,7 @@ class ProductDocument
     /**
      * @return float
      */
-    public function getAverageReviewRating(): float
+    public function getAverageReviewRating(): ?float
     {
         return $this->averageReviewRating;
     }

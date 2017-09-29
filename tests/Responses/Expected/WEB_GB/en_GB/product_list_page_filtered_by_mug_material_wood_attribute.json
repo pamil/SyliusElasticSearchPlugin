@@ -1,10 +1,11 @@
 {
     "page": 1,
-    "limit": 10,
+    "limit": 9,
     "total": 1,
     "pages": 1,
     "items": [
         {
+            "id": 1,
             "code": "LOGAN_MUG_CODE",
             "name": "Logan Mug",
             "slug": "@string@",
@@ -12,6 +13,7 @@
             "variants": "@array@",
             "attributes": "@array@",
             "images": "@array@",
+            "price": "@array@",
             "channelCode": "WEB_GB",
             "localeCode": "en_GB"
         }
@@ -48,7 +50,6 @@
             "urlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB",
                 "attributes": {
                     "Mug material": [
@@ -59,7 +60,6 @@
             "resetUrlParameters": {
                 "channel": "WEB_GB",
                 "enabled": true,
-                "stock": "1",
                 "locale": "en_GB"
             },
             "name": "attributes",
@@ -70,7 +70,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug collection",
@@ -81,7 +80,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": [
@@ -103,7 +101,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Mug material",
@@ -114,7 +111,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": []
@@ -131,7 +127,6 @@
                     "resetUrlParameters": {
                         "channel": "WEB_GB",
                         "enabled": true,
-                        "stock": "1",
                         "locale": "en_GB"
                     },
                     "name": "Production year",
@@ -142,7 +137,6 @@
                             "urlParameters": {
                                 "channel": "WEB_GB",
                                 "enabled": true,
-                                "stock": "1",
                                 "locale": "en_GB",
                                 "attributes": {
                                     "Mug material": [

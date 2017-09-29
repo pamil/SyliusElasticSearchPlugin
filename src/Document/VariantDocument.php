@@ -13,51 +13,81 @@ use ONGR\ElasticsearchBundle\Collection\Collection;
 class VariantDocument
 {
     /**
+     * @var mixed
+     *
+     * @ElasticSearch\Property(type="keyword")
+     */
+    protected $id;
+
+    /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\ImageDocument", multiple=true)
      */
-    private $images;
+    protected $images;
 
     /**
      * @var PriceDocument
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\PriceDocument")
      */
-    private $price;
+    protected $price;
 
     /**
      * @var string
      *
      * @ElasticSearch\Property(type="keyword")
      */
-    private $code;
+    protected $code;
+
+    /**
+     * @var string
+     *
+     * @ElasticSearch\Property(type="text")
+     */
+    protected $name;
 
     /**
      * @var int
      *
      * @ElasticSearch\Property(type="integer")
      */
-    private $stock;
+    protected $stock;
 
     /**
      * @var bool
      *
      * @ElasticSearch\Property(type="boolean")
      */
-    private $isTracked;
+    protected $isTracked;
 
     /**
      * @var Collection
      *
      * @ElasticSearch\Embedded(class="Sylius\ElasticSearchPlugin\Document\OptionDocument", multiple=true)
      */
-    private $options;
+    protected $options;
 
     public function __construct()
     {
         $this->images = new Collection();
         $this->options = new Collection();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
     }
 
     /**
@@ -106,6 +136,22 @@ class VariantDocument
     public function setCode(string $code): void
     {
         $this->code = $code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
     }
 
     /**

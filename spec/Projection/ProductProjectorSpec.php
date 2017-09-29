@@ -10,7 +10,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\ElasticSearchPlugin\Document\ProductDocument;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
-use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface;
 use Sylius\ElasticSearchPlugin\Projection\ProductProjector;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -48,7 +48,7 @@ final class ProductProjectorSpec extends ObjectBehavior
         $productDocumentRepository->findBy(['code' => 'FOO'])->willReturn(new \ArrayIterator([$existingProductDocument]));
 
         $newProductDocument = new ProductDocument();
-        $productDocumentFactory->createFromSyliusSimpleProductModel($product, $locale, $channel)->willReturn($newProductDocument);
+        $productDocumentFactory->create($product, $locale, $channel)->willReturn($newProductDocument);
 
         $elasticsearchManager->persist($newProductDocument)->shouldBeCalled();
         $elasticsearchManager->remove($existingProductDocument)->shouldBeCalled();
@@ -68,7 +68,7 @@ final class ProductProjectorSpec extends ObjectBehavior
 
         $productDocumentRepository->findBy(['code' => 'FOO'])->willReturn(new \ArrayIterator([]));
 
-        $productDocumentFactory->createFromSyliusSimpleProductModel(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
+        $productDocumentFactory->create(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
 
         $elasticsearchManager->persist(Argument::any())->shouldNotBeCalled();
         $elasticsearchManager->commit()->shouldBeCalled();
@@ -89,7 +89,7 @@ final class ProductProjectorSpec extends ObjectBehavior
 
         $productDocumentRepository->findBy(['code' => 'FOO'])->willReturn(new \ArrayIterator([]));
 
-        $productDocumentFactory->createFromSyliusSimpleProductModel(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
+        $productDocumentFactory->create(Argument::any(), Argument::any(), Argument::any())->shouldNotBeCalled();
 
         $elasticsearchManager->persist(Argument::any())->shouldNotBeCalled();
         $elasticsearchManager->commit()->shouldBeCalled();

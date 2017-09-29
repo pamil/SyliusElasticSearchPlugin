@@ -7,6 +7,11 @@ namespace Sylius\ElasticSearchPlugin\Controller;
 class ProductView
 {
     /**
+     * @var int
+     */
+    public $id;
+
+    /**
      * @var string
      */
     public $code;
@@ -42,6 +47,11 @@ class ProductView
     public $images = [];
 
     /**
+     * @var PriceView
+     */
+    public $price;
+
+    /**
      * @var string
      */
     public $channelCode;
@@ -55,4 +65,9 @@ class ProductView
      * @var array
      */
     public $mainTaxon;
+
+    /**
+     * @var float
+     */
+    public $rating;
 }

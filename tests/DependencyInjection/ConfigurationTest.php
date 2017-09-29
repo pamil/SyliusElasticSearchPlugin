@@ -46,7 +46,6 @@ final class ConfigurationTest extends \PHPUnit_Framework_TestCase
             'attribute' => AttributeDocument::class,
             'image' => ImageDocument::class,
             'price' => PriceDocument::class,
-            'product_taxon' => ProductTaxonDocument::class,
             'taxon' => TaxonDocument::class,
             'variant' => VariantDocument::class,
             'option' => OptionDocument::class,

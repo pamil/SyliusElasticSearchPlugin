@@ -8,10 +8,11 @@ use ONGR\ElasticsearchBundle\Service\Manager;
 use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
-use Sylius\ElasticSearchPlugin\Factory\ProductDocumentFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\Document\ProductDocumentFactoryInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\LockHandler;
 
 final class ResetProductIndexCommand extends Command
 {
@@ -23,7 +24,7 @@ final class ResetProductIndexCommand extends Command
     /**
      * @var Manager
      */
-    private $manager;
+    private $elasticsearchManager;
 
     /**
      * @var ProductDocumentFactoryInterface
@@ -41,7 +42,7 @@ final class ResetProductIndexCommand extends Command
         ProductDocumentFactoryInterface $productDocumentFactory
     ) {
         $this->productRepository = $productRepository;
-        $this->manager = $manager;
+        $this->elasticsearchManager = $manager;
         $this->productDocumentFactory = $productDocumentFactory;
 
         parent::__construct('sylius:elastic-search:reset-product-index');
@@ -62,43 +63,53 @@ final class ResetProductIndexCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (!$input->getOption('force')) {
-            $output->writeln('WARNING! This command will drop the existing index and rebuild it from scratch. To proceed, run with "--force" option.');
+        $lockHandler = new LockHandler('sylius-elastic-index-update');
+        if ($lockHandler->lock()) {
 
-            return;
-        }
+            if (!$input->getOption('force')) {
+                $output->writeln('WARNING! This command will drop the existing index and rebuild it from scratch. To proceed, run with "--force" option.');
 
-        $this->manager->dropAndCreateIndex();
+                return;
+            }
 
-        $productDocumentsCreated = 0;
+            $output->writeln(sprintf('Dropping and creating "%s" ElasticSearch index', $this->elasticsearchManager->getIndexName()));
+            $this->elasticsearchManager->dropAndCreateIndex();
 
-        /** @var ProductInterface[] $products */
-        $products = $this->productRepository->findAll();
-        foreach ($products as $product) {
-            $channels = $product->getChannels();
+            $productDocumentsCreated = 0;
 
-            /** @var ChannelInterface $channel */
-            foreach ($channels as $channel) {
-                $locales = $channel->getLocales();
-                foreach ($locales as $locale) {
-                    $productDocument = $this->productDocumentFactory->createFromSyliusSimpleProductModel(
-                        $product,
-                        $locale,
-                        $channel
-                    );
+            /** @var ProductInterface[] $products */
+            $products = $this->productRepository->findAll();
 
-                    $this->manager->persist($productDocument);
+            $output->writeln(sprintf('Loading %d products into ElasticSearch', count($products)));
 
-                    ++$productDocumentsCreated;
-                    if (($productDocumentsCreated % 100) === 0) {
-                        $this->manager->commit();
+            foreach ($products as $product) {
+                $channels = $product->getChannels();
+
+                /** @var ChannelInterface $channel */
+                foreach ($channels as $channel) {
+                    $locales = $channel->getLocales();
+                    foreach ($locales as $locale) {
+                        $productDocument = $this->productDocumentFactory->create(
+                            $product,
+                            $locale,
+                            $channel
+                        );
+
+                        $this->elasticsearchManager->persist($productDocument);
+
+                        ++$productDocumentsCreated;
+                        if (($productDocumentsCreated % 100) === 0) {
+                            $this->elasticsearchManager->commit();
+                        }
                     }
                 }
             }
+
+            $this->elasticsearchManager->commit();
+            $lockHandler->release();
+            $output->writeln('Product index was rebuilt!');
+        } else {
+            $output->writeln(sprintf('<info>Command is already running</info>'));
         }
-
-        $this->manager->commit();
-
-        $output->writeln('Product index was reset!');
     }
 }

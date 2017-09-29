@@ -1,13 +1,6 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Controller;
 
@@ -15,7 +8,7 @@ use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
 use ONGR\FilterManagerBundle\Search\FilterManagerInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Sylius\ElasticSearchPlugin\Factory\ProductListViewFactoryInterface;
+use Sylius\ElasticSearchPlugin\Factory\View\ProductListViewFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -31,7 +24,7 @@ final class SearchController
     private $restViewHandler;
 
     /**
-     * @var ProductListViewFactoryInterface
+     * @var \Sylius\ElasticSearchPlugin\Factory\View\ProductListViewFactoryInterface
      */
     private $productListViewFactory;
 
@@ -47,7 +40,7 @@ final class SearchController
 
     /**
      * @param ViewHandlerInterface $restViewHandler
-     * @param ProductListViewFactoryInterface $productListViewFactory
+     * @param \Sylius\ElasticSearchPlugin\Factory\View\ProductListViewFactoryInterface $productListViewFactory
      * @param FilterManagerInterface $filterManager
      * @param RepositoryInterface $channelRepository
      */
