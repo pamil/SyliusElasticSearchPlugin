@@ -9,7 +9,6 @@ use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\UnitOfWork;
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 use SimpleBus\Message\Bus\MessageBus;
 use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductImageInterface;
@@ -22,7 +21,6 @@ use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
 use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
-use Sylius\ElasticSearchPlugin\EventListener\ProductPublisher;
 
 final class ProductPublisherSpec extends ObjectBehavior
 {
@@ -413,7 +411,7 @@ final class ProductPublisherSpec extends ObjectBehavior
             $firstProductImage,
             $secondProductVariant,
             $firstProduct,
-            $secondProduct
+            $secondProduct,
         ]);
 
         $firstProductImage->getOwner()->willReturn($firstProductVariant);
