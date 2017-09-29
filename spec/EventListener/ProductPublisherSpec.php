@@ -12,6 +12,9 @@ use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use SimpleBus\Message\Bus\MessageBus;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\ProductTranslationInterface;
+use Sylius\Component\Core\Model\ProductVariantInterface;
+use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
 use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
@@ -24,7 +27,8 @@ final class ProductPublisherSpec extends ObjectBehavior
         OnFlushEventArgs $onFlushEvent,
         PostFlushEventArgs $postFlushEvent,
         EntityManager $entityManager,
-        UnitOfWork $unitOfWork
+        UnitOfWork $unitOfWork,
+        ProductInterface $product
     ): void {
         $this->beConstructedWith($eventBus);
 
@@ -36,6 +40,8 @@ final class ProductPublisherSpec extends ObjectBehavior
         $unitOfWork->getScheduledEntityInsertions()->willReturn([]);
         $unitOfWork->getScheduledEntityUpdates()->willReturn([]);
         $unitOfWork->getScheduledEntityDeletions()->willReturn([]);
+
+        $product->getCode()->willReturn('PRODUCT_CODE');
     }
 
     function it_publishes_product_created_event_when_product_is_created(
@@ -61,6 +67,24 @@ final class ProductPublisherSpec extends ObjectBehavior
         ProductInterface $product
     ): void {
         $unitOfWork->getScheduledEntityUpdates()->willReturn([$product]);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_translation_is_updated(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductTranslationInterface $productTranslation,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([$productTranslation]);
+
+        $productTranslation->getTranslatable()->willReturn($product);
 
         $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
 

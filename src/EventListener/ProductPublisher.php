@@ -12,6 +12,7 @@ use Sylius\Component\Core\Model\ProductImageInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductTaxonInterface;
 use Sylius\Component\Core\Model\ProductTranslation;
+use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Product\Model\ProductAttributeValueInterface;
 use Sylius\Component\Product\Model\ProductVariantTranslation;
@@ -115,16 +116,16 @@ final class ProductPublisher
             return $entity;
         }
 
+        if ($entity instanceof ProductTranslationInterface) {
+            return $this->getProductFromEntity($entity->getTranslatable());
+        }
+
         if ($entity instanceof ProductVariantInterface) {
             return $entity->getProduct();
         }
 
         if ($entity instanceof ProductVariantTranslation) {
             return $this->getProductFromEntity($entity->getTranslatable());
-        }
-
-        if ($entity instanceof ProductTranslation) {
-            return $entity->getTranslatable();
         }
 
         if ($entity instanceof ChannelPricingInterface) {
