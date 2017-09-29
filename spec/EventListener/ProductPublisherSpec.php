@@ -594,4 +594,23 @@ final class ProductPublisherSpec extends ObjectBehavior
         $this->onFlush($onFlushEvent);
         $this->postFlush($postFlushEvent);
     }
+
+    function it_publishes_only_product_deleted_event_if_there_is_also_product_deleted_event_for_the_same_product(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductVariantInterface $productVariant,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$product, $productVariant]);
+
+        $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductDeleted::occur($product->getWrappedObject()))->shouldBeCalledTimes(1);
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldNotBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
 }
