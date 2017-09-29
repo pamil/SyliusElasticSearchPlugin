@@ -29,7 +29,7 @@ final class ProductPublisher
     /**
      * @var ProductInterface[]
      */
-    private $scheduledInserts = [];
+    private $scheduledInsertions = [];
 
     /**
      * @var ProductInterface[]
@@ -58,8 +58,8 @@ final class ProductPublisher
 
         foreach ($scheduledInsertions as $entity) {
             $entity = $this->getProductFromEntity($entity);
-            if ($entity instanceof ProductInterface && !isset($this->scheduledInserts[$entity->getCode()])) {
-                $this->scheduledInserts[$entity->getCode()] = $entity;
+            if ($entity instanceof ProductInterface && !isset($this->scheduledInsertions[$entity->getCode()])) {
+                $this->scheduledInsertions[$entity->getCode()] = $entity;
             }
         }
 
@@ -85,11 +85,11 @@ final class ProductPublisher
      */
     public function postFlush(PostFlushEventArgs $event)
     {
-        foreach ($this->scheduledInserts as $product) {
+        foreach ($this->scheduledInsertions as $product) {
             $this->eventBus->handle(ProductCreated::occur($product));
         }
 
-        $this->scheduledInserts = [];
+        $this->scheduledInsertions = [];
 
         foreach ($this->scheduledUpdates as $product) {
             $this->eventBus->handle(ProductUpdated::occur($product));
