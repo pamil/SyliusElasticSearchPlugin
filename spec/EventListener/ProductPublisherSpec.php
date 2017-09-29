@@ -13,35 +13,39 @@ use Prophecy\Argument;
 use SimpleBus\Message\Bus\MessageBus;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
+use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
+use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
 use Sylius\ElasticSearchPlugin\EventListener\ProductPublisher;
 
 final class ProductPublisherSpec extends ObjectBehavior
 {
-    function let(MessageBus $eventBus)
-    {
-        $this->beConstructedWith($eventBus);
-    }
-
-    function it_is_initializable()
-    {
-        $this->shouldHaveType(ProductPublisher::class);
-    }
-
-    function it_publishes_product_event(
+    function let(
         MessageBus $eventBus,
         OnFlushEventArgs $onFlushEvent,
         PostFlushEventArgs $postFlushEvent,
-        ProductInterface $product,
         EntityManager $entityManager,
         UnitOfWork $unitOfWork
-    ) {
+    ): void {
+        $this->beConstructedWith($eventBus);
+
         $onFlushEvent->getEntityManager()->willReturn($entityManager);
         $postFlushEvent->getEntityManager()->willReturn($entityManager);
 
         $entityManager->getUnitOfWork()->willReturn($unitOfWork);
-        $unitOfWork->getScheduledEntityInsertions()->willReturn([$product]);
+
+        $unitOfWork->getScheduledEntityInsertions()->willReturn([]);
         $unitOfWork->getScheduledEntityUpdates()->willReturn([]);
         $unitOfWork->getScheduledEntityDeletions()->willReturn([]);
+    }
+
+    function it_publishes_product_created_event_when_product_is_created(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityInsertions()->willReturn([$product]);
 
         $eventBus->handle(ProductCreated::occur($product->getWrappedObject()))->shouldBeCalled();
 
@@ -49,22 +53,31 @@ final class ProductPublisherSpec extends ObjectBehavior
         $this->postFlush($postFlushEvent);
     }
 
-    function it_does_not_publish_product_event_if_entity_is_not_a_product(
+    function it_publishes_product_updated_event_when_product_is_updated(
         MessageBus $eventBus,
         OnFlushEventArgs $onFlushEvent,
         PostFlushEventArgs $postFlushEvent,
-        EntityManager $entityManager,
-        UnitOfWork $unitOfWork
-    ) {
-        $onFlushEvent->getEntityManager()->willReturn($entityManager);
-        $postFlushEvent->getEntityManager()->willReturn($entityManager);
+        UnitOfWork $unitOfWork,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([$product]);
 
-        $entityManager->getUnitOfWork()->willReturn($unitOfWork);
-        $unitOfWork->getScheduledEntityInsertions()->willReturn([new \stdClass()]);
-        $unitOfWork->getScheduledEntityUpdates()->willReturn([]);
-        $unitOfWork->getScheduledEntityDeletions()->willReturn([]);
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
 
-        $eventBus->handle(Argument::any())->shouldNotBeCalled();
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_deleted_event_when_product_is_deleted(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityDeletions()->willReturn([$product]);
+
+        $eventBus->handle(ProductDeleted::occur($product->getWrappedObject()))->shouldBeCalled();
 
         $this->onFlush($onFlushEvent);
         $this->postFlush($postFlushEvent);
