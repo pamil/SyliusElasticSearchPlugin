@@ -13,6 +13,7 @@ use Prophecy\Argument;
 use SimpleBus\Message\Bus\MessageBus;
 use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductInterface;
+use Sylius\Component\Core\Model\ProductTaxonInterface;
 use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
@@ -144,6 +145,24 @@ final class ProductPublisherSpec extends ObjectBehavior
 
         $productVariantChannelPricing->getProductVariant()->willReturn($productVariant);
         $productVariant->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_taxon_is_updated(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductTaxonInterface $productTaxon,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([$productTaxon]);
+
+        $productTaxon->getProduct()->willReturn($product);
 
         $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
 
