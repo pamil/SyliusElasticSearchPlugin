@@ -15,7 +15,7 @@ use Sylius\Component\Core\Model\ProductTranslation;
 use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Product\Model\ProductAttributeValueInterface;
-use Sylius\Component\Product\Model\ProductVariantTranslation;
+use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
 use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
@@ -124,7 +124,7 @@ final class ProductPublisher
             return $entity->getProduct();
         }
 
-        if ($entity instanceof ProductVariantTranslation) {
+        if ($entity instanceof ProductVariantTranslationInterface) {
             return $this->getProductFromEntity($entity->getTranslatable());
         }
 
