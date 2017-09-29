@@ -65,7 +65,6 @@ final class ResetProductIndexCommand extends Command
     {
         $lockHandler = new LockHandler('sylius-elastic-index-update');
         if ($lockHandler->lock()) {
-
             if (!$input->getOption('force')) {
                 $output->writeln('WARNING! This command will drop the existing index and rebuild it from scratch. To proceed, run with "--force" option.');
 

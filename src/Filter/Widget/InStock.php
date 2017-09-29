@@ -36,7 +36,7 @@ class InStock extends AbstractRange
             $state->setActive(true);
             $state->setValue($value);
         }
-        
+
         if (!$state->isActive()) {
             return $state;
         }
@@ -46,6 +46,7 @@ class InStock extends AbstractRange
         $argumentCount = count($values);
         if ($argumentCount === 0) {
             $state->setActive(false);
+
             return $state;
         }
 
@@ -106,5 +107,4 @@ class InStock extends AbstractRange
 
         return $data;
     }
-
 }

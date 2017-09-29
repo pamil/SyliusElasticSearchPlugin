@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Sylius\ElasticSearchPlugin\Filter\Widget;
 
-
 use ONGR\ElasticsearchDSL\Query\Joining\NestedQuery;
 use ONGR\ElasticsearchDSL\Query\TermLevel\TermQuery;
 use ONGR\ElasticsearchDSL\Search;
@@ -17,13 +16,12 @@ use ONGR\FilterManagerBundle\Search\SearchRequest;
  */
 class SingleNestedTermChoice extends SingleTermChoice
 {
-
     /**
      * {@inheritdoc}
      */
     public function modifySearch(Search $search, FilterState $state = null, SearchRequest $request = null)
     {
-        list($path, $field) = explode('>', $this->getDocumentField());
+        [$path, $field] = explode('>', $this->getDocumentField());
 
         if ($state && $state->isActive()) {
             $search->addPostFilter(
@@ -34,5 +32,4 @@ class SingleNestedTermChoice extends SingleTermChoice
             );
         }
     }
-
 }

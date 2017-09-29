@@ -1,17 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\Sylius\ElasticSearchPlugin\EventListener;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
 use Doctrine\ORM\UnitOfWork;
+use PhpSpec\ObjectBehavior;
+use Prophecy\Argument;
 use SimpleBus\Message\Bus\MessageBus;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\EventListener\ProductPublisher;
-use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
 
 final class ProductPublisherSpec extends ObjectBehavior
 {

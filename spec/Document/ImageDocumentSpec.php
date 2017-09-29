@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace spec\Sylius\ElasticSearchPlugin\Document;
 
-use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 use PhpSpec\ObjectBehavior;
+use Sylius\ElasticSearchPlugin\Document\ImageDocument;
 
 final class ImageDocumentSpec extends ObjectBehavior
 {

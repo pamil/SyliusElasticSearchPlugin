@@ -206,5 +206,4 @@ class VariantDocument
     {
         $this->options = $options;
     }
-
 }

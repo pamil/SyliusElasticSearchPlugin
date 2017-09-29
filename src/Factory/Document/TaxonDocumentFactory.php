@@ -13,7 +13,7 @@ use Sylius\ElasticSearchPlugin\Document\TaxonDocument;
 
 final class TaxonDocumentFactory implements TaxonDocumentFactoryInterface
 {
-    /** @var  string */
+    /** @var string */
     private $taxonDocumentClass;
 
     /** @var ImageDocumentFactoryInterface */
@@ -23,7 +23,6 @@ final class TaxonDocumentFactory implements TaxonDocumentFactoryInterface
     {
         $this->taxonDocumentClass = $taxonDocumentClass;
         $this->imageDocumentFactory = $imageDocumentFactory;
-
     }
 
     /**

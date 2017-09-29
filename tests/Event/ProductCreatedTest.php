@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Tests\Sylius\ElasticSearchPlugin;
 
 use Sylius\Component\Core\Model\ProductInterface;
@@ -10,7 +12,7 @@ final class ProductCreatedTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    function it_is_immutable_fact_of_product_creation()
+    public function it_is_immutable_fact_of_product_creation()
     {
         /** @var ProductInterface $product */
         $product = $this->prophesize(ProductInterface::class);

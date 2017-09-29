@@ -9,7 +9,6 @@ use Sylius\Component\Product\Model\ProductAttributeValueInterface;
 
 interface AttributeDocumentFactoryInterface
 {
-
     /**
      * @param string|array $data
      * @param LocaleInterface $locale
