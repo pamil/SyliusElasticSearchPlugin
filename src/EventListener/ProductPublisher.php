@@ -105,43 +105,42 @@ final class ProductPublisher
     }
 
     /**
-     * @param $entity
+     * @param object $entity
      *
-     * @return ProductInterface|\Sylius\Component\Product\Model\ProductInterface|\Sylius\Component\Resource\Model\TranslatableInterface
+     * @return ProductInterface|null
      */
     private function getProductFromEntity($entity): ?ProductInterface
     {
+        if ($entity instanceof ProductInterface) {
+            return $entity;
+        }
+
         if ($entity instanceof ProductVariantInterface) {
             return $entity->getProduct();
         }
+
         if ($entity instanceof ProductVariantTranslation) {
-            return $entity->getTranslatable()->getProduct();
+            return $this->getProductFromEntity($entity->getTranslatable());
         }
+
         if ($entity instanceof ProductTranslation) {
             return $entity->getTranslatable();
         }
+
         if ($entity instanceof ChannelPricingInterface) {
-            return $entity->getProductVariant()->getProduct();
+            return $this->getProductFromEntity($entity->getProductVariant());
         }
+
         if ($entity instanceof ProductTaxonInterface) {
             return $entity->getProduct();
         }
+
         if ($entity instanceof ProductAttributeValueInterface) {
             return $entity->getProduct();
         }
+
         if ($entity instanceof ProductImageInterface) {
-            if ($entity->getOwner() instanceof ProductInterface) {
-                return $entity->getOwner();
-            }
-            if ($entity->getOwner() instanceof ProductVariantInterface) {
-                return $entity->getOwner()->getProduct();
-            }
-
-            return null;
-        }
-
-        if ($entity instanceof ProductInterface) {
-            return $entity;
+            return $this->getProductFromEntity($entity->getOwner());
         }
 
         return null;
