@@ -58,15 +58,22 @@ final class ProductPublisher
         $scheduledInsertions = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityInsertions();
 
         foreach ($scheduledInsertions as $entity) {
-            $entity = $this->getProductFromEntity($entity);
             if ($entity instanceof ProductInterface && !isset($this->scheduledInsertions[$entity->getCode()])) {
                 $this->scheduledInsertions[$entity->getCode()] = $entity;
+
+                continue;
+            }
+
+            $entity = $this->getProductFromEntity($entity);
+            if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getCode()])) {
+                $this->scheduledUpdates[$entity->getCode()] = $entity;
             }
         }
 
         $scheduledUpdates = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityUpdates();
         foreach ($scheduledUpdates as $entity) {
             $entity = $this->getProductFromEntity($entity);
+
             if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getCode()])) {
                 $this->scheduledUpdates[$entity->getCode()] = $entity;
             }
