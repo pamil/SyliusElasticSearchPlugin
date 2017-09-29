@@ -228,6 +228,39 @@ final class ProductPublisherSpec extends ObjectBehavior
         $this->postFlush($postFlushEvent);
     }
 
+    function it_publishes_only_one_product_updated_event_for_every_distinct_product(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductImageInterface $firstProductImage,
+        ProductVariantInterface $firstProductVariant,
+        ProductVariantInterface $secondProductVariant,
+        ProductInterface $firstProduct,
+        ProductInterface $secondProduct
+    ): void {
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([
+            $firstProductVariant,
+            $firstProductImage,
+            $secondProductVariant,
+            $firstProduct,
+            $secondProduct
+        ]);
+
+        $firstProductImage->getOwner()->willReturn($firstProductVariant);
+        $firstProductVariant->getProduct()->willReturn($firstProduct);
+        $firstProduct->getCode()->willReturn('FIRST_PRODUCT_CODE');
+
+        $secondProductVariant->getProduct()->willReturn($secondProduct);
+        $secondProduct->getCode()->willReturn('SECOND_PRODUCT_CODE');
+
+        $eventBus->handle(ProductUpdated::occur($firstProduct->getWrappedObject()))->shouldBeCalledTimes(1);
+        $eventBus->handle(ProductUpdated::occur($secondProduct->getWrappedObject()))->shouldBeCalledTimes(1);
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
     function it_publishes_product_deleted_event_when_product_is_deleted(
         MessageBus $eventBus,
         OnFlushEventArgs $onFlushEvent,
