@@ -16,6 +16,7 @@ use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductTaxonInterface;
 use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
+use Sylius\Component\Product\Model\ProductAttributeValueInterface;
 use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
@@ -163,6 +164,24 @@ final class ProductPublisherSpec extends ObjectBehavior
         $unitOfWork->getScheduledEntityUpdates()->willReturn([$productTaxon]);
 
         $productTaxon->getProduct()->willReturn($product);
+
+        $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
+
+        $this->onFlush($onFlushEvent);
+        $this->postFlush($postFlushEvent);
+    }
+
+    function it_publishes_product_updated_event_when_product_attribute_value_is_updated(
+        MessageBus $eventBus,
+        OnFlushEventArgs $onFlushEvent,
+        PostFlushEventArgs $postFlushEvent,
+        UnitOfWork $unitOfWork,
+        ProductAttributeValueInterface $productAttributeValue,
+        ProductInterface $product
+    ): void {
+        $unitOfWork->getScheduledEntityUpdates()->willReturn([$productAttributeValue]);
+
+        $productAttributeValue->getProduct()->willReturn($product);
 
         $eventBus->handle(ProductUpdated::occur($product->getWrappedObject()))->shouldBeCalled();
 
