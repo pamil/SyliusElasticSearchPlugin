@@ -39,7 +39,8 @@
         "behat/mink-selenium2-driver": "^1.3",
         "lakion/api-test-case": "^1.1",
         "doctrine/common": "<2.8",
-        "symplify/easy-coding-standard": "^2.4"
+        "symplify/easy-coding-standard": "^2.4",
+        "sylius-labs/coding-standard": "^1.0"
     },
     "config": {
         "bin-dir": "bin"
