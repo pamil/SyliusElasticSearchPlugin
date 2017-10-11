@@ -11,10 +11,10 @@ use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ProductImageInterface;
 use Sylius\Component\Core\Model\ProductInterface;
 use Sylius\Component\Core\Model\ProductTaxonInterface;
-use Sylius\Component\Core\Model\ProductTranslation;
+use Sylius\Component\Core\Model\ProductTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Product\Model\ProductAttributeValueInterface;
-use Sylius\Component\Product\Model\ProductVariantTranslation;
+use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
 use Sylius\ElasticSearchPlugin\Event\ProductCreated;
 use Sylius\ElasticSearchPlugin\Event\ProductDeleted;
 use Sylius\ElasticSearchPlugin\Event\ProductUpdated;
@@ -29,7 +29,7 @@ final class ProductPublisher
     /**
      * @var ProductInterface[]
      */
-    private $scheduledInserts = [];
+    private $scheduledInsertions = [];
 
     /**
      * @var ProductInterface[]
@@ -52,14 +52,20 @@ final class ProductPublisher
     /**
      * @param OnFlushEventArgs $event
      */
-    public function onFlush(OnFlushEventArgs $event)
+    public function onFlush(OnFlushEventArgs $event): void
     {
         $scheduledInsertions = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityInsertions();
 
         foreach ($scheduledInsertions as $entity) {
+            if ($entity instanceof ProductInterface && !isset($this->scheduledInsertions[$entity->getCode()])) {
+                $this->scheduledInsertions[$entity->getCode()] = $entity;
+
+                continue;
+            }
+
             $entity = $this->getProductFromEntity($entity);
-            if ($entity instanceof ProductInterface && !isset($this->scheduledInserts[$entity->getCode()])) {
-                $this->scheduledInserts[$entity->getCode()] = $entity;
+            if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getCode()])) {
+                $this->scheduledUpdates[$entity->getCode()] = $entity;
             }
         }
 
@@ -73,9 +79,15 @@ final class ProductPublisher
 
         $scheduledDeletions = $event->getEntityManager()->getUnitOfWork()->getScheduledEntityDeletions();
         foreach ($scheduledDeletions as $entity) {
-            /** We delete only if the product itself was removed */
             if ($entity instanceof ProductInterface && !isset($this->scheduledDeletions[$entity->getCode()])) {
                 $this->scheduledDeletions[$entity->getCode()] = $entity;
+
+                continue;
+            }
+
+            $entity = $this->getProductFromEntity($entity);
+            if ($entity instanceof ProductInterface && !isset($this->scheduledUpdates[$entity->getCode()])) {
+                $this->scheduledUpdates[$entity->getCode()] = $entity;
             }
         }
     }
@@ -83,65 +95,67 @@ final class ProductPublisher
     /**
      * @param PostFlushEventArgs $event
      */
-    public function postFlush(PostFlushEventArgs $event)
+    public function postFlush(PostFlushEventArgs $event): void
     {
-        foreach ($this->scheduledInserts as $product) {
+        foreach ($this->scheduledInsertions as $product) {
             $this->eventBus->handle(ProductCreated::occur($product));
         }
 
-        $this->scheduledInserts = [];
-
-        foreach ($this->scheduledUpdates as $product) {
+        $scheduledUpdates = array_diff_key(
+            $this->scheduledUpdates,
+            $this->scheduledInsertions,
+            $this->scheduledDeletions
+        );
+        foreach ($scheduledUpdates as $product) {
             $this->eventBus->handle(ProductUpdated::occur($product));
         }
-
-        $this->scheduledUpdates = [];
 
         foreach ($this->scheduledDeletions as $product) {
             $this->eventBus->handle(ProductDeleted::occur($product));
         }
 
+        $this->scheduledInsertions = [];
+        $this->scheduledUpdates = [];
         $this->scheduledDeletions = [];
     }
 
     /**
-     * @param $entity
+     * @param object $entity
      *
-     * @return ProductInterface|\Sylius\Component\Product\Model\ProductInterface|\Sylius\Component\Resource\Model\TranslatableInterface
+     * @return ProductInterface|null
      */
     private function getProductFromEntity($entity): ?ProductInterface
     {
+        if ($entity instanceof ProductInterface) {
+            return $entity;
+        }
+
+        if ($entity instanceof ProductTranslationInterface) {
+            return $this->getProductFromEntity($entity->getTranslatable());
+        }
+
         if ($entity instanceof ProductVariantInterface) {
             return $entity->getProduct();
         }
-        if ($entity instanceof ProductVariantTranslation) {
-            return $entity->getTranslatable()->getProduct();
+
+        if ($entity instanceof ProductVariantTranslationInterface) {
+            return $this->getProductFromEntity($entity->getTranslatable());
         }
-        if ($entity instanceof ProductTranslation) {
-            return $entity->getTranslatable();
-        }
+
         if ($entity instanceof ChannelPricingInterface) {
-            return $entity->getProductVariant()->getProduct();
+            return $this->getProductFromEntity($entity->getProductVariant());
         }
+
         if ($entity instanceof ProductTaxonInterface) {
             return $entity->getProduct();
         }
+
         if ($entity instanceof ProductAttributeValueInterface) {
             return $entity->getProduct();
         }
+
         if ($entity instanceof ProductImageInterface) {
-            if ($entity->getOwner() instanceof ProductInterface) {
-                return $entity->getOwner();
-            }
-            if ($entity->getOwner() instanceof ProductVariantInterface) {
-                return $entity->getOwner()->getProduct();
-            }
-
-            return null;
-        }
-
-        if ($entity instanceof ProductInterface) {
-            return $entity;
+            return $this->getProductFromEntity($entity->getOwner());
         }
 
         return null;
